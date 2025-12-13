@@ -1,4 +1,3 @@
-import React from 'react';
 import { QUICK_LINKS, FIRMS, FAQS, OTHER_RESOURCES, YOUTUBE_LINKS, SOCIAL_LINKS, SITE_CONFIG } from './constants';
 import Button from './components/Button';
 import FirmCard from './components/FirmCard';
