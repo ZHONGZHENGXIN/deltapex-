@@ -17,21 +17,6 @@ function App() {
 
       <header className="pt-12 pb-8 px-4 text-center max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col items-center justify-center mb-6">
-          {SITE_CONFIG.logoUrl ? (
-            <a href="/" className="inline-block hover:opacity-90 transition-opacity mb-4">
-              <img 
-                src={SITE_CONFIG.logoUrl} 
-                alt="Deltapex Logo" 
-                /* 
-                   h-auto: 高度由 CSS 类 (如 h-20) 控制
-                   w-auto: 宽度根据高度自动调整，保持比例
-                   max-w-full: 确保在移动端不会超出屏幕宽度
-                   object-contain: 确保图片完整显示
-                */
-                className={`${SITE_CONFIG.logoHeight} w-auto max-w-full object-contain mx-auto`}
-              />
-            </a>
-          ) : null}
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 font-display">
             Deltapex 自营交易
           </h1>
