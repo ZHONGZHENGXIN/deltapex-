@@ -1,8 +1,11 @@
 import { Firm, Deal, QuickLink, ResourceLink } from './types';
+// 使用 import 导入图片，确保 Vite 构建时能找到它
+// @ts-ignore
+import logoPng from './logo.png';
 
 export const SITE_CONFIG = {
-  // 引用本地图片：请将您的图片重命名为 logo.png 并放置在项目根目录下
-  logoUrl: "./logo.png", 
+  // 使用导入的变量
+  logoUrl: logoPng, 
   
   // Logo 高度设置：移动端 h-24 (约96px)，桌面端 h-32 (约128px)
   // 宽度会根据图片比例自动适应
