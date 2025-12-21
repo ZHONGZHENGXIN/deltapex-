@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FIRMS, FAQS, OTHER_RESOURCES, COMMUNITY_ACCOUNTS, SOCIAL_LINKS, SITE_CONFIG } from './constants';
+import React, { useState, useRef, useCallback } from 'react';
+import { FIRMS, FAQS, OTHER_RESOURCES, COMMUNITY_ACCOUNTS, SOCIAL_LINKS } from './constants';
 import Button from './components/Button';
 import FirmCard from './components/FirmCard';
 import FAQ from './components/FAQ';
@@ -8,6 +8,28 @@ import InteractiveBackground from './components/InteractiveBackground';
 
 function App() {
   const [currentView, setCurrentView] = useState<'home' | 'tpt-rules'>('home');
+  
+  // 主按钮的 3D 交互状态
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const [ctaRotate, setCtaRotate] = useState({ x: 0, y: 0 });
+  const [ctaSpotlight, setCtaSpotlight] = useState({ x: 0, y: 0 });
+
+  const handleCtaMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ctaRef.current) return;
+    const rect = ctaRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 8; // 按钮较小，倾斜幅度稍大增加动态感
+    const rotateY = (centerX - x) / 12;
+    setCtaRotate({ x: rotateX, y: rotateY });
+    setCtaSpotlight({ x, y });
+  }, []);
+
+  const handleCtaMouseLeave = () => {
+    setCtaRotate({ x: 0, y: 0 });
+  };
 
   if (currentView === 'tpt-rules') {
     return <TptRulesView onBack={() => setCurrentView('home')} />;
@@ -15,29 +37,48 @@ function App() {
 
   return (
     <div className="bg-white text-slate-600 font-sans antialiased relative min-h-screen">
-      {/* 动态抗重力背景 */}
       <InteractiveBackground />
 
       <header className="pt-24 pb-12 px-4 text-center max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col items-center justify-center mb-6">
-          <h1 className="text-4xl md:text-6xl font-bold text-slate-900 font-display tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-bold font-display tracking-tight transition-all duration-700 cursor-default hover:scale-105 active:scale-95 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-primary to-slate-900 bg-[length:200%_auto] animate-shimmer select-none drop-shadow-sm py-2 leading-tight">
             Deltapex 自营交易
           </h1>
         </div>
         
-        <p className="text-slate-500 mb-12 text-lg">Futures Propfirm 中文社区网站</p>
+        <p className="text-slate-500 mb-12 text-lg font-medium tracking-wide">ATAS订单流中文社区</p>
 
-        {/* Main CTA */}
-        <Button 
-          href="#firms" 
-          className="px-10 py-4 mb-8 text-lg rounded-full"
+        {/* 具有 3D 倾斜效果的主按钮 */}
+        <div 
+          ref={ctaRef}
+          onMouseMove={handleCtaMouseMove}
+          onMouseLeave={handleCtaMouseLeave}
+          className="inline-block relative perspective-1000 group"
+          style={{
+            transform: `perspective(1000px) rotateX(${ctaRotate.x}deg) rotateY(${ctaRotate.y}deg)`,
+            transition: ctaRotate.x === 0 ? 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
+          }}
         >
-          查看规则汇总介绍
-        </Button>
+          <Button 
+            href="#firms" 
+            className="relative overflow-hidden px-12 py-5 text-xl rounded-2xl shadow-[0_20px_40px_-15px_rgba(211,47,47,0.3)] hover:shadow-[0_30px_60px_-15px_rgba(211,47,47,0.5)] border-0 z-10 transition-transform duration-300 group-hover:scale-105"
+          >
+            {/* 按钮内的聚光灯光晕 */}
+            <div 
+              className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+              style={{
+                background: `radial-gradient(120px circle at ${ctaSpotlight.x}px ${ctaSpotlight.y}px, rgba(255, 255, 255, 0.2), transparent 80%)`
+              }}
+            />
+            <span className="relative z-10">创始人：Alex</span>
+          </Button>
+          
+          {/* 按钮背后的动态发光层 */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 to-red-600/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
+        </div>
       </header>
 
       <main id="rules-summary" className="max-w-7xl mx-auto px-4 pb-20 relative z-10">
-        {/* Firms List */}
         <div id="firms" className="scroll-mt-20">
           <h2 className="text-2xl font-bold text-slate-900 text-center mb-12">
             Futures Propfirm 汇总
@@ -55,7 +96,6 @@ function App() {
           </div>
         </div>
 
-        {/* Community Accounts Section */}
         <div id="community" className="mt-20 mb-20 scroll-mt-20">
           <h2 className="text-xl font-bold text-slate-900 text-center mb-8 flex items-center justify-center gap-2">
             <span className="relative flex h-3 w-3">
@@ -84,7 +124,6 @@ function App() {
           </div>
         </div>
 
-        {/* FAQ Section */}
         <div id="faq" className="max-w-4xl mx-auto scroll-mt-20">
           <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">常见问题</h2>
           <div className="space-y-3">
@@ -94,7 +133,6 @@ function App() {
           </div>
         </div>
 
-        {/* Other Resources */}
         <div id="resources" className="mt-20 scroll-mt-20">
           <h2 className="text-xl font-bold text-slate-900 text-center mb-8">其他</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
@@ -119,7 +157,7 @@ function App() {
             Community & Support
           </h2>
           <p className="text-slate-500 mb-10 text-sm">
-            获取 Propfirm 资讯，折扣提醒，交流交易经验，与 Deltapex 一起成长！
+            获取 Propfirm 资讯，折扣提醒，交流交易经验，与 Alex 一起成长！
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <a
@@ -151,7 +189,7 @@ function App() {
             </a>
           </div>
           <div className="mt-16 text-xs text-slate-500">
-            <p>© 2025 Deltapex 自营交易 - Futures Propfirm | 关于我们 | 披露声明 | CFD</p>
+            <p>© 2025 Alex 交易社区 - ATAS订单流中文社区 | 关于我们 | 披露声明</p>
           </div>
         </div>
       </footer>
