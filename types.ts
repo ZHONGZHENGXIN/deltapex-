@@ -12,6 +12,7 @@ export interface Firm {
   logoUrl?: string; // New: Support for image URLs
   buyLink: string;
   rulesLink: string;
+  isFeatured?: boolean; // New: To highlight specific firms
 }
 
 export interface Deal {

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPT规则 - 最全攻略指南 🏆</title>
+    <style>
+        /* Base Styles */
+        body {
+            background-color: #FFFFFF;
+            color: #333333;
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #cc0000; /* Red title */
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            border-left: 5px solid #cc0000; /* Red accent */
+            padding-left: 15px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Links & CTA */
+        .cta-box {
+            background-color: #fffafa; /* Very light red tint */
+            border: 1px solid #ffcccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .cta-box p {
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .link-button {
+            display: inline-block;
+            color: #cc0000; /* Red links */
+            text-decoration: none;
+            word-break: break-all;
+            border-bottom: 1px dashed #cc0000;
+            transition: all 0.2s;
+        }
+
+        .link-button:hover {
+            color: #990000;
+            border-bottom-style: solid;
+        }
+
+        /* Standard Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            border: 1px solid #eeeeee;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #fff5f5;
+            color: #cc0000;
+            font-weight: bold;
+        }
+
+        /* InfoGraphic Table (Red & White Theme) */
+        .comparison-wrapper {
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.05);
+            border: 1px solid #ffcccc;
+        }
+        
+        .infographic-table {
+            min-width: 800px;
+            border: none;
+        }
+        
+        .infographic-table tr td:first-child {
+            background-color: #fffafa;
+            width: 25%;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 20px;
+            color: #333;
+            border-right: 1px solid #ffeeee;
+        }
+        
+        .infographic-table .header-row td {
+            background-color: #cc0000; /* Solid Red Header */
+            color: white;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+        }
+
+        .infographic-table .header-row .logo-cell {
+            background-color: #990000; /* Darker red for logo cell */
+            text-align: center;
+        }
+
+        .infographic-table .promo-row td {
+            background-color: #fff;
+            padding: 15px;
+            font-size: 0.95rem;
+            color: #666;
+            border-bottom: 2px solid #ffcccc;
+        }
+
+        .infographic-table .data-row td {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .text-red { color: #cc0000; font-weight: bold; }
+        .font-small { font-size: 0.8rem; font-weight: normal; color: #888; }
+
+        /* List Styles */
+        ul {
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        /* Special Highlights */
+        .highlight-red {
+            color: #cc0000;
+            font-weight: bold;
+        }
+
+        .info-card {
+            background-color: #fffafa;
+            border: 1px solid #ffcccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .notice-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .notice-list li::before {
+            content: "•";
+            color: #cc0000; /* Red bullet points */
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+        }
+
+        /* Divider */
+        hr {
+            border: 0;
+            border-top: 1px solid #ffeeee;
+            margin: 40px 0;
+        }
+
+        /* Responsive Adjustment */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .container { padding: 20px 15px; }
+        }
+        
+        /* Back to Home Button */
+        .back-nav {
+            margin-bottom: 20px;
+        }
+        .back-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .back-link:hover {
+            color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav class="back-nav">
+        <a href="index.html" class="back-link">← 返回社区主页</a>
+    </nav>
+    <header>
+        <h1>TPT规则 - 最全攻略指南 🏆</h1>
+        <p class="subtitle">性价比高、支持日结、出金快速的期货 Prop Firm</p>
+    </header>
+
+    <div class="cta-box">
+        <p>TPT折扣码：<span class="highlight-red" style="font-size: 1.5rem;">DP01</span></p>
+        <p>注册链接：<a href="https://takeprofittrader.com/?referralCode=DP01" class="link-button" target="_blank">https://takeprofittrader.com/?referralCode=DP01</a></p>
+    </div>
+
+    <section id="advantages">
+        <h2>✨ TPT 的优势</h2>
+        
+        <p><strong>超高性价比：</strong>6折免激活长期活动，具体价格参考如下：</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>账户类型</th>
+                    <th>25K 账户</th>
+                    <th>50K 账户</th>
+                    <th>100K 账户</th>
+                    <th>150K 账户</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>当前价格</strong></td>
+                    <td>$90</td>
+                    <td>$105</td>
+                    <td>$147</td>
+                    <td>$216</td>
+                </tr>
+                <tr>
+                    <td><strong>优惠说明</strong></td>
+                    <td colspan="4">使用折扣码 <strong class="highlight-red">DP01</strong> 享受7折优惠并免除激活费</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul class="notice-list">
+            <li><strong>推荐25K或150K：</strong>25k是因为比较好通过；150k是因为虽然难度高一点但重置费只要$100，150k打出来的pro号回撤大更好做。</li>
+            <li><strong>150k的成本优势：</strong>重置费只要100，一直重置最后一定能得到一个4500TDD的出金号。成本根据水平高低总成本在200多（1次过）-600多（5次才过）不等。建议在30天内重置考过，否则需月费续订。</li>
+            <li><strong>实时追踪与静态账户：</strong>比如通过3次考试获得150k账户，总成本约416刀。该号可慢慢打过缓冲区变成静态账户。在美盘强趋势行情下，若盘中净值曾超过4500（即便回落），在TDV风险设置里开启日盈利清算，直接变静态账户。</li>
+            <li><strong>种田日结：</strong>超过缓冲区利润即可每日出金。缓冲区内的利润也可提（不满60天分50%）。</li>
+            <li><strong>付款方式：</strong>支持 VISA万事达、Paypal。国内卡建议绑定Paypal支付。</li>
+            <li><strong>出金效率：</strong>一般次日到账。仪表盘TVD通常早上9点后更新，rithmic下午更新。</li>
+            <li><strong>网络支持：</strong>支持魔法梯子，需保持同一国家（推荐亚洲节点）。</li>
+            <li><strong>回撤规则：</strong>考核EOD回撤，Pro出金号实时追踪。打过缓冲区后变为静态。</li>
+            <li><strong>灵活过关：</strong>若考核2天即达标，剩余3天可使用最小手数刷交易日。</li>
+            <li><strong>缓冲区利润提取：</strong>若觉得打不过去，可邮件申请提取。交易满60天分80%，不满分50%。无任何限制。</li>
+            <li><strong>重要提醒：</strong><span class="highlight-red">收盘前务必平仓并删除挂单</span>，否则视为违规。考核不限新闻，出金号需注意新闻规则。</li>
+        </ul>
+
+        <div class="comparison-wrapper">
+            <table class="infographic-table">
+                <tr class="header-row">
+                    <td class="logo-cell"></td>
+                    <td>25K 考试号</td>
+                    <td>150K 考试号</td>
+                </tr>
+                <tr class="promo-row">
+                    <td></td>
+                    <td colspan="2">
+                        退报名费仅适用于黑五促销活动，时间：2025年11月24日-结束时间待定<br>
+                        <strong class="text-red" style="font-size: 1.1rem;">折扣码：QQ</strong>（2个字母：QQ） 
+                        <span style="color:#666; margin-left: 20px;">所有账户重置费固定$100 (重置不延长订阅)</span>
+                    </td>
+                </tr>
+                <tr class="data-row">
+                    <td>价格 <span class="font-small">(按月订阅, 通过后再不收)</span></td>
+                    <td><strong class="text-red">$105</strong> <span class="font-small">(7折免激活+第一次出金退报名费)</span></td>
+                    <td><strong class="text-red">$252</strong> <span class="font-small">(7折免激活+第一次出金退报名费)</span></td>
+                </tr>
+                <tr class="data-row">
+                    <td>交易平台</td>
+                    <td colspan="2">CQG (<span class="text-red">Tradovate</span>、Ninjatrader) 或 Rithmic (<span class="text-red">Quantower</span>、atas)</td>
+                </tr>
+                <tr class="data-row">
+                    <td>考试号回撤 (EOD模式) <span class="font-small">无日损, 交易5天(可2天过, 划水)</span></td>
+                    <td>EOD回撤1500，利润目标1500<br>考核一致性50% <span class="font-small">(最大手数3手)</span></td>
+                    <td>EOD回撤4500，利润目标9000<br>考核一致性50% <span class="font-small">(最大手数15手)</span></td>
+                </tr>
+                <tr class="data-row">
+                    <td>出金号回撤 (盘中追踪) <span class="font-small">无日损, 最快1天出金</span></td>
+                    <td>追踪回撤1500，无一致性要求<br>利润超1500缓冲区部分可每天出金</td>
+                    <td>追踪回撤4500，无一致性要求<br>利润超4500缓冲区部分可每天出金</td>
+                </tr>
+                <tr class="data-row">
+                    <td>关于激活费</td>
+                    <td colspan="2">TPT活动时免激活费，过关后会送credit到账户抵扣激活，<br>一般下个工作日傍晚前送（超3工作日没有找客服）</td>
+                </tr>
+                <tr class="data-row">
+                    <td>出金要求 <span class="font-small">(缓冲区内也可申请)</span></td>
+                    <td colspan="2">
+                        <strong class="text-red">出金号打过缓冲区后就变成静态账户不会再追踪了</strong><br>
+                        只要打过缓冲区，就可以每天出金（单笔大于250无手续费）<br>
+                        <span class="text-red">发邮件关闭账户可以提取缓冲区内50%金额</span> <span class="font-small">(交易满60天可提80%, 关闭无任何影响)</span>
+                    </td>
+                </tr>
+                <tr class="data-row">
+                    <td>分成比例</td>
+                    <td colspan="2">80% (升级为Pro+账号为90%) &nbsp;&nbsp; 单笔出金$250以上无手续费</td>
+                </tr>
+                <tr class="data-row">
+                    <td>购买支付方式</td>
+                    <td colspan="2">支持VISA万事达卡、Paypal。<span class="font-small">(通过后不再扣费, 备用号不激活不逾期)</span><br>同时拥有账户：考试号不限制，出金号5个 <span class="font-small">(每30天最多激活10个)</span></td>
+                </tr>
+                <tr class="data-row">
+                    <td>出金方式</td>
+                    <td colspan="2">Wise/Paypal/Plaid, 一般当天或隔天到</td>
+                </tr>
+                <tr class="data-row">
+                    <td>魔法 (VPN) 和不活跃时间</td>
+                    <td colspan="2">允许，尽量保持固定地区（不固定尽量IP在同一个国家或者洲）<br>不活跃时间：每周至少1笔1分钟以上交易保持活跃</td>
+                </tr>
+                <tr class="data-row">
+                    <td>新闻交易和日内交易</td>
+                    <td colspan="2" class="text-red">
+                        考试号无视新闻，出金号只有CPI/非农/FOMC利率决议与会议期间这3个重大新闻前后1分钟禁止开仓和持有未平仓订单（特别注意）<br>
+                        只允许日内交易，收盘前必须平仓否则违规号就没了（挂单必须撤掉）
+                    </td>
+                </tr>
+                <tr class="data-row">
+                    <td>PRO+账号 (live)</td>
+                    <td colspan="2">PRO账号利润达到$10000 <span class="font-small">(或更多)</span> 强制升级PRO+</td>
+                </tr>
+                <tr class="data-row">
+                    <td>KYC (支持大陆与港澳台)</td>
+                    <td colspan="2">支持护照/港澳通行证/国际驾照/身份证 (<span class="text-red">KYC时必须关掉魔法</span>)</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="rules">
+        <h2>📊 TPT 的规则汇总</h2>
+        <p>期货 Prop 均为月费订阅模式。若不再操作，请务必手动取消订阅以避免扣款。</p>
+        <div class="info-card">
+            <strong>取消路径：</strong>官网 control-center → 时间位置 → 红色 “X” → 关闭订阅。
+        </div>
+    </section>
+
+    <section id="strategy">
+        <h2>🌱 种田攻略</h2>
+        <p>考试采用 EOD 回撤，难度较低；Pro出金号在通过缓冲区前是实时追踪，这是核心难点。</p>
+        <ul class="notice-list">
+            <li><strong>分个突破：</strong>获得多个考试号后，建议一个个分开梭过缓冲区。之后每日稳定盈利100-300刀，实现日结。</li>
+            <li><strong>持仓限制：</strong>Pro账户同时交易上限为5个。考核号无数量限制，可多备号。</li>
+            <li><strong>激活上限：</strong>每30天最多激活10个Pro账户。</li>
+        </ul>
+    </section>
+
+    <section id="tutorials">
+        <h2>🖥️ 连接教程</h2>
+        <p>无论选择哪个数据源，请务必签署相关协议以激活账户。</p>
+        <ul class="notice-list">
+            <li><strong>Rithmic 签署激活：</strong><a href="https://signup.rithmic.com/apps.html" class="link-button" target="_blank">https://signup.rithmic.com/apps.html</a></li>
+            <li><strong>TDV 签署激活 (CQG)：</strong><a href="https://trader.tradovate.com/welcome" class="link-button" target="_blank">https://trader.tradovate.com/welcome</a></li>
+        </ul>
+    </section>
+
+    <section id="safety">
+        <h2>🛡️ 平台安全性</h2>
+        <p>TPT 接受美国 Live 监管，在 Trustpilot 拥有优秀评价，信誉卓著且到账迅速。</p>
+        <p><strong>客服支持：</strong><a href="mailto:support@takeprofittrader.com" class="link-button">support@takeprofittrader.com</a></p>
+    </section>
+
+    <hr>
+    <footer style="text-align: center; color: #999; font-size: 0.8rem; margin-bottom: 50px;">
+        © TPT 攻略指南 | 请遵循官网实时规则
+    </footer>
+</div>
+</body>
+</html>

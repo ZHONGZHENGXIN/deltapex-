@@ -1,9 +1,17 @@
-import { QUICK_LINKS, FIRMS, FAQS, OTHER_RESOURCES, YOUTUBE_LINKS, SOCIAL_LINKS, SITE_CONFIG } from './constants';
+import React, { useState } from 'react';
+import { FIRMS, FAQS, OTHER_RESOURCES, COMMUNITY_ACCOUNTS, SOCIAL_LINKS, SITE_CONFIG } from './constants';
 import Button from './components/Button';
 import FirmCard from './components/FirmCard';
 import FAQ from './components/FAQ';
+import TptRulesView from './components/TptRulesView';
 
 function App() {
+  const [currentView, setCurrentView] = useState<'home' | 'tpt-rules'>('home');
+
+  if (currentView === 'tpt-rules') {
+    return <TptRulesView onBack={() => setCurrentView('home')} />;
+  }
+
   return (
     <div className="bg-white text-slate-600 font-sans antialiased relative min-h-screen">
       {/* Background Watermark */}
@@ -31,21 +39,6 @@ function App() {
         >
           查看规则汇总介绍
         </Button>
-
-        {/* Quick Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-16">
-          {QUICK_LINKS.map((link, idx) => (
-            <Button
-              key={idx}
-              href={link.url}
-              variant="white"
-              className="px-4 py-3 text-sm"
-              fullWidth
-            >
-              {link.label}
-            </Button>
-          ))}
-        </div>
       </header>
 
       <main id="rules-summary" className="max-w-7xl mx-auto px-4 pb-20 relative z-10">
@@ -56,8 +49,50 @@ function App() {
           </h2>
           <div className="space-y-4 mb-20">
             {FIRMS.map((firm) => (
-              <FirmCard key={firm.id} firm={firm} />
+              <FirmCard 
+                key={firm.id} 
+                firm={firm} 
+                onRulesClick={(id) => {
+                  if (id === 'tpt') setCurrentView('tpt-rules');
+                }}
+              />
             ))}
+          </div>
+        </div>
+
+        {/* Community Accounts Section (Moved up) */}
+        <div id="community" className="mt-20 mb-20 scroll-mt-20">
+          <h2 className="text-xl font-bold text-slate-900 text-center mb-8 flex items-center justify-center gap-2">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+            </span>
+            官方直播 & 交易日志
+          </h2>
+          <div className="flex justify-center max-w-4xl mx-auto">
+            {COMMUNITY_ACCOUNTS.map((link, idx) => (
+              <Button
+                key={idx}
+                href={link.url}
+                variant="primary"
+                className="group p-6 md:p-8 text-base md:text-lg h-auto whitespace-normal shadow-2xl shadow-red-500/40 relative overflow-hidden"
+                fullWidth
+              >
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="flex items-center gap-3">
+                  <i className="fa-brands fa-bilibili text-2xl"></i>
+                  <span className="font-bold tracking-wide">{link.label}</span>
+                  <i className="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+              </Button>
+            ))}
+          </div>
+          <div className="flex justify-center mt-12">
+            <div className="w-16 h-16 opacity-80 text-slate-200">
+              <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -88,31 +123,6 @@ function App() {
             ))}
           </div>
         </div>
-
-        {/* YouTube Section */}
-        <div id="youtube" className="mt-20 mb-20 scroll-mt-20">
-          <h2 className="text-xl font-bold text-slate-900 text-center mb-8">油管视频学习</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {YOUTUBE_LINKS.map((link, idx) => (
-              <Button
-                key={idx}
-                href={link.url}
-                variant="white"
-                className="p-4 text-xs h-auto whitespace-normal"
-                fullWidth
-              >
-                {link.label}
-              </Button>
-            ))}
-          </div>
-          <div className="flex justify-center mt-12">
-            <div className="w-16 h-16 opacity-80 text-slate-200">
-              <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
       </main>
 
       <footer className="bg-white border-t border-slate-200 py-16 px-4 relative z-10">
@@ -121,7 +131,7 @@ function App() {
             Community & Support
           </h2>
           <p className="text-slate-500 mb-10 text-sm">
-            获取 Propfirm 资讯，折扣提醒，交流交易经验，与自营交易一起成长！
+            获取 Propfirm 资讯，折扣提醒，交流交易经验，与Deltapex一起成长！
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <a
