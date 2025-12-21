@@ -58,11 +58,10 @@ export const FIRMS: Firm[] = [
     code: "DP01",
     logoUrl: "https://takeprofittrader.com/assets/mobile-logo.svg", 
     iconClass: "fa-solid fa-chart-line",
-    iconBgClass: "bg-slate-100",
+    iconBgClass: "bg-slate-50",
     iconColorClass: "text-primary",
     buyLink: "https://takeprofittrader.com",
-    rulesLink: "tpt-rules.html",
-    isFeatured: true
+    rulesLink: "tpt-rules.html"
   },
   {
     id: "zenit",
@@ -72,11 +71,10 @@ export const FIRMS: Firm[] = [
     code: "DELTA1",
     logoUrl: "https://checkout.zenitfunding.com/dynamic/logo",
     iconClass: "fa-solid fa-z",
-    iconBgClass: "bg-slate-100",
+    iconBgClass: "bg-slate-50",
     iconColorClass: "text-primary",
     buyLink: "https://checkout.zenitfunding.com/products?aff=",
-    rulesLink: "#",
-    isFeatured: true
+    rulesLink: "#"
   },
   {
     id: "lucid",
@@ -84,25 +82,27 @@ export const FIRMS: Firm[] = [
     platforms: "Projectx、 TDV 、 Rithmic",
     rating: "推荐 ，允许魔法",
     code: "Alex",
+    // 采用用户提供的星球原图
     logoUrl: "https://lucidtrading.com/wp-content/uploads/2025/02/Untitled-design-2025-10-22T181841.622.png.webp",
     iconClass: "fa-solid fa-cube",
-    iconBgClass: "bg-slate-100",
+    iconBgClass: "bg-black", // 黑色背景契合星球图
     iconColorClass: "text-primary",
     buyLink: "https://lucidtrading.com",
-    rulesLink: "#",
-    isFeatured: true
+    rulesLink: "#"
   },
   {
-    id: "earn2trade",
-    name: "Earn2Trade",
-    platforms: "NinjaTrader、 Rithmic",
+    id: "fundednext",
+    name: "FundedNext",
+    platforms: "TDV",
     rating: "推荐 ，允许魔法",
-    code: "DeltapexE2T",
-    logoUrl: "https://www.earn2trade.com/logo-light.svg",
-    iconClass: "fa-solid fa-graduation-cap",
-    iconBgClass: "bg-slate-100",
-    iconColorClass: "text-primary",
-    buyLink: "https://www.earn2trade.com/non-us?a_pid=DeltapexE2T",
+    code: "Alex",
+    logoUrl: "https://fundednext.com/_next/image?url=https%3A%2F%2Fdirslur24ie1a.cloudfront.net%2Ffundednext%2FFundednext%20logo_White%20(1).png&w=384&q=75",
+    iconClass: "",
+    isCustomIcon: true,
+    customIconText: "FN",
+    iconBgClass: "bg-slate-900",
+    iconColorClass: "text-white",
+    buyLink: "https://fundednext.com/ja",
     rulesLink: "#"
   },
   {
@@ -113,7 +113,7 @@ export const FIRMS: Firm[] = [
     code: "DELTAPEX",
     logoUrl: "https://cdn.prod.website-files.com/67d9f6c73e1490afc415fc90/68e411afc794d45d4f778a78_logo.svg",
     iconClass: "fa-solid fa-bolt",
-    iconBgClass: "bg-slate-100",
+    iconBgClass: "bg-slate-50",
     iconColorClass: "text-primary",
     buyLink: "https://www.toponefutures.com/",
     rulesLink: "#"
@@ -140,7 +140,7 @@ export const FIRMS: Firm[] = [
     iconClass: "",
     isCustomIcon: true,
     customIconText: "T",
-    iconBgClass: "bg-slate-900 border border-slate-200",
+    iconBgClass: "bg-slate-900 border border-slate-700",
     iconColorClass: "text-white",
     buyLink: "https://dashboard.topstep.com/",
     rulesLink: "#"
@@ -163,7 +163,7 @@ export const OTHER_RESOURCES: ResourceLink[] = [
   { label: "Ninja连接教程", url: "#" },
   { label: "出金W8表格填写", url: "#" },
   { label: "考试账户对比表", url: "#" },
-  { label: "守卫自营交易", url: "#" },
+  { label: "优秀学员案例", url: "#" },
   { label: "ProjectX平台汇总", url: "#" },
 ];
 
