@@ -15,6 +15,7 @@ const InteractiveBackground: React.FC = () => {
     const mouse = { x: 0, y: 0, radius: 150 };
 
     const handleResize = () => {
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       init();
@@ -99,6 +100,7 @@ const InteractiveBackground: React.FC = () => {
     }
 
     function init() {
+      if (!canvas) return;
       particles = [];
       const numberOfParticles = (canvas.width * canvas.height) / 4500;
       for (let i = 0; i < numberOfParticles; i++) {
@@ -130,7 +132,7 @@ const InteractiveBackground: React.FC = () => {
     }
 
     function animate() {
-      if (!ctx) return;
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();

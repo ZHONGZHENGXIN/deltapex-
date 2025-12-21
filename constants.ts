@@ -61,7 +61,8 @@ export const FIRMS: Firm[] = [
     iconBgClass: "bg-slate-50",
     iconColorClass: "text-primary",
     buyLink: "https://takeprofittrader.com",
-    rulesLink: "tpt-rules.html"
+    rulesLink: "tpt-rules.html",
+    isFeatured: true
   },
   {
     id: "zenit",
@@ -74,7 +75,8 @@ export const FIRMS: Firm[] = [
     iconBgClass: "bg-slate-50",
     iconColorClass: "text-primary",
     buyLink: "https://checkout.zenitfunding.com/products?aff=",
-    rulesLink: "#"
+    rulesLink: "#",
+    isFeatured: true
   },
   {
     id: "lucid",
@@ -82,13 +84,13 @@ export const FIRMS: Firm[] = [
     platforms: "Projectx、 TDV 、 Rithmic",
     rating: "推荐 ，允许魔法",
     code: "Alex",
-    // 采用用户提供的星球原图
     logoUrl: "https://lucidtrading.com/wp-content/uploads/2025/02/Untitled-design-2025-10-22T181841.622.png.webp",
     iconClass: "fa-solid fa-cube",
-    iconBgClass: "bg-black", // 黑色背景契合星球图
+    iconBgClass: "bg-black", 
     iconColorClass: "text-primary",
     buyLink: "https://lucidtrading.com",
-    rulesLink: "#"
+    rulesLink: "#",
+    isFeatured: true
   },
   {
     id: "fundednext",
