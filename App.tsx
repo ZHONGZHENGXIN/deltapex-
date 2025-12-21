@@ -4,6 +4,7 @@ import Button from './components/Button';
 import FirmCard from './components/FirmCard';
 import FAQ from './components/FAQ';
 import TptRulesView from './components/TptRulesView';
+import InteractiveBackground from './components/InteractiveBackground';
 
 function App() {
   const [currentView, setCurrentView] = useState<'home' | 'tpt-rules'>('home');
@@ -14,28 +15,22 @@ function App() {
 
   return (
     <div className="bg-white text-slate-600 font-sans antialiased relative min-h-screen">
-      {/* Background Watermark */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center opacity-5">
-        <img
-          alt="Background Watermark"
-          className="w-[80%] md:w-[50%] max-w-4xl object-contain"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7SInwoQhcyJFoUIdpWPsreh-quWMxFs4hpq-tMvPWHYDx3gF_g8xD0RyTVv0G2gBJYoCBRybLsqyjdbfqGuzlVcDbyZhlbKhUl5tLrBuoS6T_W2_Vl3ILGjosldWizMl3gJ_tFy1RcSbD0FTn8e1K_ojd-MAbBE-I17XwNHmvc87t03YMkMKxc9NihC667NNQOTRuD73tHXhb5XKthHiAuL2CfbGCbhrNvxvfjIO8CguXt_VY7RlDfoJH52Vd9Vnj0wJbDZKxxno"
-        />
-      </div>
+      {/* 动态抗重力背景 */}
+      <InteractiveBackground />
 
-      <header className="pt-12 pb-8 px-4 text-center max-w-7xl mx-auto relative z-10">
+      <header className="pt-24 pb-12 px-4 text-center max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col items-center justify-center mb-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 font-display">
+          <h1 className="text-4xl md:text-6xl font-bold text-slate-900 font-display tracking-tight">
             Deltapex 自营交易
           </h1>
         </div>
         
-        <p className="text-slate-500 mb-12">Futures Propfirm 中文社区网站</p>
+        <p className="text-slate-500 mb-12 text-lg">Futures Propfirm 中文社区网站</p>
 
         {/* Main CTA */}
         <Button 
           href="#firms" 
-          className="px-8 py-3 mb-8"
+          className="px-10 py-4 mb-8 text-lg rounded-full"
         >
           查看规则汇总介绍
         </Button>
@@ -45,7 +40,7 @@ function App() {
         {/* Firms List */}
         <div id="firms" className="scroll-mt-20">
           <h2 className="text-2xl font-bold text-slate-900 text-center mb-12">
-            Futures Propfirm汇总
+            Futures Propfirm 汇总
           </h2>
           <div className="space-y-4 mb-20">
             {FIRMS.map((firm) => (
@@ -60,7 +55,7 @@ function App() {
           </div>
         </div>
 
-        {/* Community Accounts Section (Moved up) */}
+        {/* Community Accounts Section */}
         <div id="community" className="mt-20 mb-20 scroll-mt-20">
           <h2 className="text-xl font-bold text-slate-900 text-center mb-8 flex items-center justify-center gap-2">
             <span className="relative flex h-3 w-3">
@@ -86,13 +81,6 @@ function App() {
                 </div>
               </Button>
             ))}
-          </div>
-          <div className="flex justify-center mt-12">
-            <div className="w-16 h-16 opacity-80 text-slate-200">
-              <svg className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
-            </div>
           </div>
         </div>
 
@@ -125,17 +113,17 @@ function App() {
         </div>
       </main>
 
-      <footer className="bg-white border-t border-slate-200 py-16 px-4 relative z-10">
+      <footer className="bg-white/80 backdrop-blur-sm border-t border-slate-200 py-16 px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
             Community & Support
           </h2>
           <p className="text-slate-500 mb-10 text-sm">
-            获取 Propfirm 资讯，折扣提醒，交流交易经验，与Deltapex一起成长！
+            获取 Propfirm 资讯，折扣提醒，交流交易经验，与 Deltapex 一起成长！
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <a
-              className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold shadow-lg shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 w-full md:w-auto"
+              className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold shadow-lg shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 w-full md:w-auto rounded-md"
               href={SOCIAL_LINKS.discord}
               target="_blank"
               rel="noopener noreferrer"
@@ -144,7 +132,7 @@ function App() {
               <span>Join Discord</span>
             </a>
             <a
-              className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold shadow-lg shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 w-full md:w-auto"
+              className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold shadow-lg shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 w-full md:w-auto rounded-md"
               href={SOCIAL_LINKS.telegram}
               target="_blank"
               rel="noopener noreferrer"
@@ -153,7 +141,7 @@ function App() {
               <span>Telegram Support</span>
             </a>
             <a
-              className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold shadow-lg shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 w-full md:w-auto"
+              className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold shadow-lg shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 w-full md:w-auto rounded-md"
               href={SOCIAL_LINKS.clientPortal}
               target="_blank"
               rel="noopener noreferrer"
