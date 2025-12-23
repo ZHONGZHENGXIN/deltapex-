@@ -6,7 +6,6 @@ interface LucidRulesViewProps {
 }
 
 // Helper components for consistent styling
-// Fix: Use React.FC and make children optional to satisfy TS compiler checks for JSX children
 const RedBold: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
   <span className="text-[#C53030] font-bold">{children}</span>
 );
@@ -26,26 +25,36 @@ const TableHeader = ({ title, colorClass }: { title: string; colorClass: string 
 );
 
 const SectionTitle: React.FC<{ children?: React.ReactNode; className?: string }> = ({ children, className = "" }) => (
-  <div className={`flex items-center gap-3 text-[#C53030] text-lg font-bold border-b border-[#FEE2E2] pb-4 mt-14 mb-6 ${className}`}>
+  <div className={`flex items-center gap-3 text-[#C53030] text-lg font-bold border-b border-[#FEE2E2] pb-4 mt-12 mb-6 ${className}`}>
     <div className="w-1.5 h-6 bg-[#C53030] rounded-full"></div>
     {children}
   </div>
 );
 
-const PromoCell = ({ note }: { note?: string }) => (
-  <tr>
-    <td colSpan={3} className="bg-white text-center p-6 border-b-4 border-[#C53030] border-x border-[#FEE2E2]">
-      <div className="bg-[#FFF5F5] p-5 rounded-xl border border-[#FEB2B2] inline-block mb-2 shadow-sm">
-        <div className="text-lg mb-2">
-          注册链接：<a href="https://lucidtrading.com/ref/Deltapex" target="_blank" rel="noopener noreferrer" className="text-[#2B6CB0] underline font-bold hover:text-[#C53030]">https://lucidtrading.com/ref/Deltapex</a>
-        </div>
-        <div className="text-3xl">
-          折扣码：<span className="text-[#C53030] font-black">Alex</span>
-        </div>
+// New Promotional Banner Component for the top
+const TopPromoBanner: React.FC = () => (
+  <div className="bg-[#FFF5F5] border border-[#FEB2B2] rounded-2xl p-6 md:p-8 text-center mb-12 shadow-sm">
+    <div className="flex flex-col items-center justify-center gap-4">
+      <div className="text-lg md:text-xl text-[#2D3748]">
+        注册链接：
+        <a 
+          href="https://lucidtrading.com/ref/Deltapex" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-[#2B6CB0] underline font-bold hover:text-[#C53030] ml-1 transition-colors"
+        >
+          https://lucidtrading.com/ref/Deltapex
+        </a>
       </div>
-      {note && <div className="text-[#C53030] font-bold text-sm mt-3 animate-pulse">{note}</div>}
-    </td>
-  </tr>
+      <div className="text-3xl md:text-5xl font-extrabold flex items-center gap-3">
+        <span className="text-[#2D3748]">折扣码：</span>
+        <span className="text-[#C53030]">Alex</span>
+      </div>
+      <div className="text-[#C53030] font-bold text-sm bg-white/50 px-4 py-1.5 rounded-full border border-[#FEB2B2] mt-2 animate-pulse">
+        圣诞及新年限时促销活动：6折及8折优惠进行中
+      </div>
+    </div>
+  </div>
 );
 
 const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
@@ -75,8 +84,11 @@ const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
           <p className="text-[#4A5568] font-medium text-lg">Lucidtrading 核心规则解析与种田攻略</p>
         </header>
 
-        <div className="px-6 md:px-16 py-12">
+        <div className="px-6 md:px-16 py-10">
           
+          {/* Top Promo Banner instead of cells in tables */}
+          <TopPromoBanner />
+
           {/* Advantages Section */}
           <section className="mb-16">
             <h2 className="text-2xl font-bold text-[#C53030] mb-8 flex items-center gap-2">
@@ -111,7 +123,6 @@ const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
                   <TableHeader title="50K Lucid Flex考试账号" colorClass="bg-[#C53030]" />
                   <TableHeader title="150K Lucid Flex考试账号" colorClass="bg-[#C53030]" />
                 </tr>
-                <PromoCell note="圣诞提前促销活动，活动期每买5个号送1次免费重置，6折截至时间待定" />
               </thead>
               <tbody className="bg-white">
                 <tr>
@@ -158,7 +169,6 @@ const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
                   <TableHeader title="25K Lucid Flex考试账号" colorClass="bg-[#C53030]" />
                   <TableHeader title="50K Lucid Flex考试账号" colorClass="bg-[#C53030]" />
                 </tr>
-                <PromoCell note="圣诞提前促销活动，活动期每买5个号送1次免费重置，6折截至时间待定" />
               </thead>
               <tbody className="bg-white">
                 <tr>
@@ -201,7 +211,6 @@ const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
                   <TableHeader title="25K LucidPro Eval考试账号" colorClass="bg-[#E53E3E]" />
                   <TableHeader title="50K LucidPro Eval考试账号" colorClass="bg-[#E53E3E]" />
                 </tr>
-                <PromoCell note="本规则仅适用于2025年11月28日后购买" />
               </thead>
               <tbody className="bg-white">
                 <tr>
@@ -246,7 +255,6 @@ const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
                   <TableHeader title="100K LucidPro Eval考试账号" colorClass="bg-[#E53E3E]" />
                   <TableHeader title="150K LucidPro Eval考试账号" colorClass="bg-[#E53E3E]" />
                 </tr>
-                <PromoCell note="本规则仅适用于2025年11月28日后购买" />
               </thead>
               <tbody className="bg-white">
                 <tr>
@@ -284,7 +292,6 @@ const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
                   <TableHeader title="50K LucidDirect免考SIM账号" colorClass="bg-[#822727]" />
                   <TableHeader title="150K LucidDirect免考SIM账号" colorClass="bg-[#822727]" />
                 </tr>
-                <PromoCell note="免考建议150k，回撤大容错高" />
               </thead>
               <tbody className="bg-white">
                 <tr>
