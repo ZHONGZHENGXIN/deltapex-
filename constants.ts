@@ -1,20 +1,21 @@
+
 import { Firm, Deal, QuickLink, ResourceLink } from './types';
 
 export const SOCIAL_LINKS = {
   discord: "https://discord.com/invite/your-link",
   telegram: "https://t.me/your-link",
-  clientPortal: "https://portal.deltapex.com"
+  clientPortal: "https://portal.deltapex.com",
+  knowledgePlanet: "https://zsxq.com/your-planet-id" // 新增知识星球链接
 };
 
-// 修改这里：使用相对路径引用你文件夹里的图片
 export const STUDENT_CASES = [
   {
     id: 1,
     name: "李先生 (小李交易员)",
-    avatar: "./images/avatar1.png", // 这里的路径相对于 index.html
+    avatar: "./images/avatar1.png", 
     profit: "+$15,200",
     strategy: "Deltapex 核心订单流",
-    screenshot: "./images/screenshot1.jpg", // 这里的路径相对于 index.html
+    screenshot: "./images/screenshot1.jpg", 
     comment: "通过 Alex 的系统课程，我终于掌握了识别庄家轨迹的方法，这是我本月在 TPT 的出金记录。"
   },
   {
@@ -63,10 +64,10 @@ export const FIRMS: Firm[] = [
     platforms: "Projectx、 TDV 、 Rithmic",
     rating: "推荐 ，允许魔法",
     code: "Alex",
-    logoUrl: "https://lucidtrading.com/wp-content/uploads/2025/02/Untitled-design-2025-10-22T181841.622.png.webp",
-    iconClass: "fa-solid fa-cube",
-    iconBgClass: "bg-black", 
-    iconColorClass: "text-primary",
+    logoUrl: "https://lucidtrading.com/wp-content/uploads/2024/11/Group-58.png", 
+    iconClass: "fa-solid fa-circle",
+    iconBgClass: "bg-[#121212]", 
+    iconColorClass: "text-blue-500",
     buyLink: "https://lucidtrading.com",
     rulesLink: "#",
     isFeatured: true
@@ -124,9 +125,9 @@ export const DEALS: Deal[] = [
     id: "lucid-deal",
     name: "Lucid Trading",
     discount: "独家专属折扣 (Code: Alex)",
-    iconClass: "fa-solid fa-cube",
-    iconBgClass: "bg-slate-100",
-    iconColorClass: "text-slate-800",
+    iconClass: "fa-solid fa-circle",
+    iconBgClass: "bg-slate-900",
+    iconColorClass: "text-blue-400",
     link: "https://lucidtrading.com"
   },
   {

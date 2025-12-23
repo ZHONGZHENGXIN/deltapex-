@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useCallback } from 'react';
 import { FIRMS, FAQS, COMMUNITY_ACCOUNTS, SOCIAL_LINKS, STUDENT_CASES } from './constants';
 import Button from './components/Button';
@@ -10,10 +11,13 @@ import InteractiveBackground from './components/InteractiveBackground';
 function App() {
   const [currentView, setCurrentView] = useState<'home' | 'tpt-rules' | 'lucid-rules'>('home');
   
-  // 主按钮的 3D 交互状态
   const ctaRef = useRef<HTMLDivElement>(null);
   const [ctaRotate, setCtaRotate] = useState({ x: 0, y: 0 });
   const [ctaSpotlight, setCtaSpotlight] = useState({ x: 0, y: 0 });
+
+  // 知识星球模块的 3D 效果
+  const planetRef = useRef<HTMLDivElement>(null);
+  const [planetRotate, setPlanetRotate] = useState({ x: 0, y: 0 });
 
   const handleCtaMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!ctaRef.current) return;
@@ -32,7 +36,22 @@ function App() {
     setCtaRotate({ x: 0, y: 0 });
   };
 
-  // 渲染不同的规则页面
+  const handlePlanetMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!planetRef.current) return;
+    const rect = planetRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 40;
+    const rotateY = (centerX - x) / 60;
+    setPlanetRotate({ x: rotateX, y: rotateY });
+  }, []);
+
+  const handlePlanetMouseLeave = () => {
+    setPlanetRotate({ x: 0, y: 0 });
+  };
+
   if (currentView === 'tpt-rules') {
     return <TptRulesView onBack={() => setCurrentView('home')} />;
   }
@@ -101,7 +120,7 @@ function App() {
         </div>
 
         {/* Community Section */}
-        <div id="community" className="mt-20 mb-20 scroll-mt-20">
+        <div id="community" className="mt-20 mb-12 scroll-mt-20">
           <h2 className="text-xl font-bold text-slate-900 text-center mb-8 flex items-center justify-center gap-2">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -126,6 +145,58 @@ function App() {
                 </div>
               </Button>
             ))}
+          </div>
+        </div>
+
+        {/* 知识星球模块 - 新增 */}
+        <div 
+          ref={planetRef}
+          onMouseMove={handlePlanetMouseMove}
+          onMouseLeave={handlePlanetMouseLeave}
+          className="max-w-4xl mx-auto mt-20 mb-32 perspective-1000"
+          style={{
+            transform: `rotateX(${planetRotate.x}deg) rotateY(${planetRotate.y}deg)`,
+            transition: planetRotate.x === 0 ? 'all 0.6s ease' : 'none'
+          }}
+        >
+          <div className="bg-gradient-to-br from-white to-red-50 border border-primary/20 rounded-[2.5rem] p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-10 overflow-hidden relative group">
+            {/* 背景装饰 */}
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+            
+            <div className="flex-1 relative z-10 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                <i className="fa-solid fa-meteor animate-bounce"></i> 深度交易社区
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6 leading-tight">
+                加入 <span className="text-primary">知识星球</span><br/>获取 Deltapex 核心内参
+              </h2>
+              <ul className="space-y-4 mb-10 text-slate-600 font-medium">
+                <li className="flex items-center gap-3 justify-center md:justify-start">
+                  <i className="fa-solid fa-circle-check text-primary"></i> 每日美盘开盘前深度逻辑解析
+                </li>
+                <li className="flex items-center gap-3 justify-center md:justify-start">
+                  <i className="fa-solid fa-circle-check text-primary"></i> Alex 实战订单流策略复盘
+                </li>
+                <li className="flex items-center gap-3 justify-center md:justify-start">
+                  <i className="fa-solid fa-circle-check text-primary"></i> 专属 1对1 交易答疑与心态指导
+                </li>
+              </ul>
+              <Button 
+                href={SOCIAL_LINKS.knowledgePlanet}
+                className="px-10 py-4 text-lg font-bold rounded-xl"
+              >
+                立即加入星球
+              </Button>
+            </div>
+            
+            <div className="w-56 h-56 md:w-64 md:h-64 shrink-0 bg-white p-4 rounded-[2rem] shadow-inner border border-slate-100 relative z-10 flex flex-col items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              {/* 二维码占位符 */}
+              <div className="w-full h-full bg-slate-50 rounded-xl flex flex-col items-center justify-center gap-3 border-2 border-dashed border-slate-200">
+                <i className="fa-solid fa-qrcode text-5xl text-slate-300"></i>
+                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest px-4 text-center">扫描二维码<br/>关注星球动态</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -185,23 +256,27 @@ function App() {
       </main>
 
       <footer className="bg-white/80 backdrop-blur-sm border-t border-slate-200 py-16 px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
             Community & Support
           </h2>
           <p className="text-slate-500 mb-10 text-sm">
             获取 更多资讯，折扣提醒，交流交易经验，与 Alex 一起成长！
           </p>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold rounded-md shadow-lg" href={SOCIAL_LINKS.discord} target="_blank">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-6 py-4 font-bold rounded-xl shadow-lg transition-all hover:-translate-y-1 active:scale-95" href={SOCIAL_LINKS.knowledgePlanet} target="_blank">
+              <i className="fa-solid fa-meteor text-xl"></i>
+              <span>知识星球</span>
+            </a>
+            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-6 py-4 font-bold rounded-xl shadow-lg transition-all hover:-translate-y-1 active:scale-95" href={SOCIAL_LINKS.discord} target="_blank">
               <i className="fa-brands fa-discord text-xl"></i>
               <span>Join Discord</span>
             </a>
-            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold rounded-md shadow-lg" href={SOCIAL_LINKS.telegram} target="_blank">
+            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-6 py-4 font-bold rounded-xl shadow-lg transition-all hover:-translate-y-1 active:scale-95" href={SOCIAL_LINKS.telegram} target="_blank">
               <i className="fa-brands fa-telegram text-xl"></i>
-              <span>Telegram Support</span>
+              <span>Telegram</span>
             </a>
-            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold rounded-md shadow-lg" href={SOCIAL_LINKS.clientPortal} target="_blank">
+            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-6 py-4 font-bold rounded-xl shadow-lg transition-all hover:-translate-y-1 active:scale-95" href={SOCIAL_LINKS.clientPortal} target="_blank">
               <i className="fa-solid fa-user text-xl"></i>
               <span>Client Portal</span>
             </a>
