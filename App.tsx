@@ -4,10 +4,11 @@ import Button from './components/Button';
 import FirmCard from './components/FirmCard';
 import FAQ from './components/FAQ';
 import TptRulesView from './components/TptRulesView';
+import LucidRulesView from './components/LucidRulesView';
 import InteractiveBackground from './components/InteractiveBackground';
 
 function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'tpt-rules'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'tpt-rules' | 'lucid-rules'>('home');
   
   // 主按钮的 3D 交互状态
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -31,8 +32,13 @@ function App() {
     setCtaRotate({ x: 0, y: 0 });
   };
 
+  // 渲染不同的规则页面
   if (currentView === 'tpt-rules') {
     return <TptRulesView onBack={() => setCurrentView('home')} />;
+  }
+
+  if (currentView === 'lucid-rules') {
+    return <LucidRulesView onBack={() => setCurrentView('home')} />;
   }
 
   return (
@@ -87,6 +93,7 @@ function App() {
                 firm={firm} 
                 onRulesClick={(id) => {
                   if (id === 'tpt') setCurrentView('tpt-rules');
+                  if (id === 'lucid') setCurrentView('lucid-rules');
                 }}
               />
             ))}
@@ -122,19 +129,16 @@ function App() {
           </div>
         </div>
 
-        {/* 优秀学员案例 - 无限滚动模块 */}
+        {/* 优秀学员案例 */}
         <div id="student-cases" className="mt-32 mb-32 scroll-mt-20">
           <h2 className="text-2xl font-bold text-slate-900 text-center mb-12">优秀学员案例</h2>
-          
           <div className="relative w-full overflow-hidden mask-fade-edges">
             <div className="flex w-fit animate-scroll-x hover:[animation-play-state:paused] py-10">
-              {/* 重复两遍以实现无缝循环 */}
               {[...STUDENT_CASES, ...STUDENT_CASES].map((student, idx) => (
                 <div 
                   key={idx} 
                   className="w-[400px] mx-6 shrink-0 bg-white/60 backdrop-blur-xl border border-slate-200 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-500 hover:-translate-y-3 group"
                 >
-                  {/* 图片展示区 - 真实图片展示 */}
                   <div className="h-52 w-full overflow-hidden relative">
                     <img 
                       src={student.screenshot} 
@@ -145,7 +149,6 @@ function App() {
                       REAL TRADING CASE
                     </div>
                   </div>
-
                   <div className="p-6">
                     <div className="flex items-center gap-4 mb-5">
                       <img src={student.avatar} alt={student.name} className="w-14 h-14 rounded-2xl border-2 border-primary/10 shadow-sm" />
@@ -157,7 +160,6 @@ function App() {
                         <p className="text-xs text-slate-500 font-semibold tracking-wider uppercase mt-0.5">{student.strategy}</p>
                       </div>
                     </div>
-
                     <div className="relative bg-slate-50/80 p-4 rounded-xl border border-slate-100">
                       <i className="fa-solid fa-quote-left text-primary/10 text-3xl absolute -top-1 -left-1"></i>
                       <p className="text-slate-600 text-sm leading-relaxed italic relative z-10">
@@ -191,30 +193,15 @@ function App() {
             获取 更多资讯，折扣提醒，交流交易经验，与 Alex 一起成长！
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <a
-              className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold shadow-lg shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 w-full md:w-auto rounded-md"
-              href={SOCIAL_LINKS.discord}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold rounded-md shadow-lg" href={SOCIAL_LINKS.discord} target="_blank">
               <i className="fa-brands fa-discord text-xl"></i>
               <span>Join Discord</span>
             </a>
-            <a
-              className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold shadow-lg shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 w-full md:w-auto rounded-md"
-              href={SOCIAL_LINKS.telegram}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold rounded-md shadow-lg" href={SOCIAL_LINKS.telegram} target="_blank">
               <i className="fa-brands fa-telegram text-xl"></i>
               <span>Telegram Support</span>
             </a>
-            <a
-              className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold shadow-lg shadow-red-500/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 w-full md:w-auto rounded-md"
-              href={SOCIAL_LINKS.clientPortal}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold rounded-md shadow-lg" href={SOCIAL_LINKS.clientPortal} target="_blank">
               <i className="fa-solid fa-user text-xl"></i>
               <span>Client Portal</span>
             </a>

@@ -6,15 +6,16 @@ export const SOCIAL_LINKS = {
   clientPortal: "https://portal.deltapex.com"
 };
 
+// 修改这里：使用相对路径引用你文件夹里的图片
 export const STUDENT_CASES = [
   {
     id: 1,
-    name: "李先生 (阿强)",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
-    profit: "+$12,400",
-    strategy: "Deltapex 订单流",
-    screenshot: "https://images.unsplash.com/photo-1611974717482-48cd9720d582?auto=format&fit=crop&q=80&w=800",
-    comment: "跟着 Alex 学了一年，终于通过了 150k TPT 账户，日结出金非常丝滑。"
+    name: "李先生 (小李交易员)",
+    avatar: "./images/avatar1.png", // 这里的路径相对于 index.html
+    profit: "+$15,200",
+    strategy: "Deltapex 核心订单流",
+    screenshot: "./images/screenshot1.jpg", // 这里的路径相对于 index.html
+    comment: "通过 Alex 的系统课程，我终于掌握了识别庄家轨迹的方法，这是我本月在 TPT 的出金记录。"
   },
   {
     id: 2,
@@ -23,34 +24,7 @@ export const STUDENT_CASES = [
     profit: "+$5,800",
     strategy: "PA 裸K + ATAS",
     screenshot: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=800",
-    comment: "Deltapex 的社区氛围很好，遇到问题大家都会帮忙，出金速度真的很快。"
-  },
-  {
-    id: 3,
-    name: "张同学 (TraderZ)",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Zack",
-    profit: "+$21,000",
-    strategy: "150k 重置大法",
-    screenshot: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&q=80&w=800",
-    comment: "重置费只要100刀太香了，考了三次终于拿到了 Pro 账户，已经回本翻倍。"
-  },
-  {
-    id: 4,
-    name: "陈先生 (Brave)",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Brave",
-    profit: "+$8,500",
-    strategy: "静待时机策略",
-    screenshot: "https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?auto=format&fit=crop&q=80&w=800",
-    comment: "通过 Deltapex 链接注册有专属折扣，省下的钱都是利润。Deltapex yyds!"
-  },
-  {
-    id: 5,
-    name: "周先生 (Neo)",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Neo",
-    profit: "+$3,200",
-    strategy: "25k 快速通关",
-    screenshot: "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?auto=format&fit=crop&q=80&w=800",
-    comment: "作为新手，TPT的25k号是我第一个通过的自营账户，感谢Alex的指导。"
+    comment: "社区的盘后复盘对我非常有帮助，让我少走了很多弯路。现在我已经实现了稳定盈利。"
   }
 ];
 

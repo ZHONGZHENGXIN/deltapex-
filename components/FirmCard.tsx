@@ -22,7 +22,6 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
-    // 计算 3D 旋转角度 (限制在 3度以内，保持优雅)
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     const rotateX = (y - centerY) / 25; 
@@ -46,14 +45,17 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
 
   const hasCode = firm.code && firm.code !== "无";
 
+  // 这里的逻辑关键：如果 rulesLink 包含特定的文件名，我们就拦截并展示内置视图
   const handleRulesClick = (e: React.MouseEvent) => {
-    if (onRulesClick && firm.rulesLink === "tpt-rules.html") {
-      e.preventDefault();
-      onRulesClick(firm.id);
+    if (onRulesClick && (firm.rulesLink.includes('.html') || firm.rulesLink === '#')) {
+      // 如果是我们定义的内置路由，则阻止默认跳转，调用 state 切换
+      if (firm.id === 'tpt' || firm.id === 'lucid') {
+        e.preventDefault();
+        onRulesClick(firm.id);
+      }
     }
   };
 
-  // 重点突出样式的逻辑判断
   const borderClasses = firm.isFeatured 
     ? "border-primary/50 shadow-[0_0_20px_rgba(211,47,47,0.05)]" 
     : "border-slate-200";
@@ -69,7 +71,6 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
       }}
       className={`group relative bg-white border ${borderClasses} rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-[0_30px_60px_-12px_rgba(183,28,28,0.15)] hover:border-primary/60 z-10`}
     >
-      {/* 动态鼠标跟随光晕 */}
       <div 
         className="absolute inset-0 pointer-events-none rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
@@ -78,7 +79,6 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
       />
 
       <div className="flex items-center gap-5 relative z-10">
-        {/* Logo 容器 - 增加脉冲投影 */}
         <div className={`w-16 h-16 ${firm.iconBgClass} rounded-xl flex items-center justify-center shrink-0 overflow-hidden relative border border-slate-100 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:rotate-2 group-hover:shadow-lg`}>
           {firm.logoUrl && !imageError ? (
             <img 
@@ -118,38 +118,24 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
       </div>
 
       <div className="flex flex-wrap items-center gap-3 w-full md:w-auto relative z-10">
-        {/* 折扣码区域 - 悬停时背景变白更亮 */}
         <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm flex items-center gap-3 transition-all duration-300 group-hover:bg-white group-hover:border-primary/40 group-hover:shadow-sm">
           <span className="text-slate-400 font-medium text-xs">Code:</span>
           <span className="text-slate-900 font-mono font-bold tracking-wider">{firm.code}</span>
-          
           {hasCode && (
-            <button 
-              onClick={handleCopy}
-              className="ml-1 p-1 hover:bg-slate-100 rounded-md transition-colors focus:outline-none"
-              title="Copy code"
-            >
-              {copied ? (
-                <i className="fa-solid fa-check text-green-500 animate-bounce"></i>
-              ) : (
-                <i className="fa-regular fa-copy text-slate-400 cursor-pointer hover:text-primary transition-colors"></i>
-              )}
+            <button onClick={handleCopy} className="ml-1 p-1 hover:bg-slate-100 rounded-md transition-colors">
+              {copied ? <i className="fa-solid fa-check text-green-500 animate-bounce"></i> : <i className="fa-regular fa-copy text-slate-400 cursor-pointer hover:text-primary transition-colors"></i>}
             </button>
           )}
         </div>
 
         <div className="flex gap-2 flex-1 md:flex-none">
-          <Button 
-            href={firm.buyLink}
-            variant="primary" 
-            className="flex-1 md:flex-none px-8 py-3 text-sm font-bold shadow-lg shadow-red-500/20 hover:shadow-red-500/40 hover:-translate-y-1"
-          >
+          <Button href={firm.buyLink} variant="primary" className="flex-1 md:flex-none px-8 py-3 text-sm font-bold shadow-lg">
             <i className="fa-solid fa-arrow-right mr-2 text-[10px]"></i> 购买
           </Button>
           <Button 
             href={firm.rulesLink}
             variant="outline" 
-            className="flex-1 md:flex-none px-6 py-3 text-sm font-semibold hover:bg-red-50 hover:-translate-y-1"
+            className="flex-1 md:flex-none px-6 py-3 text-sm font-semibold"
             onClick={handleRulesClick}
           >
             规则汇总图
