@@ -1,51 +1,56 @@
 import { Firm, Deal, QuickLink, ResourceLink } from './types';
 
-export const SITE_CONFIG = {
-  // Logo 已移除
-};
-
 export const SOCIAL_LINKS = {
   discord: "https://discord.com/invite/your-link",
   telegram: "https://t.me/your-link",
   clientPortal: "https://portal.deltapex.com"
 };
 
-export const DEALS: Deal[] = [
+export const STUDENT_CASES = [
   {
-    id: "tpt",
-    name: "Take Profit Trader",
-    discount: "折扣码: Alex 6折免激活",
-    iconClass: "fa-solid fa-chart-line",
-    iconBgClass: "bg-slate-100",
-    iconColorClass: "text-slate-700",
-    link: "https://takeprofittrader.com"
+    id: 1,
+    name: "李先生 (阿强)",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
+    profit: "+$12,400",
+    strategy: "Deltapex 订单流",
+    screenshot: "https://images.unsplash.com/photo-1611974717482-48cd9720d582?auto=format&fit=crop&q=80&w=800",
+    comment: "跟着 Alex 学了一年，终于通过了 150k TPT 账户，日结出金非常丝滑。"
   },
   {
-    id: "lucid",
-    name: "Lucid",
-    discount: "折扣码: Alex 终身低价",
-    iconClass: "fa-solid fa-cube",
-    iconBgClass: "bg-slate-100",
-    iconColorClass: "text-slate-700",
-    link: "https://lucidtrading.com"
+    id: 2,
+    name: "王女士 (Sindy)",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sasha",
+    profit: "+$5,800",
+    strategy: "PA 裸K + ATAS",
+    screenshot: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=800",
+    comment: "Deltapex 的社区氛围很好，遇到问题大家都会帮忙，出金速度真的很快。"
   },
   {
-    id: "tradeify",
-    name: "Tradeify",
-    discount: "折扣码: Alex 五折首月",
-    iconClass: "fa-solid fa-money-bill-wave",
-    iconBgClass: "bg-green-500",
-    iconColorClass: "text-white",
-    link: "https://tradeify.co/"
+    id: 3,
+    name: "张同学 (TraderZ)",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Zack",
+    profit: "+$21,000",
+    strategy: "150k 重置大法",
+    screenshot: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&q=80&w=800",
+    comment: "重置费只要100刀太香了，考了三次终于拿到了 Pro 账户，已经回本翻倍。"
   },
   {
-    id: "tradeday",
-    name: "Tradeday",
-    discount: "折扣码: Alex 用ProjectX做TPT",
-    iconClass: "fa-solid fa-chart-simple",
-    iconBgClass: "bg-blue-600",
-    iconColorClass: "text-white",
-    link: "https://members.tradeday.com/"
+    id: 4,
+    name: "陈先生 (Brave)",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Brave",
+    profit: "+$8,500",
+    strategy: "静待时机策略",
+    screenshot: "https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?auto=format&fit=crop&q=80&w=800",
+    comment: "通过 Deltapex 链接注册有专属折扣，省下的钱都是利润。Deltapex yyds!"
+  },
+  {
+    id: 5,
+    name: "周先生 (Neo)",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Neo",
+    profit: "+$3,200",
+    strategy: "25k 快速通关",
+    screenshot: "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?auto=format&fit=crop&q=80&w=800",
+    comment: "作为新手，TPT的25k号是我第一个通过的自营账户，感谢Alex的指导。"
   }
 ];
 
@@ -119,33 +124,54 @@ export const FIRMS: Firm[] = [
     iconColorClass: "text-primary",
     buyLink: "https://www.toponefutures.com/",
     rulesLink: "#"
+  }
+];
+
+export const DEALS: Deal[] = [
+  {
+    id: "tpt-deal",
+    name: "Take Profit Trader",
+    discount: "7折免激活 (Code: DP01)",
+    iconClass: "fa-solid fa-chart-line",
+    iconBgClass: "bg-red-50",
+    iconColorClass: "text-red-600",
+    link: "https://takeprofittrader.com/?referralCode=DP01"
   },
   {
-    id: "tradeify",
-    name: "Tradeify",
-    platforms: "Projectx、 TDV",
-    rating: "推荐 ，允许魔法",
-    code: "Alex",
-    logoUrl: "https://cdn.prod.website-files.com/679b064a680c614548672a06/67b4273005993910d632c26d_horizontal-logo%20(1).svg",
-    iconClass: "fa-solid fa-leaf",
-    iconBgClass: "bg-green-500",
-    iconColorClass: "text-white",
-    buyLink: "https://tradeify.co/",
-    rulesLink: "#"
+    id: "zenit-deal",
+    name: "Zenit Funding",
+    discount: "官方合作最高优惠 (Code: DELTA1)",
+    iconClass: "fa-solid fa-z",
+    iconBgClass: "bg-blue-50",
+    iconColorClass: "text-blue-600",
+    link: "https://checkout.zenitfunding.com/products?aff="
   },
   {
-    id: "topstep",
-    name: "Topstep",
-    platforms: "Projectx",
-    rating: "推荐 ，允许魔法 (香港不能进live)",
-    code: "Alex",
-    iconClass: "",
-    isCustomIcon: true,
-    customIconText: "T",
-    iconBgClass: "bg-slate-900 border border-slate-700",
-    iconColorClass: "text-white",
-    buyLink: "https://dashboard.topstep.com/",
-    rulesLink: "#"
+    id: "lucid-deal",
+    name: "Lucid Trading",
+    discount: "独家专属折扣 (Code: Alex)",
+    iconClass: "fa-solid fa-cube",
+    iconBgClass: "bg-slate-100",
+    iconColorClass: "text-slate-800",
+    link: "https://lucidtrading.com"
+  },
+  {
+    id: "topone-deal",
+    name: "Topone Futures",
+    discount: "新平台限时优惠 (Code: DELTAPEX)",
+    iconClass: "fa-solid fa-bolt",
+    iconBgClass: "bg-yellow-50",
+    iconColorClass: "text-yellow-600",
+    link: "https://www.toponefutures.com/"
+  },
+  {
+    id: "fundednext-deal",
+    name: "FundedNext",
+    discount: "外盘推荐 (Code: Alex)",
+    iconClass: "fa-solid fa-gem",
+    iconBgClass: "bg-purple-50",
+    iconColorClass: "text-purple-600",
+    link: "https://fundednext.com/ja"
   }
 ];
 
@@ -155,18 +181,6 @@ export const FAQS = [
   "如何获取优惠和使用折扣码？",
   "如何提升交易技术？",
   "支持哪些交易软件？"
-];
-
-export const OTHER_RESOURCES: ResourceLink[] = [
-  { label: "PA/ICT学习资料", url: "https://youtube.com" },
-  { label: "RISE注册教程", url: "#" },
-  { label: "交易软件连接教程", url: "#" },
-  { label: "Ninja使用教程", url: "#" },
-  { label: "Ninja连接教程", url: "#" },
-  { label: "出金W8表格填写", url: "#" },
-  { label: "考试账户对比表", url: "#" },
-  { label: "优秀学员案例", url: "#" },
-  { label: "ProjectX平台汇总", url: "#" },
 ];
 
 export const COMMUNITY_ACCOUNTS: ResourceLink[] = [

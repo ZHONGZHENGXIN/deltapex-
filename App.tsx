@@ -1,8 +1,8 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { FIRMS, FAQS, OTHER_RESOURCES, COMMUNITY_ACCOUNTS, SOCIAL_LINKS } from './constants';
+import { FIRMS, FAQS, COMMUNITY_ACCOUNTS, SOCIAL_LINKS, STUDENT_CASES } from './constants';
 import Button from './components/Button';
 import FirmCard from './components/FirmCard';
-import FAQ from './components/FAQ';
+import FAQ from './components/ FAQ';
 import TptRulesView from './components/TptRulesView';
 import InteractiveBackground from './components/InteractiveBackground';
 
@@ -21,7 +21,7 @@ function App() {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 8; // 按钮较小，倾斜幅度稍大增加动态感
+    const rotateX = (y - centerY) / 8;
     const rotateY = (centerX - x) / 12;
     setCtaRotate({ x: rotateX, y: rotateY });
     setCtaSpotlight({ x, y });
@@ -36,7 +36,7 @@ function App() {
   }
 
   return (
-    <div className="bg-white text-slate-600 font-sans antialiased relative min-h-screen">
+    <div className="bg-white text-slate-600 font-sans antialiased relative min-h-screen overflow-x-hidden">
       <InteractiveBackground />
 
       <header className="pt-24 pb-12 px-4 text-center max-w-7xl mx-auto relative z-10">
@@ -48,7 +48,6 @@ function App() {
         
         <p className="text-slate-500 mb-12 text-lg font-medium tracking-wide">ATAS订单流中文社区</p>
 
-        {/* 具有 3D 倾斜效果的主按钮 */}
         <div 
           ref={ctaRef}
           onMouseMove={handleCtaMouseMove}
@@ -63,22 +62,20 @@ function App() {
             href="#firms" 
             className="relative overflow-hidden px-12 py-5 text-xl rounded-2xl shadow-[0_20px_40px_-15px_rgba(211,47,47,0.3)] hover:shadow-[0_30px_60px_-15px_rgba(211,47,47,0.5)] border-0 z-10 transition-transform duration-300 group-hover:scale-105"
           >
-            {/* 按钮内的聚光灯光晕 */}
             <div 
               className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
               style={{
                 background: `radial-gradient(120px circle at ${ctaSpotlight.x}px ${ctaSpotlight.y}px, rgba(255, 255, 255, 0.2), transparent 80%)`
               }}
             />
-            <span className="relative z-10">创始人：Alex</span>
+            <span className="relative z-10 font-bold">关于我们</span>
           </Button>
-          
-          {/* 按钮背后的动态发光层 */}
           <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 to-red-600/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
         </div>
       </header>
 
-      <main id="rules-summary" className="max-w-7xl mx-auto px-4 pb-20 relative z-10">
+      <main className="max-w-7xl mx-auto px-4 pb-20 relative z-10">
+        {/* Firms List */}
         <div id="firms" className="scroll-mt-20">
           <h2 className="text-2xl font-bold text-slate-900 text-center mb-12">
             Futures Propfirm 汇总
@@ -96,6 +93,7 @@ function App() {
           </div>
         </div>
 
+        {/* Community Section */}
         <div id="community" className="mt-20 mb-20 scroll-mt-20">
           <h2 className="text-xl font-bold text-slate-900 text-center mb-8 flex items-center justify-center gap-2">
             <span className="relative flex h-3 w-3">
@@ -124,28 +122,61 @@ function App() {
           </div>
         </div>
 
+        {/* 优秀学员案例 - 无限滚动模块 */}
+        <div id="student-cases" className="mt-32 mb-32 scroll-mt-20">
+          <h2 className="text-2xl font-bold text-slate-900 text-center mb-12">优秀学员案例</h2>
+          
+          <div className="relative w-full overflow-hidden mask-fade-edges">
+            <div className="flex w-fit animate-scroll-x hover:[animation-play-state:paused] py-10">
+              {/* 重复两遍以实现无缝循环 */}
+              {[...STUDENT_CASES, ...STUDENT_CASES].map((student, idx) => (
+                <div 
+                  key={idx} 
+                  className="w-[400px] mx-6 shrink-0 bg-white/60 backdrop-blur-xl border border-slate-200 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-500 hover:-translate-y-3 group"
+                >
+                  {/* 图片展示区 - 真实图片展示 */}
+                  <div className="h-52 w-full overflow-hidden relative">
+                    <img 
+                      src={student.screenshot} 
+                      alt="Profit Screenshot" 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
+                      REAL TRADING CASE
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 mb-5">
+                      <img src={student.avatar} alt={student.name} className="w-14 h-14 rounded-2xl border-2 border-primary/10 shadow-sm" />
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <h4 className="text-slate-900 font-bold text-lg">{student.name}</h4>
+                          <span className="text-green-600 font-black text-lg">{student.profit}</span>
+                        </div>
+                        <p className="text-xs text-slate-500 font-semibold tracking-wider uppercase mt-0.5">{student.strategy}</p>
+                      </div>
+                    </div>
+
+                    <div className="relative bg-slate-50/80 p-4 rounded-xl border border-slate-100">
+                      <i className="fa-solid fa-quote-left text-primary/10 text-3xl absolute -top-1 -left-1"></i>
+                      <p className="text-slate-600 text-sm leading-relaxed italic relative z-10">
+                        "{student.comment}"
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
         <div id="faq" className="max-w-4xl mx-auto scroll-mt-20">
           <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">常见问题</h2>
           <div className="space-y-3">
             {FAQS.map((q, idx) => (
               <FAQ key={idx} question={q} />
-            ))}
-          </div>
-        </div>
-
-        <div id="resources" className="mt-20 scroll-mt-20">
-          <h2 className="text-xl font-bold text-slate-900 text-center mb-8">其他</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {OTHER_RESOURCES.map((link, idx) => (
-              <Button
-                key={idx}
-                href={link.url}
-                variant="white"
-                className="p-4 text-xs h-auto whitespace-normal"
-                fullWidth
-              >
-                {link.label}
-              </Button>
             ))}
           </div>
         </div>
@@ -157,7 +188,7 @@ function App() {
             Community & Support
           </h2>
           <p className="text-slate-500 mb-10 text-sm">
-            获取 Propfirm 资讯，折扣提醒，交流交易经验，与 Alex 一起成长！
+            获取 更多资讯，折扣提醒，交流交易经验，与 Alex 一起成长！
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <a
@@ -189,7 +220,7 @@ function App() {
             </a>
           </div>
           <div className="mt-16 text-xs text-slate-500">
-            <p>© 2025 Alex 交易社区 - ATAS订单流中文社区 | 关于我们 | 披露声明</p>
+            <p>© 2025 Deltapex 交易社区 - ATAS订单流中文社区 | 关于我们 | 披露声明</p>
           </div>
         </div>
       </footer>
