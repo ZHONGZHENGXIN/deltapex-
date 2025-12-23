@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { FIRMS, FAQS, COMMUNITY_ACCOUNTS, SOCIAL_LINKS, STUDENT_CASES } from './constants';
 import Button from './components/Button';
 import FirmCard from './components/FirmCard';
-import FAQ from './components/ FAQ';
+import FAQ from './components/FAQ';
 import TptRulesView from './components/TptRulesView';
 import InteractiveBackground from './components/InteractiveBackground';
 

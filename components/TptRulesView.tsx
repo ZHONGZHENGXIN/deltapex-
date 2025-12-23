@@ -23,7 +23,7 @@ const TptRulesView: React.FC<TptRulesViewProps> = ({ onBack }) => {
         </nav>
         
         <header className="text-center">
-          <h1 className="text-[2.5rem] mb-[10px] color-[#cc0000] tracking-[-0.5px] font-bold text-[#cc0000]">
+          <h1 className="text-[2.5rem] mb-[10px] text-[#cc0000] tracking-[-0.5px] font-bold">
             TPT规则 - 最全攻略指南 🏆
           </h1>
           <p className="text-[1.2rem] text-[#666] mb-[40px] font-light">
