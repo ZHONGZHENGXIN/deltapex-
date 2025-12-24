@@ -5,27 +5,81 @@ export const SOCIAL_LINKS = {
   discord: "https://discord.com/invite/your-link",
   telegram: "https://t.me/your-link",
   clientPortal: "https://portal.deltapex.com",
-  knowledgePlanet: "https://zsxq.com/your-planet-id" // 新增知识星球链接
+  knowledgePlanet: "https://zsxq.com/your-planet-id"
 };
 
 export const STUDENT_CASES = [
   {
     id: 1,
-    name: "李先生 (小李交易员)",
-    avatar: "./images/avatar1.png", 
-    profit: "+$15,200",
-    strategy: "Deltapex 核心订单流",
-    screenshot: "./images/screenshot1.jpg", 
-    comment: "通过 Alex 的系统课程，我终于掌握了识别庄家轨迹的方法，这是我本月在 TPT 的出金记录。"
+    name: "朱先生 (Zhu)",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix", 
+    profit: "TPT 认证交易员",
+    strategy: "Take Profit Trader 150K",
+    screenshot: "./images/case-1.jpg", 
+    comment: "通过了 TPT 150K 考核，拿到了正式的资助证书。Deltapex 的策略在趋势行情中非常稳健。"
   },
   {
     id: 2,
-    name: "王女士 (Sindy)",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sasha",
-    profit: "+$5,800",
-    strategy: "PA 裸K + ATAS",
-    screenshot: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=800",
-    comment: "社区的盘后复盘对我非常有帮助，让我少走了很多弯路。现在我已经实现了稳定盈利。"
+    name: "林先生 (LIN)",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jack",
+    profit: "Passed LucidPro",
+    strategy: "Lucid Trading Pro Eval",
+    screenshot: "./images/case-2.jpg", 
+    comment: "收到 LucidPro 通过通知的那一刻真的太棒了！不用月费的自营公司确实是长久种田的首选。"
+  },
+  {
+    id: 3,
+    name: "收益仪表盘",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Luna",
+    profit: "+$4,070 (40.7% Gain)",
+    strategy: "ATAS 订单流实战",
+    screenshot: "./images/case-3.jpg", 
+    comment: "7 天实现 40% 的账户增值。在 Deltapex 学习后，我更关注订单流的失衡点而非盲目猜顶。"
+  },
+  {
+    id: 4,
+    name: "日历种田选手",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Oliver",
+    profit: "月度盈利日历",
+    strategy: "Lucid Flex 种田",
+    screenshot: "./images/case-4.jpg", 
+    comment: "每天稳定出金几百美金，这种满屏绿色的日历是每个交易者的梦想，感谢社区的复盘。"
+  },
+  {
+    id: 5,
+    name: "数据统计派",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Zoey",
+    profit: "夏普比率: 3.45",
+    strategy: "Excel 严格风控",
+    screenshot: "./images/case-5.jpg", 
+    comment: "不仅要会交易，还要会管理数据。社区提供的统计模板帮我清晰发现了自己的获利偏好。"
+  },
+  {
+    id: 6,
+    name: "核心策略展示",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Leo",
+    profit: "PnL 稳健曲线",
+    strategy: "Deltapex 趋势策略",
+    screenshot: "./images/case-6.jpg", 
+    comment: "虽然有回调，但曲线始终向上。这套系统最强大的地方在于能够过滤掉大部分震荡杂波。"
+  },
+  {
+    id: 7,
+    name: "成长记录",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sophie",
+    profit: "+$45,769 累计盈利",
+    strategy: "长期复利增长",
+    screenshot: "./images/case-7.jpg", 
+    comment: "从 2 万美金起步，累计盈利突破 4.5 万。这是我坚持使用订单流技术一年来的成绩单。"
+  },
+  {
+    id: 8,
+    name: "稳定出金流",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Max",
+    profit: "Daily Payouts",
+    strategy: "自营多账户管理",
+    screenshot: "./images/case-8.jpg", 
+    comment: "利用多账户同步器，我可以同时管理 5 个出金号，每天平滑的盈利让我不再焦虑。"
   }
 ];
 
@@ -73,31 +127,32 @@ export const FIRMS: Firm[] = [
     isFeatured: true
   },
   {
+    id: "earn2trade",
+    name: "Earn2Trade",
+    platforms: "Ninjatrader、 Finamark、 Rithmic",
+    rating: "顶级期货自营，老牌稳健",
+    code: "DeltapexE2T",
+    logoUrl: "https://www.earn2trade.com/logo-light.svg",
+    iconClass: "fa-solid fa-graduation-cap",
+    iconBgClass: "bg-slate-900",
+    iconColorClass: "text-white",
+    buyLink: "https://www.earn2trade.com/zh/",
+    rulesLink: "#",
+    isFeatured: true
+  },
+  {
     id: "fundednext",
     name: "FundedNext",
     platforms: "TDV",
     rating: "推荐 ，允许魔法",
     code: "Alex",
-    logoUrl: "https://fundednext.com/_next/image?url=https%3A%2F%2Fdirslur24ie1a.cloudfront.net%2Ffundednext%2FFundednext%20logo_White%20(1).png&w=384&q=75",
+    logoUrl: "https://fundednext.com/favicon.ico",
     iconClass: "",
     isCustomIcon: true,
     customIconText: "FN",
     iconBgClass: "bg-slate-900",
     iconColorClass: "text-white",
     buyLink: "https://fundednext.com/ja",
-    rulesLink: "#"
-  },
-  {
-    id: "topone",
-    name: "Topone Futures",
-    platforms: "Projectx",
-    rating: "推荐 ，允许魔法",
-    code: "DELTAPEX",
-    logoUrl: "https://cdn.prod.website-files.com/67d9f6c73e1490afc415fc90/68e411afc794d45d4f778a78_logo.svg",
-    iconClass: "fa-solid fa-bolt",
-    iconBgClass: "bg-slate-50",
-    iconColorClass: "text-primary",
-    buyLink: "https://www.toponefutures.com/",
     rulesLink: "#"
   }
 ];
@@ -131,13 +186,13 @@ export const DEALS: Deal[] = [
     link: "https://lucidtrading.com"
   },
   {
-    id: "topone-deal",
-    name: "Topone Futures",
-    discount: "新平台限时优惠 (Code: DELTAPEX)",
-    iconClass: "fa-solid fa-bolt",
-    iconBgClass: "bg-yellow-50",
-    iconColorClass: "text-yellow-600",
-    link: "https://www.toponefutures.com/"
+    id: "earn2trade-deal",
+    name: "Earn2Trade",
+    discount: "专属优惠 (Code: DeltapexE2T)",
+    iconClass: "fa-solid fa-graduation-cap",
+    iconBgClass: "bg-slate-900",
+    iconColorClass: "text-yellow-500",
+    link: "https://www.earn2trade.com/zh/"
   },
   {
     id: "fundednext-deal",

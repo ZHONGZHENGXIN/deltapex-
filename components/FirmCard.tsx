@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useCallback } from 'react';
 import { Firm } from '../types';
 import Button from './Button';
@@ -45,11 +46,12 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
 
   const hasCode = firm.code && firm.code !== "无";
 
-  // 这里的逻辑关键：如果 rulesLink 包含特定的文件名，我们就拦截并展示内置视图
   const handleRulesClick = (e: React.MouseEvent) => {
+    // 拦截内部定义的规则页面 ID
+    const internalRuleIds = ['tpt', 'lucid', 'earn2trade'];
+    
     if (onRulesClick && (firm.rulesLink.includes('.html') || firm.rulesLink === '#')) {
-      // 如果是我们定义的内置路由，则阻止默认跳转，调用 state 切换
-      if (firm.id === 'tpt' || firm.id === 'lucid') {
+      if (internalRuleIds.includes(firm.id)) {
         e.preventDefault();
         onRulesClick(firm.id);
       }
@@ -59,6 +61,8 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
   const borderClasses = firm.isFeatured 
     ? "border-primary/50 shadow-[0_0_20px_rgba(211,47,47,0.05)]" 
     : "border-slate-200";
+
+  const isRoundIcon = firm.id === 'lucid';
 
   return (
     <div 
@@ -84,7 +88,7 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
             <img 
               src={firm.logoUrl} 
               alt={firm.name} 
-              className="w-full h-full object-contain p-2"
+              className={`w-full h-full ${isRoundIcon ? 'object-cover' : 'object-contain p-2'}`}
               referrerPolicy="no-referrer"
               onError={() => setImageError(true)}
             />
