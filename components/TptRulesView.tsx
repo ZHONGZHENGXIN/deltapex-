@@ -1,12 +1,11 @@
-
 import React, { useEffect } from 'react';
-import Button from './Button';
 
 interface TptRulesViewProps {
   onBack: () => void;
 }
 
 const TptRulesView: React.FC<TptRulesViewProps> = ({ onBack }) => {
+  // 滚动到顶部
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -15,13 +14,12 @@ const TptRulesView: React.FC<TptRulesViewProps> = ({ onBack }) => {
     <div className="bg-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-5 py-10 box-border text-[#333] leading-[1.8] font-sans antialiased">
         <nav className="mb-5">
-          <Button 
+          <button 
             onClick={onBack}
-            variant="ghost"
-            className="text-[#666] font-medium flex items-center gap-[5px] hover:text-[#cc0000] p-0"
+            className="text-[#666] no-underline text-[0.9rem] flex items-center gap-[5px] hover:text-[#cc0000] transition-colors"
           >
-            <i className="fa-solid fa-arrow-left"></i> 返回社区主页
-          </Button>
+            ← 返回社区主页
+          </button>
         </nav>
         
         <header className="text-center">
@@ -88,6 +86,92 @@ const TptRulesView: React.FC<TptRulesViewProps> = ({ onBack }) => {
             ].map((text, i) => (
               <li key={i} className="mb-3 relative before:content-['•'] before:text-[#cc0000] before:font-bold before:inline-block before:w-[1.5em]">{text}</li>
             ))}
+          </ul>
+
+          <div className="overflow-x-auto my-[30px] rounded-lg border border-[#ffcccc] shadow-[0_4px_15px_rgba(204,0,0,0.05)]">
+            <table className="min-w-[800px] border-none w-full border-collapse">
+              <thead>
+                <tr className="bg-[#cc0000] text-white">
+                  <td className="bg-[#990000] text-center w-[25%] p-[15px]"></td>
+                  <td className="p-[15px] text-[1.2rem] font-bold">25K 考试号</td>
+                  <td className="p-[15px] text-[1.2rem] font-bold">150K 考试号</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-white border-b-2 border-[#ffcccc]">
+                  <td className="bg-[#fffafa] font-bold text-left pl-5 border-r border-[#ffeeee]">促销活动</td>
+                  <td colSpan={2} className="p-[15px] text-[0.95rem] text-[#666]">
+                    退报名费仅适用于黑五促销活动，时间：2025年11月24日-结束时间待定<br />
+                    <strong className="text-[#cc0000] text-[1.1rem]">折扣码：QQ</strong>（2个字母：QQ） 
+                    <span className="text-[#666] ml-5">所有账户重置费固定$100 (重置不延长订阅)</span>
+                  </td>
+                </tr>
+                <tr className="bg-white border-b border-[#f0f0f0]">
+                  <td className="bg-[#fffafa] font-bold text-left pl-5 border-r border-[#ffeeee]">价格 <span className="text-[0.8rem] font-normal text-[#888]">(按月订阅, 通过后再不收)</span></td>
+                  <td className="p-[15px]"><strong className="text-[#cc0000]">$105</strong> <span className="text-[0.8rem] font-normal text-[#888]">(7折免激活+第一次出金退报名费)</span></td>
+                  <td className="p-[15px]"><strong className="text-[#cc0000]">$252</strong> <span className="text-[0.8rem] font-normal text-[#888]">(7折免激活+第一次出金退报名费)</span></td>
+                </tr>
+                <tr className="bg-white border-b border-[#f0f0f0]">
+                  <td className="bg-[#fffafa] font-bold text-left pl-5 border-r border-[#ffeeee]">交易平台</td>
+                  <td colSpan={2} className="p-[15px]">CQG (<span className="text-[#cc0000]">Tradovate</span>、Ninjatrader) 或 Rithmic (<span className="text-[#cc0000]">Quantower</span>、atas)</td>
+                </tr>
+                <tr className="bg-white border-b border-[#f0f0f0]">
+                  <td className="bg-[#fffafa] font-bold text-left pl-5 border-r border-[#ffeeee]">考试号回撤 (EOD模式) <span className="text-[0.8rem] font-normal text-[#888]">无日损, 交易5天(可2天过, 划水)</span></td>
+                  <td className="p-[15px]">EOD回撤1500，利润目标1500<br />考核一致性50% <span className="text-[0.8rem] font-normal text-[#888]">(最大手数3手)</span></td>
+                  <td className="p-[15px]">EOD回撤4500，利润目标9000<br />考核一致性50% <span className="text-[0.8rem] font-normal text-[#888]">(最大手数15手)</span></td>
+                </tr>
+                <tr className="bg-white border-b border-[#f0f0f0]">
+                  <td className="bg-[#fffafa] font-bold text-left pl-5 border-r border-[#ffeeee]">出金号回撤 (盘中追踪) <span className="text-[0.8rem] font-normal text-[#888]">无日损, 最快1天出金</span></td>
+                  <td className="p-[15px]">追踪回撤1500，无一致性要求<br />利润超1500缓冲区部分可每天出金</td>
+                  <td className="p-[15px]">追踪回撤4500，无一致性要求<br />利润超4500缓冲区部分可每天出金</td>
+                </tr>
+                <tr className="bg-white border-b border-[#f0f0f0]">
+                  <td className="bg-[#fffafa] font-bold text-left pl-5 border-r border-[#ffeeee]">关于激活费</td>
+                  <td colSpan={2} className="p-[15px]">TPT活动时免激活费，过关后会送credit到账户抵扣激活，<br />一般下个工作日傍晚前送（超3工作日没有找客服）</td>
+                </tr>
+                <tr className="bg-white border-b border-[#f0f0f0]">
+                  <td className="bg-[#fffafa] font-bold text-left pl-5 border-r border-[#ffeeee]">出金要求 <span className="text-[0.8rem] font-normal text-[#888]">(缓冲区内也可申请)</span></td>
+                  <td colSpan={2} className="p-[15px]">
+                    <strong className="text-[#cc0000]">出金号打过缓冲区后就变成静态账户不会再追踪了</strong><br />
+                    只要打过缓冲区，就可以每天出金（单笔大于250无手续费）<br />
+                    <span className="text-[#cc0000]">发邮件关闭账户可以提取缓冲区内50%金额</span> <span className="text-[0.8rem] font-normal text-[#888]">(交易满60天可提80%, 关闭无任何影响)</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="rules">
+          <h2 className="text-[1.6rem] border-l-[5px] border-solid border-[#cc0000] pl-[15px] mt-[50px] mb-[25px] text-[#1a1a1a] flex items-center font-bold">
+            📊 TPT 的规则汇总
+          </h2>
+          <p className="mb-5 text-justify">期货 Prop 均为月费订阅模式。若不再操作，请务必手动取消订阅以避免扣款。</p>
+          <div className="bg-[#fffafa] border border-[#ffcccc] p-5 rounded-lg my-[25px]">
+            <strong>取消路径：</strong>官网 control-center → 时间位置 → 红色 “X” → 关闭订阅。
+          </div>
+        </section>
+
+        <section id="strategy">
+          <h2 className="text-[1.6rem] border-l-[5px] border-solid border-[#cc0000] pl-[15px] mt-[50px] mb-[25px] text-[#1a1a1a] flex items-center font-bold">
+            🌱 种田攻略
+          </h2>
+          <p className="mb-5 text-justify">考试采用 EOD 回撤，难度较低；Pro出金号在通过缓冲区前是实时追踪，这是核心难点。</p>
+          <ul className="pl-5 mb-[30px] list-none">
+            <li className="mb-3 relative before:content-['•'] before:text-[#cc0000] before:font-bold before:inline-block before:w-[1.5em]"><strong>分个突破：</strong>获得多个考试号后，建议一个个分开梭过缓冲区。之后每日稳定盈利100-300刀，实现日结。</li>
+            <li className="mb-3 relative before:content-['•'] before:text-[#cc0000] before:font-bold before:inline-block before:w-[1.5em]"><strong>持仓限制：</strong>Pro账户同时交易上限为5个。考核号无数量限制，可多备号。</li>
+            <li className="mb-3 relative before:content-['•'] before:text-[#cc0000] before:font-bold before:inline-block before:w-[1.5em]"><strong>激活上限：</strong>每30天最多激活10个Pro账户。</li>
+          </ul>
+        </section>
+
+        <section id="tutorials">
+          <h2 className="text-[1.6rem] border-l-[5px] border-solid border-[#cc0000] pl-[15px] mt-[50px] mb-[25px] text-[#1a1a1a] flex items-center font-bold">
+            🖥️ 连接教程
+          </h2>
+          <p className="mb-5 text-justify">无论选择哪个数据源，请务必签署相关协议以激活账户。</p>
+          <ul className="pl-5 mb-[30px] list-none">
+            <li className="mb-3 relative before:content-['•'] before:text-[#cc0000] before:font-bold before:inline-block before:w-[1.5em]"><strong>Rithmic 签署激活：</strong><a href="https://signup.rithmic.com/apps.html" target="_blank" rel="noopener noreferrer" className="inline-block text-[#cc0000] no-underline break-all border-b border-dashed border-[#cc0000] transition-all hover:text-[#990000] hover:border-solid">https://signup.rithmic.com/apps.html</a></li>
+            <li className="mb-3 relative before:content-['•'] before:text-[#cc0000] before:font-bold before:inline-block before:w-[1.5em]"><strong>TDV 签署激活 (CQG)：</strong><a href="https://trader.tradovate.com/welcome" target="_blank" rel="noopener noreferrer" className="inline-block text-[#cc0000] no-underline break-all border-b border-dashed border-[#cc0000] transition-all hover:text-[#990000] hover:border-solid">https://trader.tradovate.com/welcome</a></li>
           </ul>
         </section>
 
