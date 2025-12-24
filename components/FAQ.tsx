@@ -1,10 +1,12 @@
+
 import React, { useState } from 'react';
 
 interface FAQProps {
   question: string;
+  answer?: string;
 }
 
-const FAQ: React.FC<FAQProps> = ({ question }) => {
+const FAQ: React.FC<FAQProps> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,9 +20,11 @@ const FAQ: React.FC<FAQProps> = ({ question }) => {
           <i className="fa-solid fa-plus text-[10px]"></i>
         </div>
       </button>
-      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="p-4 pt-0 text-sm text-slate-600 border-t border-slate-100 bg-slate-50/50">
-          <p className="leading-relaxed">This is a placeholder answer for: "{question}". Content would go here.</p>
+          <p className="leading-relaxed">
+            {answer || `针对 "${question}" 的详细解答暂未更新，请加入社区咨询。`}
+          </p>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import Button from './Button';
 
 interface Earn2TradeRulesViewProps {
   onBack: () => void;
@@ -10,19 +11,20 @@ const Earn2TradeRulesView: React.FC<Earn2TradeRulesViewProps> = ({ onBack }) => 
     window.scrollTo(0, 0);
   }, []);
 
-  const accentColor = "#D32F2F"; // 沿用 Deltapex 的主色调
+  const accentColor = "#D32F2F";
 
   return (
     <div className="bg-white min-h-screen font-sans text-[#333] antialiased">
       <div className="max-w-[900px] mx-auto px-5 py-8 md:py-12">
         {/* Navigation */}
         <nav className="mb-6">
-          <button 
+          <Button 
             onClick={onBack}
-            className="text-slate-500 font-medium flex items-center gap-2 hover:text-[#D32F2F] transition-colors"
+            variant="ghost"
+            className="text-slate-500 font-medium flex items-center gap-2 hover:text-[#D32F2F] p-0"
           >
             <i className="fa-solid fa-arrow-left"></i> 返回社区主页
-          </button>
+          </Button>
         </nav>
 
         <header className="text-center mb-8">
@@ -82,41 +84,6 @@ const Earn2TradeRulesView: React.FC<Earn2TradeRulesViewProps> = ({ onBack }) => 
                 </li>
               ))}
             </ul>
-          </section>
-
-          {/* Rules Summary Table */}
-          <section>
-            <h2 className="text-2xl font-bold mb-5 flex items-center" style={{ color: accentColor }}>
-              <i className="fa-solid fa-scale-balanced mr-3"></i> 核心规则对照
-            </h2>
-            <div className="border-2 rounded-xl overflow-hidden shadow-sm" style={{ borderColor: accentColor }}>
-              <table className="w-full text-left border-collapse">
-                <thead className="bg-[#FFF5F5]">
-                  <tr>
-                    <th className="w-1/4 p-4 text-sm font-black uppercase" style={{ color: accentColor }}>考核项目</th>
-                    <th className="p-4 text-sm font-black uppercase" style={{ color: accentColor }}>Gauntlet Mini 模式规则</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm divide-y divide-slate-100">
-                  <tr>
-                    <td className="p-4 font-extrabold text-[#111]">回撤模式</td>
-                    <td className="p-4 text-slate-600">追踪回撤 (Trailing Drawdown)，在收盘时更新。</td>
-                  </tr>
-                  <tr className="bg-slate-50">
-                    <td className="p-4 font-extrabold text-[#111]">最短交易天数</td>
-                    <td className="p-4 text-slate-600">至少交易 15 个交易日。</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 font-extrabold text-[#111]">一致性规则</td>
-                    <td className="p-4 text-slate-600">单日最大盈利不能超过总盈利的 30%。</td>
-                  </tr>
-                  <tr className="bg-slate-50">
-                    <td className="p-4 font-extrabold text-[#111]">出金政策</td>
-                    <td className="p-4 text-slate-600">利润分成 80%，出金流程标准高效。</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
           </section>
         </article>
 

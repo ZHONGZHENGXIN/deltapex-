@@ -1,5 +1,5 @@
 
-import { Firm, Deal, QuickLink, ResourceLink } from './types';
+import { Firm, Deal, QuickLink, ResourceLink, FaqItem } from './types';
 
 export const SOCIAL_LINKS = {
   discord: "https://discord.com/invite/your-link",
@@ -11,12 +11,12 @@ export const SOCIAL_LINKS = {
 export const STUDENT_CASES = [
   {
     id: 1,
-    name: "朱先生 (Zhu)",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix", 
-    profit: "TPT 认证交易员",
-    strategy: "Take Profit Trader 150K",
-    screenshot: "./images/case-1.jpg", 
-    comment: "通过了 TPT 150K 考核，拿到了正式的资助证书。Deltapex 的策略在趋势行情中非常稳健。"
+    name: "Deltapex 实战成员",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex", 
+    profit: "+$1,100 (当日净盈)",
+    strategy: "ATAS 订单流 + 趋势过滤",
+    screenshot: "https://generativelanguage.googleapis.com/v1beta/files/sc_295_1739981881694_0.png", 
+    comment: "这是近期在社区分享的实盘曲线，可以看到明显的资金阶梯式增长。核心逻辑在于过滤掉了美盘开盘初期的震荡，只捕捉高确定性的趋势波段。"
   },
   {
     id: 2,
@@ -62,24 +62,6 @@ export const STUDENT_CASES = [
     strategy: "Deltapex 趋势策略",
     screenshot: "./images/case-6.jpg", 
     comment: "虽然有回调，但曲线始终向上。这套系统最强大的地方在于能够过滤掉大部分震荡杂波。"
-  },
-  {
-    id: 7,
-    name: "成长记录",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sophie",
-    profit: "+$45,769 累计盈利",
-    strategy: "长期复利增长",
-    screenshot: "./images/case-7.jpg", 
-    comment: "从 2 万美金起步，累计盈利突破 4.5 万。这是我坚持使用订单流技术一年来的成绩单。"
-  },
-  {
-    id: 8,
-    name: "稳定出金流",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Max",
-    profit: "Daily Payouts",
-    strategy: "自营多账户管理",
-    screenshot: "./images/case-8.jpg", 
-    comment: "利用多账户同步器，我可以同时管理 5 个出金号，每天平滑的盈利让我不再焦虑。"
   }
 ];
 
@@ -139,21 +121,6 @@ export const FIRMS: Firm[] = [
     buyLink: "https://www.earn2trade.com/zh/",
     rulesLink: "#",
     isFeatured: true
-  },
-  {
-    id: "fundednext",
-    name: "FundedNext",
-    platforms: "TDV",
-    rating: "推荐 ，允许魔法",
-    code: "Alex",
-    logoUrl: "https://fundednext.com/favicon.ico",
-    iconClass: "",
-    isCustomIcon: true,
-    customIconText: "FN",
-    iconBgClass: "bg-slate-900",
-    iconColorClass: "text-white",
-    buyLink: "https://fundednext.com/ja",
-    rulesLink: "#"
   }
 ];
 
@@ -193,24 +160,30 @@ export const DEALS: Deal[] = [
     iconBgClass: "bg-slate-900",
     iconColorClass: "text-yellow-500",
     link: "https://www.earn2trade.com/zh/"
-  },
-  {
-    id: "fundednext-deal",
-    name: "FundedNext",
-    discount: "外盘推荐 (Code: Alex)",
-    iconClass: "fa-solid fa-gem",
-    iconBgClass: "bg-purple-50",
-    iconColorClass: "text-purple-600",
-    link: "https://fundednext.com/ja"
   }
 ];
 
-export const FAQS = [
-  "什么是Futures PropFirm自营公司？",
-  "什么是Futures PropFirm种田？",
-  "如何获取优惠和使用折扣码？",
-  "如何提升交易技术？",
-  "支持哪些交易软件？"
+export const FAQS: FaqItem[] = [
+  {
+    question: "什么是Futures PropFirm自营公司？",
+    answer: "自营公司（Prop Firm）是指由公司提供资金给有技术的交易者进行操作，交易者无需承担本金风险。盈利后双方按比例分成（通常交易者拿80%-90%），仅需通过简单的实盘考核即可获得账号。"
+  },
+  {
+    question: "什么是Futures PropFirm种田？",
+    answer: "“种田”是社区内部对利用自营公司低成本、高杠杆特性的规则化交易方案的爱称。通过建立多账号矩阵、严格执行高盈亏比策略，实现像种田一样稳定、可持续的每日现金流出金。"
+  },
+  {
+    question: "如何获取优惠和使用折扣码？",
+    answer: "在本站列出的自营公司卡片中，您可以直接看到专属折扣码（如 DP01、Alex）。在购买考核号的结账页面输入该代码，即可享受官网最高折扣、免除激活费或获取重置优惠。"
+  },
+  {
+    question: "如何提升交易技术？",
+    answer: "建议加入我们的“知识星球”或关注 Bilibili 的交易日志。我们专注于 ATAS 订单流实战分析，通过每日复盘、盘前逻辑推导以及严格的风控心理建设，帮助学员建立自己的交易系统。"
+  },
+  {
+    question: "支持哪些交易软件？",
+    answer: "目前主流平台如 TPT、Lucid 等支持 Tradovate (TDV)、Rithmic 旗下所有软件。推荐使用 ATAS、Quantower 进行订单流分析，或者使用 NinjaTrader 进行程序化或手动交易。"
+  }
 ];
 
 export const COMMUNITY_ACCOUNTS: ResourceLink[] = [

@@ -288,8 +288,8 @@ function App() {
         <div id="faq" className="max-w-4xl mx-auto scroll-mt-20">
           <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">常见问题</h2>
           <div className="space-y-3">
-            {FAQS.map((q, idx) => (
-              <FAQ key={idx} question={q} />
+            {FAQS.map((faq, idx) => (
+              <FAQ key={idx} question={faq.question} answer={faq.answer} />
             ))}
           </div>
         </div>
