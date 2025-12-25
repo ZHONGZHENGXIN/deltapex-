@@ -31,8 +31,8 @@ export interface Deal {
   id: string;
   name: string;
   discount: string;
+  link: string;
   iconClass: string;
   iconBgClass: string;
   iconColorClass: string;
-  link: string;
 }

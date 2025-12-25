@@ -101,36 +101,6 @@ export const FIRMS: Firm[] = [
   }
 ];
 
-export const DEALS: Deal[] = [
-  {
-    id: "tpt-deal",
-    name: "Take Profit Trader",
-    discount: "7折免激活",
-    iconClass: "fa-solid fa-chart-line",
-    iconBgClass: "bg-slate-50",
-    iconColorClass: "text-primary",
-    link: "https://takeprofittrader.com/?referralCode=DP01"
-  },
-  {
-    id: "lucid-deal",
-    name: "Lucid Trading",
-    discount: "圣诞6折优惠",
-    iconClass: "fa-solid fa-circle",
-    iconBgClass: "bg-[#121212]",
-    iconColorClass: "text-blue-500",
-    link: "https://lucidtrading.com/ref/Deltapex"
-  },
-  {
-    id: "topone-deal",
-    name: "TopOne Futures",
-    discount: "4.5折特惠",
-    iconClass: "fa-solid fa-star",
-    iconBgClass: "bg-slate-50",
-    iconColorClass: "text-[#C41E3A]",
-    link: "https://toponefutures.com/?linkId=lp_707970&sourceId=deltapex&tenantId=toponefutures"
-  }
-];
-
 export const FAQS: FaqItem[] = [
   {
     question: "什么是Futures PropFirm自营公司？",
@@ -156,4 +126,43 @@ export const FAQS: FaqItem[] = [
 
 export const COMMUNITY_ACCOUNTS: ResourceLink[] = [
   { label: "阿里Ali的交易日志", url: "https://space.bilibili.com/3546653696985353/dynamic" }
+];
+
+export const DEALS: Deal[] = [
+  {
+    id: "tpt-deal",
+    name: "Take Profit Trader",
+    discount: "全场7折+免激活",
+    link: "https://takeprofittrader.com/?referralCode=DP01",
+    iconClass: "fa-solid fa-chart-line",
+    iconBgClass: "bg-slate-50",
+    iconColorClass: "text-primary"
+  },
+  {
+    id: "lucid-deal",
+    name: "Lucid Trading",
+    discount: "Flex/Pro 6折",
+    link: "https://lucidtrading.com/ref/Deltapex",
+    iconClass: "fa-solid fa-circle",
+    iconBgClass: "bg-[#121212]",
+    iconColorClass: "text-blue-500"
+  },
+  {
+    id: "topone-deal",
+    name: "TopOne Futures",
+    discount: "低至4.5折",
+    link: "https://toponefutures.com/?linkId=lp_707970&sourceId=deltapex&tenantId=toponefutures",
+    iconClass: "fa-solid fa-star",
+    iconBgClass: "bg-slate-50",
+    iconColorClass: "text-[#C41E3A]"
+  },
+  {
+    id: "earn2trade-deal",
+    name: "Earn2Trade",
+    discount: "顶级期货自营",
+    link: "https://www.earn2trade.com/zh/",
+    iconClass: "fa-solid fa-graduation-cap",
+    iconBgClass: "bg-slate-900",
+    iconColorClass: "text-white"
+  }
 ];

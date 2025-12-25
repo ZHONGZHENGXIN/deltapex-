@@ -158,6 +158,62 @@ function App() {
           </div>
         </div>
 
+        {/* 交易工具模块 (Highlighted Section - Moved Here) */}
+        <div className="max-w-5xl mx-auto mt-24 mb-16 px-4 scroll-mt-20">
+           <div className="bg-gradient-to-br from-slate-50 to-white rounded-[2rem] p-8 md:p-10 border border-slate-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden group">
+              {/* Background Decoration */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none"></div>
+
+              <div className="relative z-10">
+                 <div className="text-center mb-10">
+                    <span className="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Essential Tools</span>
+                    <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-3">交易必备工具</h2>
+                    <p className="text-slate-500 font-medium text-lg">工欲善其事，必先利其器</p>
+                 </div>
+
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    {/* ATAS Card */}
+                    <a 
+                      href="https://atas.net/cn/?rs=partners_oft281860"
+                      target="_blank"
+                      className="flex items-center p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 group/atas"
+                    >
+                       <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 group-hover/atas:bg-blue-500 group-hover/atas:text-white transition-all duration-300 mr-6 shrink-0 shadow-inner">
+                          <i className="fa-solid fa-chart-bar text-3xl"></i>
+                       </div>
+                       <div className="flex-1">
+                          <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Order Flow Software</div>
+                          <div className="text-2xl font-bold text-slate-800 group-hover/atas:text-blue-600 transition-colors">ATAS 注册下载</div>
+                          <div className="text-sm text-slate-500 mt-1 group-hover/atas:text-blue-400">专业订单流软件</div>
+                       </div>
+                       <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover/atas:bg-blue-100 group-hover/atas:text-blue-600 transition-colors">
+                          <i className="fa-solid fa-arrow-right text-lg"></i>
+                       </div>
+                    </a>
+
+                    {/* EBC Card */}
+                    <a 
+                      href="https://client.myebc.co/signup?linkCode=S4112201-a02"
+                      target="_blank"
+                      className="flex items-center p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-red-200 hover:-translate-y-1 transition-all duration-300 group/ebc"
+                    >
+                       <div className="w-20 h-20 bg-red-50 rounded-2xl flex items-center justify-center text-red-500 group-hover/ebc:bg-red-500 group-hover/ebc:text-white transition-all duration-300 mr-6 shrink-0 shadow-inner">
+                          <i className="fa-solid fa-user-shield text-3xl"></i>
+                       </div>
+                       <div className="flex-1">
+                          <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Preferred Broker</div>
+                          <div className="text-2xl font-bold text-slate-800 group-hover/ebc:text-red-600 transition-colors">EBC 极速开户</div>
+                          <div className="text-sm text-slate-500 mt-1 group-hover/ebc:text-red-400">优选合作券商</div>
+                       </div>
+                       <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover/ebc:bg-red-100 group-hover/ebc:text-red-600 transition-colors">
+                          <i className="fa-solid fa-arrow-right text-lg"></i>
+                       </div>
+                    </a>
+                 </div>
+              </div>
+           </div>
+        </div>
+
         {/* Community Section */}
         <div id="community" className="mt-20 mb-12 scroll-mt-20">
           <h2 className="text-xl font-bold text-slate-900 text-center mb-8 flex items-center justify-center gap-2">
