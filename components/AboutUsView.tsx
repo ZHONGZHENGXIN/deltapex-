@@ -118,19 +118,32 @@ const AboutUsView: React.FC<AboutUsViewProps> = ({ onBack }) => {
   return (
     <div ref={containerRef} className="bg-white text-slate-900 font-sans min-h-screen selection:bg-[#E60012] selection:text-white overflow-hidden">
       
-      {/* Sticky Blur Navigation with Progress Bar */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
+      {/* Sticky Blur Navigation with Progress Bar and Logo */}
+      <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+          {/* Logo Section */}
+          <div className="flex items-center gap-4 cursor-pointer group" onClick={onBack}>
+             <div className="relative overflow-hidden">
+                <img 
+                  src="https://youke2.picui.cn/s1/2025/12/25/694c1f723658a.jpg" 
+                  alt="Deltapex Logo" 
+                  className="h-12 w-auto object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity" 
+                />
+             </div>
+             {/* Divider for negative space balance if needed, but keeping it clean per request */}
+          </div>
+
+          {/* Navigation Controls */}
           <button 
             onClick={onBack}
-            className="group flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-slate-900 hover:text-[#E60012] transition-colors"
+            className="group flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-slate-800 hover:text-[#E60012] transition-colors"
           >
-            <i className="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
-            <span>Back to Hub</span>
+            <span className="relative">
+              Back to Hub
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#E60012] transition-all duration-300 group-hover:w-full"></span>
+            </span>
+            <i className="fa-solid fa-arrow-right-long transition-transform duration-300 group-hover:translate-x-1 text-slate-400 group-hover:text-[#E60012]"></i>
           </button>
-          <div className="text-xs font-bold text-slate-300 uppercase tracking-widest hidden md:block">
-            About Deltapex
-          </div>
         </div>
         {/* Progress Bar */}
         <motion.div 
@@ -146,7 +159,7 @@ const AboutUsView: React.FC<AboutUsViewProps> = ({ onBack }) => {
           {/* 3D Geometric Background */}
           <HeroGeometric />
 
-          <div className="max-w-7xl mx-auto px-6 md:px-12 w-full pt-10 z-10 pointer-events-none">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 w-full pt-20 z-10 pointer-events-none">
             <motion.div 
               initial="hidden"
               whileInView="visible"
