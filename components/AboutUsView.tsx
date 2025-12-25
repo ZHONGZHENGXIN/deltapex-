@@ -1,7 +1,6 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, Variants } from 'framer-motion';
-import Lenis from 'lenis';
 import HeroGeometric from './HeroGeometric';
 import CountUp from './CountUp';
 
@@ -12,29 +11,6 @@ interface AboutUsViewProps {
 const AboutUsView: React.FC<AboutUsViewProps> = ({ onBack }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const founderRef = useRef<HTMLDivElement>(null);
-
-  // Setup Smooth Scrolling (Lenis)
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // High-end inertia curve
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-    });
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-    window.scrollTo(0, 0);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
 
   // Global Scroll Progress for Nav Bar
   const { scrollYProgress } = useScroll();
@@ -130,7 +106,6 @@ const AboutUsView: React.FC<AboutUsViewProps> = ({ onBack }) => {
                   className="h-12 w-auto object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity" 
                 />
              </div>
-             {/* Divider for negative space balance if needed, but keeping it clean per request */}
           </div>
 
           {/* Navigation Controls */}
