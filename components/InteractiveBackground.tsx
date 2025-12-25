@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 const InteractiveBackground: React.FC = () => {
@@ -46,17 +47,16 @@ const InteractiveBackground: React.FC = () => {
         this.baseSize = Math.random() * 2 + 1;
         this.size = this.baseSize;
         this.density = Math.random() * 30 + 1;
-        this.color = '183, 28, 28'; // 深红色 RGB
-        this.angle = Math.random() * Math.PI * 2; // 随机初始相位
-        this.pulseSpeed = 0.02 + Math.random() * 0.03; // 随机呼吸频率
+        this.color = '183, 28, 28'; // Deltapex Red
+        this.angle = Math.random() * Math.PI * 2; 
+        this.pulseSpeed = 0.02 + Math.random() * 0.03; 
       }
 
       draw() {
         if (!ctx) return;
         
-        // 计算呼吸效果导致的透明度和大小变化
-        const pulse = Math.sin(this.angle) * 0.2 + 0.8; // 范围 0.6 到 1.0
-        const opacity = 0.3 * pulse; // 基础透明度 0.3
+        const pulse = Math.sin(this.angle) * 0.2 + 0.8; 
+        const opacity = 0.3 * pulse; 
         const currentSize = this.baseSize * (0.9 + pulse * 0.1);
 
         ctx.fillStyle = `rgba(${this.color}, ${opacity})`;
@@ -67,7 +67,6 @@ const InteractiveBackground: React.FC = () => {
       }
 
       update() {
-        // 更新呼吸动画相位
         this.angle += this.pulseSpeed;
 
         let dx = mouse.x - this.x;
@@ -82,11 +81,9 @@ const InteractiveBackground: React.FC = () => {
           let directionX = forceDirectionX * force * this.density;
           let directionY = forceDirectionY * force * this.density;
           
-          // 抗重力排斥效果
           this.x -= directionX;
           this.y -= directionY;
         } else {
-          // 缓慢回到原位
           if (this.x !== this.baseX) {
             let dxOrig = this.x - this.baseX;
             this.x -= dxOrig / 20;
@@ -102,7 +99,7 @@ const InteractiveBackground: React.FC = () => {
     function init() {
       if (!canvas) return;
       particles = [];
-      const numberOfParticles = (canvas.width * canvas.height) / 4500;
+      const numberOfParticles = (canvas.width * canvas.height) / 5000; // Optimized density
       for (let i = 0; i < numberOfParticles; i++) {
         let x = Math.random() * canvas.width;
         let y = Math.random() * canvas.height;

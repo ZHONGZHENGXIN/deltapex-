@@ -47,8 +47,13 @@ const Button: React.FC<ButtonProps> = ({
     );
   }
 
+  // Use type="button" by default for non-link buttons to avoid unintended form submissions
   return (
-    <button className={combinedClasses} {...props as React.ButtonHTMLAttributes<HTMLButtonElement>}>
+    <button 
+      type="button" 
+      className={combinedClasses} 
+      {...props as React.ButtonHTMLAttributes<HTMLButtonElement>}
+    >
       {children}
     </button>
   );
