@@ -33,7 +33,7 @@ const CountUp: React.FC<CountUpProps> = ({
   }, [isInView, value, motionValue]);
 
   useEffect(() => {
-    const unsubscribe = springValue.on("change", (latest) => {
+    const unsubscribe = springValue.on("change", (latest: number) => {
       if (ref.current) {
         // Format with commas for thousands
         const formatted = Math.floor(latest).toLocaleString('en-US');
