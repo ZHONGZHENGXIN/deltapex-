@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 
 interface TptRulesViewProps {
@@ -101,9 +102,7 @@ const TptRulesView: React.FC<TptRulesViewProps> = ({ onBack }) => {
                 <tr className="bg-white border-b-2 border-[#ffcccc]">
                   <td className="bg-[#fffafa] font-bold text-left pl-5 border-r border-[#ffeeee]">促销活动</td>
                   <td colSpan={2} className="p-[15px] text-[0.95rem] text-[#666]">
-                    退报名费仅适用于黑五促销活动，时间：2025年11月24日-结束时间待定<br />
-                    <strong className="text-[#cc0000] text-[1.1rem]">折扣码：QQ</strong>（2个字母：QQ） 
-                    <span className="text-[#666] ml-5">所有账户重置费固定$100 (重置不延长订阅)</span>
+                    退报名费仅适用于黑五促销活动，时间：2025年11月24日-结束时间待定
                   </td>
                 </tr>
                 <tr className="bg-white border-b border-[#f0f0f0]">
