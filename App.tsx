@@ -260,20 +260,36 @@ function App() {
               </span>
               <span className="tracking-wide">官方直播 & 交易日志</span>
             </h2>
-            <div className="flex justify-center max-w-5xl mx-auto">
+            <div className="flex flex-col md:flex-row justify-center gap-6 max-w-6xl mx-auto px-4">
               <Button
                 key="ali-log"
                 href={COMMUNITY_ACCOUNTS[0].url}
+                target="_blank"
                 variant="primary"
-                className="group p-8 md:p-10 text-lg md:text-xl h-auto whitespace-normal shadow-2xl shadow-red-500/30 relative overflow-hidden rounded-2xl border border-red-500/20 w-full md:w-auto"
-                fullWidth
+                className="group p-8 md:p-10 text-lg md:text-xl h-auto whitespace-normal shadow-2xl shadow-red-500/30 relative overflow-hidden rounded-2xl border border-red-500/20 w-full md:flex-1"
               >
                 <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="flex flex-col md:flex-row items-center gap-6 justify-center">
                   <i className="fa-brands fa-bilibili text-4xl"></i>
                   <div className="text-center md:text-left">
-                     <span className="font-bold tracking-wide block mb-1">{COMMUNITY_ACCOUNTS[0].label}</span>
-                     <span className="text-sm opacity-80 font-normal">点击观看最新实盘录像</span>
+                     <span className="font-bold tracking-wide block">{COMMUNITY_ACCOUNTS[0].label}</span>
+                  </div>
+                  <i className="fa-solid fa-arrow-right-long text-2xl ml-2 group-hover:translate-x-2 transition-transform"></i>
+                </div>
+              </Button>
+
+              <Button
+                key="tencent-meeting"
+                href="https://meeting.tencent.com/p/3621520297"
+                target="_blank"
+                variant="primary"
+                className="group p-8 md:p-10 text-lg md:text-xl h-auto whitespace-normal shadow-2xl shadow-red-500/30 relative overflow-hidden rounded-2xl border border-red-500/20 w-full md:flex-1"
+              >
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="flex flex-col md:flex-row items-center gap-6 justify-center">
+                  <i className="fa-solid fa-video text-4xl"></i>
+                  <div className="text-center md:text-left">
+                     <span className="font-bold tracking-wide block">腾讯会议直播间</span>
                   </div>
                   <i className="fa-solid fa-arrow-right-long text-2xl ml-2 group-hover:translate-x-2 transition-transform"></i>
                 </div>
