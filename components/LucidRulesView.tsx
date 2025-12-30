@@ -70,7 +70,7 @@ const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
         <nav className="px-6 md:px-12 py-5 bg-white border-b border-[#FEE2E2] sticky top-0 z-20 backdrop-blur-md bg-white/90">
           <button 
             onClick={onBack}
-            className="text-[#C53030] font-bold flex items-center gap-2 hover:translate-x-[-4px] transition-all"
+            className="text-[#C53030] font-bold flex items-center gap-2 hover:translate-x-[-4px] transition-all cursor-pointer"
           >
             <i className="fa-solid fa-arrow-left"></i> 返回社区主页
           </button>

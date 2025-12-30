@@ -5,6 +5,8 @@
  * These declarations provide the necessary typing for import.meta.env and common asset imports (SVG, PNG, etc.).
  */
 
+// Removed conflicting 'process' declaration. The variable is already declared in the environment.
+
 interface ImportMetaEnv {
   readonly [key: string]: any;
 }

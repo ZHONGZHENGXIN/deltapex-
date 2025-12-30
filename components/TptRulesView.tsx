@@ -17,7 +17,7 @@ const TptRulesView: React.FC<TptRulesViewProps> = ({ onBack }) => {
         <nav className="mb-5">
           <button 
             onClick={onBack}
-            className="text-[#666] no-underline text-[0.9rem] flex items-center gap-[5px] hover:text-[#cc0000] transition-colors"
+            className="text-[#666] no-underline text-[0.9rem] flex items-center gap-[5px] hover:text-[#cc0000] transition-colors cursor-pointer"
           >
             ← 返回社区主页
           </button>
@@ -83,7 +83,7 @@ const TptRulesView: React.FC<TptRulesViewProps> = ({ onBack }) => {
               "回撤规则：考核EOD回撤，Pro出金号实时追踪。打过缓冲区后变为静态。",
               "灵活过关：若考核2天即达标，剩余3天可使用最小手数刷交易日。",
               "缓冲区利润提取：若觉得打不过去，可邮件申请提取。交易满60天分80%，不满分50%。无任何限制。",
-              "重要提醒：收盘前务必平仓并删除挂单，否则视为违规。考核不限新闻，出金号需注意新闻规则。"
+              "重要提醒：收盘前务必平仓并删除挂单，否则需月费续订。考核不限新闻，出金号需注意新闻规则。"
             ].map((text, i) => (
               <li key={i} className="mb-3 relative before:content-['•'] before:text-[#cc0000] before:font-bold before:inline-block before:w-[1.5em]">{text}</li>
             ))}

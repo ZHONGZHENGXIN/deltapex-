@@ -377,7 +377,7 @@ function App() {
                 <button 
                   key={`${student.id}-${idx}`} 
                   type="button"
-                  className="w-[320px] md:w-[480px] mx-6 shrink-0 bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 group relative focus:outline-none focus:ring-4 focus:ring-primary/20"
+                  className="w-[320px] md:w-[480px] mx-6 shrink-0 bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 group relative focus:outline-none focus:ring-4 focus:ring-primary/20 cursor-pointer"
                   onClick={() => setSelectedImage(student.screenshot)}
                   aria-label={`View result for ${student.name}`}
                 >

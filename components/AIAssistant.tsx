@@ -63,7 +63,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onClose }) => {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
-        contents: newMessages.map(m => ({ parts: [{ text: m.text }] })),
+        contents: newMessages.map(m => ({ role: m.role, parts: [{ text: m.text }] })),
         config: {
           systemInstruction: AI_SYSTEM_INSTRUCTION,
           maxOutputTokens: 600,
@@ -89,7 +89,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onClose }) => {
       >
         <button 
           onClick={onClose} // Functionally 'onOpen' because App.tsx toggles it, but passed as onClose prop for consistency
-          className="w-16 h-16 rounded-full shadow-[0_8px_30px_rgba(230,57,53,0.4)] flex items-center justify-center text-white hover:scale-110 transition-transform active:scale-95 group relative overflow-hidden"
+          className="w-16 h-16 rounded-full shadow-[0_8px_30px_rgba(230,57,53,0.4)] flex items-center justify-center text-white hover:scale-110 transition-transform active:scale-95 group relative overflow-hidden cursor-pointer"
           style={{ backgroundColor: PRIMARY_COLOR }}
         >
           {/* Pulse Effect */}
@@ -125,14 +125,14 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onClose }) => {
           <div className="flex items-center gap-2">
             <button 
               onClick={handleSupportClick}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-full hover:bg-slate-50 transition-colors group shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-full hover:bg-slate-50 transition-colors group shadow-sm cursor-pointer"
             >
               <i className="fa-brands fa-weixin text-sm" style={{ color: SUCCESS_COLOR }}></i>
               <span className="text-[11px] font-bold text-slate-600 group-hover:text-slate-900">人工客服</span>
             </button>
             <button 
               onClick={onClose} 
-              className="w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors cursor-pointer"
             >
               <i className="fa-solid fa-xmark text-lg"></i>
             </button>
@@ -210,7 +210,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onClose }) => {
               <button
                 key={idx}
                 onClick={() => sendMessage(tag.prompt)}
-                className="whitespace-nowrap px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-lg text-xs font-semibold text-slate-600 hover:bg-red-50 hover:text-red-600 hover:border-red-100 transition-all shrink-0"
+                className="whitespace-nowrap px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-lg text-xs font-semibold text-slate-600 hover:bg-red-50 hover:text-red-600 hover:border-red-100 transition-all shrink-0 cursor-pointer"
               >
                 {tag.label}
               </button>
@@ -230,7 +230,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onClose }) => {
             <button
               onClick={() => sendMessage(input)}
               disabled={isLoading || !input.trim()}
-              className="w-11 h-11 rounded-xl flex items-center justify-center text-white shadow-md disabled:opacity-50 disabled:shadow-none transition-all active:scale-95"
+              className="w-11 h-11 rounded-xl flex items-center justify-center text-white shadow-md disabled:opacity-50 disabled:shadow-none transition-all active:scale-95 cursor-pointer"
               style={{ backgroundColor: PRIMARY_COLOR }}
             >
               <i className="fa-solid fa-paper-plane text-sm"></i>

@@ -111,7 +111,7 @@ const AboutUsView: React.FC<AboutUsViewProps> = ({ onBack }) => {
           {/* Navigation Controls */}
           <button 
             onClick={onBack}
-            className="group flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-slate-800 hover:text-[#E60012] transition-colors"
+            className="group flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-slate-800 hover:text-[#E60012] transition-colors cursor-pointer"
           >
             <span className="relative">
               Back to Hub

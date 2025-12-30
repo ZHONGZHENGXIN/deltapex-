@@ -19,7 +19,7 @@ const ToponeRulesView: React.FC<ToponeRulesViewProps> = ({ onBack }) => {
         <nav className="mb-6">
           <button 
             onClick={onBack}
-            className="text-slate-500 font-medium flex items-center gap-2 hover:text-[#C41E3A] transition-colors"
+            className="text-slate-500 font-medium flex items-center gap-2 hover:text-[#C41E3A] transition-colors cursor-pointer"
           >
             <i className="fa-solid fa-arrow-left"></i> 返回社区主页
           </button>
