@@ -1,3 +1,4 @@
+
 /**
  * Fix: Manually defining Vite environment types to resolve the 'Cannot find type definition file' error.
  * This replaces the '/// <reference types="vite/client" />' directive which is failing to resolve in this environment.

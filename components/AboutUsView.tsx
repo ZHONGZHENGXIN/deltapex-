@@ -101,7 +101,7 @@ const AboutUsView: React.FC<AboutUsViewProps> = ({ onBack }) => {
           <div className="flex items-center gap-4 cursor-pointer group" onClick={onBack}>
              <div className="relative overflow-hidden">
                 <img 
-                  src="https://youke2.picui.cn/s1/2025/12/25/694c1f723658a.jpg" 
+                  src="https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/logo.png.jpg" 
                   alt="Deltapex Logo" 
                   className="h-12 w-auto object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity" 
                 />

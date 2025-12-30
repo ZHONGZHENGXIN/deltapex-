@@ -26,13 +26,3 @@ export interface ResourceLink {
   label: string;
   url: string;
 }
-
-export interface Deal {
-  id: string;
-  name: string;
-  discount: string;
-  link: string;
-  iconClass: string;
-  iconBgClass: string;
-  iconColorClass: string;
-}

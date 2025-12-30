@@ -10,6 +10,7 @@ import Earn2TradeRulesView from './components/Earn2TradeRulesView';
 import ToponeRulesView from './components/ToponeRulesView';
 import AboutUsView from './components/AboutUsView';
 import InteractiveBackground from './components/InteractiveBackground';
+import AIAssistant from './components/AIAssistant';
 import Reveal from './components/Reveal';
 import Lenis from 'lenis';
 
@@ -18,6 +19,10 @@ type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'top
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('home');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
+  // AI State Control
+  const [isAIOpen, setIsAIOpen] = useState(false);
+  const toggleAI = () => setIsAIOpen(!isAIOpen);
   
   const ctaRef = useRef<HTMLDivElement>(null);
   const [ctaRotate, setCtaRotate] = useState({ x: 0, y: 0 });
@@ -96,6 +101,9 @@ function App() {
   return (
     <div className="bg-white text-slate-600 font-sans antialiased relative min-h-screen overflow-x-hidden selection:bg-red-100 selection:text-primary">
       <InteractiveBackground />
+
+      {/* AI Assistant Widget (Always rendered, handles its own open/close UI) */}
+      <AIAssistant isOpen={isAIOpen} onClose={toggleAI} />
 
       {/* 图片预览 Modal (Lightbox) */}
       {selectedImage && (
@@ -366,10 +374,12 @@ function App() {
           <div className="relative w-full overflow-hidden mask-fade-edges py-10">
             <div className="flex w-fit animate-scroll-x hover:[animation-play-state:paused]" style={{ animationDuration: '40s' }}>
               {[...STUDENT_CASES, ...STUDENT_CASES].map((student, idx) => (
-                <div 
+                <button 
                   key={`${student.id}-${idx}`} 
-                  className="w-[320px] md:w-[480px] mx-6 shrink-0 bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 group cursor-pointer"
+                  type="button"
+                  className="w-[320px] md:w-[480px] mx-6 shrink-0 bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 group relative focus:outline-none focus:ring-4 focus:ring-primary/20"
                   onClick={() => setSelectedImage(student.screenshot)}
+                  aria-label={`View result for ${student.name}`}
                 >
                   <div className="relative w-full h-[220px] md:h-[320px] bg-slate-100">
                     <img 
@@ -384,8 +394,7 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  {/* Text section removed as requested */}
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -414,8 +423,11 @@ function App() {
               获取更多资讯，折扣提醒，交流交易经验，与 Alex 一起成长！我们致力于打造最专业的中文订单流交易社区。
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-              <Button className="py-5 px-16 min-w-[240px] text-lg rounded-full shadow-xl hover:shadow-2xl transition-all" href={SOCIAL_LINKS.telegram} target="_blank">
-                <i className="fa-solid fa-headset text-xl mr-3"></i> 联系我们
+              <Button 
+                onClick={() => setIsAIOpen(true)}
+                className="py-5 px-16 min-w-[240px] text-lg rounded-full shadow-xl hover:shadow-2xl transition-all"
+              >
+                <i className="fa-solid fa-headset text-xl mr-3"></i> 立即咨询
               </Button>
             </div>
             <div className="mt-20 text-xs text-slate-400 font-bold uppercase tracking-[0.2em] space-y-2">
