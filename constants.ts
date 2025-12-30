@@ -175,7 +175,7 @@ export const FAQS: FaqItem[] = [
 ];
 
 export const COMMUNITY_ACCOUNTS: ResourceLink[] = [
-  { label: "阿里Ali的交易日志", url: "https://space.bilibili.com/354665369/dynamic" }
+  { label: "阿里Ali的交易日志", url: "https://live.bilibili.com/1874453448?broadcast_type=0&is_room_feed=1&spm_id_from=333.1387.to_liveroom.0.click&live_from=86002" }
 ];
 
 export const DEALS = [

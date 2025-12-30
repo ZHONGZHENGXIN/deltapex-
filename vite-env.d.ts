@@ -1,7 +1,8 @@
+
 /**
- * Fix: Manually defining Vite environment types to resolve the 'Cannot find type definition file' error.
- * This replaces the '/// <reference types="vite/client" />' directive which is failing to resolve in this environment.
- * These declarations provide the necessary typing for import.meta.env and common asset imports (SVG, PNG, etc.).
+ * Fix: Manually defining Vite environment types.
+ * We rely on @types/node for the global 'process' variable.
+ * Here we simply extend the ProcessEnv interface to include our API_KEY.
  */
 
 declare namespace NodeJS {
