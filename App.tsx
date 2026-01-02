@@ -17,7 +17,20 @@ import Lenis from 'lenis';
 type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about';
 
 function App() {
-  const [currentView, setCurrentView] = useState<ViewType>('home');
+  // Use Hash Routing to determine view
+  const getHashView = (): ViewType => {
+    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+    switch (hash) {
+      case '#tpt-rules': return 'tpt-rules';
+      case '#lucid-rules': return 'lucid-rules';
+      case '#earn2trade-rules': return 'earn2trade-rules';
+      case '#topone-rules': return 'topone-rules';
+      case '#about': return 'about';
+      default: return 'home';
+    }
+  };
+
+  const [currentView, setCurrentView] = useState<ViewType>(getHashView());
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   // AI State Control
@@ -30,6 +43,17 @@ function App() {
 
   const planetRef = useRef<HTMLDivElement>(null);
   const [planetRotate, setPlanetRotate] = useState({ x: 0, y: 0 });
+
+  // Handle Routing
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentView(getHashView());
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Initialize Lenis Smooth Scroll
   useEffect(() => {
@@ -52,11 +76,6 @@ function App() {
       lenis.destroy();
     };
   }, []);
-
-  // Scroll to top whenever the view changes
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentView]);
 
   const handleCtaMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!ctaRef.current) return;
@@ -162,7 +181,7 @@ function App() {
                 }}
               >
                 <Button 
-                  onClick={() => setCurrentView('about')}
+                  href="#about"
                   className="relative overflow-hidden px-14 py-6 text-xl rounded-2xl shadow-[0_30px_60px_-15px_rgba(211,47,47,0.3)] z-10 hover:shadow-[0_40px_80px_-20px_rgba(211,47,47,0.4)] transition-shadow duration-500"
                 >
                   <div 
@@ -190,15 +209,7 @@ function App() {
               <div className="space-y-6">
                 {FIRMS.map((firm, index) => (
                   <Reveal key={firm.id} delay={index * 0.1}>
-                    <FirmCard 
-                      firm={firm} 
-                      onRulesClick={(id) => {
-                        if (id === 'tpt') setCurrentView('tpt-rules');
-                        if (id === 'lucid') setCurrentView('lucid-rules');
-                        if (id === 'earn2trade') setCurrentView('earn2trade-rules');
-                        if (id === 'topone') setCurrentView('topone-rules');
-                      }}
-                    />
+                    <FirmCard firm={firm} />
                   </Reveal>
                 ))}
               </div>
@@ -240,7 +251,7 @@ function App() {
 
                           {/* EBC Card */}
                           <a 
-                            href="https://client.myebc.co/signup?linkCode=S4112201-a02"
+                            href="https://client.myebc.co/signup?linkCode=S4112201-a03"
                             target="_blank"
                             className="flex flex-col md:flex-row items-center p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-2xl hover:border-red-200 hover:-translate-y-2 transition-all duration-500 group/ebc"
                           >
