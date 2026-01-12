@@ -5,10 +5,9 @@ import Button from './Button';
 
 interface FirmCardProps {
   firm: Firm;
-  onRulesClick?: (firmId: string) => void;
 }
 
-const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
+const FirmCard: React.FC<FirmCardProps> = ({ firm }) => {
   const [copied, setCopied] = useState(false);
   const [imageError, setImageError] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -36,14 +35,6 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
       navigator.clipboard.writeText(firm.code);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const handleRulesClick = (e: React.MouseEvent) => {
-    // Only intercept if the firm has internal rules configured
-    if (firm.hasInternalRules && onRulesClick) {
-      e.preventDefault();
-      onRulesClick(firm.id);
     }
   };
 
@@ -118,7 +109,6 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm, onRulesClick }) => {
             href={firm.rulesLink} 
             variant="outline" 
             className="flex-1 md:flex-none px-6 py-2.5 text-sm font-semibold" 
-            onClick={handleRulesClick}
           >
             规则图
           </Button>

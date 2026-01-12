@@ -96,7 +96,7 @@ export const FIRMS: Firm[] = [
     iconBgClass: "bg-slate-50",
     iconColorClass: "text-primary",
     buyLink: "https://takeprofittrader.com/?referralCode=DP01",
-    rulesLink: "#",
+    rulesLink: "#tpt-rules",
     isFeatured: true,
     hasInternalRules: true
   },
@@ -111,7 +111,7 @@ export const FIRMS: Firm[] = [
     iconBgClass: "bg-[#121212]", 
     iconColorClass: "text-blue-500",
     buyLink: "https://lucidtrading.com/ref/Deltapex",
-    rulesLink: "#",
+    rulesLink: "#lucid-rules",
     isFeatured: true,
     hasInternalRules: true
   },
@@ -126,7 +126,7 @@ export const FIRMS: Firm[] = [
     iconBgClass: "bg-slate-50",
     iconColorClass: "text-[#C41E3A]",
     buyLink: "https://toponefutures.com/?linkId=lp_707970&sourceId=deltapex&tenantId=toponefutures",
-    rulesLink: "#",
+    rulesLink: "#topone-rules",
     isFeatured: true,
     hasInternalRules: true
   },
@@ -141,7 +141,7 @@ export const FIRMS: Firm[] = [
     iconBgClass: "bg-slate-900",
     iconColorClass: "text-white",
     buyLink: "https://www.earn2trade.com/zh/",
-    rulesLink: "#",
+    rulesLink: "#earn2trade-rules",
     isFeatured: true,
     hasInternalRules: true
   }

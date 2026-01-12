@@ -19,7 +19,9 @@ type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'top
 function App() {
   // Use Hash Routing to determine view
   const getHashView = (): ViewType => {
-    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+    if (typeof window === 'undefined') return 'home';
+    // Get hash and remove any query parameters that might be attached
+    const hash = window.location.hash.split('?')[0];
     switch (hash) {
       case '#tpt-rules': return 'tpt-rules';
       case '#lucid-rules': return 'lucid-rules';
@@ -44,16 +46,7 @@ function App() {
   const planetRef = useRef<HTMLDivElement>(null);
   const [planetRotate, setPlanetRotate] = useState({ x: 0, y: 0 });
 
-  // Handle Routing
-  useEffect(() => {
-    const handleHashChange = () => {
-      setCurrentView(getHashView());
-      window.scrollTo(0, 0);
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  const lenisRef = useRef<Lenis | null>(null);
 
   // Initialize Lenis Smooth Scroll
   useEffect(() => {
@@ -65,6 +58,8 @@ function App() {
       smoothWheel: true,
     });
 
+    lenisRef.current = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -74,8 +69,30 @@ function App() {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  // Handle Routing Event
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentView(getHashView());
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Scroll to top when view changes
+  useEffect(() => {
+    // Native scroll
+    window.scrollTo(0, 0);
+    
+    // Lenis scroll (immediate jump)
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+  }, [currentView]);
 
   const handleCtaMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!ctaRef.current) return;
@@ -147,11 +164,11 @@ function App() {
       )}
 
       {/* View Routing */}
-      {currentView === 'tpt-rules' && <TptRulesView onBack={() => setCurrentView('home')} />}
-      {currentView === 'lucid-rules' && <LucidRulesView onBack={() => setCurrentView('home')} />}
-      {currentView === 'earn2trade-rules' && <Earn2TradeRulesView onBack={() => setCurrentView('home')} />}
-      {currentView === 'topone-rules' && <ToponeRulesView onBack={() => setCurrentView('home')} />}
-      {currentView === 'about' && <AboutUsView onBack={() => setCurrentView('home')} />}
+      {currentView === 'tpt-rules' && <TptRulesView />}
+      {currentView === 'lucid-rules' && <LucidRulesView />}
+      {currentView === 'earn2trade-rules' && <Earn2TradeRulesView />}
+      {currentView === 'topone-rules' && <ToponeRulesView />}
+      {currentView === 'about' && <AboutUsView />}
 
       {/* HOME VIEW CONTENT */}
       {currentView === 'home' && (

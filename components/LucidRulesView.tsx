@@ -1,10 +1,6 @@
 
 import React, { useEffect } from 'react';
 
-interface LucidRulesViewProps {
-  onBack: () => void;
-}
-
 // Helper components for consistent styling
 const RedBold: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
   <span className="text-[#C53030] font-bold">{children}</span>
@@ -57,10 +53,14 @@ const TopPromoBanner: React.FC = () => (
   </div>
 );
 
-const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
+const LucidRulesView: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleBackClick = () => {
+    window.location.hash = "";
+  };
 
   return (
     <div className="bg-[#FFF5F5] min-h-screen font-sans text-[#2D3748] py-10 px-4">
@@ -68,12 +68,13 @@ const LucidRulesView: React.FC<LucidRulesViewProps> = ({ onBack }) => {
         
         {/* Navigation */}
         <nav className="px-6 md:px-12 py-5 bg-white border-b border-[#FEE2E2] sticky top-0 z-20 backdrop-blur-md bg-white/90">
-          <button 
-            onClick={onBack}
+          <div 
+            onClick={handleBackClick}
             className="text-[#C53030] font-bold flex items-center gap-2 hover:translate-x-[-4px] transition-all cursor-pointer"
+            role="button"
           >
             <i className="fa-solid fa-arrow-left"></i> 返回社区主页
-          </button>
+          </div>
         </nav>
 
         {/* Header */}

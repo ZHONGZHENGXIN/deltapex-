@@ -1,14 +1,14 @@
 
 import React, { useEffect } from 'react';
 
-interface ToponeRulesViewProps {
-  onBack: () => void;
-}
-
-const ToponeRulesView: React.FC<ToponeRulesViewProps> = ({ onBack }) => {
+const ToponeRulesView: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleBackClick = () => {
+    window.location.hash = "";
+  };
 
   const redAccent = "#C41E3A";
 
@@ -17,12 +17,13 @@ const ToponeRulesView: React.FC<ToponeRulesViewProps> = ({ onBack }) => {
       <div className="max-w-[900px] mx-auto px-5 py-8 md:py-12">
         {/* Navigation */}
         <nav className="mb-6">
-          <button 
-            onClick={onBack}
+          <div 
+            onClick={handleBackClick}
             className="text-slate-500 font-medium flex items-center gap-2 hover:text-[#C41E3A] transition-colors cursor-pointer"
+            role="button"
           >
             <i className="fa-solid fa-arrow-left"></i> 返回社区主页
-          </button>
+          </div>
         </nav>
 
         <header className="text-center mb-8">

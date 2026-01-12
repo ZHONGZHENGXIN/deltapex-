@@ -4,11 +4,7 @@ import { motion, useScroll, useTransform, useSpring, Variants } from 'framer-mot
 import HeroGeometric from './HeroGeometric';
 import CountUp from './CountUp';
 
-interface AboutUsViewProps {
-  onBack: () => void;
-}
-
-const AboutUsView: React.FC<AboutUsViewProps> = ({ onBack }) => {
+const AboutUsView: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const founderRef = useRef<HTMLDivElement>(null);
 
@@ -91,14 +87,19 @@ const AboutUsView: React.FC<AboutUsViewProps> = ({ onBack }) => {
     { text: "上海交通大学量化俱乐部特邀讲座嘉宾" }
   ];
 
+  const handleBackClick = () => {
+    // Manually set hash to trigger App.tsx routing without browser navigation
+    window.location.hash = "";
+  };
+
   return (
-    <div ref={containerRef} className="bg-white text-slate-900 font-sans min-h-screen selection:bg-[#E60012] selection:text-white overflow-hidden">
+    <div ref={containerRef} className="bg-white text-slate-900 font-sans min-h-screen selection:bg-[#E60012] selection:text-white overflow-x-hidden">
       
       {/* Sticky Blur Navigation with Progress Bar and Logo */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-          {/* Logo Section */}
-          <div className="flex items-center gap-4 cursor-pointer group" onClick={onBack}>
+          {/* Logo Section - Converted to div/button for safe navigation */}
+          <div onClick={handleBackClick} className="flex items-center gap-4 cursor-pointer group" role="button">
              <div className="relative overflow-hidden">
                 <img 
                   src="https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/logo.png.jpg" 
@@ -108,17 +109,18 @@ const AboutUsView: React.FC<AboutUsViewProps> = ({ onBack }) => {
              </div>
           </div>
 
-          {/* Navigation Controls */}
-          <button 
-            onClick={onBack}
+          {/* Navigation Controls - Converted to div/button for safe navigation */}
+          <div 
+            onClick={handleBackClick}
             className="group flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-slate-800 hover:text-[#E60012] transition-colors cursor-pointer"
+            role="button"
           >
             <span className="relative">
               Back to Hub
               <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#E60012] transition-all duration-300 group-hover:w-full"></span>
             </span>
             <i className="fa-solid fa-arrow-right-long transition-transform duration-300 group-hover:translate-x-1 text-slate-400 group-hover:text-[#E60012]"></i>
-          </button>
+          </div>
         </div>
         {/* Progress Bar */}
         <motion.div 

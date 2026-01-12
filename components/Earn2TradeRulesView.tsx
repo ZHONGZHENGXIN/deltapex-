@@ -1,14 +1,14 @@
 
 import React, { useEffect } from 'react';
 
-interface Earn2TradeRulesViewProps {
-  onBack: () => void;
-}
-
-const Earn2TradeRulesView: React.FC<Earn2TradeRulesViewProps> = ({ onBack }) => {
+const Earn2TradeRulesView: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleBackClick = () => {
+    window.location.hash = "";
+  };
 
   const accentColor = "#D32F2F"; // 沿用 Deltapex 的主色调
 
@@ -17,12 +17,13 @@ const Earn2TradeRulesView: React.FC<Earn2TradeRulesViewProps> = ({ onBack }) => 
       <div className="max-w-[900px] mx-auto px-5 py-8 md:py-12">
         {/* Navigation */}
         <nav className="mb-6">
-          <button 
-            onClick={onBack}
+          <div 
+            onClick={handleBackClick}
             className="text-slate-500 font-medium flex items-center gap-2 hover:text-[#D32F2F] transition-colors cursor-pointer"
+            role="button"
           >
             <i className="fa-solid fa-arrow-left"></i> 返回社区主页
-          </button>
+          </div>
         </nav>
 
         <header className="text-center mb-8">

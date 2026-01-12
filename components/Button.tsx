@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & React.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -30,9 +31,23 @@ const Button: React.FC<ButtonProps> = ({
   const combinedClasses = `${baseClasses} ${variants[variant]} ${widthClass} ${className}`;
 
   if (href) {
+    const isInternal = href.startsWith('#');
     const isExternal = href.startsWith('http');
     const target = props.target || (isExternal ? "_blank" : undefined);
     const rel = props.rel || (isExternal ? "noopener noreferrer" : undefined);
+
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      // 如果是内部哈希链接，拦截默认行为，手动更改 hash
+      // 这可以防止在某些预览环境（如 AI Studio）中出现 "refused to connect" 错误
+      if (isInternal) {
+        e.preventDefault();
+        window.location.hash = href;
+      }
+      
+      if (props.onClick) {
+        props.onClick(e);
+      }
+    };
 
     return (
       <a 
@@ -40,6 +55,7 @@ const Button: React.FC<ButtonProps> = ({
         className={combinedClasses}
         target={target}
         rel={rel}
+        onClick={handleClick}
         {...props as React.AnchorHTMLAttributes<HTMLAnchorElement>}
       >
         {children}

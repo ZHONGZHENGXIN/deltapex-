@@ -1,26 +1,27 @@
 
 import React, { useEffect } from 'react';
 
-interface TptRulesViewProps {
-  onBack: () => void;
-}
-
-const TptRulesView: React.FC<TptRulesViewProps> = ({ onBack }) => {
+const TptRulesView: React.FC = () => {
   // 滚动到顶部
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleBackClick = () => {
+    window.location.hash = "";
+  };
+
   return (
     <div className="bg-white min-h-screen">
       <div className="max-w-[900px] mx-auto px-5 py-10 box-border text-[#333] leading-[1.8] font-sans antialiased">
         <nav className="mb-5">
-          <button 
-            onClick={onBack}
+          <div 
+            onClick={handleBackClick}
             className="text-[#666] no-underline text-[0.9rem] flex items-center gap-[5px] hover:text-[#cc0000] transition-colors cursor-pointer"
+            role="button"
           >
             ← 返回社区主页
-          </button>
+          </div>
         </nav>
         
         <header className="text-center">
