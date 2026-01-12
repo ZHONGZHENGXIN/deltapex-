@@ -156,7 +156,7 @@ const PropFirmGuideView: React.FC = () => {
                 <li>资金有限，希望用规则化方式放大资金。</li>
                 <li>有系统、懂风控、愿意像律师一样研读规则条款的人。</li>
             </ul>
-            <p><span class="tag tag-danger">❌ 不适合</span> 扛单成瘾、不看规则、这就去冲的人。</p>
+            <p><span className="tag tag-danger">❌ 不适合</span> 扛单成瘾、不看规则、这就去冲的人。</p>
 
             <h3>5. 交易品种与 CFD 的区别</h3>
             <p>Futures Prop Firm 基本都是交易美国主流期货合约：</p>
@@ -183,7 +183,7 @@ const PropFirmGuideView: React.FC = () => {
                 <li><strong>浏览器插件：</strong>装“沉浸式翻译”插件。</li>
                 <li><strong>Chrome/Edge：</strong>自带右键翻译功能。</li>
             </ul>
-            <p><span class="highlight">建议：</span> 对于关键条款，机翻后对照原文，避免产生歧义。</p>
+            <p><span className="highlight">建议：</span> 对于关键条款，机翻后对照原文，避免产生歧义。</p>
 
             <h3>9. 可以使用 魔法 吗？</h3>
             <p>绝大部分支持，少部分不支持. <strong>注意：</strong>频繁变更 IP 会触发风控。不要使用禁止国家的 IP（如朝鲜等）。建议保持线路稳定。</p>
