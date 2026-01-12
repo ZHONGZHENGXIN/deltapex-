@@ -34,12 +34,12 @@ const TopPromoBanner: React.FC = () => (
       <div className="text-lg md:text-xl text-[#2D3748]">
         注册链接：
         <a 
-          href="https://lucidtrading.com/ref/Deltapex" 
+          href="https://lucidtrading.com/" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="text-[#2B6CB0] underline font-bold hover:text-[#C53030] ml-1 transition-colors"
         >
-          https://lucidtrading.com/ref/Deltapex
+          https://lucidtrading.com/
         </a>
       </div>
       <div className="text-3xl md:text-5xl font-extrabold flex items-center gap-3">

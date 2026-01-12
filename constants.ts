@@ -110,7 +110,7 @@ export const FIRMS: Firm[] = [
     iconClass: "fa-solid fa-circle",
     iconBgClass: "bg-[#121212]", 
     iconColorClass: "text-blue-500",
-    buyLink: "https://lucidtrading.com/ref/Deltapex",
+    buyLink: "https://lucidtrading.com/",
     rulesLink: "#lucid-rules",
     isFeatured: true,
     hasInternalRules: true
@@ -188,7 +188,7 @@ export const DEALS = [
     id: 2,
     name: "Lucid Trading",
     discount: "6折圣诞特惠",
-    link: "https://lucidtrading.com/ref/Deltapex",
+    link: "https://lucidtrading.com/",
     iconBgClass: "bg-[#121212]",
     iconClass: "fa-solid fa-circle",
     iconColorClass: "text-blue-500"
