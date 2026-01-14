@@ -18,10 +18,13 @@ import PropFirmGuideView from './components/PropFirmGuideView';
 import LucidSelectionGuideView from './components/LucidSelectionGuideView';
 import TptReviewView from './components/TptReviewView';
 import TopOneReviewView from './components/TopOneReviewView';
+import TradovateGuideView from './components/TradovateGuideView';
+import RithmicGuideView from './components/RithmicGuideView';
+import PaymentGuideView from './components/PaymentGuideView';
 
 import Lenis from 'lenis';
 
-type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review';
+type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide';
 
 function App() {
   // Use Hash Routing to determine view
@@ -40,6 +43,9 @@ function App() {
       case '#lucid-selection-guide': return 'lucid-selection-guide';
       case '#tpt-review': return 'tpt-review';
       case '#topone-review': return 'topone-review';
+      case '#tradovate-guide': return 'tradovate-guide';
+      case '#rithmic-guide': return 'rithmic-guide';
+      case '#payment-guide': return 'payment-guide';
       default: return 'home';
     }
   };
@@ -192,6 +198,9 @@ function App() {
         {currentView === 'lucid-selection-guide' && <LucidSelectionGuideView />}
         {currentView === 'tpt-review' && <TptReviewView />}
         {currentView === 'topone-review' && <TopOneReviewView />}
+        {currentView === 'tradovate-guide' && <TradovateGuideView />}
+        {currentView === 'rithmic-guide' && <RithmicGuideView />}
+        {currentView === 'payment-guide' && <PaymentGuideView />}
 
         {/* HOME VIEW CONTENT */}
         {currentView === 'home' && (
@@ -278,7 +287,7 @@ function App() {
                             >
                                <div className="w-24 h-24 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 group-hover/atas:bg-blue-500 group-hover/atas:text-white transition-all duration-300 md:mr-8 mb-6 md:mb-0 shrink-0 shadow-inner">
                                   <i className="fa-solid fa-chart-bar text-4xl"></i>
-                               </div>
+                                </div>
                                <div className="flex-1 text-center md:text-left">
                                   <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-2">Order Flow Software</div>
                                   <div className="text-2xl font-bold text-slate-800 group-hover/atas:text-blue-600 transition-colors mb-2">ATAS 注册下载</div>

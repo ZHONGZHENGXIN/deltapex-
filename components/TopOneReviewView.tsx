@@ -210,7 +210,7 @@ const TopOneReviewView: React.FC = () => {
         <p>TopOne Futures 并没有试图成为一家“大而全”的杂货铺，而是精准定位为期货交易员的专业军火库。它利用<strong>“一日通行证”和“即时资金”</strong>打破了行业效率瓶颈，并用 <strong>90% 分成</strong> 和 <strong>250万美金扩展计划</strong> 留住顶尖人才。</p>
         
         <div className="footer-summary">
-            TopOne Futures 评测指南
+            TopOne Futures 
         </div>
       </div>
     </div>

@@ -8,7 +8,8 @@ import {
   Cpu, 
   BookOpen, 
   ArrowRight,
-  Compass
+  Compass,
+  FlaskConical
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -148,6 +149,17 @@ const Navbar: React.FC = () => {
                 </AnimatePresence>
               </div>
             ))}
+
+            {/* Prominent Options Laboratory Link */}
+            <a 
+              href="https://options-laboratory.zeabur.app" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#D32F2F] to-[#EF5350] text-white rounded-full font-bold text-sm shadow-lg shadow-red-900/20 hover:shadow-red-600/40 hover:scale-105 transition-all duration-300 group"
+            >
+              <FlaskConical size={18} className="group-hover:rotate-12 transition-transform duration-300" />
+              <span>Options Laboratory</span>
+            </a>
           </div>
 
           {/* 3. Mobile Toggle (Actions removed) */}
@@ -212,6 +224,21 @@ const Navbar: React.FC = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* Mobile Options Lab Link */}
+                <div className="space-y-3 pt-4 border-t border-white/10">
+                   <a 
+                      href="https://options-laboratory.zeabur.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-white font-bold text-base bg-[#D32F2F]/10 p-3 rounded-xl border border-[#D32F2F]/20 hover:bg-[#D32F2F]/20 transition-colors"
+                   >
+                      <div className="bg-[#D32F2F] p-2 rounded-lg text-white">
+                        <FlaskConical size={20} />
+                      </div>
+                      Options Laboratory
+                   </a>
+                </div>
               </div>
             </motion.div>
           </>
