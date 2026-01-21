@@ -44,7 +44,9 @@ const NAV_LINKS = [
     icon: <BookOpen size={18} />,
     items: [
       { name: "Prop Firm 核心知识", href: "#prop-firm-guide" },
-      { name: "支付通关指南", href: "#payment-guide" }
+      { name: "支付通关指南", href: "#payment-guide" },
+      { name: "Wise 出金全攻略", href: "#wise-guide" },
+      { name: "注册与激活实战指南", href: "#registration-guide" }
     ]
   }
 ];

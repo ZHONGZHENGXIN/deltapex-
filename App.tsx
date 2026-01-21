@@ -21,10 +21,12 @@ import TopOneReviewView from './components/TopOneReviewView';
 import TradovateGuideView from './components/TradovateGuideView';
 import RithmicGuideView from './components/RithmicGuideView';
 import PaymentGuideView from './components/PaymentGuideView';
+import WiseGuideView from './components/WiseGuideView';
+import RegistrationGuideView from './components/RegistrationGuideView';
 
 import Lenis from 'lenis';
 
-type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide';
+type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide';
 
 function App() {
   // Use Hash Routing to determine view
@@ -46,6 +48,8 @@ function App() {
       case '#tradovate-guide': return 'tradovate-guide';
       case '#rithmic-guide': return 'rithmic-guide';
       case '#payment-guide': return 'payment-guide';
+      case '#wise-guide': return 'wise-guide';
+      case '#registration-guide': return 'registration-guide';
       default: return 'home';
     }
   };
@@ -201,6 +205,8 @@ function App() {
         {currentView === 'tradovate-guide' && <TradovateGuideView />}
         {currentView === 'rithmic-guide' && <RithmicGuideView />}
         {currentView === 'payment-guide' && <PaymentGuideView />}
+        {currentView === 'wise-guide' && <WiseGuideView />}
+        {currentView === 'registration-guide' && <RegistrationGuideView />}
 
         {/* HOME VIEW CONTENT */}
         {currentView === 'home' && (
