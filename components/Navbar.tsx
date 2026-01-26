@@ -9,7 +9,8 @@ import {
   BookOpen, 
   ArrowRight,
   Compass,
-  FlaskConical
+  FlaskConical,
+  Globe
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -152,16 +153,29 @@ const Navbar: React.FC = () => {
               </div>
             ))}
 
-            {/* Prominent Options Laboratory Link */}
-            <a 
-              href="https://options-laboratory.zeabur.app" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#D32F2F] to-[#EF5350] text-white rounded-full font-bold text-sm shadow-lg shadow-red-900/20 hover:shadow-red-600/40 hover:scale-105 transition-all duration-300 group"
-            >
-              <FlaskConical size={18} className="group-hover:rotate-12 transition-transform duration-300" />
-              <span>Options Laboratory</span>
-            </a>
+            <div className="flex items-center gap-4">
+              {/* Deltapex CN Link */}
+              <a 
+                href="https://deltapex.cn/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#D32F2F] to-[#EF5350] text-white rounded-full font-bold text-sm shadow-lg shadow-red-900/20 hover:shadow-red-600/40 hover:scale-105 transition-all duration-300 group"
+              >
+                <Globe size={18} className="group-hover:rotate-12 transition-transform duration-300" />
+                <span>Deltapex CN</span>
+              </a>
+
+              {/* Prominent Options Laboratory Link */}
+              <a 
+                href="https://options-laboratory.zeabur.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#D32F2F] to-[#EF5350] text-white rounded-full font-bold text-sm shadow-lg shadow-red-900/20 hover:shadow-red-600/40 hover:scale-105 transition-all duration-300 group"
+              >
+                <FlaskConical size={18} className="group-hover:rotate-12 transition-transform duration-300" />
+                <span>Options Laboratory</span>
+              </a>
+            </div>
           </div>
 
           {/* 3. Mobile Toggle (Actions removed) */}
@@ -227,8 +241,20 @@ const Navbar: React.FC = () => {
                   </div>
                 ))}
 
-                {/* Mobile Options Lab Link */}
+                {/* Mobile Options Lab Link & Deltapex CN */}
                 <div className="space-y-3 pt-4 border-t border-white/10">
+                   <a 
+                      href="https://deltapex.cn/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-white font-bold text-base bg-[#D32F2F]/10 p-3 rounded-xl border border-[#D32F2F]/20 hover:bg-[#D32F2F]/20 transition-colors"
+                   >
+                      <div className="bg-[#D32F2F] p-2 rounded-lg text-white">
+                        <Globe size={20} />
+                      </div>
+                      Deltapex CN
+                   </a>
+
                    <a 
                       href="https://options-laboratory.zeabur.app"
                       target="_blank"
