@@ -1,5 +1,5 @@
 
-import { Firm, ResourceLink, FaqItem } from './types';
+import { Firm, ResourceLink, FaqItem, Deal } from './types';
 
 export const SOCIAL_LINKS = {
   discord: "https://discord.com/invite/your-link",
@@ -147,6 +147,45 @@ export const FIRMS: Firm[] = [
   }
 ];
 
+export const DEALS: Deal[] = [
+  {
+    id: "tpt",
+    name: "Take Profit Trader",
+    discount: "6折 + 免激活",
+    link: "https://takeprofittrader.com/?referralCode=DP01",
+    iconClass: "fa-solid fa-chart-line",
+    iconBgClass: "bg-slate-50",
+    iconColorClass: "text-primary"
+  },
+  {
+    id: "lucid",
+    name: "Lucid Trading",
+    discount: "圣诞 6折/8折",
+    link: "https://lucidtrading.com/",
+    iconClass: "fa-solid fa-circle",
+    iconBgClass: "bg-[#121212]",
+    iconColorClass: "text-blue-500"
+  },
+  {
+    id: "topone",
+    name: "TopOne Futures",
+    discount: "4.5折 + 额外减免",
+    link: "https://toponefutures.com/?linkId=lp_707970&sourceId=deltapex&tenantId=toponefutures",
+    iconClass: "fa-solid fa-star",
+    iconBgClass: "bg-slate-50",
+    iconColorClass: "text-[#C41E3A]"
+  },
+  {
+    id: "earn2trade",
+    name: "Earn2Trade",
+    discount: "老牌自营",
+    link: "https://www.earn2trade.com/zh/",
+    iconClass: "fa-solid fa-graduation-cap",
+    iconBgClass: "bg-slate-900",
+    iconColorClass: "text-white"
+  }
+];
+
 export const FAQS: FaqItem[] = [
   {
     question: "什么是Futures PropFirm自营公司？",
@@ -172,52 +211,4 @@ export const FAQS: FaqItem[] = [
 
 export const COMMUNITY_ACCOUNTS: ResourceLink[] = [
   { label: "阿里Ali的交易日志", url: "https://live.bilibili.com/1874453448?broadcast_type=0&is_room_feed=1&spm_id_from=333.1387.to_liveroom.0.click&live_from=86002" }
-];
-
-export const DEALS = [
-  {
-    id: 1,
-    name: "Take Profit Trader",
-    discount: "7折 + 免激活",
-    link: "https://takeprofittrader.com/?referralCode=DP01",
-    iconBgClass: "bg-slate-50",
-    iconClass: "fa-solid fa-chart-line",
-    iconColorClass: "text-primary"
-  },
-  {
-    id: 2,
-    name: "Lucid Trading",
-    discount: "6折圣诞特惠",
-    link: "https://lucidtrading.com/",
-    iconBgClass: "bg-[#121212]",
-    iconClass: "fa-solid fa-circle",
-    iconColorClass: "text-blue-500"
-  },
-  {
-    id: 3,
-    name: "TopOne Futures",
-    discount: "4.5折黑五价",
-    link: "https://toponefutures.com/?linkId=lp_707970&sourceId=deltapex&tenantId=toponefutures",
-    iconBgClass: "bg-slate-50",
-    iconClass: "fa-solid fa-star",
-    iconColorClass: "text-[#C41E3A]"
-  },
-  {
-    id: 4,
-    name: "Earn2Trade",
-    discount: "大促优惠中",
-    link: "https://www.earn2trade.com/zh/",
-    iconBgClass: "bg-slate-900",
-    iconClass: "fa-solid fa-graduation-cap",
-    iconColorClass: "text-white"
-  },
-  {
-    id: 5,
-    name: "ATAS",
-    discount: "订单流软件注册",
-    link: "https://atas.net/cn/?rs=partners_oft281860",
-    iconBgClass: "bg-blue-50",
-    iconClass: "fa-solid fa-chart-bar",
-    iconColorClass: "text-blue-500"
-  }
 ];

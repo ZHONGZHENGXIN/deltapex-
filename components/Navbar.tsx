@@ -10,7 +10,9 @@ import {
   ArrowRight,
   Compass,
   FlaskConical,
-  Globe
+  Globe,
+  LayoutGrid,
+  BookText
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -52,10 +54,32 @@ const NAV_LINKS = [
   }
 ];
 
+const PROPRIETARY_LINKS = [
+  {
+    name: "Deltapex 软件终端",
+    href: "https://deltapex.cn/",
+    icon: <Globe size={18} />,
+    desc: "Deltapex 软件终端"
+  },
+  {
+    name: "Options Laboratory",
+    href: "https://options-laboratory.zeabur.app",
+    icon: <FlaskConical size={18} />,
+    desc: "期权策略实验室"
+  },
+  {
+    name: "交易日志",
+    href: "https://deltapextradingjournal.zeabur.app/",
+    icon: <BookText size={18} />,
+    desc: "专业交易复盘系统"
+  }
+];
+
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isProprietaryHovered, setIsProprietaryHovered] = useState(false);
 
   // Handle Scroll Effect
   useEffect(() => {
@@ -153,28 +177,58 @@ const Navbar: React.FC = () => {
               </div>
             ))}
 
-            <div className="flex items-center gap-4">
-              {/* Deltapex CN Link */}
-              <a 
-                href="https://deltapex.cn/" 
-                target="_blank" 
-                rel="noopener noreferrer"
+            {/* Deltapex 自营 Dropdown Button */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsProprietaryHovered(true)}
+              onMouseLeave={() => setIsProprietaryHovered(false)}
+            >
+              <button 
                 className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#D32F2F] to-[#EF5350] text-white rounded-full font-bold text-sm shadow-lg shadow-red-900/20 hover:shadow-red-600/40 hover:scale-105 transition-all duration-300 group"
               >
-                <Globe size={18} className="group-hover:rotate-12 transition-transform duration-300" />
-                <span>Deltapex CN</span>
-              </a>
+                <LayoutGrid size={18} className="group-hover:rotate-12 transition-transform duration-300" />
+                <span>Deltapex 自营</span>
+                <ChevronDown 
+                  size={16} 
+                  className={cn("ml-1 transition-transform duration-300", isProprietaryHovered ? "rotate-180" : "")} 
+                />
+              </button>
 
-              {/* Prominent Options Laboratory Link */}
-              <a 
-                href="https://options-laboratory.zeabur.app" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#D32F2F] to-[#EF5350] text-white rounded-full font-bold text-sm shadow-lg shadow-red-900/20 hover:shadow-red-600/40 hover:scale-105 transition-all duration-300 group"
-              >
-                <FlaskConical size={18} className="group-hover:rotate-12 transition-transform duration-300" />
-                <span>Options Laboratory</span>
-              </a>
+              <AnimatePresence>
+                {isProprietaryHovered && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full right-0 mt-2 w-64 bg-[#0a0a0a]/95 backdrop-blur-xl border border-[#D32F2F]/20 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] overflow-hidden"
+                  >
+                    {/* Glow Effect */}
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D32F2F] to-transparent opacity-50" />
+                    
+                    <div className="p-2 flex flex-col gap-1">
+                      {PROPRIETARY_LINKS.map((item, idx) => (
+                        <a
+                          key={idx}
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center px-4 py-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-all group/item"
+                        >
+                          <div className="flex-shrink-0 mr-3 text-[#D32F2F] bg-[#D32F2F]/10 p-2 rounded-md group-hover/item:bg-[#D32F2F] group-hover/item:text-white transition-colors">
+                            {item.icon}
+                          </div>
+                          <div>
+                            <span className="block font-bold text-white mb-0.5">{item.name}</span>
+                            <span className="block text-xs text-slate-500 group-hover/item:text-slate-400">{item.desc}</span>
+                          </div>
+                          <ArrowRight size={14} className="ml-auto opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#D32F2F] shrink-0" />
+                        </a>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 
@@ -241,31 +295,30 @@ const Navbar: React.FC = () => {
                   </div>
                 ))}
 
-                {/* Mobile Options Lab Link & Deltapex CN */}
+                {/* Mobile Deltapex 自营 Section */}
                 <div className="space-y-3 pt-4 border-t border-white/10">
-                   <a 
-                      href="https://deltapex.cn/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-white font-bold text-base bg-[#D32F2F]/10 p-3 rounded-xl border border-[#D32F2F]/20 hover:bg-[#D32F2F]/20 transition-colors"
-                   >
-                      <div className="bg-[#D32F2F] p-2 rounded-lg text-white">
-                        <Globe size={20} />
-                      </div>
-                      Deltapex CN
-                   </a>
-
-                   <a 
-                      href="https://options-laboratory.zeabur.app"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-white font-bold text-base bg-[#D32F2F]/10 p-3 rounded-xl border border-[#D32F2F]/20 hover:bg-[#D32F2F]/20 transition-colors"
-                   >
-                      <div className="bg-[#D32F2F] p-2 rounded-lg text-white">
-                        <FlaskConical size={20} />
-                      </div>
-                      Options Laboratory
-                   </a>
+                   <div className="flex items-center gap-2 text-[#D32F2F] font-bold text-sm uppercase tracking-wider mb-2">
+                      <LayoutGrid size={18} />
+                      Deltapex 自营
+                   </div>
+                   
+                   {PROPRIETARY_LINKS.map((item, idx) => (
+                     <a 
+                        key={idx}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 text-white font-bold text-base bg-[#D32F2F]/10 p-3 rounded-xl border border-[#D32F2F]/20 hover:bg-[#D32F2F]/20 transition-colors mb-2"
+                     >
+                        <div className="bg-[#D32F2F] p-2 rounded-lg text-white">
+                          {item.icon}
+                        </div>
+                        <div className="flex flex-col">
+                          <span>{item.name}</span>
+                          <span className="text-xs text-slate-400 font-normal">{item.desc}</span>
+                        </div>
+                     </a>
+                   ))}
                 </div>
               </div>
             </motion.div>
