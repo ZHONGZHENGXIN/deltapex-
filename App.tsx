@@ -23,10 +23,13 @@ import RithmicGuideView from './components/RithmicGuideView';
 import PaymentGuideView from './components/PaymentGuideView';
 import WiseGuideView from './components/WiseGuideView';
 import RegistrationGuideView from './components/RegistrationGuideView';
+import PrivacyPolicyView from './components/PrivacyPolicyView';
+import TermsOfServiceView from './components/TermsOfServiceView';
+import RefundPolicyView from './components/RefundPolicyView';
 
 import Lenis from 'lenis';
 
-type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide';
+type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund';
 
 function App() {
   // Use Hash Routing to determine view
@@ -50,6 +53,10 @@ function App() {
       case '#payment-guide': return 'payment-guide';
       case '#wise-guide': return 'wise-guide';
       case '#registration-guide': return 'registration-guide';
+      // Policy Routes
+      case '#privacy': return 'privacy';
+      case '#terms': return 'terms';
+      case '#refund': return 'refund';
       default: return 'home';
     }
   };
@@ -207,6 +214,11 @@ function App() {
         {currentView === 'payment-guide' && <PaymentGuideView />}
         {currentView === 'wise-guide' && <WiseGuideView />}
         {currentView === 'registration-guide' && <RegistrationGuideView />}
+        
+        {/* Policy Views */}
+        {currentView === 'privacy' && <PrivacyPolicyView />}
+        {currentView === 'terms' && <TermsOfServiceView />}
+        {currentView === 'refund' && <RefundPolicyView />}
 
         {/* HOME VIEW CONTENT */}
         {currentView === 'home' && (
@@ -312,7 +324,7 @@ function App() {
                             >
                                <div className="w-24 h-24 bg-red-50 rounded-2xl flex items-center justify-center text-red-500 group-hover/ebc:bg-red-500 group-hover/ebc:text-white transition-all duration-300 md:mr-8 mb-6 md:mb-0 shrink-0 shadow-inner">
                                   <i className="fa-solid fa-user-shield text-4xl"></i>
-                               </div>
+                                </div>
                                <div className="flex-1 text-center md:text-left">
                                   <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-2">Preferred Broker</div>
                                   <div className="text-2xl font-bold text-slate-800 group-hover/ebc:text-red-600 transition-colors mb-2">EBC 极速开户</div>
@@ -500,9 +512,16 @@ function App() {
                       <i className="fa-solid fa-headset text-xl mr-3"></i> 立即咨询
                     </Button>
                   </div>
-                  <div className="mt-20 text-xs text-slate-400 font-bold uppercase tracking-[0.2em] space-y-2">
+                  <div className="mt-20 text-xs text-slate-400 font-bold uppercase tracking-[0.2em] space-y-4 flex flex-col items-center">
                     <p>© 2025 DELTAPEX TRADING GROUP. ALL RIGHTS RESERVED.</p>
-                    <p>ATAS订单流中文社区 | 风险披露 | 隐私政策</p>
+                    <p>ATAS订单流中文社区</p>
+                    <div className="flex gap-4 text-[10px] md:text-xs">
+                       <button onClick={() => window.location.hash = "#privacy"} className="hover:text-primary transition-colors">隐私政策</button>
+                       <span className="text-slate-300">|</span>
+                       <button onClick={() => window.location.hash = "#terms"} className="hover:text-primary transition-colors">服务条款</button>
+                       <span className="text-slate-300">|</span>
+                       <button onClick={() => window.location.hash = "#refund"} className="hover:text-primary transition-colors">退款政策</button>
+                    </div>
                   </div>
                 </div>
               </Reveal>
