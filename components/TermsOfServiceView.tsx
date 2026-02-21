@@ -23,7 +23,7 @@ const TermsOfServiceView: React.FC = () => {
         </nav>
 
         <h1 className="text-3xl font-bold text-slate-900 mb-2">服务条款与免责声明</h1>
-        <p className="text-sm text-slate-500 mb-8">最后更新日期：2025年1月1日</p>
+        <p className="text-sm text-slate-500 mb-8">最后更新日期：2026年1月1日</p>
 
         <div className="space-y-8 text-slate-700">
           <div className="bg-red-50 border-l-4 border-red-600 p-4 rounded-r">
@@ -78,6 +78,13 @@ const TermsOfServiceView: React.FC = () => {
             <h2 className="text-xl font-bold text-slate-900 mb-3">6. 适用法律</h2>
             <p>
               本服务条款的解释与适用均遵循中华人民共和国法律。若发生争议，双方应友好协商解决。
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-slate-900 mb-3">7. 联系方式</h2>
+            <p>
+              如您对本服务条款有任何疑问，请联系我们：<a href="mailto:support@deltapex.cn" className="text-primary hover:underline">support@deltapex.cn</a>
             </p>
           </section>
         </div>

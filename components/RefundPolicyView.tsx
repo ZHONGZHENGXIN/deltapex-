@@ -23,7 +23,7 @@ const RefundPolicyView: React.FC = () => {
         </nav>
 
         <h1 className="text-3xl font-bold text-slate-900 mb-2">退款政策</h1>
-        <p className="text-sm text-slate-500 mb-8">最后更新日期：2025年1月1日</p>
+        <p className="text-sm text-slate-500 mb-8">最后更新日期：2026年1月1日</p>
 
         <div className="space-y-8 text-slate-700">
           <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r">
@@ -61,6 +61,10 @@ const RefundPolicyView: React.FC = () => {
             <h2 className="text-xl font-bold text-slate-900 mb-3">3. 联系与协助</h2>
             <p>
               如果您在与第三方自营公司的沟通中遇到困难，或者认为遭到了不公正的待遇，可以联系我们的客服团队。虽然我们无法直接为您办理退款，但我们可以凭借行业经验为您提供沟通建议或协助反馈问题。
+              <br/><br/>
+              <strong>官方客服邮箱：</strong> <a href="mailto:support@deltapex.cn" className="text-primary hover:underline">support@deltapex.cn</a>
+              <br/>
+              我们承诺在收到您的请求后 <strong>3 个工作日内</strong> 给予回复。
             </p>
           </section>
         </div>

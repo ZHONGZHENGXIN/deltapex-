@@ -23,7 +23,7 @@ const PrivacyPolicyView: React.FC = () => {
         </nav>
 
         <h1 className="text-3xl font-bold text-slate-900 mb-2">隐私政策</h1>
-        <p className="text-sm text-slate-500 mb-8">最后更新日期：2025年1月1日</p>
+        <p className="text-sm text-slate-500 mb-8">最后更新日期：2026年1月1日</p>
 
         <div className="space-y-8 text-slate-700">
           <section>
@@ -76,6 +76,8 @@ const PrivacyPolicyView: React.FC = () => {
             <h2 className="text-xl font-bold text-slate-900 mb-3">6. 联系我们</h2>
             <p>
               如您对本隐私政策有任何疑问或建议，请通过本网站提供的官方联系方式与我们联系。
+              <br/>
+              <strong>官方客服邮箱：</strong> <a href="mailto:support@deltapex.cn" className="text-primary hover:underline">support@deltapex.cn</a>
             </p>
           </section>
         </div>
