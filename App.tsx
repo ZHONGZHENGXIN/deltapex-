@@ -26,10 +26,11 @@ import PrivacyPolicyView from './components/PrivacyPolicyView';
 import TermsOfServiceView from './components/TermsOfServiceView';
 import RefundPolicyView from './components/RefundPolicyView';
 import ManageSubscriptionView from './components/ManageSubscriptionView';
+import CourseView from './components/CourseView';
 
 import Lenis from 'lenis';
 
-type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription';
+type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course';
 
 function App() {
   // Use Hash Routing to determine view
@@ -58,6 +59,7 @@ function App() {
       case '#terms': return 'terms';
       case '#refund': return 'refund';
       case '#manage-subscription': return 'manage-subscription';
+      case '#course': return 'course';
       default: return 'home';
     }
   };
@@ -214,6 +216,7 @@ function App() {
         {currentView === 'terms' && <TermsOfServiceView />}
         {currentView === 'refund' && <RefundPolicyView />}
         {currentView === 'manage-subscription' && <ManageSubscriptionView />}
+        {currentView === 'course' && <CourseView />}
 
         {/* HOME VIEW CONTENT */}
         {currentView === 'home' && (
@@ -232,29 +235,38 @@ function App() {
                   ATAS订单流中文社区
                 </p>
 
-                <div 
-                  ref={ctaRef}
-                  onMouseMove={handleCtaMouseMove}
-                  onMouseLeave={handleCtaMouseLeave}
-                  className="inline-block relative perspective-1000 group"
-                  style={{
-                    transform: `perspective(1000px) rotateX(${ctaRotate.x}deg) rotateY(${ctaRotate.y}deg)`,
-                    transition: ctaRotate.x === 0 ? 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
-                  }}
-                >
+                <div className="flex flex-col items-center gap-4">
+                  {/* Primary CTA - Course */}
                   <Button 
-                    href="#about"
-                    className="relative overflow-hidden px-14 py-6 text-xl rounded-2xl shadow-[0_30px_60px_-15px_rgba(211,47,47,0.3)] z-10 hover:shadow-[0_40px_80px_-20px_rgba(211,47,47,0.4)] transition-shadow duration-500"
+                    href="#course"
+                    className="relative overflow-hidden px-14 py-6 text-xl rounded-2xl shadow-[0_30px_60px_-15px_rgba(211,47,47,0.3)] z-10 hover:shadow-[0_40px_80px_-20px_rgba(211,47,47,0.4)] transition-shadow duration-500 group"
                   >
-                    <div 
-                      className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
-                      style={{
-                        background: `radial-gradient(120px circle at ${ctaSpotlight.x}px ${ctaSpotlight.y}px, rgba(255, 255, 255, 0.2), transparent 80%)`
-                      }}
-                    />
-                    <span className="relative z-10 font-bold tracking-wide">关于我们</span>
+                    <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    <span className="relative z-10 font-bold tracking-wide flex flex-col items-center">
+                      加入课程
+                      <span className="text-sm font-normal opacity-80 mt-1 uppercase tracking-widest">Join the Course</span>
+                    </span>
                   </Button>
-                  <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 to-red-600/50 rounded-2xl blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
+
+                  {/* Secondary CTA - About Us */}
+                  <div 
+                    ref={ctaRef}
+                    onMouseMove={handleCtaMouseMove}
+                    onMouseLeave={handleCtaMouseLeave}
+                    className="inline-block relative perspective-1000 group"
+                    style={{
+                      transform: `perspective(1000px) rotateX(${ctaRotate.x}deg) rotateY(${ctaRotate.y}deg)`,
+                      transition: ctaRotate.x === 0 ? 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
+                    }}
+                  >
+                    <Button 
+                      href="#about"
+                      variant="white"
+                      className="relative overflow-hidden px-8 py-3 text-sm rounded-xl border border-slate-200 text-slate-500 hover:border-primary/30 hover:text-primary bg-white shadow-sm hover:shadow-md transition-all duration-500"
+                    >
+                      <span className="relative z-10 font-medium tracking-wide">关于我们</span>
+                    </Button>
+                  </div>
                 </div>
               </Reveal>
             </header>

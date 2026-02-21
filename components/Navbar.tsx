@@ -35,6 +35,13 @@ const NAV_LINKS = [
     ]
   },
   {
+    title: "体系课程",
+    icon: <BookOpen size={18} />,
+    items: [
+      { name: "系统交易课程", href: "#course" }
+    ]
+  },
+  {
     title: "软件终端",
     icon: <Cpu size={18} />,
     items: [
@@ -44,7 +51,7 @@ const NAV_LINKS = [
   },
   {
     title: "必读干货",
-    icon: <BookOpen size={18} />,
+    icon: <BookText size={18} />,
     items: [
       { name: "Prop Firm 核心知识", href: "#prop-firm-guide" },
       { name: "支付通关指南", href: "#payment-guide" },
