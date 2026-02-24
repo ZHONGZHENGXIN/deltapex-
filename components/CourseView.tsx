@@ -89,7 +89,7 @@ const CourseView: React.FC = () => {
               { month: "Month 2", title: "流动性与盘口动力学", desc: "探究流动性池（Liquidity Pools）的形成与消耗。学习识别冰山订单（Iceberg Orders）、欺骗性挂单（Spoofing）、吸收（Absorption）与动能耗竭（Exhaustion）。" },
               { month: "Month 3", title: "高级分析工具应用", desc: "结合 ATAS 平台，精通 Volume Profile（成交量分布）、VWAP（成交量加权平均价）与 Cumulative Delta（累计差值）。寻找高胜率的价值区域与失衡点。" },
               { month: "Month 4", title: "机构行为追踪与假突破", desc: "学习像机构一样思考。识别止损猎取（Stop Hunts）与陷阱（Trapped Traders），利用散户的错误止损作为我们入场的燃料，精准捕捉假突破带来的反转机会。" },
-              { month: "Month 5", title: "交易系统构建与风控", desc: "将订单流信号转化为具体的交易策略。制定明确的入场触发条件、止损设置与动态止盈目标。引入 GTO（博弈论最优）概念进行仓位管理与风险控制。" },
+              { month: "Month 5", title: "交易系统构建与风控", desc: "将订单流信号转化为具体的交易策略。制定明确的入场触发条件、止损设置与动态止盈目标。" },
               { month: "Month 6", title: "实时盘面实战与复盘", desc: "进入实战阶段。在真实的波动市场中进行实时盘面分析（Live Trading Sessions）。建立专业的交易日志，进行深度复盘与心理学建设，克服交易情绪。" }
             ].map((item, idx) => (
               <Reveal key={idx} delay={idx * 0.1}>
@@ -213,7 +213,7 @@ const CourseView: React.FC = () => {
           <div className="text-left bg-slate-50 p-8 rounded-2xl border border-slate-200 text-sm text-slate-500 space-y-4">
             <h4 className="font-bold text-slate-700 text-base mb-4">购买须知与合规声明</h4>
             <p>
-              <strong>客户支持：</strong> 如有任何疑问或需要协助，请联系我们的官方客服邮箱 <a href="mailto:support@deltapex.cn" className="text-primary hover:underline">support@deltapex.cn</a>。我们将在 3 个工作日内回复您的请求。
+              <strong>客户支持：</strong> 如有任何疑问或需要协助，请联系我们的官方客服邮箱 <a href="mailto:depaitina@deltapex.cc" className="text-primary hover:underline">depaitina@deltapex.cc</a>。我们将在 3 个工作日内回复您的请求。
             </p>
             <p>
               <strong>退款政策：</strong> 本产品为虚拟知识服务。请在购买前仔细阅读我们的 <a href="#refund" className="text-primary hover:underline">退款政策 (Refund Policy)</a>。

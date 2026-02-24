@@ -108,7 +108,7 @@ const ManageSubscriptionView: React.FC = () => {
             <div className="border border-slate-200 rounded-lg p-5">
               <h4 className="font-bold text-slate-800 mb-2 text-sm">需要人工协助？</h4>
               <p className="text-sm text-slate-600">
-                如果您无法自行操作，请发送邮件至 <a href="mailto:support@deltapex.cn" className="text-primary font-bold">support@deltapex.cn</a>，并在邮件标题注明【取消订阅申请】，我们将在 3 个工作日内为您处理。
+                如果您无法自行操作，请发送邮件至 <a href="mailto:depaitina@deltapex.cc" className="text-primary font-bold">depaitina@deltapex.cc</a>，并在邮件标题注明【取消订阅申请】，我们将在 3 个工作日内为您处理。
               </p>
             </div>
           </div>

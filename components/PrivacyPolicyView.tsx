@@ -77,7 +77,7 @@ const PrivacyPolicyView: React.FC = () => {
             <p>
               如您对本隐私政策有任何疑问或建议，请通过本网站提供的官方联系方式与我们联系。
               <br/>
-              <strong>官方客服邮箱：</strong> <a href="mailto:support@deltapex.cn" className="text-primary hover:underline">support@deltapex.cn</a>
+              <strong>官方客服邮箱：</strong> <a href="mailto:depaitina@deltapex.cc" className="text-primary hover:underline">depaitina@deltapex.cc</a>
             </p>
           </section>
         </div>

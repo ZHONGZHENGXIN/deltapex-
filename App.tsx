@@ -517,8 +517,8 @@ function App() {
                   
                   {/* Support Email Display */}
                   <div className="mb-12 flex flex-col items-center gap-2">
-                     <a href="mailto:support@deltapex.cn" className="text-slate-600 font-medium hover:text-primary transition-colors flex items-center gap-2 text-lg">
-                        <i className="fa-regular fa-envelope"></i> support@deltapex.cn
+                     <a href="mailto:depaitina@deltapex.cc" className="text-slate-600 font-medium hover:text-primary transition-colors flex items-center gap-2 text-lg">
+                        <i className="fa-regular fa-envelope"></i> depaitina@deltapex.cc
                      </a>
                      <p className="text-xs text-slate-400">客服响应时间：工作日 9:00 - 18:00 (GMT+8)</p>
                   </div>

@@ -84,7 +84,7 @@ const TermsOfServiceView: React.FC = () => {
           <section>
             <h2 className="text-xl font-bold text-slate-900 mb-3">7. 联系方式</h2>
             <p>
-              如您对本服务条款有任何疑问，请联系我们：<a href="mailto:support@deltapex.cn" className="text-primary hover:underline">support@deltapex.cn</a>
+              如您对本服务条款有任何疑问，请联系我们：<a href="mailto:depaitina@deltapex.cc" className="text-primary hover:underline">depaitina@deltapex.cc</a>
             </p>
           </section>
         </div>

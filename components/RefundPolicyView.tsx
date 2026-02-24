@@ -62,7 +62,7 @@ const RefundPolicyView: React.FC = () => {
             <p>
               如果您在与第三方自营公司的沟通中遇到困难，或者认为遭到了不公正的待遇，可以联系我们的客服团队。虽然我们无法直接为您办理退款，但我们可以凭借行业经验为您提供沟通建议或协助反馈问题。
               <br/><br/>
-              <strong>官方客服邮箱：</strong> <a href="mailto:support@deltapex.cn" className="text-primary hover:underline">support@deltapex.cn</a>
+              <strong>官方客服邮箱：</strong> <a href="mailto:depaitina@deltapex.cc" className="text-primary hover:underline">depaitina@deltapex.cc</a>
               <br/>
               我们承诺在收到您的请求后 <strong>3 个工作日内</strong> 给予回复。
             </p>
