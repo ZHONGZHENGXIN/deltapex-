@@ -40,6 +40,7 @@ export const STUDENT_CASES = [
   {
     id: 1,
     name: "赵天翊",
+    category: "live-payout",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Zhao",
     profit: "全绿盈利日历",
     strategy: "Lucid Flex 阶梯种田",
@@ -49,6 +50,7 @@ export const STUDENT_CASES = [
   {
     id: 2,
     name: "孙博文",
+    category: "exam-pass",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sun",
     profit: "夏普比率: 3.45",
     strategy: "Excel 深度数据管理",
@@ -58,6 +60,7 @@ export const STUDENT_CASES = [
   {
     id: 3,
     name: "徐雅琪",
+    category: "live-payout",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Xu",
     profit: "阶梯式资金增长曲线",
     strategy: "多账户矩阵复利",
@@ -67,6 +70,7 @@ export const STUDENT_CASES = [
   {
     id: 4,
     name: "张杰",
+    category: "live-payout",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang",
     profit: "单月提取 $15,000",
     strategy: "ICT 订单块结合 DOM",
@@ -76,11 +80,42 @@ export const STUDENT_CASES = [
   {
     id: 5,
     name: "刘薇",
+    category: "exam-payout",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Liu",
     profit: "稳健日盈 $500",
     strategy: "欧盘区间突破",
     screenshot: "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/5.jpg", 
     comment: "不再追求暴利，而是专注于每日的确定性机会。积少成多，心态反而更加平和了。"
+  },
+  {
+    id: 6,
+    name: "王强",
+    category: "exam-pass",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Wang",
+    profit: "一周通关 50K",
+    strategy: "价格行为 + 订单流",
+    screenshot: "https://via.placeholder.com/800x600?text=Exam+Pass+Certificate", 
+    comment: "感谢社区的指导，让我能够在一周内顺利通过 50K 考试账号，拿到实盘资格。"
+  },
+  {
+    id: 7,
+    name: "李娜",
+    category: "feedback",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Li",
+    profit: "心态显著提升",
+    strategy: "冥想 + 交易心理",
+    screenshot: "https://via.placeholder.com/800x600?text=Positive+Feedback", 
+    comment: "社区不仅仅教技术，更重要的是教会了我如何控制情绪。现在交易不再焦虑，心态平和了很多。"
+  },
+  {
+    id: 8,
+    name: "陈明",
+    category: "feedback",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Chen",
+    profit: "系统化思维",
+    strategy: "交易系统构建",
+    screenshot: "https://via.placeholder.com/800x600?text=System+Building", 
+    comment: "以前交易很混乱，现在有了自己的交易系统，进出场都有据可依，不再盲目操作。"
   }
 ];
 
