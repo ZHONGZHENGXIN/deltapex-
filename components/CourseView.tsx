@@ -52,7 +52,7 @@ const CourseView: React.FC = () => {
             <div className="text-center mb-16">
               <span className="text-primary font-bold tracking-[0.25em] text-xs uppercase mb-4 block">Core Modules</span>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">核心课程大纲</h2>
-              <p className="text-slate-500 text-lg">在接下来的 6 个月中，您将精通以下核心领域</p>
+              <p className="text-slate-500 text-lg">您将精通以下核心领域</p>
             </div>
           </Reveal>
           
@@ -78,7 +78,7 @@ const CourseView: React.FC = () => {
           <Reveal>
             <div className="text-center mb-16">
               <span className="text-primary font-bold tracking-[0.25em] text-xs uppercase mb-4 block">Curriculum</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">6个月高阶训练营安排</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">高阶训练营安排</h2>
               <p className="text-slate-500 text-lg">从理论到实战，系统化掌握订单流交易体系</p>
             </div>
           </Reveal>
@@ -114,18 +114,18 @@ const CourseView: React.FC = () => {
         <Reveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">加入课程</h2>
-            <p className="text-slate-500 text-lg">选择适合您的学习周期，立即开启核心交易训练。</p>
+            <p className="text-slate-500 text-lg">选择适合您的课程，立即开启核心交易训练。</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* 6 Months Card */}
             <div className="bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-lg hover:shadow-2xl transition-all duration-500 relative flex flex-col h-full group">
               <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-200 group-hover:bg-primary transition-colors duration-300 rounded-t-[2.5rem]"></div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">6个月</h3>
-              <p className="text-slate-500 mb-8 text-sm">适合快速掌握核心框架的交易者</p>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">线上课程</h3>
+              <p className="text-slate-500 mb-8 text-sm">【通识课】从零构建盈利体系</p>
               
               <div className="text-5xl font-black text-slate-900 mb-8 tracking-tight">
-                $999 <span className="text-base text-slate-400 font-medium tracking-normal">/ 一次性买断</span>
+                ¥29,800
               </div>
               
               <div className="flex-grow"></div>
@@ -151,11 +151,11 @@ const CourseView: React.FC = () => {
             {/* 12 Months Card */}
             <div className="bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-lg hover:shadow-2xl transition-all duration-500 relative flex flex-col h-full group">
               <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-200 group-hover:bg-primary transition-colors duration-300 rounded-t-[2.5rem]"></div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">12个月</h3>
-              <p className="text-slate-500 mb-8 text-sm">完整经历市场周期，深度巩固策略</p>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">线下培训</h3>
+              <p className="text-slate-500 mb-8 text-sm">【实战营】职业交易员封闭特训</p>
               
               <div className="text-5xl font-black text-slate-900 mb-8 tracking-tight">
-                $1,499 <span className="text-base text-slate-400 font-medium tracking-normal">/ 一次性买断</span>
+                ¥45,800
               </div>
               
               <div className="flex-grow"></div>
@@ -181,11 +181,11 @@ const CourseView: React.FC = () => {
             {/* Lifetime Card */}
             <div className="bg-slate-900 border border-slate-800 rounded-[2.5rem] p-10 shadow-xl hover:shadow-2xl transition-all duration-500 relative flex flex-col h-full group">
               <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-700 group-hover:bg-primary transition-colors duration-300 rounded-t-[2.5rem]"></div>
-              <h3 className="text-2xl font-bold text-white mb-2">终身会员</h3>
-              <p className="text-slate-400 mb-8 text-sm">永久访问所有课程更新与专属社区</p>
+              <h3 className="text-2xl font-bold text-white mb-2">知识星球</h3>
+              <p className="text-slate-400 mb-8 text-sm">【研究篇】Deltapex 投研与订单流前沿</p>
               
               <div className="text-5xl font-black text-white mb-8 tracking-tight">
-                $2,999 <span className="text-base text-slate-500 font-medium tracking-normal">/ 一次性买断</span>
+                ¥1,999 <span className="text-base text-slate-500 font-medium tracking-normal">/ 年</span>
               </div>
               
               <div className="flex-grow"></div>
@@ -205,6 +205,105 @@ const CourseView: React.FC = () => {
                 <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-relaxed">
                   本课程仅供教育目的，不构成任何财务或投资建议。
                 </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Combo Packages */}
+          <div className="max-w-5xl mx-auto mb-16">
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="h-px bg-slate-200 w-12"></div>
+              <h3 className="text-2xl font-bold text-slate-900">超值组合套餐</h3>
+              <div className="h-px bg-slate-200 w-12"></div>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Combo 1: Online + Planet */}
+              <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-[2.5rem] p-10 shadow-lg hover:shadow-2xl transition-all duration-500 relative flex flex-col h-full group overflow-hidden">
+                <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-4 py-2 rounded-bl-2xl z-10">
+                  立省 ¥999
+                </div>
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-slate-300 to-slate-400 group-hover:from-primary group-hover:to-red-400 transition-all duration-300 rounded-t-[2.5rem]"></div>
+                
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">线上课程 + 知识星球</h3>
+                <p className="text-slate-500 mb-6 text-sm">【组合优惠】系统课程与持续投研的完美结合</p>
+                
+                <div className="mb-8">
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-lg text-slate-400 line-through decoration-slate-400/50">¥31,799</span>
+                    <span className="text-5xl font-black text-slate-900 tracking-tight">¥30,800</span>
+                  </div>
+                  <p className="text-red-500 text-sm font-bold mt-2 bg-red-50 inline-block px-3 py-1 rounded-full">
+                    包含一年知识星球会员
+                  </p>
+                </div>
+                
+                <div className="flex-grow space-y-3 mb-8">
+                  <div className="flex items-center gap-3 text-slate-600 text-sm">
+                    <i className="fa-solid fa-check-circle text-primary"></i>
+                    <span>包含所有线上课程内容</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-slate-600 text-sm">
+                    <i className="fa-solid fa-check-circle text-primary"></i>
+                    <span>赠送一年知识星球会员权限</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-slate-600 text-sm">
+                    <i className="fa-solid fa-check-circle text-primary"></i>
+                    <span>享受双重学习资源</span>
+                  </div>
+                </div>
+                
+                <Button 
+                  href="#" 
+                  target="_blank"
+                  className="w-full py-4 text-lg font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 mb-4 bg-slate-900 text-white hover:bg-slate-800"
+                >
+                  立即报名
+                </Button>
+              </div>
+
+              {/* Combo 2: Offline + Planet */}
+              <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-[2.5rem] p-10 shadow-lg hover:shadow-2xl transition-all duration-500 relative flex flex-col h-full group overflow-hidden">
+                <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-4 py-2 rounded-bl-2xl z-10">
+                  立省 ¥999
+                </div>
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-slate-300 to-slate-400 group-hover:from-primary group-hover:to-red-400 transition-all duration-300 rounded-t-[2.5rem]"></div>
+                
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">线下培训 + 知识星球</h3>
+                <p className="text-slate-500 mb-6 text-sm">【全能套餐】实战特训与长期投研支持</p>
+                
+                <div className="mb-8">
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-lg text-slate-400 line-through decoration-slate-400/50">¥47,799</span>
+                    <span className="text-5xl font-black text-slate-900 tracking-tight">¥46,800</span>
+                  </div>
+                  <p className="text-red-500 text-sm font-bold mt-2 bg-red-50 inline-block px-3 py-1 rounded-full">
+                    包含一年知识星球会员
+                  </p>
+                </div>
+                
+                <div className="flex-grow space-y-3 mb-8">
+                  <div className="flex items-center gap-3 text-slate-600 text-sm">
+                    <i className="fa-solid fa-check-circle text-primary"></i>
+                    <span>包含线下实战特训营名额</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-slate-600 text-sm">
+                    <i className="fa-solid fa-check-circle text-primary"></i>
+                    <span>赠送一年知识星球会员权限</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-slate-600 text-sm">
+                    <i className="fa-solid fa-check-circle text-primary"></i>
+                    <span>全方位导师指导</span>
+                  </div>
+                </div>
+                
+                <Button 
+                  href="#" 
+                  target="_blank"
+                  className="w-full py-4 text-lg font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 mb-4 bg-slate-900 text-white hover:bg-slate-800"
+                >
+                  立即报名
+                </Button>
               </div>
             </div>
           </div>
