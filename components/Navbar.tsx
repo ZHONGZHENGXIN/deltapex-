@@ -79,6 +79,12 @@ const PROPRIETARY_LINKS = [
     href: "https://deltapextradingjournal.zeabur.app/",
     icon: <BookText size={18} />,
     desc: "专业交易复盘系统"
+  },
+  {
+    name: "交易 DNA",
+    href: "https://dptest.org",
+    icon: <Globe size={18} />,
+    desc: "Deltapex 测试站点"
   }
 ];
 
