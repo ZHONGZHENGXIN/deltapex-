@@ -184,6 +184,7 @@ function App() {
                 src={selectedImage} 
                 className="max-w-full max-h-[85vh] object-contain" 
                 alt="Trading Result Preview"
+                referrerPolicy="no-referrer"
                 onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/1200x800?text=Result+Loading...'; }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>

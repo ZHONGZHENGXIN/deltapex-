@@ -42,6 +42,7 @@ const StudentCasesView: React.FC = () => {
                     src={student.avatar} 
                     alt={student.name} 
                     className="w-12 h-12 rounded-full bg-slate-700"
+                    referrerPolicy="no-referrer"
                   />
                   <div>
                     <h3 className="text-lg font-bold text-white">{student.name}</h3>
@@ -54,6 +55,7 @@ const StudentCasesView: React.FC = () => {
                      src={student.screenshot} 
                      alt="Profit Screenshot" 
                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                     referrerPolicy="no-referrer"
                      onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x225/1e293b/cbd5e1?text=Profit+Chart'; }}
                    />
                 </div>

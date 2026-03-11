@@ -137,7 +137,7 @@ const CourseView: React.FC = () => {
               >
                 立即报名
               </Button>
-              <a href="#detailed-syllabus" className="text-sm text-primary hover:underline font-medium block mb-6">
+              <a href="https://flowus.cn/share/7fd9ea23-2ce3-47cc-a6ba-e35d27bb8576?code=GYGFED" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline font-medium block mb-6">
                 查看课程详细说明 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
               </a>
               
@@ -167,7 +167,7 @@ const CourseView: React.FC = () => {
               >
                 立即报名
               </Button>
-              <a href="#detailed-syllabus" className="text-sm text-primary hover:underline font-medium block mb-6">
+              <a href="https://flowus.cn/share/7fd9ea23-2ce3-47cc-a6ba-e35d27bb8576?code=GYGFED" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline font-medium block mb-6">
                 查看课程详细说明 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
               </a>
               
@@ -197,7 +197,7 @@ const CourseView: React.FC = () => {
               >
                 立即报名
               </Button>
-              <a href="#detailed-syllabus" className="text-sm text-red-400 hover:text-red-300 hover:underline font-medium block mb-6">
+              <a href="https://flowus.cn/share/7fd9ea23-2ce3-47cc-a6ba-e35d27bb8576?code=GYGFED" target="_blank" rel="noopener noreferrer" className="text-sm text-red-400 hover:text-red-300 hover:underline font-medium block mb-6">
                 查看课程详细说明 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
               </a>
               

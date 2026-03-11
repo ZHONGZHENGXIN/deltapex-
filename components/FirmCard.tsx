@@ -58,6 +58,7 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm }) => {
               src={firm.logoUrl} 
               alt={firm.name} 
               className="w-full h-full object-contain p-2"
+              referrerPolicy="no-referrer"
               onError={() => setImageError(true)}
             />
           ) : firm.isCustomIcon ? (

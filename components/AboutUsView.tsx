@@ -105,6 +105,7 @@ const AboutUsView: React.FC = () => {
                   src="https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/logo.png.jpg" 
                   alt="Deltapex Logo" 
                   className="h-12 w-auto object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity" 
+                  referrerPolicy="no-referrer"
                 />
              </div>
           </div>

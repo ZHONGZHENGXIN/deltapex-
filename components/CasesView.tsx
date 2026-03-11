@@ -14,7 +14,7 @@ const CATEGORIES: { id: Category; label: string }[] = [
   { id: 'feedback', label: '学员反馈' },
 ];
 
-const R2_BASE_URL = "https://img.deltapextrading.com";
+const R2_BASE_URL = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev";
 
 // Map category IDs to R2 folder names
 const FOLDER_MAP: Record<Exclude<Category, 'all'>, string> = {
@@ -27,53 +27,53 @@ const FOLDER_MAP: Record<Exclude<Category, 'all'>, string> = {
 // Specific URLs provided by user to override auto-generation
 const CUSTOM_URLS: Partial<Record<Exclude<Category, 'all'>, string[]>> = {
   'exam-pass': [
-    "https://img.deltapextrading.com/casesexam-passed/6e8121747b58fad016a09bdd438733ad.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/736693c28895c5a3789609e748c11b1c.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/740f089501306405ed7ee2c25bb59fe2.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/7d82f345667b7ee193ad1788bc2fa779.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/7f722d15db78f668276fbe7a450f0472.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/820346f75095d9b2d28c2d29aa1d8eef.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/89c98001779de23a62d21b5e130f2657.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/a9b9467a-63f7-43a2-b767-f4595b44dfb5.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/b12acbeb80443b75defc4c0485207655.png",
-    "https://img.deltapextrading.com/casesexam-passed/cbd7ebb139eac3bc2abd7895a1164321.jpg"
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/6e8121747b58fad016a09bdd438733ad.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/736693c28895c5a3789609e748c11b1c.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/740f089501306405ed7ee2c25bb59fe2.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/7d82f345667b7ee193ad1788bc2fa779.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/7f722d15db78f668276fbe7a450f0472.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/820346f75095d9b2d28c2d29aa1d8eef.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/89c98001779de23a62d21b5e130f2657.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/a9b9467a-63f7-43a2-b767-f4595b44dfb5.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/b12acbeb80443b75defc4c0485207655.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/cbd7ebb139eac3bc2abd7895a1164321.jpg"
   ],
   'exam-payout': [
-    "https://img.deltapextrading.com/casesexam-passed/e081f6ef3c9e89acc91f4f19757fff13.png",
-    "https://img.deltapextrading.com/casesexam-passed/e96bac5d56fce364ba9fcf7c503d0777.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/ef91f34c4ae652ae38749209fe3c70fe.jpg",
-    "https://img.deltapextrading.com/casesexam-passed/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17611598224618.png",
-    "https://img.deltapextrading.com/casesexam-payout/da37d283-9224-4ee5-b57b-cc1c5e27b5ba.png",
-    "https://img.deltapextrading.com/casesexam-payout/ScreenShot_2025-11-26_134816_521.png",
-    "https://img.deltapextrading.com/casesexam-payout/ScreenShot_2025-11-04_135620_411.png",
-    "https://img.deltapextrading.com/casesexam-passed/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17709056942303.png",
-    "https://img.deltapextrading.com/casesexam-passed/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250901153452_452_153.jpg",
-    "https://img.deltapextrading.com/casesexam-payout/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250902170635_474_153.jpg",
-    "https://img.deltapextrading.com/casesexam-payout/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250902171653_482_153.png"
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/e081f6ef3c9e89acc91f4f19757fff13.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/e96bac5d56fce364ba9fcf7c503d0777.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/ef91f34c4ae652ae38749209fe3c70fe.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17611598224618.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-payout/da37d283-9224-4ee5-b57b-cc1c5e27b5ba.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-payout/ScreenShot_2025-11-26_134816_521.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-payout/ScreenShot_2025-11-04_135620_411.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17709056942303.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-passed/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250901153452_452_153.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-payout/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250902170635_474_153.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesexam-payout/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250902171653_482_153.png"
   ],
   'live-payout': [
-    "https://img.deltapextrading.com/casesreal-profit/20240905_144217000_iOS.jpg",
-    "https://img.deltapextrading.com/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D3ff6516a5f12d5e059a139db4adbaee.png",
-    "https://img.deltapextrading.com/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D8d132c73b51450b7d42e37751c363d4.png",
-    "https://img.deltapextrading.com/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-01-22%2017.44.58.png",
-    "https://img.deltapextrading.com/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-01-22%2018.39.00.png",
-    "https://img.deltapextrading.com/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-01-22%2018.43.29.png",
-    "https://img.deltapextrading.com/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-04-02%2018.00.08.png",
-    "https://img.deltapextrading.com/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-08%2000.19.02.png",
-    "https://img.deltapextrading.com/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-07%2023.57.06.png"
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesreal-profit/20240905_144217000_iOS.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D3ff6516a5f12d5e059a139db4adbaee.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D8d132c73b51450b7d42e37751c363d4.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-01-22%2017.44.58.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-01-22%2018.39.00.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-01-22%2018.43.29.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-04-02%2018.00.08.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-08%2000.19.02.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesreal-profit/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-07%2023.57.06.png"
   ],
   'feedback': [
-    "https://img.deltapextrading.com/casesfeedback/21407c639e9544291631bd9271f262d8_compress.jpg",
-    "https://img.deltapextrading.com/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D6697819d19396c4fe1c4bf89ce188ae.png",
-    "https://img.deltapextrading.com/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D6faf2a46267cd4e5f1946d974b00213.png",
-    "https://img.deltapextrading.com/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-02-08%2014.52.38.png",
-    "https://img.deltapextrading.com/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-02-08%2015.06.28.png",
-    "https://img.deltapextrading.com/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-02-27%2000.20.39.png",
-    "https://img.deltapextrading.com/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-04%2013.17.56.png",
-    "https://img.deltapextrading.com/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-04%2013.19.29.png",
-    "https://img.deltapextrading.com/casesfeedback/a1ad2bb906d771d6b5a5d383bfef2fc.jpg",
-    "https://img.deltapextrading.com/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-04%2013.22.07.png",
-    "https://img.deltapextrading.com/casesfeedback/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250910095446_632_153.jpg"
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/21407c639e9544291631bd9271f262d8_compress.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D6697819d19396c4fe1c4bf89ce188ae.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D6faf2a46267cd4e5f1946d974b00213.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-02-08%2014.52.38.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-02-08%2015.06.28.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-02-27%2000.20.39.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-04%2013.17.56.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-04%2013.19.29.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/a1ad2bb906d771d6b5a5d383bfef2fc.jpg",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/%5B%E6%B0%B4%E5%8D%B0%5D%5B%E6%B0%B4%E5%8D%B0%5DClipboard%20-%202025-03-04%2013.22.07.png",
+    "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/casesfeedback/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250910095446_632_153.jpg"
   ]
 };
 
@@ -199,10 +199,6 @@ const CasesView: React.FC = () => {
                     alt="Trading Result" 
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
-                    onError={(e) => {
-                      // Hide image if it fails to load (e.g. 404)
-                      (e.target as HTMLImageElement).closest('.break-inside-avoid')?.classList.add('hidden');
-                    }}
                   />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
