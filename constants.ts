@@ -86,36 +86,6 @@ export const STUDENT_CASES = [
     strategy: "欧盘区间突破",
     screenshot: "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/5.jpg", 
     comment: "不再追求暴利，而是专注于每日的确定性机会。积少成多，心态反而更加平和了。"
-  },
-  {
-    id: 6,
-    name: "王强",
-    category: "exam-pass",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Wang",
-    profit: "一周通关 50K",
-    strategy: "价格行为 + 订单流",
-    screenshot: "https://via.placeholder.com/800x600?text=Exam+Pass+Certificate", 
-    comment: "感谢社区的指导，让我能够在一周内顺利通过 50K 考试账号，拿到实盘资格。"
-  },
-  {
-    id: 7,
-    name: "李娜",
-    category: "feedback",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Li",
-    profit: "心态显著提升",
-    strategy: "冥想 + 交易心理",
-    screenshot: "https://via.placeholder.com/800x600?text=Positive+Feedback", 
-    comment: "社区不仅仅教技术，更重要的是教会了我如何控制情绪。现在交易不再焦虑，心态平和了很多。"
-  },
-  {
-    id: 8,
-    name: "陈明",
-    category: "feedback",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Chen",
-    profit: "系统化思维",
-    strategy: "交易系统构建",
-    screenshot: "https://via.placeholder.com/800x600?text=System+Building", 
-    comment: "以前交易很混乱，现在有了自己的交易系统，进出场都有据可依，不再盲目操作。"
   }
 ];
 
