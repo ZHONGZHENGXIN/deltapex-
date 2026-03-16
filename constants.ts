@@ -95,12 +95,12 @@ export const FIRMS: Firm[] = [
     name: "Take Profit Trader",
     platforms: "TDV、 Rithmic",
     rating: "推荐 ，允许魔法",
-    code: "DP01",
+    code: "NOFEE40",
     logoUrl: "https://takeprofittrader.com/assets/mobile-logo.svg", 
     iconClass: "fa-solid fa-chart-line",
     iconBgClass: "bg-slate-50",
     iconColorClass: "text-primary",
-    buyLink: "https://takeprofittrader.com/?referralCode=DP01",
+    buyLink: "https://takeprofittrader.com/?referralCode=NOFEE40",
     rulesLink: "#tpt-rules",
     isFeatured: true,
     hasInternalRules: true
@@ -157,7 +157,7 @@ export const DEALS: Deal[] = [
     id: "tpt",
     name: "Take Profit Trader",
     discount: "6折 + 免激活",
-    link: "https://takeprofittrader.com/?referralCode=DP01",
+    link: "https://takeprofittrader.com/?referralCode=NOFEE40",
     iconClass: "fa-solid fa-chart-line",
     iconBgClass: "bg-slate-50",
     iconColorClass: "text-primary"
@@ -202,7 +202,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: "如何获取优惠和使用折扣码？",
-    answer: "在本站列出的自营公司卡片中，您可以直接看到专属折扣码（如 DP01、Alex）。在购买考核号的结账页面输入该代码，即可享受官网最高折扣、免除激活费或获取重置优惠。"
+    answer: "在本站列出的自营公司卡片中，您可以直接看到专属折扣码（如 NOFEE40、Alex）。在购买考核号的结账页面输入该代码，即可享受官网最高折扣、免除激活费或获取重置优惠。"
   },
   {
     question: "如何提升交易技术？",

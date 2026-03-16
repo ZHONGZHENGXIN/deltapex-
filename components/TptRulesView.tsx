@@ -34,8 +34,8 @@ const TptRulesView: React.FC = () => {
         </header>
 
         <div className="bg-[#fffafa] border border-[#ffcccc] p-5 rounded-lg my-[30px] text-center">
-          <p className="my-[10px] font-bold">TPT折扣码：<span className="text-[#cc0000] font-bold text-[1.5rem]">DP01</span></p>
-          <p className="my-[10px] font-bold">注册链接：<a href="https://takeprofittrader.com/?referralCode=DP01" target="_blank" rel="noopener noreferrer" className="inline-block text-[#cc0000] no-underline break-all border-b border-dashed border-[#cc0000] transition-all hover:text-[#990000] hover:border-solid">https://takeprofittrader.com/?referralCode=DP01</a></p>
+          <p className="my-[10px] font-bold">TPT折扣码：<span className="text-[#cc0000] font-bold text-[1.5rem]">NOFEE40</span></p>
+          <p className="my-[10px] font-bold">注册链接：<a href="https://takeprofittrader.com/?referralCode=NOFEE40" target="_blank" rel="noopener noreferrer" className="inline-block text-[#cc0000] no-underline break-all border-b border-dashed border-[#cc0000] transition-all hover:text-[#990000] hover:border-solid">https://takeprofittrader.com/?referralCode=NOFEE40</a></p>
         </div>
 
         <section id="advantages">
@@ -66,7 +66,7 @@ const TptRulesView: React.FC = () => {
                 </tr>
                 <tr>
                   <td className="border border-[#eee] p-[15px] text-center"><strong>优惠说明</strong></td>
-                  <td colSpan={4} className="border border-[#eee] p-[15px] text-center">使用折扣码 <strong className="text-[#cc0000] font-bold">DP01</strong> 享受7折优惠并免除激活费</td>
+                  <td colSpan={4} className="border border-[#eee] p-[15px] text-center">使用折扣码 <strong className="text-[#cc0000] font-bold">NOFEE40</strong> 享受7折优惠并免除激活费</td>
                 </tr>
               </tbody>
             </table>
