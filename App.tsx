@@ -313,7 +313,7 @@ function App() {
                             <p className="text-slate-500 font-light text-xl">工欲善其事，必先利其器</p>
                          </div>
 
-                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                         <div className="grid grid-cols-1 max-w-3xl mx-auto gap-8 md:gap-12">
                             {/* ATAS Card */}
                             <a 
                               href="https://atas.net/cn/?rs=partners_oft281860"
@@ -329,25 +329,6 @@ function App() {
                                   <div className="text-base text-slate-500 group-hover/atas:text-blue-400">专业订单流软件</div>
                                </div>
                                <div className="mt-6 md:mt-0 w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover/atas:bg-blue-100 group-hover/atas:text-blue-600 transition-colors transform group-hover/atas:translate-x-2 duration-300">
-                                  <i className="fa-solid fa-arrow-right text-xl"></i>
-                               </div>
-                            </a>
-
-                            {/* EBC Card */}
-                            <a 
-                              href="https://client.myebc.co/signup?linkCode=S4112201-a03"
-                              target="_blank"
-                              className="flex flex-col md:flex-row items-center p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-2xl hover:border-red-200 hover:-translate-y-2 transition-all duration-500 group/ebc"
-                            >
-                               <div className="w-24 h-24 bg-red-50 rounded-2xl flex items-center justify-center text-red-500 group-hover/ebc:bg-red-500 group-hover/ebc:text-white transition-all duration-300 md:mr-8 mb-6 md:mb-0 shrink-0 shadow-inner">
-                                  <i className="fa-solid fa-user-shield text-4xl"></i>
-                                </div>
-                               <div className="flex-1 text-center md:text-left">
-                                  <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-2">Preferred Broker</div>
-                                  <div className="text-2xl font-bold text-slate-800 group-hover/ebc:text-red-600 transition-colors mb-2">EBC 极速开户</div>
-                                  <div className="text-base text-slate-500 group-hover/ebc:text-red-400">优选合作券商</div>
-                               </div>
-                               <div className="mt-6 md:mt-0 w-14 h-14 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover/ebc:bg-red-100 group-hover/ebc:text-red-600 transition-colors transform group-hover/ebc:translate-x-2 duration-300">
                                   <i className="fa-solid fa-arrow-right text-xl"></i>
                                </div>
                             </a>

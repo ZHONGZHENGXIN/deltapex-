@@ -67,7 +67,7 @@ const AboutUsView: React.FC = () => {
     { 
       content: (
         <span>
-          5,000美元挑战1,000,000美元实盘系列（已至<CountUp value={650000} prefix="$" className="font-bold text-[#E60012] mx-1" />美元）
+          5,000美元挑战1,000,000美元实盘系列（已至<CountUp value={1500000} prefix="$" className="font-bold text-[#E60012] mx-1" />美元）
         </span>
       )
     },
