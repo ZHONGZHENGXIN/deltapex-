@@ -316,7 +316,7 @@ function App() {
                          <div className="grid grid-cols-1 max-w-3xl mx-auto gap-8 md:gap-12">
                             {/* ATAS Card */}
                             <a 
-                              href="https://atas.net/cn/?rs=partners_oft281860"
+                              href="https://atas.net/registration-demo/?rs=oft365200"
                               target="_blank"
                               className="flex flex-col md:flex-row items-center p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-2xl hover:border-blue-200 hover:-translate-y-2 transition-all duration-500 group/atas"
                             >
