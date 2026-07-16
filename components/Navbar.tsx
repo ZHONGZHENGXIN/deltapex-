@@ -63,28 +63,10 @@ const NAV_LINKS = [
 
 const PROPRIETARY_LINKS = [
   {
-    name: "Deltapex 软件终端",
-    href: "https://deltapex.cn/",
-    icon: <Globe size={18} />,
-    desc: "Deltapex 软件终端"
-  },
-  {
     name: "Options Laboratory",
     href: "https://options-laboratory.zeabur.app",
     icon: <FlaskConical size={18} />,
     desc: "期权策略实验室"
-  },
-  {
-    name: "交易日志",
-    href: "https://deltapextradingjournal.zeabur.app/",
-    icon: <BookText size={18} />,
-    desc: "专业交易复盘系统"
-  },
-  {
-    name: "交易 DNA",
-    href: "https://dptest.org",
-    icon: <Globe size={18} />,
-    desc: "Deltapex 测试站点"
   }
 ];
 

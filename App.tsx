@@ -79,9 +79,6 @@ function App() {
   const [ctaRotate, setCtaRotate] = useState({ x: 0, y: 0 });
   const [ctaSpotlight, setCtaSpotlight] = useState({ x: 0, y: 0 });
 
-  const planetRef = useRef<HTMLDivElement>(null);
-  const [planetRotate, setPlanetRotate] = useState({ x: 0, y: 0 });
-
   const lenisRef = useRef<Lenis | null>(null);
 
   // Initialize Lenis Smooth Scroll
@@ -145,22 +142,6 @@ function App() {
 
   const handleCtaMouseLeave = () => {
     setCtaRotate({ x: 0, y: 0 });
-  };
-
-  const handlePlanetMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!planetRef.current) return;
-    const rect = planetRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 40;
-    const rotateY = (centerX - x) / 60;
-    setPlanetRotate({ x: rotateX, y: rotateY });
-  }, []);
-
-  const handlePlanetMouseLeave = () => {
-    setPlanetRotate({ x: 0, y: 0 });
   };
 
   return (
@@ -385,62 +366,6 @@ function App() {
                   </div>
                 </div>
               </Reveal>
-
-              {/* 知识星球模块 (Planet Section) */}
-              <div className="mb-40 scroll-mt-32" id="planet-section">
-                <Reveal>
-                  <div 
-                    ref={planetRef}
-                    onMouseMove={handlePlanetMouseMove}
-                    onMouseLeave={handlePlanetMouseLeave}
-                    className="max-w-5xl mx-auto perspective-1000"
-                    style={{
-                      transform: `rotateX(${planetRotate.x}deg) rotateY(${planetRotate.y}deg)`,
-                      transition: planetRotate.x === 0 ? 'all 0.6s ease' : 'none'
-                    }}
-                  >
-                    <div className="bg-gradient-to-br from-white to-red-50/50 border border-primary/10 rounded-[3rem] p-10 md:p-16 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.1)] flex flex-col md:flex-row items-center gap-16 overflow-hidden relative group">
-                      <div className="absolute -top-32 -right-32 w-80 h-80 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
-                      
-                      <div className="flex-1 relative z-10 text-center md:text-left">
-                        <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-8">
-                          <i className="fa-solid fa-meteor animate-bounce"></i> 深度交易社区
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight">
-                          加入 <span className="text-primary underline decoration-4 decoration-primary/20 underline-offset-4">知识星球</span><br/>获取 Deltapex 核心内参
-                        </h2>
-                        <ul className="space-y-6 mb-12 text-slate-600 font-medium text-lg">
-                          <li className="flex items-center gap-4 justify-center md:justify-start">
-                            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                               <i className="fa-solid fa-check"></i>
-                            </div>
-                            每日美盘开盘前深度逻辑解析
-                          </li>
-                          <li className="flex items-center gap-4 justify-center md:justify-start">
-                             <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                               <i className="fa-solid fa-check"></i>
-                            </div>
-                            Alex 实战订单流策略复盘
-                          </li>
-                        </ul>
-                        <Button 
-                          href={SOCIAL_LINKS.knowledgePlanet}
-                          className="px-12 py-5 text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
-                        >
-                          立即加入星球
-                        </Button>
-                      </div>
-                      
-                      <div className="w-64 h-64 md:w-80 md:h-80 shrink-0 bg-white p-6 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 border border-slate-100 relative z-10 flex flex-col items-center justify-center group-hover:scale-[1.03] transition-transform duration-500">
-                        <div className="w-full h-full bg-slate-50 rounded-2xl flex flex-col items-center justify-center gap-4 border-2 border-dashed border-slate-200 group-hover:border-primary/20 transition-colors">
-                          <i className="fa-solid fa-qrcode text-6xl text-slate-300 group-hover:text-primary/50 transition-colors"></i>
-                          <span className="text-xs text-slate-400 font-bold uppercase tracking-widest px-4 text-center">扫描二维码 / Scan Code</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              </div>
 
               {/* 优秀学员案例 - Modified: Removed Text, Images Only */}
               <div id="student-cases" className="mb-40 scroll-mt-32">
