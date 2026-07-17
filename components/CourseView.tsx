@@ -1,11 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import Reveal from './Reveal';
+
+const wechatQr = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/Deltapex_Ken.jpg";
 
 const CourseView: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [isQrModalOpen, setIsQrModalOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
+
+  const handleCopyWeChat = () => {
+    navigator.clipboard.writeText("Zhong-Zhengxin");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const modules = [
     { 
@@ -117,7 +129,7 @@ const CourseView: React.FC = () => {
             <p className="text-slate-500 text-lg">选择适合您的课程，立即开启核心交易训练。</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
             {/* 6 Months Card */}
             <div className="bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-lg hover:shadow-2xl transition-all duration-500 relative flex flex-col h-full group">
               <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-200 group-hover:bg-primary transition-colors duration-300 rounded-t-[2.5rem]"></div>
@@ -133,10 +145,19 @@ const CourseView: React.FC = () => {
               <Button 
                 href="https://www.creem.io/payment/prod_rO8NcIyteiBtFLY963n5" 
                 target="_blank"
-                className="w-full py-4 text-lg font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 mb-4"
+                className="w-full py-4 text-lg font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 mb-2"
               >
                 立即报名
               </Button>
+              
+              <button 
+                onClick={() => setIsQrModalOpen(true)}
+                className="w-full py-3 text-base font-semibold rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all duration-300 mb-4 flex items-center justify-center gap-2"
+              >
+                <i className="fa-brands fa-weixin text-green-500 text-lg animate-pulse"></i>
+                添加客服微信咨询
+              </button>
+
               <a href="https://flowus.cn/share/7fd9ea23-2ce3-47cc-a6ba-e35d27bb8576?code=GYGFED" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline font-medium block mb-6">
                 查看课程详细说明 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
               </a>
@@ -163,10 +184,19 @@ const CourseView: React.FC = () => {
               <Button 
                 href="https://www.creem.io/payment/prod_3AnNBTmv3oerrXXFF23JHT" 
                 target="_blank"
-                className="w-full py-4 text-lg font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 mb-4"
+                className="w-full py-4 text-lg font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 mb-2"
               >
                 立即报名
               </Button>
+
+              <button 
+                onClick={() => setIsQrModalOpen(true)}
+                className="w-full py-3 text-base font-semibold rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all duration-300 mb-4 flex items-center justify-center gap-2"
+              >
+                <i className="fa-brands fa-weixin text-green-500 text-lg animate-pulse"></i>
+                添加客服微信咨询
+              </button>
+
               <a href="https://flowus.cn/share/7fd9ea23-2ce3-47cc-a6ba-e35d27bb8576?code=GYGFED" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline font-medium block mb-6">
                 查看课程详细说明 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
               </a>
@@ -177,142 +207,22 @@ const CourseView: React.FC = () => {
                 </p>
               </div>
             </div>
-
-            {/* Lifetime Card */}
-            <div className="bg-slate-900 border border-slate-800 rounded-[2.5rem] p-10 shadow-xl hover:shadow-2xl transition-all duration-500 relative flex flex-col h-full group">
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-700 group-hover:bg-primary transition-colors duration-300 rounded-t-[2.5rem]"></div>
-              <h3 className="text-2xl font-bold text-white mb-2">知识星球</h3>
-              <p className="text-slate-400 mb-8 text-sm">【研究篇】Deltapex 投研与订单流前沿</p>
-              
-              <div className="text-5xl font-black text-white mb-8 tracking-tight">
-                ¥1,999 <span className="text-base text-slate-500 font-medium tracking-normal">/ 年</span>
-              </div>
-              
-              <div className="flex-grow"></div>
-              
-              <Button 
-                href="#" 
-                variant="white"
-                className="w-full py-4 text-lg font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 mb-4 border-none"
-              >
-                立即报名
-              </Button>
-              <a href="https://flowus.cn/share/7fd9ea23-2ce3-47cc-a6ba-e35d27bb8576?code=GYGFED" target="_blank" rel="noopener noreferrer" className="text-sm text-red-400 hover:text-red-300 hover:underline font-medium block mb-6">
-                查看课程详细说明 <i className="fa-solid fa-arrow-right text-xs ml-1"></i>
-              </a>
-              
-              <div className="pt-6 border-t border-slate-800">
-                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-relaxed">
-                  本课程仅供教育目的，不构成任何财务或投资建议。
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Combo Packages */}
-          <div className="max-w-5xl mx-auto mb-16">
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-px bg-slate-200 w-12"></div>
-              <h3 className="text-2xl font-bold text-slate-900">超值组合套餐</h3>
-              <div className="h-px bg-slate-200 w-12"></div>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Combo 1: Online + Planet */}
-              <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-[2.5rem] p-10 shadow-lg hover:shadow-2xl transition-all duration-500 relative flex flex-col h-full group overflow-hidden">
-                <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-4 py-2 rounded-bl-2xl z-10">
-                  立省 ¥999
-                </div>
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-slate-300 to-slate-400 group-hover:from-primary group-hover:to-red-400 transition-all duration-300 rounded-t-[2.5rem]"></div>
-                
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">线上课程 + 知识星球</h3>
-                <p className="text-slate-500 mb-6 text-sm">【组合优惠】系统课程与持续投研的完美结合</p>
-                
-                <div className="mb-8">
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-lg text-slate-400 line-through decoration-slate-400/50">¥31,799</span>
-                    <span className="text-5xl font-black text-slate-900 tracking-tight">¥30,800</span>
-                  </div>
-                  <p className="text-red-500 text-sm font-bold mt-2 bg-red-50 inline-block px-3 py-1 rounded-full">
-                    包含一年知识星球会员
-                  </p>
-                </div>
-                
-                <div className="flex-grow space-y-3 mb-8">
-                  <div className="flex items-center gap-3 text-slate-600 text-sm">
-                    <i className="fa-solid fa-check-circle text-primary"></i>
-                    <span>包含所有线上课程内容</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-slate-600 text-sm">
-                    <i className="fa-solid fa-check-circle text-primary"></i>
-                    <span>赠送一年知识星球会员权限</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-slate-600 text-sm">
-                    <i className="fa-solid fa-check-circle text-primary"></i>
-                    <span>享受双重学习资源</span>
-                  </div>
-                </div>
-                
-                <Button 
-                  href="#" 
-                  target="_blank"
-                  className="w-full py-4 text-lg font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 mb-4 bg-slate-900 text-white hover:bg-slate-800"
-                >
-                  立即报名
-                </Button>
-              </div>
-
-              {/* Combo 2: Offline + Planet */}
-              <div className="bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-[2.5rem] p-10 shadow-lg hover:shadow-2xl transition-all duration-500 relative flex flex-col h-full group overflow-hidden">
-                <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-4 py-2 rounded-bl-2xl z-10">
-                  立省 ¥999
-                </div>
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-slate-300 to-slate-400 group-hover:from-primary group-hover:to-red-400 transition-all duration-300 rounded-t-[2.5rem]"></div>
-                
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">线下培训 + 知识星球</h3>
-                <p className="text-slate-500 mb-6 text-sm">【全能套餐】实战特训与长期投研支持</p>
-                
-                <div className="mb-8">
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-lg text-slate-400 line-through decoration-slate-400/50">¥47,799</span>
-                    <span className="text-5xl font-black text-slate-900 tracking-tight">¥46,800</span>
-                  </div>
-                  <p className="text-red-500 text-sm font-bold mt-2 bg-red-50 inline-block px-3 py-1 rounded-full">
-                    包含一年知识星球会员
-                  </p>
-                </div>
-                
-                <div className="flex-grow space-y-3 mb-8">
-                  <div className="flex items-center gap-3 text-slate-600 text-sm">
-                    <i className="fa-solid fa-check-circle text-primary"></i>
-                    <span>包含线下实战特训营名额</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-slate-600 text-sm">
-                    <i className="fa-solid fa-check-circle text-primary"></i>
-                    <span>赠送一年知识星球会员权限</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-slate-600 text-sm">
-                    <i className="fa-solid fa-check-circle text-primary"></i>
-                    <span>全方位导师指导</span>
-                  </div>
-                </div>
-                
-                <Button 
-                  href="#" 
-                  target="_blank"
-                  className="w-full py-4 text-lg font-bold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 mb-4 bg-slate-900 text-white hover:bg-slate-800"
-                >
-                  立即报名
-                </Button>
-              </div>
-            </div>
           </div>
 
           {/* Compliance & Legal Section (Creem Requirements) */}
           <div className="text-left bg-slate-50 p-8 rounded-2xl border border-slate-200 text-sm text-slate-500 space-y-4">
-            <h4 className="font-bold text-slate-700 text-base mb-4">购买须知与合规声明</h4>
+            <h4 className="font-bold text-slate-700 text-base mb-2">购买须知与合规声明</h4>
             <p>
-              <strong>客户支持：</strong> 如有任何疑问或需要协助，请联系我们的官方客服邮箱 <a href="mailto:depaitina@deltapex.cc" className="text-primary hover:underline">depaitina@deltapex.cc</a>。我们将在 3 个工作日内回复您的请求。
+              <strong>客服微信支持：</strong> 您可以随时扫描客服二维码，添加班主任微信号 <strong>Zhong-Zhengxin</strong> 进行课程的具体咨询与入学登记。
+              <button 
+                onClick={() => setIsQrModalOpen(true)}
+                className="ml-2 inline-flex items-center gap-1.5 text-primary hover:underline font-bold focus:outline-none transition-colors"
+              >
+                <i className="fa-brands fa-weixin text-green-500"></i> 点击显示客服微信二维码
+              </button>
+            </p>
+            <p>
+              <strong>客户支持邮件：</strong> 如有任何疑问或需要协助，请联系我们的官方客服邮箱 <a href="mailto:depaitina@deltapex.cc" className="text-primary hover:underline">depaitina@deltapex.cc</a>。我们将在 3 个工作日内回复您的请求。
             </p>
             <p>
               <strong>退款政策：</strong> 本产品为虚拟知识服务。请在购买前仔细阅读我们的 <a href="#refund" className="text-primary hover:underline">退款政策 (Refund Policy)</a>。
@@ -328,6 +238,120 @@ const CourseView: React.FC = () => {
           </div>
         </Reveal>
       </section>
+
+      {/* Beautiful WeChat QR Code Pop-up Modal */}
+      {isQrModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop Overlay */}
+          <div 
+            onClick={() => setIsQrModalOpen(false)}
+            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-300"
+          ></div>
+          
+          {/* Modal Container */}
+          <div className="relative bg-white w-full max-w-md rounded-3xl p-8 shadow-2xl border border-slate-100 z-10 overflow-hidden transform transition-all duration-300 scale-100 animate-fade-in-up">
+            {/* Top Close Button */}
+            <button 
+              onClick={() => setIsQrModalOpen(false)}
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors focus:outline-none"
+              aria-label="Close modal"
+            >
+              <i className="fa-solid fa-xmark text-sm"></i>
+            </button>
+
+            {/* WeChat Header */}
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-500 text-2xl shrink-0">
+                <i className="fa-brands fa-weixin"></i>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">添加专属课程顾问</h3>
+                <p className="text-xs text-slate-400">扫一扫，获取专业班主任1对1服务</p>
+              </div>
+            </div>
+
+            {/* Content Card with WeChat Style */}
+            <div className="bg-slate-50 border border-slate-100 rounded-2xl p-8 flex flex-col items-center justify-center relative group">
+              {/* QR Code Container */}
+              <div 
+                onClick={() => setIsZoomed(true)}
+                className="bg-white p-4 rounded-xl shadow-md border border-slate-200/60 w-56 h-56 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-xl transition-all duration-300 group/qr"
+              >
+                <img 
+                  src={wechatQr} 
+                  alt="WeChat QR Code" 
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
+                {/* Subtle Hover Overlay */}
+                <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover/qr:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                  <span className="bg-white/90 backdrop-blur-sm text-[11px] font-bold text-slate-700 px-2.5 py-1.5 rounded-lg shadow-sm flex items-center gap-1">
+                    <i className="fa-solid fa-magnifying-glass-plus text-primary"></i> 点击放大
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* WeChat Copy Section */}
+            <div className="mt-6 flex items-center justify-between bg-slate-50 hover:bg-slate-100 border border-slate-100 p-4 rounded-xl transition-colors">
+              <div className="text-left">
+                <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">微信号 / WeChat ID</div>
+                <div className="text-sm font-bold text-slate-800">Zhong-Zhengxin</div>
+              </div>
+              <button 
+                onClick={handleCopyWeChat}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  copied 
+                    ? "bg-green-500 text-white" 
+                    : "bg-slate-200 hover:bg-slate-300 text-slate-700"
+                }`}
+              >
+                {copied ? (
+                  <>
+                    <i className="fa-solid fa-check"></i> 已复制
+                  </>
+                ) : (
+                  <>
+                    <i className="fa-solid fa-copy"></i> 复制微信号
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Friendly hint */}
+            <div className="text-[10px] text-slate-400 mt-5 leading-normal text-center">
+              * 为保障您的权益，请务必认准官方客服，防范假冒风险。<br/>
+              工作时间：周一至周五 09:00 - 18:00。
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox Zoom-in Overlay for WeChat QR Code */}
+      {isZoomed && (
+        <div 
+          onClick={() => setIsZoomed(false)}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-md cursor-zoom-out animate-fade-in"
+        >
+          <div className="relative max-w-xl max-h-[90vh] p-4 flex flex-col items-center justify-center">
+            {/* Close Button */}
+            <button 
+              onClick={() => setIsZoomed(false)}
+              className="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none"
+              aria-label="Close zoom view"
+            >
+              <i className="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <img 
+              src={wechatQr} 
+              alt="WeChat QR Code Enlarged" 
+              className="w-auto max-h-[75vh] max-w-[85vw] rounded-2xl shadow-2xl border border-white/10 animate-scale-up object-contain"
+              referrerPolicy="no-referrer"
+            />
+            <p className="text-white/60 text-xs mt-4">点击任意位置返回 / Click anywhere to close</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
