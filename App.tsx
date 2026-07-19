@@ -32,6 +32,10 @@ import Footer from './components/Footer';
 
 import Lenis from 'lenis';
 
+import { motion, AnimatePresence } from 'framer-motion';
+
+const wechatQr = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/Deltapex_Ken.jpg";
+
 type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases';
 
 function App() {
@@ -74,6 +78,15 @@ function App() {
 
   const [currentView, setCurrentView] = useState<ViewType>(getHashView());
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isGlobalWeChatOpen, setIsGlobalWeChatOpen] = useState(false);
+  const [copiedGlobal, setCopiedGlobal] = useState(false);
+  const [showFloatingTooltip, setShowFloatingTooltip] = useState(true);
+
+  const handleCopyGlobalWeChat = () => {
+    navigator.clipboard.writeText("Zhong-Zhengxin");
+    setCopiedGlobal(true);
+    setTimeout(() => setCopiedGlobal(false), 2000);
+  };
   
   const ctaRef = useRef<HTMLDivElement>(null);
   const [ctaRotate, setCtaRotate] = useState({ x: 0, y: 0 });
@@ -234,8 +247,8 @@ function App() {
                   >
                     <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     <span className="relative z-10 font-bold tracking-wide flex flex-col items-center">
-                      加入课程
-                      <span className="text-sm font-normal opacity-80 mt-1 uppercase tracking-widest">Join the Course</span>
+                      课程详情
+                      <span className="text-sm font-normal opacity-80 mt-1 uppercase tracking-widest">Course Details</span>
                     </span>
                   </Button>
 
@@ -436,6 +449,192 @@ function App() {
           </>
         )}
       </div>
+
+      {/* Global Floating WeChat Support Button / Widget */}
+      <div className="fixed bottom-6 right-6 z-[49] flex flex-col items-end">
+        <AnimatePresence>
+          {showFloatingTooltip && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 12, x: 0 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 12 }}
+              className="bg-white border border-slate-200/80 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-5 w-80 text-left mb-3 relative overflow-hidden"
+            >
+              {/* Top Accent Strip */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-emerald-400"></div>
+              
+              {/* Arrow Indicator */}
+              <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-white border-r border-b border-slate-200/80 rotate-45"></div>
+              
+              {/* Dismiss Button */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowFloatingTooltip(false);
+                }}
+                className="absolute top-3 right-3 text-slate-400 hover:text-slate-600 w-5 h-5 flex items-center justify-center rounded-full hover:bg-slate-100 transition-all text-xs"
+                aria-label="Dismiss tooltip"
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+
+              <div className="flex items-start gap-3.5 pt-1">
+                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-500 shrink-0">
+                  <i className="fa-brands fa-weixin text-xl"></i>
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-slate-800 text-sm flex items-center gap-1.5">
+                    添加专属客服微信
+                    <span className="text-[10px] bg-red-100 text-red-600 font-bold px-1 py-0.2 rounded-md animate-pulse">
+                      FREE GIFTS
+                    </span>
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed">
+                    🎁 <strong>立即获取：</strong>免费 ATAS 软件安装指导、内部专属订单流微观交易指南 PDF！
+                  </p>
+                  
+                  {/* Copy area */}
+                  <div className="mt-3 flex items-center justify-between bg-slate-50 p-2 rounded-xl border border-slate-200/60 hover:bg-slate-100/50 transition-colors">
+                    <div className="flex flex-col">
+                      <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">WeChat ID</span>
+                      <span className="text-xs font-mono font-bold text-slate-700">Zhong-Zhengxin</span>
+                    </div>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCopyGlobalWeChat();
+                      }}
+                      className="text-[10px] bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-all shadow-sm shadow-emerald-500/10 shrink-0"
+                    >
+                      {copiedGlobal ? "已复制!" : "复制"}
+                    </button>
+                  </div>
+
+                  <button 
+                    onClick={() => setIsGlobalWeChatOpen(true)}
+                    className="mt-2.5 w-full text-center text-xs text-primary hover:text-primary-dark font-bold flex items-center justify-center gap-1 hover:underline transition-all"
+                  >
+                    点击显示微信二维码 <i className="fa-solid fa-qrcode text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Pulse Button */}
+        <button
+          onClick={() => {
+            setIsGlobalWeChatOpen(true);
+            setShowFloatingTooltip(false);
+          }}
+          className="w-14 h-14 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgb(34,197,94,0.4)] hover:scale-105 active:scale-95 transition-all relative group"
+          aria-label="WeChat Customer Support"
+        >
+          {/* Notification Badge */}
+          <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-4.5 w-4.5 bg-red-500 text-[10px] font-black text-white items-center justify-center">1</span>
+          </span>
+
+          <i className="fa-brands fa-weixin text-2xl group-hover:rotate-12 transition-transform duration-300"></i>
+
+          {/* Interactive Help Ring */}
+          <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
+        </button>
+      </div>
+
+      {/* Global WeChat Contact Modal with Value Proposition */}
+      <AnimatePresence>
+        {isGlobalWeChatOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsGlobalWeChatOpen(false)}
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
+            ></motion.div>
+            
+            {/* Modal Box */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 250 }}
+              className="relative bg-white border border-slate-100 rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden z-10 p-8 text-center"
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setIsGlobalWeChatOpen(false)}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors focus:outline-none"
+                aria-label="Close modal"
+              >
+                <i className="fa-solid fa-xmark text-sm"></i>
+              </button>
+
+              {/* Title Section */}
+              <div className="mb-6">
+                <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-500 mx-auto mb-3">
+                  <i className="fa-brands fa-weixin text-2xl"></i>
+                </div>
+                <h3 className="text-2xl font-black text-slate-900">添加 Deltapex 专属客服微信</h3>
+                <p className="text-slate-500 text-sm mt-1">
+                  获取课程解答、加入ATAS订单流中文社区
+                </p>
+              </div>
+
+              {/* QR Code Card */}
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-6 flex flex-col items-center justify-center relative">
+                <div className="bg-white p-4 rounded-xl shadow-md border border-slate-200/60 w-48 h-48 relative overflow-hidden">
+                  <img 
+                    src={wechatQr} 
+                    alt="WeChat QR Code" 
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="text-[11px] text-slate-400 mt-3 text-center">
+                  打开微信，扫描上方二维码添加专属客服
+                </div>
+              </div>
+
+              {/* Value Proposition Box */}
+              <div className="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-4 mb-6 text-left">
+                <div className="text-emerald-800 font-bold text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                  <i className="fa-solid fa-gift"></i> 扫码添加客服即可获得：
+                </div>
+                <ul className="space-y-1.5 text-xs text-slate-600">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 font-bold">✓</span>
+                    <span><strong>免费 ATAS 软件：</strong> 软件安装指导、系统连接。</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-emerald-500 font-bold">✓</span>
+                    <span><strong>专属资料：</strong> 内部订单流微观结构与量化流动性交易指南 PDF 资料。</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* WeChat ID copy section */}
+              <div className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 border border-slate-100 p-4 rounded-xl transition-colors">
+                <div className="text-left">
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">微信号 / WeChat ID</div>
+                  <div className="text-sm font-bold text-slate-800">Zhong-Zhengxin</div>
+                </div>
+                <button 
+                  onClick={handleCopyGlobalWeChat}
+                  className="flex items-center gap-1.5 bg-primary hover:bg-primary-dark text-white font-bold px-4 py-2 rounded-lg text-xs transition-colors shadow-sm"
+                >
+                  <i className="fa-regular fa-copy"></i>
+                  {copiedGlobal ? "已复制!" : "复制微信号"}
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

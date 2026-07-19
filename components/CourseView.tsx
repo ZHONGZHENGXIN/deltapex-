@@ -125,7 +125,7 @@ const CourseView: React.FC = () => {
       <section className="py-24 px-6 max-w-7xl mx-auto text-center">
         <Reveal>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">加入课程</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">课程详情</h2>
             <p className="text-slate-500 text-lg">选择适合您的课程，立即开启核心交易训练。</p>
           </div>
 
@@ -213,7 +213,7 @@ const CourseView: React.FC = () => {
           <div className="text-left bg-slate-50 p-8 rounded-2xl border border-slate-200 text-sm text-slate-500 space-y-4">
             <h4 className="font-bold text-slate-700 text-base mb-2">购买须知与合规声明</h4>
             <p>
-              <strong>客服微信支持：</strong> 您可以随时扫描客服二维码，添加班主任微信号 <strong>Zhong-Zhengxin</strong> 进行课程的具体咨询与入学登记。
+              <strong>客服微信支持：</strong> 您可以随时扫描客服二维码，添加专属客服微信号 <strong>Zhong-Zhengxin</strong> 进行课程的具体咨询与入学登记。
               <button 
                 onClick={() => setIsQrModalOpen(true)}
                 className="ml-2 inline-flex items-center gap-1.5 text-primary hover:underline font-bold focus:outline-none transition-colors"
@@ -266,7 +266,7 @@ const CourseView: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-slate-900">添加专属课程顾问</h3>
-                <p className="text-xs text-slate-400">扫一扫，获取专业班主任1对1服务</p>
+                <p className="text-xs text-slate-400">扫一扫，获取专业专属客服1对1服务</p>
               </div>
             </div>
 
@@ -292,8 +292,25 @@ const CourseView: React.FC = () => {
               </div>
             </div>
 
+            {/* Value Proposition Box */}
+            <div className="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-4 mt-4 mb-4 text-left">
+              <div className="text-emerald-800 font-bold text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <i className="fa-solid fa-gift"></i> 扫码添加客服即可获得：
+              </div>
+              <ul className="space-y-1.5 text-xs text-slate-600">
+                <li className="flex items-start gap-1.5">
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span><strong>免费 ATAS 软件：</strong> 软件安装指导、系统连接。</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span><strong>专属资料：</strong> 内部订单流微观结构与量化流动性交易指南 PDF 资料。</span>
+                </li>
+              </ul>
+            </div>
+
             {/* WeChat Copy Section */}
-            <div className="mt-6 flex items-center justify-between bg-slate-50 hover:bg-slate-100 border border-slate-100 p-4 rounded-xl transition-colors">
+            <div className="mt-4 flex items-center justify-between bg-slate-50 hover:bg-slate-100 border border-slate-100 p-4 rounded-xl transition-colors">
               <div className="text-left">
                 <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">微信号 / WeChat ID</div>
                 <div className="text-sm font-bold text-slate-800">Zhong-Zhengxin</div>
