@@ -80,7 +80,7 @@ function App() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isGlobalWeChatOpen, setIsGlobalWeChatOpen] = useState(false);
   const [copiedGlobal, setCopiedGlobal] = useState(false);
-  const [showFloatingTooltip, setShowFloatingTooltip] = useState(true);
+  const [showFloatingTooltip, setShowFloatingTooltip] = useState(false);
 
   const handleCopyGlobalWeChat = () => {
     navigator.clipboard.writeText("Zhong-Zhengxin");
@@ -169,7 +169,7 @@ function App() {
       {/* 图片预览 Modal (Lightbox) - Global */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/95 backdrop-blur-md px-4 py-8 cursor-zoom-out transition-opacity duration-300"
+          className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-900/95 backdrop-blur-md px-4 py-8 cursor-zoom-out transition-opacity duration-300"
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative max-w-6xl w-full h-full flex flex-col items-center justify-center">
@@ -450,8 +450,8 @@ function App() {
         )}
       </div>
 
-      {/* Global Floating WeChat Support Button / Widget */}
-      <div className="fixed bottom-6 right-6 z-[49] flex flex-col items-end">
+      {/* Global Floating Support Widgets (WeChat & Discord) */}
+      <div className="fixed bottom-6 right-6 z-[49] flex flex-col items-end gap-3">
         <AnimatePresence>
           {showFloatingTooltip && (
             <motion.div
@@ -522,26 +522,52 @@ function App() {
           )}
         </AnimatePresence>
 
-        {/* Pulse Button */}
-        <button
-          onClick={() => {
-            setIsGlobalWeChatOpen(true);
-            setShowFloatingTooltip(false);
-          }}
-          className="w-14 h-14 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgb(34,197,94,0.4)] hover:scale-105 active:scale-95 transition-all relative group"
-          aria-label="WeChat Customer Support"
-        >
-          {/* Notification Badge */}
-          <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-4.5 w-4.5 bg-red-500 text-[10px] font-black text-white items-center justify-center">1</span>
+        {/* WeChat Floating Button */}
+        <div className="relative group/btn">
+          {/* Custom Hover Tooltip */}
+          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/btn:scale-100 group-hover/btn:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none">
+            微信专属客服
           </span>
+          <button
+            onClick={() => {
+              setIsGlobalWeChatOpen(true);
+              setShowFloatingTooltip(false);
+            }}
+            className="w-14 h-14 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgb(34,197,94,0.4)] hover:scale-105 active:scale-95 transition-all relative"
+            aria-label="WeChat Customer Support"
+          >
+            {/* Notification Badge */}
+            <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4.5 w-4.5 bg-red-500 text-[10px] font-black text-white items-center justify-center">1</span>
+            </span>
 
-          <i className="fa-brands fa-weixin text-2xl group-hover:rotate-12 transition-transform duration-300"></i>
+            <i className="fa-brands fa-weixin text-2xl hover:rotate-12 transition-transform duration-300"></i>
 
-          {/* Interactive Help Ring */}
-          <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
-        </button>
+            {/* Interactive Help Ring */}
+            <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
+          </button>
+        </div>
+
+        {/* Discord Floating Button (Below WeChat) */}
+        <div className="relative group/btn">
+          {/* Custom Hover Tooltip */}
+          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/btn:scale-100 group-hover/btn:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none">
+            加入 Discord 社区
+          </span>
+          <a
+            href="https://discord.com/invite/Y95zfzahb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-500 to-blue-600 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(99,102,241,0.4)] hover:scale-105 active:scale-95 transition-all relative flex"
+            aria-label="Discord Community"
+          >
+            <i className="fa-brands fa-discord text-2xl hover:rotate-12 transition-transform duration-300"></i>
+
+            {/* Interactive Help Ring */}
+            <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
+          </a>
+        </div>
       </div>
 
       {/* Global WeChat Contact Modal with Value Proposition */}
@@ -587,16 +613,25 @@ function App() {
 
               {/* QR Code Card */}
               <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-6 flex flex-col items-center justify-center relative">
-                <div className="bg-white p-4 rounded-xl shadow-md border border-slate-200/60 w-48 h-48 relative overflow-hidden">
+                <div 
+                  onClick={() => setSelectedImage(wechatQr)}
+                  className="bg-white p-4 rounded-xl shadow-md border border-slate-200/60 w-48 h-48 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-lg transition-all duration-300 group/qr"
+                >
                   <img 
                     src={wechatQr} 
                     alt="WeChat QR Code" 
                     className="w-full h-full object-contain"
                     referrerPolicy="no-referrer"
                   />
+                  {/* Hover overlay indicator */}
+                  <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover/qr:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                    <span className="bg-white/90 backdrop-blur-sm text-[10px] font-bold text-slate-700 px-2 py-1.5 rounded shadow-sm flex items-center gap-1">
+                      <i className="fa-solid fa-magnifying-glass-plus text-primary"></i> 点击放大
+                    </span>
+                  </div>
                 </div>
                 <div className="text-[11px] text-slate-400 mt-3 text-center">
-                  打开微信，扫描上方二维码添加专属客服
+                  打开微信，扫描上方二维码添加专属客服 (点击可放大)
                 </div>
               </div>
 
@@ -612,7 +647,7 @@ function App() {
                   </li>
                   <li className="flex items-start gap-1.5">
                     <span className="text-emerald-500 font-bold">✓</span>
-                    <span><strong>专属资料：</strong> 内部订单流微观结构与量化流动性交易指南 PDF 资料。</span>
+                    <span><strong>专属资料：</strong> 内部订单流微观结构与交易指南 PDF 资料。</span>
                   </li>
                 </ul>
               </div>

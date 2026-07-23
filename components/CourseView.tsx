@@ -304,7 +304,7 @@ const CourseView: React.FC = () => {
                 </li>
                 <li className="flex items-start gap-1.5">
                   <span className="text-emerald-500 font-bold">✓</span>
-                  <span><strong>专属资料：</strong> 内部订单流微观结构与量化流动性交易指南 PDF 资料。</span>
+                  <span><strong>专属资料：</strong> 内部订单流微观结构与交易指南 PDF 资料。</span>
                 </li>
               </ul>
             </div>
