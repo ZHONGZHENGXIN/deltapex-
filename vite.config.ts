@@ -15,6 +15,12 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: 'dist',
+      rollupOptions: {
+        input: {
+          main: 'index.html',
+          cases: 'cases.html',
+        },
+      },
     },
     // Ensure asset paths are correct relative to the deployment root
     base: './',

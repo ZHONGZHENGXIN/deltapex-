@@ -2,7 +2,6 @@
 import { Firm, ResourceLink, FaqItem, Deal } from './types';
 
 export const SOCIAL_LINKS = {
-  discord: "https://discord.com/invite/your-link",
   telegram: "https://t.me/your-link",
   clientPortal: "https://portal.deltapex.com",
   knowledgePlanet: "https://zsxq.com/your-planet-id"

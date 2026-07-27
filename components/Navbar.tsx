@@ -5,10 +5,8 @@ import {
   Menu, 
   X, 
   ChevronDown, 
-  Cpu, 
   BookOpen, 
   ArrowRight,
-  Compass,
   FlaskConical,
   Globe,
   LayoutGrid,
@@ -25,28 +23,10 @@ function cn(...inputs: ClassValue[]) {
 // --- Navigation Data Structure ---
 const NAV_LINKS = [
   {
-    title: "平台攻略",
-    icon: <Compass size={18} />,
-    items: [
-      { name: "Futures Prop Firm 核心知识手册", href: "#prop-firm-guide" },
-      { name: "LucidFlex vs LucidPro 选型指南", href: "#lucid-selection-guide" },
-      { name: "TPT (TakeProfitTrader) 深度评测", href: "#tpt-review" },
-      { name: "TopOne Futures 深度测评", href: "#topone-review" }
-    ]
-  },
-  {
     title: "体系课程",
     icon: <BookOpen size={18} />,
     items: [
       { name: "系统交易课程", href: "#course" }
-    ]
-  },
-  {
-    title: "软件终端",
-    icon: <Cpu size={18} />,
-    items: [
-      { name: "Tradovate 实战手册", href: "#tradovate-guide" },
-      { name: "Rithmic 连接指南", href: "#rithmic-guide" }
     ]
   },
   {

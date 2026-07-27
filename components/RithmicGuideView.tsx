@@ -252,7 +252,7 @@ const RithmicGuideView: React.FC = () => {
                 <div className="absolute left-[-11px] top-0 w-5 h-5 bg-red-600 rounded-full border-4 border-white shadow-sm"></div>
                 <h3 className="!mt-0">1. 注册与登录</h3>
                 <p>访问官网：<a href="https://tradingthings.io" className="text-red-600 font-bold hover:underline decoration-2 underline-offset-4" target="_blank" rel="noopener noreferrer">tradingthings.io</a></p>
-                <p className="text-gray-500">建议使用 <span className="font-semibold text-gray-700">Google</span> 或 <span className="font-semibold text-gray-700">Discord</span> 快捷登录。</p>
+                <p className="text-gray-500">建议使用 <span className="font-semibold text-gray-700">Google</span> 快捷登录。</p>
               </div>
   
               <div className="relative pl-10 border-l-2 border-dashed border-red-200 pb-2">

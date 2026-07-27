@@ -450,7 +450,7 @@ function App() {
         )}
       </div>
 
-      {/* Global Floating Support Widgets (WeChat & Discord) */}
+      {/* Global Floating Support Widgets (WeChat Only) */}
       <div className="fixed bottom-6 right-6 z-[49] flex flex-col items-end gap-3">
         <AnimatePresence>
           {showFloatingTooltip && (
@@ -547,26 +547,6 @@ function App() {
             {/* Interactive Help Ring */}
             <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
           </button>
-        </div>
-
-        {/* Discord Floating Button (Below WeChat) */}
-        <div className="relative group/btn">
-          {/* Custom Hover Tooltip */}
-          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/btn:scale-100 group-hover/btn:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none">
-            加入 Discord 社区
-          </span>
-          <a
-            href="https://discord.com/invite/Y95zfzahb"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-500 to-blue-600 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(99,102,241,0.4)] hover:scale-105 active:scale-95 transition-all relative flex"
-            aria-label="Discord Community"
-          >
-            <i className="fa-brands fa-discord text-2xl hover:rotate-12 transition-transform duration-300"></i>
-
-            {/* Interactive Help Ring */}
-            <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
-          </a>
         </div>
       </div>
 
