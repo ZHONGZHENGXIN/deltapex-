@@ -6,11 +6,18 @@ interface ModuleCardProps {
   subtitle?: string;
   index: string;
   icon?: string;
+  href?: string;
 }
 
-const ModuleCard: React.FC<ModuleCardProps> = ({ id, title, subtitle, index, icon }) => {
+const ModuleCard: React.FC<ModuleCardProps> = ({ id, title, subtitle, index, icon, href }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
+
+  const handleClick = () => {
+    if (href) {
+      window.location.hash = href;
+    }
+  };
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -33,6 +40,7 @@ const ModuleCard: React.FC<ModuleCardProps> = ({ id, title, subtitle, index, ico
     <div
       id={id}
       ref={cardRef}
+      onClick={handleClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{

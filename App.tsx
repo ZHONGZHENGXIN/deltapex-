@@ -29,6 +29,7 @@ import RefundPolicyView from './components/RefundPolicyView';
 import ManageSubscriptionView from './components/ManageSubscriptionView';
 import CourseView from './components/CourseView';
 import CasesView from './components/CasesView';
+import WhyOrderFlowView from './components/WhyOrderFlowView';
 import Footer from './components/Footer';
 
 import Lenis from 'lenis';
@@ -37,7 +38,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const wechatQr = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/Deltapex_Ken.jpg";
 
-type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases';
+type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow';
 
 function App() {
   // Use Hash Routing to determine view
@@ -73,6 +74,7 @@ function App() {
       case '#refund': return 'refund';
       case '#manage-subscription': return 'manage-subscription';
       case '#course': return 'course';
+      case '#why-orderflow': return 'why-orderflow';
       default: return 'home';
     }
   };
@@ -222,6 +224,7 @@ function App() {
         {currentView === 'manage-subscription' && <ManageSubscriptionView />}
         {currentView === 'course' && <CourseView />}
         {currentView === 'cases' && <CasesView />}
+        {currentView === 'why-orderflow' && <WhyOrderFlowView />}
 
         {/* HOME VIEW CONTENT */}
         {currentView === 'home' && (
@@ -303,6 +306,7 @@ function App() {
                       subtitle="透视微观盘口结构与主力撮合动向，告别滞后指标，捕捉毫秒级真实买卖信号"
                       index="01"
                       icon="fa-solid fa-chart-line"
+                      href="#why-orderflow"
                     />
                   </Reveal>
 
