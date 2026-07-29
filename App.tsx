@@ -3,6 +3,7 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { FIRMS, FAQS, COMMUNITY_ACCOUNTS, SOCIAL_LINKS, STUDENT_CASES } from './constants';
 import Button from './components/Button';
 import FirmCard from './components/FirmCard';
+import ModuleCard from './components/ModuleCard';
 import FAQ from './components/FAQ';
 import TptRulesView from './components/TptRulesView';
 import LucidRulesView from './components/LucidRulesView';
@@ -277,10 +278,62 @@ function App() {
 
             <main className="max-w-7xl mx-auto px-6 md:px-12 pb-32 relative z-10">
               
-              {/* Firms List Section */}
-              <div id="firms" className="scroll-mt-32 mb-40">
+              {/* 3大核心模块 (3 Major Modules) */}
+              <div className="mb-24">
                 <Reveal>
-                  <h2 className="text-3xl font-bold text-slate-900 text-center mb-16 tracking-tight">
+                  <div className="text-center mb-12">
+                    <span className="bg-red-100 text-red-600 text-xs md:text-sm font-extrabold px-4 py-1.5 rounded-full tracking-widest uppercase inline-block mb-3 border border-red-200/80 shadow-xs">
+                      CORE SECTIONS
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
+                      Deltapex 核心指南
+                    </h2>
+                    <p className="text-slate-500 font-normal text-base md:text-lg mt-3 max-w-2xl mx-auto">
+                      精选订单流逻辑、Deltapex 独家生态体系与常见问题答疑
+                    </p>
+                  </div>
+                </Reveal>
+
+                <div className="space-y-6">
+                  {/* Module 1: 1. 为什么选择订单流？ */}
+                  <Reveal delay={0.1}>
+                    <ModuleCard
+                      id="why-orderflow"
+                      title="1. 为什么选择订单流？"
+                      subtitle="透视微观盘口结构与主力撮合动向，告别滞后指标，捕捉毫秒级真实买卖信号"
+                      index="01"
+                      icon="fa-solid fa-chart-line"
+                    />
+                  </Reveal>
+
+                  {/* Module 2: 2. 为什么选择 Deltapex？ */}
+                  <Reveal delay={0.2}>
+                    <ModuleCard
+                      id="why-deltapex"
+                      title="2. 为什么选择 Deltapex？"
+                      subtitle="打造最专业的中文订单流交易系统、全网独家自营专享福利与一站式出海生态"
+                      index="02"
+                      icon="fa-solid fa-bolt"
+                    />
+                  </Reveal>
+
+                  {/* Module 3: 3. 常见问题 FAQ */}
+                  <Reveal delay={0.3}>
+                    <ModuleCard
+                      id="faq"
+                      title="3. 常见问题 FAQ"
+                      subtitle="解答关于自营公司考核、订单流学习、软件工具配置与出金通关的核心疑问"
+                      index="03"
+                      icon="fa-solid fa-circle-question"
+                    />
+                  </Reveal>
+                </div>
+              </div>
+
+              {/* Futures Propfirm 汇总 (4 Firm Cards) */}
+              <div id="firms" className="scroll-mt-32 mb-28">
+                <Reveal>
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 text-center mb-10 tracking-tight">
                     Futures Propfirm 汇总
                   </h2>
                 </Reveal>
@@ -430,18 +483,6 @@ function App() {
                     <i className="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                   </Button>
                 </div>
-              </div>
-
-              {/* FAQ Section */}
-              <div id="faq" className="max-w-4xl mx-auto mb-24 scroll-mt-32">
-                <Reveal>
-                  <h2 className="text-3xl font-bold text-slate-900 text-center mb-12 tracking-tight">常见问题</h2>
-                  <div className="space-y-4">
-                    {FAQS.map((faq, idx) => (
-                      <FAQ key={idx} question={faq.question} answer={faq.answer} />
-                    ))}
-                  </div>
-                </Reveal>
               </div>
             </main>
 

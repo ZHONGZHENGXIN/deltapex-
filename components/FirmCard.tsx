@@ -38,7 +38,7 @@ const FirmCard: React.FC<FirmCardProps> = ({ firm }) => {
     }
   };
 
-  const borderClasses = firm.isFeatured ? "border-primary/50 shadow-sm" : "border-slate-200";
+  const borderClasses = "border-red-300/80 shadow-sm";
 
   return (
     <div 
