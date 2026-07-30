@@ -122,7 +122,7 @@ const WhyOrderFlowView: React.FC = () => {
               <Reveal delay={0.2}>
                 <div className="bg-slate-50 p-7 rounded-2xl border border-slate-200/80 flex items-start gap-5 hover:border-slate-300 transition-all">
                   <div className="w-14 h-14 rounded-2xl bg-slate-200/80 text-slate-700 flex items-center justify-center text-2xl shrink-0 font-bold">
-                    <i className="fa-solid fa-chart-candlestick"></i>
+                    <i className="fa-solid fa-chart-simple"></i>
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900 mb-2">

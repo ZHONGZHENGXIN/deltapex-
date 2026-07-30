@@ -30,6 +30,7 @@ import ManageSubscriptionView from './components/ManageSubscriptionView';
 import CourseView from './components/CourseView';
 import CasesView from './components/CasesView';
 import WhyOrderFlowView from './components/WhyOrderFlowView';
+import WhyDeltapexView from './components/WhyDeltapexView';
 import Footer from './components/Footer';
 
 import Lenis from 'lenis';
@@ -38,7 +39,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const wechatQr = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/Deltapex_Ken.jpg";
 
-type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow';
+type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex';
 
 function App() {
   // Use Hash Routing to determine view
@@ -75,6 +76,7 @@ function App() {
       case '#manage-subscription': return 'manage-subscription';
       case '#course': return 'course';
       case '#why-orderflow': return 'why-orderflow';
+      case '#why-deltapex': return 'why-deltapex';
       default: return 'home';
     }
   };
@@ -225,6 +227,7 @@ function App() {
         {currentView === 'course' && <CourseView />}
         {currentView === 'cases' && <CasesView />}
         {currentView === 'why-orderflow' && <WhyOrderFlowView />}
+        {currentView === 'why-deltapex' && <WhyDeltapexView />}
 
         {/* HOME VIEW CONTENT */}
         {currentView === 'home' && (
@@ -318,6 +321,7 @@ function App() {
                       subtitle="打造最专业的中文订单流交易系统、全网独家自营专享福利与一站式出海生态"
                       index="02"
                       icon="fa-solid fa-bolt"
+                      href="#why-deltapex"
                     />
                   </Reveal>
 
