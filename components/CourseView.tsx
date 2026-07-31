@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import Reveal from './Reveal';
 import HeroGeometric from './HeroGeometric';
-
-const wechatQr = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/Deltapex_Ken.jpg";
+import wechatQr from '../assets/wechat-qr.jpg';
 
 const CourseView: React.FC = () => {
   useEffect(() => {
@@ -12,7 +11,7 @@ const CourseView: React.FC = () => {
 
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);  
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const scrollToThreeModules = (e: React.MouseEvent) => {
@@ -792,6 +791,7 @@ const CourseView: React.FC = () => {
                   alt="WeChat QR Code"
                   className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                   <span className="bg-white/90 text-xs font-bold text-slate-700 px-2.5 py-1.5 rounded-lg shadow-xs flex items-center gap-1">
@@ -867,6 +867,7 @@ const CourseView: React.FC = () => {
               alt="WeChat QR Code Enlarged"
               className="w-auto max-h-[75vh] max-w-[85vw] rounded-2xl shadow-2xl border border-white/10 object-contain"
               referrerPolicy="no-referrer"
+              loading="eager"
             />
             <p className="text-white/60 text-xs mt-4">点击任意位置返回</p>
           </div>

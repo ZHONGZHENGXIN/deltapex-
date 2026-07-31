@@ -36,8 +36,7 @@ import Footer from './components/Footer';
 import Lenis from 'lenis';
 
 import { motion, AnimatePresence } from 'framer-motion';
-
-const wechatQr = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/Deltapex_Ken.jpg";
+import wechatQr from './assets/wechat-qr.jpg';
 
 type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex';
 
@@ -86,6 +85,12 @@ function App() {
   const [isGlobalWeChatOpen, setIsGlobalWeChatOpen] = useState(false);
   const [copiedGlobal, setCopiedGlobal] = useState(false);
   const [showFloatingTooltip, setShowFloatingTooltip] = useState(false);
+
+  // 极速预加载客服二维码，确保在中国大陆点击后 0 秒无延迟打开
+  useEffect(() => {
+    const img = new Image();
+    img.src = wechatQr;
+  }, []);
 
   const handleCopyGlobalWeChat = () => {
     navigator.clipboard.writeText("Zhong-Zhengxin");
@@ -168,6 +173,9 @@ function App() {
       {/* NEW NAVBAR */}
       <Navbar />
 
+      {/* 极速缓存预加载客服二维码（隐藏 DOM），保证中国大陆用户点按右下角图标 0 秒无延迟闪电加载 */}
+      <img src={wechatQr} aria-hidden="true" className="hidden" alt="" />
+
       {/* Global Background - Visible on Home */}
       {currentView === 'home' && <InteractiveBackground />}
 
@@ -184,6 +192,8 @@ function App() {
                 className="max-w-full max-h-[85vh] object-contain" 
                 alt="Trading Result Preview"
                 referrerPolicy="no-referrer"
+                loading="eager"
+                decoding="sync"
                 onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/1200x800?text=Result+Loading...'; }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
@@ -651,6 +661,8 @@ function App() {
                     alt="WeChat QR Code" 
                     className="w-full h-full object-contain"
                     referrerPolicy="no-referrer"
+                    loading="eager"
+                    decoding="sync"
                   />
                   {/* Hover overlay indicator */}
                   <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover/qr:opacity-100 flex items-center justify-center transition-opacity duration-300">
