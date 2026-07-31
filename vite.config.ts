@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: 'dist',
+      assetsInlineLimit: 200000,
       rollupOptions: {
         input: {
           main: 'index.html',
@@ -23,7 +24,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     // Ensure asset paths are correct relative to the deployment root
-    base: '/',
+    base: './',
     define: {
       // Stringify the API key to inject it into the client-side code safely
       'process.env.API_KEY': JSON.stringify(env.API_KEY),
