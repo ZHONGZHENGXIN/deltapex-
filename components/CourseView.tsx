@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import Reveal from './Reveal';
 import HeroGeometric from './HeroGeometric';
-import wechatQr from '../assets/wechat-qr.jpg';
+import { wechatQrBase64 as wechatQr } from '../wechatQrData';
 
 const CourseView: React.FC = () => {
   useEffect(() => {

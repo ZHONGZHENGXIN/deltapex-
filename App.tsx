@@ -36,7 +36,7 @@ import Footer from './components/Footer';
 import Lenis from 'lenis';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import wechatQr from './assets/wechat-qr.jpg';
+import { wechatQrBase64 as wechatQr } from './wechatQrData';
 
 type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex';
 
