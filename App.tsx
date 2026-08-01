@@ -452,57 +452,7 @@ function App() {
                 </div>
               </Reveal>
 
-              {/* 优秀学员案例 - Modified: Removed Text, Images Only */}
-              <div id="student-cases" className="mb-40 scroll-mt-32">
-                <Reveal>
-                  <div className="flex flex-col items-center mb-16">
-                    <h2 className="text-4xl font-bold text-slate-900 tracking-tight mb-4">优秀学员案例</h2>
-                    <div className="w-20 h-1 bg-primary rounded-full mb-4"></div>
-                    <p className="text-xs text-slate-400 max-w-2xl text-center">
-                      * 以下展示均为真实学员历史业绩，仅供参考。过往业绩不代表未来表现，交易存在风险，请理性看待。
-                    </p>
-                  </div>
-                </Reveal>
-                
-                <div className="relative w-full overflow-hidden mask-fade-edges py-10">
-                  <div className="flex w-fit animate-scroll-x hover:[animation-play-state:paused]" style={{ animationDuration: '40s' }}>
-                    {[...STUDENT_CASES, ...STUDENT_CASES].map((student, idx) => (
-                      <button 
-                        key={`${student.id}-${idx}`} 
-                        type="button"
-                        className="w-[320px] md:w-[480px] mx-6 shrink-0 bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 group relative focus:outline-none focus:ring-4 focus:ring-primary/20 cursor-pointer"
-                        onClick={() => setSelectedImage(student.screenshot)}
-                        aria-label={`View result for ${student.name}`}
-                      >
-                        <div className="relative w-full h-[220px] md:h-[320px] bg-slate-100">
-                          <img 
-                            src={student.screenshot} 
-                            alt="Student Result" 
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                            <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                              <i className="fa-solid fa-plus text-2xl"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="flex justify-center mt-12 relative z-10">
-                  <Button 
-                    href="/cases.html"
-                    variant="white"
-                    className="px-8 py-3 rounded-full text-slate-600 font-bold border-slate-200 hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md group"
-                  >
-                    查看全部案例 
-                    <i className="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                  </Button>
-                </div>
-              </div>
+
             </main>
 
             <Footer />

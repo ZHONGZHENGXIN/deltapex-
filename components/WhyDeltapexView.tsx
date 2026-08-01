@@ -259,7 +259,7 @@ const WhyDeltapexView: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                 <div>
                   <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
-                    时间轴业绩凭证 (2026.5 - 2026.7)
+                    实盘业绩
                   </h3>
                   <p className="text-slate-500 text-sm mt-1">
                     点击任意记录卡片可放大查看出金单据与资金曲线详情
@@ -410,7 +410,7 @@ const WhyDeltapexView: React.FC = () => {
               <div className="mb-8">
                 <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
                   <i className="fa-solid fa-circle-play text-red-600"></i>
-                  学员实战复盘与口述视频
+                  学员有话说：
                 </h3>
                 <p className="text-slate-500 text-sm mt-1">
                   真实音频与视频记录，分享突破瓶颈的实操心路历程
@@ -493,100 +493,35 @@ const WhyDeltapexView: React.FC = () => {
               <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
                 与时俱进的长期生态
               </h2>
-              <p className="text-slate-500 text-base md:text-lg max-w-3xl">
-                一次学习，终身陪伴。从系统课程、每日盘前盘后直播解析，到全网独家自营福利与出海支持。
-              </p>
+              <div className="text-slate-600 text-base md:text-lg max-w-3xl leading-relaxed space-y-1">
+                <p>授人以鱼，不如授人以渔。</p>
+                <p>拒绝知识拼凑，注重底层框架。</p>
+              </div>
             </div>
           </Reveal>
 
-          {/* Complete Curriculum System */}
+          {/* Complete Curriculum System - Streamlined with Course Link */}
           <Reveal delay={0.1}>
-            <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200/80 shadow-xs mb-12">
-              <div className="mb-8">
-                <span className="bg-red-50 text-red-600 text-xs font-bold px-3 py-1 rounded-md mb-2 inline-block">
+            <div className="bg-white rounded-3xl p-8 md:p-10 border border-slate-200/80 shadow-xs mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+              <div>
+                <span className="bg-red-50 text-red-600 text-xs font-bold px-3 py-1 rounded-md mb-3 inline-block">
                   CURRICULUM SYSTEM
                 </span>
-                <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                  1. 完整与不断迭代的课程体系
+                <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight mb-2">
+                  不仅仅卖“知识”，更是卖“能力”
                 </h3>
-                <p className="text-slate-500 text-sm mt-1">
-                  涵盖微观原理、策略执行与资金管理的三阶递进式培养计划
+                <p className="text-slate-700 text-base md:text-lg font-bold">
+                  迭代更新的系统化课程 × 每周最新实战案例与策略
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Stage 1 */}
-                <div className="bg-slate-50/80 p-6 rounded-2xl border border-slate-200/80 relative">
-                  <div className="w-10 h-10 rounded-xl bg-red-600 text-white font-black flex items-center justify-center text-sm mb-4">
-                    P1
-                  </div>
-                  <h4 className="font-extrabold text-slate-900 text-lg mb-2">
-                    阶段一：微观基础构建
-                  </h4>
-                  <ul className="text-slate-600 text-xs leading-relaxed space-y-2">
-                    <li className="flex items-start gap-2">
-                      <i className="fa-solid fa-check text-red-500 mt-0.5"></i>
-                      <span>CME 撮合引擎原理与 DOM 深度图识读</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <i className="fa-solid fa-check text-red-500 mt-0.5"></i>
-                      <span>Footprint 逐笔图表设置与 Delta 统计</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <i className="fa-solid fa-check text-red-500 mt-0.5"></i>
-                      <span>Volume Profile 节点与 POC 分布规律</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Stage 2 */}
-                <div className="bg-slate-50/80 p-6 rounded-2xl border border-slate-200/80 relative">
-                  <div className="w-10 h-10 rounded-xl bg-red-600 text-white font-black flex items-center justify-center text-sm mb-4">
-                    P2
-                  </div>
-                  <h4 className="font-extrabold text-slate-900 text-lg mb-2">
-                    阶段二：核心策略实战
-                  </h4>
-                  <ul className="text-slate-600 text-xs leading-relaxed space-y-2">
-                    <li className="flex items-start gap-2">
-                      <i className="fa-solid fa-check text-red-500 mt-0.5"></i>
-                      <span>失衡（Imbalance）与主动买卖单起爆</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <i className="fa-solid fa-check text-red-500 mt-0.5"></i>
-                      <span>吸收（Absorption）与冰山委托识别</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <i className="fa-solid fa-check text-red-500 mt-0.5"></i>
-                      <span>假突破过滤与流动性猎杀应对</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Stage 3 */}
-                <div className="bg-slate-50/80 p-6 rounded-2xl border border-slate-200/80 relative">
-                  <div className="w-10 h-10 rounded-xl bg-red-600 text-white font-black flex items-center justify-center text-sm mb-4">
-                    P3
-                  </div>
-                  <h4 className="font-extrabold text-slate-900 text-lg mb-2">
-                    阶段三：自营矩阵与出海
-                  </h4>
-                  <ul className="text-slate-600 text-xs leading-relaxed space-y-2">
-                    <li className="flex items-start gap-2">
-                      <i className="fa-solid fa-check text-red-500 mt-0.5"></i>
-                      <span>TPT / Earn2Trade 多账号风控配置</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <i className="fa-solid fa-check text-red-500 mt-0.5"></i>
-                      <span>Tradovate / Rithmic 稳定连接策略</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <i className="fa-solid fa-check text-red-500 mt-0.5"></i>
-                      <span>Wise 跨境提款与合规通道全解</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <a
+                href="#course"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all shrink-0"
+              >
+                <span>查看课程详情</span>
+                <i className="fa-solid fa-arrow-right text-xs"></i>
+              </a>
             </div>
           </Reveal>
 
