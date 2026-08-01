@@ -10,7 +10,8 @@ import {
   FlaskConical,
   Globe,
   LayoutGrid,
-  BookText
+  BookText,
+  Wrench
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -27,6 +28,16 @@ const NAV_LINKS = [
     icon: <BookOpen size={18} />,
     items: [
       { name: "系统交易课程", href: "#course" }
+    ]
+  },
+  {
+    title: "自营与工具",
+    icon: <Wrench size={18} />,
+    items: [
+      { name: "PropFirm 与交易工具汇总", href: "#propfirm-tools" },
+      { name: "Futures Propfirm 汇总", href: "#propfirm-tools" },
+      { name: "交易必备工具", href: "#propfirm-tools" },
+      { name: "官方直播 & 交易日志", href: "#propfirm-tools" }
     ]
   },
   {

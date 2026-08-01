@@ -64,30 +64,13 @@ interface StudentVideo {
 const STUDENT_VIDEOS: StudentVideo[] = [
   {
     id: 'v1',
-    studentName: '赵同学',
-    title: '从多次爆仓到稳定日进 $500：我的订单流思维转变',
-    duration: '08:45',
-    tag: '实盘复盘',
-    summary: '详细拆解如何摆脱传统指标迷思，利用 Footprint 寻找买卖盘吸收起爆点。',
-    thumbnail: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/2.jpg',
-  },
-  {
-    id: 'v2',
-    studentName: '孙同学',
-    title: 'TPT $150K 账号 5 天考核通关与出金全流程记录',
-    duration: '12:10',
-    tag: '考核通关',
-    summary: '展示真实结算邮件与 Wise 提款到账全过程，分享平滑盈亏比的风控技巧。',
-    thumbnail: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/3.jpg',
-  },
-  {
-    id: 'v3',
-    studentName: '徐同学',
-    title: '兼职交易者的每日 1 小时订单流盘前准备法则',
-    duration: '10:30',
-    tag: '高效交易',
-    summary: '工作党如何通过开盘前 15 分钟 DOM 深度分析与主要关键位绘制确定一日计划。',
-    thumbnail: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/4.jpg',
+    studentName: '学员陆哥',
+    title: '学员陆哥：订单流实战分析与交易心路历程分享',
+    duration: '学员视频',
+    tag: '学员实操分享',
+    summary: '学员陆哥详细分享在实际期货交割与考核盘中的订单流思维转变、买卖盘吸收理解与风控心得。',
+    thumbnail: '',
+    videoUrl: 'https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/luge.mp4',
   },
 ];
 
@@ -261,9 +244,6 @@ const WhyDeltapexView: React.FC = () => {
                   <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
                     实盘业绩
                   </h3>
-                  <p className="text-slate-500 text-sm mt-1">
-                    点击任意记录卡片可放大查看出金单据与资金曲线详情
-                  </p>
                 </div>
 
                 {/* Filter Tabs */}
@@ -354,9 +334,6 @@ const WhyDeltapexView: React.FC = () => {
                     <i className="fa-solid fa-award text-red-600"></i>
                     优秀学员案例与盈亏统计
                   </h3>
-                  <p className="text-slate-500 text-xs md:text-sm mt-1">
-                    * 鼠标悬停可暂停滚动，点击卡片放大查看完整交易交割单与资金曲线
-                  </p>
                 </div>
                 <a
                   href="#cases"
@@ -404,74 +381,53 @@ const WhyDeltapexView: React.FC = () => {
             </div>
           </div>
 
-          {/* Sub-part B: 学员视频 (Student Review Videos Grid) */}
+          {/* Sub-part B: 学员视频 (Single Clean Video Frame) */}
           <div>
             <Reveal delay={0.1}>
-              <div className="mb-8">
+              <div className="mb-6">
                 <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
                   <i className="fa-solid fa-circle-play text-red-600"></i>
                   学员有话说：
                 </h3>
-                <p className="text-slate-500 text-sm mt-1">
-                  真实音频与视频记录，分享突破瓶颈的实操心路历程
-                </p>
               </div>
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {STUDENT_VIDEOS.map((video, idx) => (
-                <Reveal key={video.id} delay={0.1 * idx}>
-                  <div
-                    onClick={() => setSelectedVideo(video)}
-                    className="group bg-white rounded-3xl border border-slate-200/80 shadow-xs hover:shadow-xl hover:border-red-300 transition-all duration-300 overflow-hidden cursor-pointer flex flex-col"
-                  >
-                    {/* Video Player Cover Frame */}
-                    <div className="relative aspect-video bg-slate-900 overflow-hidden">
-                      <img
-                        src={video.thumbnail}
-                        alt={video.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-95"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-                      
-                      {/* Play Icon Button Overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center text-xl shadow-lg group-hover:scale-110 group-hover:bg-red-500 transition-all">
-                          <i className="fa-solid fa-play ml-1"></i>
-                        </div>
-                      </div>
-
-                      <span className="absolute bottom-3 right-3 bg-slate-900/80 text-white text-xs font-bold px-2 py-1 rounded-md backdrop-blur-xs">
-                        {video.duration}
-                      </span>
-
-                      <span className="absolute top-3 left-3 bg-red-600 text-white text-[11px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider">
-                        {video.tag}
-                      </span>
-                    </div>
-
-                    <div className="p-6 flex-1 flex flex-col justify-between">
-                      <div>
-                        <div className="text-xs font-bold text-red-600 mb-1">
-                          {video.studentName} · 经验分享
-                        </div>
-                        <h4 className="font-extrabold text-slate-900 text-base group-hover:text-red-600 transition-colors line-clamp-2">
-                          {video.title}
-                        </h4>
-                        <p className="text-slate-500 text-xs mt-2 leading-relaxed line-clamp-2">
-                          {video.summary}
-                        </p>
-                      </div>
-
-                      <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-red-600 font-bold">
-                        <span>点击播放复盘视频</span>
-                        <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                      </div>
-                    </div>
+            <Reveal delay={0.2}>
+              <div className="max-w-3xl">
+                <div className="bg-white rounded-3xl border border-slate-200/80 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col p-5 md:p-7 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="bg-red-50 text-red-600 text-xs font-extrabold px-3.5 py-1.5 rounded-full border border-red-100/80 shadow-2xs">
+                      {STUDENT_VIDEOS[0].tag} · {STUDENT_VIDEOS[0].studentName}
+                    </span>
+                    <button
+                      onClick={() => setSelectedVideo(STUDENT_VIDEOS[0])}
+                      className="text-xs font-bold text-slate-500 hover:text-red-600 flex items-center gap-1.5 bg-slate-100/80 hover:bg-red-50 px-3 py-1.5 rounded-full transition-all"
+                    >
+                      <i className="fa-solid fa-expand"></i> 全屏/全宽播放
+                    </button>
                   </div>
-                </Reveal>
-              ))}
-            </div>
+
+                  <h4 className="font-black text-slate-900 text-base md:text-xl tracking-tight leading-snug">
+                    {STUDENT_VIDEOS[0].title}
+                  </h4>
+
+                  {/* HTML5 Direct Video Player using video itself as cover */}
+                  <div className="relative aspect-video bg-slate-950 rounded-2xl overflow-hidden border border-slate-200/80 shadow-inner group">
+                    <video
+                      controls
+                      preload="metadata"
+                      src={`${STUDENT_VIDEOS[0].videoUrl}#t=0.1`}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+
+                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed bg-slate-50/80 p-3.5 rounded-xl border border-slate-100">
+                    <i className="fa-solid fa-[#E60012] fa-quote-left mr-2 text-red-400"></i>
+                    {STUDENT_VIDEOS[0].summary}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
           </div>
 
         </section>
@@ -546,14 +502,6 @@ const WhyDeltapexView: React.FC = () => {
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-5">
-                <Button
-                  href="#course"
-                  className="px-8 py-4 rounded-xl font-bold bg-red-600 hover:bg-red-500 text-white transition-all shadow-md shadow-red-600/20"
-                >
-                  <i className="fa-solid fa-graduation-cap mr-2"></i>
-                  立即报名 Deltapex 课程
-                </Button>
-
                 <a
                   href="#"
                   className="px-6 py-4 rounded-xl font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors border border-slate-200"
@@ -624,19 +572,25 @@ const WhyDeltapexView: React.FC = () => {
               </button>
             </div>
 
-            {/* Video Player Embed Placeholder Frame */}
-            <div className="rounded-2xl overflow-hidden bg-slate-950 aspect-video relative flex items-center justify-center border border-slate-200">
-              <div className="text-center p-8 text-white">
-                <div className="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center text-2xl mx-auto mb-4 shadow-lg animate-pulse">
-                  <i className="fa-solid fa-play ml-1"></i>
+            {/* Video Player Frame */}
+            <div className="rounded-2xl overflow-hidden bg-slate-950 aspect-video relative flex items-center justify-center border border-slate-200 shadow-inner">
+              {selectedVideo.videoUrl ? (
+                <video
+                  src={selectedVideo.videoUrl}
+                  controls
+                  autoPlay
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <div className="text-center p-8 text-white">
+                  <div className="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center text-2xl mx-auto mb-4 shadow-lg animate-pulse">
+                    <i className="fa-solid fa-play ml-1"></i>
+                  </div>
+                  <h4 className="font-bold text-base mb-1">
+                    视频播放窗口 ({selectedVideo.duration})
+                  </h4>
                 </div>
-                <h4 className="font-bold text-base mb-1">
-                  视频播放预留窗口 ({selectedVideo.duration})
-                </h4>
-                <p className="text-slate-400 text-xs max-w-md mx-auto">
-                  可随时替换为 Bilibili / YouTube / MP4 直链文件地址。
-                </p>
-              </div>
+              )}
             </div>
 
             <p className="text-slate-600 text-sm mt-4 leading-relaxed">
