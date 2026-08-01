@@ -194,7 +194,7 @@ const CasesView: React.FC = () => {
         <Reveal>
           <div className="text-center mb-12">
             <div className="flex justify-center mb-6">
-              <a href="/" className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 hover:bg-white transition-all duration-300 text-sm font-medium">
+              <a href="#why-deltapex" className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 hover:bg-white transition-all duration-300 text-sm font-medium">
                 <i className="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
                 返回主页
               </a>

@@ -76,6 +76,7 @@ function App() {
       case '#course': return 'course';
       case '#why-orderflow': return 'why-orderflow';
       case '#why-deltapex': return 'why-deltapex';
+      case '#cases': return 'cases';
       default: return 'home';
     }
   };

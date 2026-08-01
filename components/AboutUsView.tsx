@@ -67,7 +67,11 @@ const AboutUsView: React.FC = () => {
     { 
       content: (
         <span>
-          5,000美元挑战1,000,000美元实盘系列（已至<CountUp value={1500000} prefix="$" className="font-bold text-[#E60012] mx-1" />美元）
+          5,000美元挑战1,000,000美元实盘系列（已至
+          <span className="font-extrabold text-[#E60012] text-xl mx-1">
+            <CountUp value={1500000} prefix="$" />
+          </span>
+          美元）
         </span>
       )
     },
@@ -246,7 +250,7 @@ const AboutUsView: React.FC = () => {
                   <div className="absolute top-0 right-0 w-32 h-32 bg-[#E60012] rounded-bl-[100%] z-0 group-hover:scale-110 transition-transform duration-500"></div>
                   <div className="relative z-10">
                     <h3 className="text-5xl md:text-7xl font-bold mb-4">Alex Su</h3>
-                    <p className="text-[#E60012] font-medium text-2xl mb-8">Deltapex 创始人</p>
+                    <p className="text-[#E60012] font-medium text-xl md:text-2xl mb-8">Founder, CEO and Co-Chief Investment Officer</p>
                     <p className="text-gray-400 italic text-lg leading-relaxed border-l-2 border-[#E60012] pl-4">
                       "Trading is not about predicting the future, it's about reacting to the present with precision."
                     </p>

@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Reveal from './Reveal';
 import Button from './Button';
+import CountUp from './CountUp';
 import { STUDENT_CASES } from '../constants';
+
+// ALEX 导师肖像图片 URL
+const ALEX_PORTRAIT_URL = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/Alex.jpg";
 
 // Alex Performance Screenshots Data Structure (Chronological)
 interface TrackRecordItem {
@@ -16,58 +21,31 @@ interface TrackRecordItem {
 
 const TRACK_RECORDS: TrackRecordItem[] = [
   {
-    id: 'tr-2026-q1',
+    id: 'tr-2026-07',
     year: '2026',
-    quarter: 'Q1',
-    title: '2026 Q1 自营账户出金统计与数据回测',
-    description: '保持月度盈亏比与高胜率执行，累计实现多账户出金记录',
+    quarter: '2026.7',
+    title: '7月业绩',
+    description: '',
     type: 'payout',
-    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/1.jpg',
+    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/yeji/2026.7.png',
   },
   {
-    id: 'tr-2025-q4',
-    year: '2025',
-    quarter: 'Q4',
-    title: '2025 年终资金权益曲线与账户矩阵总结',
-    description: '通过阶梯式仓位与平滑风控曲线，实现年终资金池翻倍增长',
+    id: 'tr-2026-06',
+    year: '2026',
+    quarter: '2026.6',
+    title: '6月业绩',
+    description: '',
     type: 'equity',
-    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/2.jpg',
+    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/yeji/2026.6.png',
   },
   {
-    id: 'tr-2025-q2',
-    year: '2025',
-    quarter: 'Q2',
-    title: '2025 Q2 Take Profit Trader 商业账户连续提款凭证',
-    description: '单月多账号无缝出金，验证订单流在大波动环境下的稳健性',
-    type: 'payout',
-    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/3.jpg',
-  },
-  {
-    id: 'tr-2024-q4',
-    year: '2024',
-    quarter: 'Q4',
-    title: '2024 下半年真实成交与撮合深度对比复盘',
-    description: '深度记录每一笔 DOM 入场与出场记录，完全公开透明可追溯',
+    id: 'tr-2026-05',
+    year: '2026',
+    quarter: '2026.5',
+    title: '5月业绩',
+    description: '',
     type: 'statement',
-    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/4.jpg',
-  },
-  {
-    id: 'tr-2024-q1',
-    year: '2024',
-    quarter: 'Q1',
-    title: '2024 第一季度全绿交易日历与风控报告',
-    description: '严格执行无滑点限价单挂单策略，单月最大回撤控制在 1.2% 以内',
-    type: 'equity',
-    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/5.jpg',
-  },
-  {
-    id: 'tr-2023-annual',
-    year: '2023',
-    quarter: '年度',
-    title: '2023 早期实盘账户提款与资本积累历程',
-    description: 'Deltapex 体系雏形构建阶段，通过持续统计验证微观结构优势',
-    type: 'payout',
-    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/1.jpg',
+    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/yeji/2026.5.png',
   },
 ];
 
@@ -124,7 +102,7 @@ const WhyDeltapexView: React.FC = () => {
 
   const filteredRecords = selectedYear === 'all' 
     ? TRACK_RECORDS 
-    : TRACK_RECORDS.filter((item) => item.year === selectedYear);
+    : TRACK_RECORDS.filter((item) => item.quarter === selectedYear || item.year === selectedYear);
 
   return (
     <div className="min-h-screen bg-slate-50/50 pt-10 pb-40 text-slate-800 font-sans">
@@ -143,61 +121,6 @@ const WhyDeltapexView: React.FC = () => {
           </div>
         </Reveal>
 
-        {/* Hero Banner Header */}
-        <Reveal delay={0.1}>
-          <div className="bg-white rounded-3xl p-8 md:p-14 border border-red-200/90 shadow-sm mb-20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-red-500/10 via-red-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
-
-            <div className="relative z-10 max-w-4xl">
-              <span className="bg-red-100/90 text-red-600 text-xs font-black px-4 py-1.5 rounded-lg uppercase tracking-widest inline-block mb-5 border border-red-200/60">
-                WHY DELTAPEX · 品牌核心优势
-              </span>
-              <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
-                为什么选择 Deltapex？
-              </h1>
-              <p className="text-slate-600 text-base md:text-lg leading-relaxed font-normal max-w-3xl">
-                我们不贩卖暴利幻想，不使用夸大营销。Deltapex 致力于打造最专业的中文订单流交易教学系统，结合实战实盘验证、真实学员辅导与长期一站式出海生态，陪伴每一位独立交易者实现长期可持续进化。
-              </p>
-            </div>
-
-            {/* Quick Metrics Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-10 border-t border-slate-100 text-center sm:text-left">
-              <div>
-                <div className="text-2xl md:text-3xl font-black text-slate-900 mb-1">
-                  5+ <span className="text-red-600 text-lg">年</span>
-                </div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                  CME 期货订单流实盘
-                </div>
-              </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-black text-slate-900 mb-1">
-                  100% <span className="text-red-600 text-lg">真实</span>
-                </div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                  出金凭证与交割单可溯
-                </div>
-              </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-black text-slate-900 mb-1">
-                  800+ <span className="text-red-600 text-lg">名</span>
-                </div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                  社群精英交易者陪伴
-                </div>
-              </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-black text-slate-900 mb-1">
-                  1 站式 <span className="text-red-600 text-lg">出海</span>
-                </div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                  自营/出金/工具全覆盖
-                </div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
         {/* MODULE 1: ALEX的长期业绩突出 */}
         <section id="alex-track-record" className="mb-28">
           
@@ -205,7 +128,7 @@ const WhyDeltapexView: React.FC = () => {
           <Reveal>
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-3">
-                <span className="w-8 h-8 rounded-xl bg-red-100 text-red-600 font-extrabold flex items-center justify-center text-sm">
+                <span className="w-8 h-8 rounded-xl bg-red-100 text-red-600 font-extrabold flex items-center justify-center text-sm font-mono">
                   01
                 </span>
                 <span className="text-xs font-black tracking-widest text-red-600 uppercase">
@@ -213,71 +136,121 @@ const WhyDeltapexView: React.FC = () => {
                 </span>
               </div>
               <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
-                ALEX 的长期业绩突出
+                关于 Alex
               </h2>
               <p className="text-slate-500 text-base md:text-lg max-w-3xl">
-                坚信“知行合一”。真正的教学源于实盘战绩与持续透明的资金回测，而非纸上谈兵。
+                卓越的长期业绩：真正的教学源于长期透明的实盘业绩，而非纸上谈兵。
               </p>
             </div>
           </Reveal>
 
-          {/* Mentor Bio Card */}
-          <Reveal delay={0.1}>
-            <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200/80 shadow-xs mb-12 hover:border-red-200 transition-colors">
-              <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 md:gap-12">
+          {/* Mentor Bio Card - Institutional Editorial Profile Style */}
+          <div className="bg-[#FAF9F6] rounded-3xl p-8 md:p-12 border border-slate-200/90 shadow-xs mb-12 overflow-hidden">
+            <div className="flex flex-col lg:flex-row items-stretch gap-8 md:gap-12">
+              
+              {/* Mentor Portrait Card (Slides in from Left to Center) */}
+              <motion.div 
+                initial={{ opacity: 0, x: -80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="lg:w-80 shrink-0 flex flex-col justify-end rounded-2xl bg-[#10141E] text-white relative overflow-hidden border border-slate-800 shadow-md min-h-[340px] group"
+              >
+                {/* 导师肖像图片 */}
+                <img 
+                  src={ALEX_PORTRAIT_URL} 
+                  alt="Alex - Founder, CEO & Co-CIO" 
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    // 如果图片无法加载则隐藏
+                    (e.target as HTMLElement).style.opacity = '0';
+                  }}
+                />
                 
-                {/* Mentor Avatar / Badge */}
-                <div className="shrink-0 text-center">
-                  <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white p-1 shadow-lg overflow-hidden mx-auto">
-                    <div className="w-full h-full bg-slate-900 rounded-[22px] flex flex-col items-center justify-center p-4">
-                      <div className="w-16 h-16 rounded-2xl bg-red-600 text-white flex items-center justify-center text-2xl font-black mb-3 shadow-md">
-                        ALEX
-                      </div>
-                      <span className="text-xs font-bold tracking-widest text-red-400 uppercase">
-                        FOUNDER
+                {/* 底部渐变蒙层与身份标签 */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#10141E] via-[#10141E]/40 to-transparent pointer-events-none" />
+
+                <div className="relative z-10 p-6">
+                  <div className="text-[10px] font-mono font-bold tracking-[0.2em] text-slate-300 uppercase mb-2">
+                    DELTAPEX LEADERSHIP
+                  </div>
+                  <h3 className="font-serif text-3xl font-bold tracking-tight text-white mb-1">
+                    ALEX
+                  </h3>
+                  <p className="text-xs font-semibold tracking-wider text-red-400 uppercase">
+                    Founder, CEO & Co-CIO
+                  </p>
+                </div>
+
+                <div className="relative z-10 px-6 pb-5 pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                  <span className="text-[10px] font-mono tracking-widest text-slate-400 uppercase">
+                    QUANT & ORDER FLOW
+                  </span>
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                </div>
+              </motion.div>
+
+              {/* Mentor Content Details (Slides in from Right to Center) */}
+              <motion.div 
+                initial={{ opacity: 0, x: 80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="flex-1 flex flex-col justify-center space-y-6"
+              >
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 tracking-tight mb-1">
+                    Founder, CEO and Co-Chief Investment Officer
+                  </h3>
+                  <p className="text-xs font-mono tracking-widest text-slate-400 uppercase">
+                    DELTAPEX CAPITAL & EDUCATION
+                  </p>
+                </div>
+
+                {/* Motto Quote */}
+                <blockquote className="text-slate-700 font-serif italic text-base md:text-lg border-l-2 border-red-600 pl-4 md:pl-5 py-1 leading-relaxed">
+                  "Trading is not about predicting the future, it's about reacting to the present with precision."
+                </blockquote>
+
+                {/* Numbered Editorial Credentials List */}
+                <div className="pt-2 border-t border-slate-200/80">
+                  {[
+                    { id: "01", text: "香港中文大学量化金融及风险管理（QFRM）荣誉学士" },
+                    { id: "02", text: "上海交通大学量化俱乐部特邀讲座嘉宾" },
+                    { id: "03", text: "国内首批订单流实盘直播交易者（自2015年起深耕订单流）" },
+                    {
+                      id: "04",
+                      content: (
+                        <span>
+                          5,000美元挑战1,000,000美元实盘系列（已至
+                          <span className="font-extrabold text-red-600 text-lg md:text-xl mx-1.5 font-mono">
+                            <CountUp value={1500000} prefix="$" />
+                          </span>
+                          美元）
+                        </span>
+                      )
+                    },
+                    { id: "05", text: "前私募股权基金投资经理（500 亿基金规模）" },
+                  ].map((item) => (
+                    <div
+                      key={item.id}
+                      className="flex items-start md:items-center gap-4 py-3.5 border-b border-slate-200/60 last:border-0 group/item transition-colors hover:bg-white/60 px-2 rounded-lg"
+                    >
+                      <span className="shrink-0 text-xs font-mono font-bold tracking-widest text-slate-900 group-hover/item:text-red-600 transition-colors w-7">
+                        {item.id}
                       </span>
-                      <span className="text-xs font-medium text-slate-400 mt-1">
-                        Deltapex 创始人
+                      <span className="text-sm md:text-base text-slate-800 font-medium leading-snug">
+                        {item.content || item.text}
                       </span>
                     </div>
-                  </div>
-                  <div className="mt-4 inline-flex items-center gap-2 bg-red-50 text-red-700 text-xs font-extrabold px-3 py-1.5 rounded-full border border-red-200">
-                    <i className="fa-solid fa-shield-check"></i>
-                    <span>全网真实出金认证</span>
-                  </div>
+                  ))}
                 </div>
 
-                {/* Mentor Content Details */}
-                <div className="flex-1 space-y-4 text-center lg:text-left">
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-900">
-                    Alex · 资深订单流交易员 & 体系架构师
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    专注 CME 美股股指期货（NQ/ES）、美债（ZN）与黄金（GC）微观结构交易。擅长结合 DOM 挂单深度、Footprint 逐笔成交与 Volume Profile（成交量分布），捕捉微观博弈中的极高盈亏比机会。
-                  </p>
-                  <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                    主张“用自营公司的钱做风控练习，用微观结构寻找无滑点执行”。已帮助上百位中文交易者建立逻辑严密的量化与半自动交易决策模型。
-                  </p>
+              </motion.div>
 
-                  <div className="pt-4 flex flex-wrap gap-3 justify-center lg:justify-start">
-                    <span className="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-200">
-                      <i className="fa-solid fa-bullseye text-red-500 mr-1.5"></i>
-                      微观 DOM 深度撮合
-                    </span>
-                    <span className="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-200">
-                      <i className="fa-solid fa-chart-pie text-red-500 mr-1.5"></i>
-                      Footprint 量化吸收
-                    </span>
-                    <span className="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-200">
-                      <i className="fa-solid fa-vault text-red-500 mr-1.5"></i>
-                      自营资金矩阵风控
-                    </span>
-                  </div>
-                </div>
-
-              </div>
             </div>
-          </Reveal>
+          </div>
 
           {/* Performance Track Record Screenshots (Chronological Timeline Grid) */}
           <Reveal delay={0.2}>
@@ -286,7 +259,7 @@ const WhyDeltapexView: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                 <div>
                   <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
-                    时间轴业绩凭证 (2023 - 2026)
+                    时间轴业绩凭证 (2026.5 - 2026.7)
                   </h3>
                   <p className="text-slate-500 text-sm mt-1">
                     点击任意记录卡片可放大查看出金单据与资金曲线详情
@@ -295,7 +268,7 @@ const WhyDeltapexView: React.FC = () => {
 
                 {/* Filter Tabs */}
                 <div className="flex flex-wrap items-center gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200/80 self-start sm:self-auto">
-                  {['all', '2026', '2025', '2024', '2023'].map((yr) => (
+                  {['all', '2026.7', '2026.6', '2026.5'].map((yr) => (
                     <button
                       key={yr}
                       onClick={() => setSelectedYear(yr)}
@@ -305,7 +278,7 @@ const WhyDeltapexView: React.FC = () => {
                           : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
                       }`}
                     >
-                      {yr === 'all' ? '全部年份' : `${yr} 年`}
+                      {yr === 'all' ? '全部记录' : yr}
                     </button>
                   ))}
                 </div>
@@ -319,41 +292,26 @@ const WhyDeltapexView: React.FC = () => {
                     onClick={() => setActiveImage({ title: record.title, url: record.imageUrl })}
                     className="group bg-slate-50 rounded-2xl border border-slate-200/80 overflow-hidden hover:border-red-300 hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col"
                   >
-                    {/* Image Placeholder Frame */}
-                    <div className="relative aspect-video bg-slate-900/90 overflow-hidden flex items-center justify-center">
+                    {/* Image Frame */}
+                    <div className="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
                       <img
                         src={record.imageUrl}
                         alt={record.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
+                      <div className="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
                         <span className="w-10 h-10 rounded-full bg-white/90 text-slate-900 flex items-center justify-center text-sm group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all shadow-md">
                           <i className="fa-solid fa-magnifying-glass-plus"></i>
                         </span>
                       </div>
-                      <span className="absolute top-3 left-3 bg-slate-900/80 text-white text-[11px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider backdrop-blur-xs">
-                        {record.year} · {record.quarter}
-                      </span>
                     </div>
 
-                    {/* Meta info */}
-                    <div className="p-5 flex-1 flex flex-col justify-between">
-                      <div>
-                        <h4 className="font-bold text-slate-900 text-base group-hover:text-red-600 transition-colors line-clamp-2">
-                          {record.title}
-                        </h4>
-                        <p className="text-slate-500 text-xs mt-2 leading-relaxed">
-                          {record.description}
-                        </p>
-                      </div>
-
-                      <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs text-slate-400 font-medium">
-                        <span>真实出金凭证</span>
-                        <span className="text-red-600 font-bold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                          查看大图 <i className="fa-solid fa-arrow-right text-[10px]"></i>
-                        </span>
-                      </div>
+                    {/* Simple Title Only */}
+                    <div className="p-4 bg-white text-center border-t border-slate-100">
+                      <h4 className="font-extrabold text-slate-900 text-base md:text-lg group-hover:text-red-600 transition-colors">
+                        {record.title}
+                      </h4>
                     </div>
                   </div>
                 ))}
@@ -387,82 +345,62 @@ const WhyDeltapexView: React.FC = () => {
             </div>
           </Reveal>
 
-          {/* Sub-part A: 学员案例 (Student Success Cases) */}
+          {/* Sub-part A: 学员案例 (Student Success Cases - Auto Scrolling Images Carousel) */}
           <div className="mb-16">
             <Reveal delay={0.1}>
-              <div className="flex items-center justify-between mb-8">
-                <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
-                  <i className="fa-solid fa-award text-red-600"></i>
-                  优秀学员案例与盈亏统计
-                </h3>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                    <i className="fa-solid fa-award text-red-600"></i>
+                    优秀学员案例与盈亏统计
+                  </h3>
+                  <p className="text-slate-500 text-xs md:text-sm mt-1">
+                    * 鼠标悬停可暂停滚动，点击卡片放大查看完整交易交割单与资金曲线
+                  </p>
+                </div>
                 <a
                   href="#cases"
-                  className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1"
+                  className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1 shrink-0"
                 >
                   查看更多案例 <i className="fa-solid fa-chevron-right text-[10px]"></i>
                 </a>
               </div>
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {STUDENT_CASES.slice(0, 3).map((item, idx) => (
-                <Reveal key={item.id} delay={0.1 * idx}>
-                  <div className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200/80 shadow-xs hover:border-red-200 hover:shadow-lg transition-all duration-300 flex flex-col justify-between h-full">
-                    <div>
-                      {/* Student Header */}
-                      <div className="flex items-center justify-between mb-5">
-                        <div className="flex items-center gap-3">
-                          <img
-                            src={item.avatar}
-                            alt={item.name}
-                            className="w-12 h-12 rounded-full bg-slate-100 border border-slate-200"
-                          />
-                          <div>
-                            <h4 className="font-extrabold text-slate-900 text-base">
-                              {item.name}
-                            </h4>
-                            <span className="text-xs text-slate-500 font-medium">
-                              策略：{item.strategy}
-                            </span>
-                          </div>
-                        </div>
-
-                        <span className="bg-red-50 text-red-600 font-black text-xs px-3 py-1 rounded-full border border-red-200/60">
-                          {item.profit}
+            {/* Smooth Infinite Horizontal Scrolling Image Carousel - Pure Image Cards */}
+            <div className="relative w-full overflow-hidden mask-fade-edges py-4">
+              <div
+                className="flex w-fit animate-scroll-x hover:[animation-play-state:paused]"
+                style={{ animationDuration: '35s' }}
+              >
+                {[...STUDENT_CASES, ...STUDENT_CASES].map((student, idx) => (
+                  <div
+                    key={`scrolling-case-${student.id}-${idx}`}
+                    onClick={() =>
+                      setActiveImage({
+                        title: `${student.name} - ${student.profit} (${student.strategy})`,
+                        url: student.screenshot,
+                      })
+                    }
+                    className="w-[280px] sm:w-[360px] md:w-[420px] mx-3 shrink-0 bg-slate-900 border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:border-red-300 transition-all duration-300 group cursor-pointer"
+                  >
+                    {/* Pure Screenshot Container */}
+                    <div className="relative w-full aspect-16/10 bg-slate-900 overflow-hidden">
+                      <img
+                        src={student.screenshot}
+                        alt={`${student.name} 真实交易凭证`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
+                        <span className="bg-white/95 text-slate-900 text-xs font-bold px-4 py-2 rounded-xl shadow-md group-hover:bg-red-600 group-hover:text-white transition-all flex items-center gap-1.5">
+                          <i className="fa-solid fa-expand text-xs"></i> 点击查看大图
                         </span>
                       </div>
-
-                      {/* Screenshot Zoom Frame */}
-                      <div
-                        onClick={() => setActiveImage({ title: `${item.name} - ${item.profit}`, url: item.screenshot })}
-                        className="relative rounded-2xl overflow-hidden bg-slate-900 aspect-4/3 mb-5 cursor-pointer group border border-slate-200/60"
-                      >
-                        <img
-                          src={item.screenshot}
-                          alt={item.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/40 transition-colors flex items-center justify-center">
-                          <span className="bg-white/90 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm group-hover:bg-red-600 group-hover:text-white transition-all">
-                            <i className="fa-solid fa-expand mr-1"></i> 点击查看大图
-                          </span>
-                        </div>
-                      </div>
-
-                      <p className="text-slate-600 text-sm leading-relaxed italic">
-                        "{item.comment}"
-                      </p>
-                    </div>
-
-                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-                      <span>已通过实盘验证</span>
-                      <span className="text-emerald-600 font-bold flex items-center gap-1">
-                        <i className="fa-solid fa-circle-check"></i> 社区真实学员
-                      </span>
                     </div>
                   </div>
-                </Reveal>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
@@ -652,60 +590,7 @@ const WhyDeltapexView: React.FC = () => {
             </div>
           </Reveal>
 
-          {/* Ecosystem Value Matrix (4 Columns) */}
-          <Reveal delay={0.2}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              
-              <div className="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:border-red-300 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center text-xl font-bold mb-4">
-                  <i className="fa-solid fa-headset"></i>
-                </div>
-                <h4 className="font-extrabold text-slate-900 text-base mb-2">
-                  每日 Live 盘前拆解
-                </h4>
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  交易日固定美股开盘前推送 DOM 关键节点与订单流预案，拒绝滞后后视镜。
-                </p>
-              </div>
 
-              <div className="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:border-red-300 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center text-xl font-bold mb-4">
-                  <i className="fa-solid fa-tags"></i>
-                </div>
-                <h4 className="font-extrabold text-slate-900 text-base mb-2">
-                  独家自营折扣福利
-                </h4>
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  Take Profit Trader 官方最高 40% OFF 专属折扣码（NOFEE40），节省过关成本。
-                </p>
-              </div>
-
-              <div className="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:border-red-300 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center text-xl font-bold mb-4">
-                  <i className="fa-solid fa-globe"></i>
-                </div>
-                <h4 className="font-extrabold text-slate-900 text-base mb-2">
-                  出海基础设施工具
-                </h4>
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  提供完整的 Wise 注册、Rithmic 专线与跨境出金实操图文手册支持。
-                </p>
-              </div>
-
-              <div className="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:border-red-300 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center text-xl font-bold mb-4">
-                  <i className="fa-solid fa-users text-red-600"></i>
-                </div>
-                <h4 className="font-extrabold text-slate-900 text-base mb-2">
-                  高质量社群交流
-                </h4>
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  加入知识星球与微信私享群，与上百位实盘交易者共同研讨、互相监督。
-                </p>
-              </div>
-
-            </div>
-          </Reveal>
 
         </section>
 
@@ -757,13 +642,11 @@ const WhyDeltapexView: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
             className="bg-white rounded-3xl p-4 md:p-6 max-w-4xl w-full border border-slate-200 shadow-2xl relative animate-in fade-in zoom-in duration-200"
           >
-            <div className="flex items-center justify-between mb-4 px-2">
-              <h3 className="font-extrabold text-slate-900 text-base md:text-lg">
-                {activeImage.title}
-              </h3>
+            <div className="flex items-center justify-end mb-3 px-2">
               <button
                 onClick={() => setActiveImage(null)}
                 className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors"
+                title="关闭"
               >
                 <i className="fa-solid fa-xmark"></i>
               </button>
