@@ -24,30 +24,11 @@ function cn(...inputs: ClassValue[]) {
 // --- Navigation Data Structure ---
 const NAV_LINKS = [
   {
-    title: "体系课程",
-    icon: <BookOpen size={18} />,
-    items: [
-      { name: "系统交易课程", href: "#course" }
-    ]
-  },
-  {
     title: "自营与工具",
     icon: <Wrench size={18} />,
     items: [
-      { name: "PropFirm 与交易工具汇总", href: "#propfirm-tools" },
       { name: "Futures Propfirm 汇总", href: "#propfirm-tools" },
-      { name: "交易必备工具", href: "#propfirm-tools" },
-      { name: "官方直播 & 交易日志", href: "#propfirm-tools" }
-    ]
-  },
-  {
-    title: "必读干货",
-    icon: <BookText size={18} />,
-    items: [
-      { name: "Prop Firm 核心知识", href: "#prop-firm-guide" },
-      { name: "支付通关指南", href: "#payment-guide" },
-      { name: "Wise 出金全攻略", href: "#wise-guide" },
-      { name: "注册与激活实战指南", href: "#registration-guide" }
+      { name: "交易必备工具", href: "#propfirm-tools" }
     ]
   }
 ];

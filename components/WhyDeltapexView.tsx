@@ -59,18 +59,33 @@ interface StudentVideo {
   summary: string;
   thumbnail: string;
   videoUrl?: string;
+  bvid?: string;
 }
+
+const getBilibiliEmbedUrl = (video: StudentVideo): string | null => {
+  if (video.bvid) {
+    return `//player.bilibili.com/player.html?bvid=${video.bvid}&page=1&high_quality=1&danmaku=0`;
+  }
+  if (video.videoUrl && video.videoUrl.includes('bilibili.com')) {
+    const match = video.videoUrl.match(/BV[a-zA-Z0-9]+/);
+    if (match) {
+      return `//player.bilibili.com/player.html?bvid=${match[0]}&page=1&high_quality=1&danmaku=0`;
+    }
+  }
+  return null;
+};
 
 const STUDENT_VIDEOS: StudentVideo[] = [
   {
     id: 'v1',
     studentName: '学员陆哥',
-    title: '学员陆哥：订单流实战分析与交易心路历程分享',
+    title: '芯片领域大佬—陆哥：由亏转盈的交易历程分享',
     duration: '学员视频',
     tag: '学员实操分享',
     summary: '学员陆哥详细分享在实际期货交割与考核盘中的订单流思维转变、买卖盘吸收理解与风控心得。',
     thumbnail: '',
-    videoUrl: 'https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/luge.mp4',
+    videoUrl: 'https://www.bilibili.com/video/BV1Lu3X6TE74',
+    bvid: 'BV1Lu3X6TE74',
   },
 ];
 
@@ -411,14 +426,24 @@ const WhyDeltapexView: React.FC = () => {
                     {STUDENT_VIDEOS[0].title}
                   </h4>
 
-                  {/* HTML5 Direct Video Player using video itself as cover */}
+                  {/* Video Player Frame */}
                   <div className="relative aspect-video bg-slate-950 rounded-2xl overflow-hidden border border-slate-200/80 shadow-inner group">
-                    <video
-                      controls
-                      preload="metadata"
-                      src={`${STUDENT_VIDEOS[0].videoUrl}#t=0.1`}
-                      className="w-full h-full object-contain"
-                    />
+                    {getBilibiliEmbedUrl(STUDENT_VIDEOS[0]) ? (
+                      <iframe
+                        src={getBilibiliEmbedUrl(STUDENT_VIDEOS[0])!}
+                        scrolling="no"
+                        frameBorder="0"
+                        allowFullScreen
+                        className="w-full h-full border-0"
+                      />
+                    ) : (
+                      <video
+                        controls
+                        preload="metadata"
+                        src={`${STUDENT_VIDEOS[0].videoUrl}#t=0.1`}
+                        className="w-full h-full object-contain"
+                      />
+                    )}
                   </div>
 
                   <p className="text-slate-600 text-xs md:text-sm leading-relaxed bg-slate-50/80 p-3.5 rounded-xl border border-slate-100">
@@ -574,7 +599,15 @@ const WhyDeltapexView: React.FC = () => {
 
             {/* Video Player Frame */}
             <div className="rounded-2xl overflow-hidden bg-slate-950 aspect-video relative flex items-center justify-center border border-slate-200 shadow-inner">
-              {selectedVideo.videoUrl ? (
+              {getBilibiliEmbedUrl(selectedVideo) ? (
+                <iframe
+                  src={getBilibiliEmbedUrl(selectedVideo)!}
+                  scrolling="no"
+                  frameBorder="0"
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                />
+              ) : selectedVideo.videoUrl ? (
                 <video
                   src={selectedVideo.videoUrl}
                   controls

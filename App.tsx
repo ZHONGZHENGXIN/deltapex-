@@ -31,6 +31,7 @@ import CasesView from './components/CasesView';
 import WhyOrderFlowView from './components/WhyOrderFlowView';
 import WhyDeltapexView from './components/WhyDeltapexView';
 import PropFirmToolsView from './components/PropFirmToolsView';
+import StudentVoicesSection from './components/StudentVoicesSection';
 import Footer from './components/Footer';
 
 import Lenis from 'lenis';
@@ -347,6 +348,9 @@ function App() {
                   </Reveal>
                 </div>
               </div>
+
+              {/* 学员有话说 (Student Voices Video Section) */}
+              <StudentVoicesSection />
 
             </main>
 

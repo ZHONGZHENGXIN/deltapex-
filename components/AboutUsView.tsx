@@ -7,6 +7,10 @@ import CountUp from './CountUp';
 // Background image URL for the Global Vision section
 const GLOBAL_VISION_BG_URL = "https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/jiaoyishi.jpg";
 
+// Configurable Image URLs for the 2 Featured Blocks
+const LEADERSHIP_IMG_URL = "https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/jiaoyishi.jpg";
+const COMMUNITY_IMG_URL = "https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/jiaoyishi2.jpg";
+
 const AboutUsView: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const founderRef = useRef<HTMLDivElement>(null);
@@ -175,7 +179,100 @@ const AboutUsView: React.FC = () => {
           </div>
         </section>
 
-        {/* INTRODUCTION SECTION (Scroll Reveal with optional custom background image) */}
+
+
+        {/* FEATURED STAGGERED SECTIONS WITH SLIDING ANIMATIONS (Citadel-style) */}
+        <section className="py-24 md:py-32 bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-28 md:space-y-36">
+            
+            {/* FEATURE BLOCK 1: Empowered by Our Leadership */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Left Image Box (Slide in from Left) */}
+              <motion.div 
+                initial={{ opacity: 0, x: -70 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
+                className="lg:col-span-6 group overflow-hidden rounded-2xl shadow-lg border border-slate-100"
+              >
+                <div className="relative aspect-4/3 md:aspect-square w-full overflow-hidden bg-slate-900">
+                  <img 
+                    src={LEADERSHIP_IMG_URL} 
+                    alt="Empowered by Our Leadership" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-95 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent pointer-events-none" />
+                </div>
+              </motion.div>
+
+              {/* Right Text Box (Slide in from Right) */}
+              <motion.div 
+                initial={{ opacity: 0, x: 70 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1.0] }}
+                className="lg:col-span-6 space-y-6"
+              >
+                <h2 className="text-3xl md:text-5xl font-extrabold text-[#002B66] leading-tight tracking-tight">
+                  Empowered by <br />
+                  Our Leadership
+                </h2>
+                <p className="text-slate-600 text-base md:text-lg font-light leading-relaxed">
+                  Many of our leadership have grown their careers at the firm and stepped up into senior roles. They share a determination and responsibility for growing and developing our next generation of leaders.
+                </p>
+                <p className="text-slate-500 text-sm md:text-base leading-relaxed border-l-2 border-[#0047BA]/30 pl-4 py-1">
+                  我们的核心导师与交易领袖深耕金融市场多年，拥有丰富的实盘战斗经验与私募管理背景，肩负起培养下一代专业交易精英的使命。
+                </p>
+
+              </motion.div>
+            </div>
+
+            {/* FEATURE BLOCK 2: Dedicated to Our Communities */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Left Text Box (Slide in from Left) */}
+              <motion.div 
+                initial={{ opacity: 0, x: -70 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
+                className="lg:col-span-6 space-y-6 order-2 lg:order-1"
+              >
+                <h2 className="text-3xl md:text-5xl font-extrabold text-[#002B66] leading-tight tracking-tight">
+                  Dedicated to <br />
+                  Our Communities
+                </h2>
+                <p className="text-slate-600 text-base md:text-lg font-light leading-relaxed">
+                  In our civic leadership, as in our work, we are passionate problem-solvers, challenging the status quo to drive impact. We focus on increasing access to education and improving the communities in which we live and work.
+                </p>
+                <p className="text-slate-500 text-sm md:text-base leading-relaxed border-l-2 border-[#0047BA]/30 pl-4 py-1">
+                  在交易生态与社区建设中，我们致力于打造最具实操价值的订单流交易者社区。通过每日盘前逻辑拆解、复盘研讨、实战工具支持与专属自营福利，赋能每一位立志出海的交易者。
+                </p>
+
+              </motion.div>
+
+              {/* Right Image Box (Slide in from Right) */}
+              <motion.div 
+                initial={{ opacity: 0, x: 70 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1.0] }}
+                className="lg:col-span-6 group overflow-hidden rounded-2xl shadow-lg border border-slate-100 order-1 lg:order-2"
+              >
+                <div className="relative aspect-4/3 md:aspect-square w-full overflow-hidden bg-slate-900">
+                  <img 
+                    src={COMMUNITY_IMG_URL} 
+                    alt="Dedicated to Our Communities" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-95 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent pointer-events-none" />
+                </div>
+              </motion.div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* INTRODUCTION SECTION (Global Vision, Local Focus) */}
         <section 
           className="relative py-32 bg-[#F9FAFB] bg-cover bg-center bg-no-repeat overflow-hidden transition-all duration-300"
           style={GLOBAL_VISION_BG_URL ? { backgroundImage: `url('${GLOBAL_VISION_BG_URL}')` } : undefined}
@@ -222,7 +319,7 @@ const AboutUsView: React.FC = () => {
                   whileInView="visible" 
                   viewport={{ once: true, margin: "-50px" }} 
                   variants={revealVariant}
-                  className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#E60012]"
+                  className="bg-white/90 p-6 rounded-lg shadow-sm border-l-4 border-[#E60012]"
                 >
                    为初学者和有志于提升技能的专业交易者量身定制。通过结合理论与实践的独特课程设计，学员能够掌握成功交易所需的核心技能，并能在复杂的市场中应对自如。
                 </motion.p>
@@ -230,8 +327,6 @@ const AboutUsView: React.FC = () => {
             </div>
           </div>
         </section>
-
-
 
         {/* FOOTER */}
         <footer className="bg-white border-t border-slate-100 py-16">
