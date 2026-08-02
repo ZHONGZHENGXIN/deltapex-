@@ -283,28 +283,27 @@ const AboutUsView: React.FC = () => {
           )}
 
           <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
-              <div className="md:col-span-5 sticky top-32">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
+              <div className="md:col-span-5 md:sticky md:top-32">
                 <motion.h2 
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-100px" }}
                   variants={revealVariant}
-                  className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight"
+                  className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight"
                 >
-                  Global Vision, <br/> Local Focus.
-                  <span className="block w-24 h-1.5 bg-[#E60012] mt-8 rounded-full"></span>
+                  Global Vision, <br className="hidden md:block"/> Local Focus.
+                  <span className="block w-20 md:w-24 h-1.5 bg-[#E60012] mt-4 md:mt-8 rounded-full"></span>
                 </motion.h2>
               </div>
-              <div className="md:col-span-7 space-y-10 text-lg md:text-xl text-slate-600 font-light leading-relaxed">
+              <div className="md:col-span-7 space-y-6 md:space-y-10 text-base md:text-xl text-slate-600 font-light leading-relaxed">
                 <motion.p 
                   initial="hidden" 
                   whileInView="visible" 
                   viewport={{ once: true, margin: "-50px" }} 
                   variants={revealVariant}
-                  className="first-letter:text-4xl first-letter:font-bold first-letter:text-[#E60012] first-letter:mr-2 first-letter:float-left"
                 >
-                  <strong className="text-slate-900 font-semibold">DELTAPEX TRADING GROUP</strong> 是一家专注于推动金融科技和交易技术的领先交易教育机构，总部位于中国金融业增速最快的城市 —— <span className="text-[#E60012] font-semibold underline decoration-[#E60012]/30 underline-offset-4">深圳</span>。
+                  <strong className="text-slate-900 font-bold text-lg md:text-xl">DELTAPEX TRADING GROUP</strong> 是一家专注于推动金融科技和交易技术的领先交易教育机构，总部位于中国金融业增速最快的城市 —— <span className="text-[#E60012] font-semibold underline decoration-[#E60012]/30 underline-offset-4">深圳</span>。
                 </motion.p>
                 <motion.p 
                   initial="hidden" 
