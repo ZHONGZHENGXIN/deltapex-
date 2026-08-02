@@ -31,6 +31,7 @@ import CasesView from './components/CasesView';
 import WhyOrderFlowView from './components/WhyOrderFlowView';
 import WhyDeltapexView from './components/WhyDeltapexView';
 import PropFirmToolsView from './components/PropFirmToolsView';
+import FaqView from './components/FaqView';
 import StudentVoicesSection from './components/StudentVoicesSection';
 import Footer from './components/Footer';
 
@@ -39,7 +40,7 @@ import Lenis from 'lenis';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wechatQrBase64 as wechatQr } from './wechatQrData';
 
-type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex' | 'propfirm-tools';
+type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex' | 'propfirm-tools' | 'faq';
 
 function App() {
   // Use Hash Routing to determine view
@@ -79,6 +80,7 @@ function App() {
       case '#why-deltapex': return 'why-deltapex';
       case '#cases': return 'cases';
       case '#propfirm-tools': return 'propfirm-tools';
+      case '#faq': return 'faq';
       default: return 'home';
     }
   };
@@ -242,6 +244,7 @@ function App() {
         {currentView === 'why-orderflow' && <WhyOrderFlowView />}
         {currentView === 'why-deltapex' && <WhyDeltapexView />}
         {currentView === 'propfirm-tools' && <PropFirmToolsView />}
+        {currentView === 'faq' && <FaqView />}
 
         {/* HOME VIEW CONTENT */}
         {currentView === 'home' && (
@@ -257,7 +260,7 @@ function App() {
                 </div>
                 
                 <p className="text-slate-500 mb-16 text-xl md:text-2xl font-light tracking-wide max-w-2xl mx-auto">
-                  ATAS订单流中文社区
+                  Deltapex 订单流与自营交易系统
                 </p>
 
                 <div className="flex flex-col items-center gap-4">
@@ -337,13 +340,14 @@ function App() {
                     />
                   </Reveal>
 
-                  {/* Module 3: 3. 常见问题 FAQ */}
+                  {/* Module 3: 3. 你问我答 */}
                   <Reveal delay={0.3}>
                     <ModuleCard
                       id="faq"
-                      title="3. 常见问题 FAQ"
+                      title="3. 你问我答"
                       index="03"
                       icon="fa-solid fa-circle-question"
+                      href="#faq"
                     />
                   </Reveal>
                 </div>
@@ -496,7 +500,7 @@ function App() {
                 </div>
                 <h3 className="text-2xl font-black text-slate-900">添加 Deltapex 专属客服微信</h3>
                 <p className="text-slate-500 text-sm mt-1">
-                  获取课程解答、加入ATAS订单流中文社区
+                  获取课程解答与交易支持
                 </p>
               </div>
 

@@ -33,7 +33,6 @@ const Footer: React.FC = () => {
 
           <div className="mt-10 text-xs text-slate-400 font-bold uppercase tracking-[0.2em] space-y-4 flex flex-col items-center">
             <p>© 2025 DELTAPEX TRADING GROUP. ALL RIGHTS RESERVED.</p>
-            <p>ATAS订单流中文社区</p>
             <div className="flex flex-wrap justify-center gap-4 text-[10px] md:text-xs">
                <button onClick={() => window.location.hash = "#privacy"} className="hover:text-primary transition-colors">隐私政策</button>
                <span className="text-slate-300">|</span>
