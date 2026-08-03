@@ -5,9 +5,19 @@ import Button from './Button';
 interface DirectoryItem {
   id: string;
   title: string;
+  featured?: boolean;
 }
 
 const QUESTIONS_DIRECTORY: DirectoryItem[] = [
+  {
+    id: 'q-trading-winner',
+    title: 'Q: 如何成为交易的赢家？',
+    featured: true,
+  },
+  {
+    id: 'q-course-profit',
+    title: 'Q: 学完课程，就一定可以赚钱吗？',
+  },
   {
     id: 'q-sell-courses',
     title: 'Q: 交易赚钱的都不会出来卖课，出来卖课的交易都不赚钱？',
@@ -147,15 +157,28 @@ const FaqView: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToAndExpand(item.id)}
-                  className="w-full text-left bg-slate-50 hover:bg-red-50/70 border border-slate-200/80 hover:border-red-200 px-4 py-3.5 rounded-xl transition-all group flex items-center justify-between gap-3 cursor-pointer"
+                  className={`w-full text-left px-4 py-3.5 rounded-xl transition-all group flex items-center justify-between gap-3 cursor-pointer ${
+                    item.featured
+                      ? 'bg-red-50/80 hover:bg-red-100/90 border-2 border-red-200'
+                      : 'bg-slate-50 hover:bg-red-50/70 border border-slate-200/80 hover:border-red-200'
+                  }`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <span className="w-6 h-6 rounded-md bg-slate-200 group-hover:bg-[#E60012] text-slate-700 group-hover:text-white font-bold text-xs flex items-center justify-center shrink-0 transition-colors">
+                    <span className={`w-6 h-6 rounded-md font-bold text-xs flex items-center justify-center shrink-0 transition-colors ${
+                      item.featured
+                        ? 'bg-[#E60012] text-white'
+                        : 'bg-slate-200 group-hover:bg-[#E60012] text-slate-700 group-hover:text-white'
+                    }`}>
                       {index + 1}
                     </span>
                     <span className="font-bold text-slate-900 text-base md:text-lg group-hover:text-[#E60012] transition-colors truncate">
                       {item.title}
                     </span>
+                    {item.featured && (
+                      <span className="hidden sm:inline-block shrink-0 bg-[#E60012] text-white text-[11px] font-black px-2.5 py-0.5 rounded-md tracking-wider">
+                        核心心法 · 必读
+                      </span>
+                    )}
                   </div>
 
                   <div className="shrink-0 text-slate-400 group-hover:text-[#E60012] transition-colors">
@@ -169,6 +192,246 @@ const FaqView: React.FC = () => {
 
         {/* ================= QUESTIONS LIST (DETAILED CARDS - 白底黑字) ================= */}
         <div className="space-y-8">
+
+          {/* QUESTION 0: 如何成为交易的赢家？ (核心心法 · 置顶) */}
+          <div id="q-trading-winner" className="scroll-mt-24">
+            <Reveal>
+              <div className={`bg-white rounded-3xl border-2 transition-all duration-300 overflow-hidden ${
+                expandedMap['q-trading-winner'] 
+                  ? 'border-red-400 shadow-2xl ring-4 ring-red-100' 
+                  : 'border-red-200 hover:border-red-300 shadow-md'
+              }`}>
+                {/* Banner Header - 包含置顶高亮标签 */}
+                <div 
+                  onClick={() => toggleQuestion('q-trading-winner')}
+                  className="bg-gradient-to-r from-red-50/60 via-white to-white hover:bg-slate-50 p-6 md:p-8 text-slate-900 relative cursor-pointer select-none flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-[#E60012] text-white text-xs font-black px-3 py-1 rounded-full tracking-wider shadow-sm flex items-center gap-1.5">
+                        <i className="fa-solid fa-crown text-amber-300"></i> 核心心法 · 置顶
+                      </span>
+                    </div>
+                    <h2 className="text-xl md:text-2xl font-black text-slate-900 leading-snug tracking-tight">
+                      Q: 如何成为交易的赢家？
+                    </h2>
+                  </div>
+
+                  <div className="shrink-0 flex items-center gap-2 bg-red-100/80 hover:bg-red-200/80 px-4 py-2.5 rounded-full border border-red-200 text-xs md:text-sm font-bold text-red-700 transition-all self-start md:self-auto">
+                    <span>{expandedMap['q-trading-winner'] ? '收起回答' : '点击展开阅读核心心法'}</span>
+                    <i className={`fa-solid fa-chevron-down transition-transform duration-300 ${expandedMap['q-trading-winner'] ? 'rotate-180' : ''}`}></i>
+                  </div>
+                </div>
+
+                {/* Collapsible Content Body */}
+                {expandedMap['q-trading-winner'] && (
+                  <div className="p-6 md:p-10 text-slate-800 space-y-6 text-lg md:text-xl leading-relaxed font-normal animate-fadeIn border-t border-red-100 bg-white">
+                    
+                    {/* Big Key Highlight Banner */}
+                    <div className="bg-gradient-to-r from-red-600 via-red-700 to-red-600 text-white p-6 md:p-8 rounded-2xl shadow-lg space-y-3">
+                      <div className="flex items-center gap-2 text-amber-300 text-xs md:text-sm font-black tracking-widest uppercase">
+                        <i className="fa-solid fa-fire-flame-curved"></i>
+                        成为赢家的第一步
+                      </div>
+                      <p className="text-xl md:text-3xl font-black leading-tight tracking-tight">
+                        从停止责任外包，为自己任何行为承担 100% 的责任开始！
+                      </p>
+                    </div>
+
+                    <p className="text-slate-800 font-medium leading-relaxed">
+                      交易者无法控制市场，但必须对自己的交易结果承担责任。
+                    </p>
+
+                    <p className="bg-slate-50 p-5 md:p-6 rounded-2xl border border-slate-200 text-slate-700 text-base md:text-lg">
+                      市场不会因为你努力学习就按预期运行，也不会因为你的分析有道理就一定给出利润。行情、波动、突发消息和其他参与者的行为，都不受个人控制。
+                    </p>
+
+                    <p>
+                      课程可以提供方法，导师可以分享经验，工具可以提高信息处理效率，但没有任何人可以替你完成观察、判断、执行、承担亏损和持续复盘的过程。
+                    </p>
+
+                    <div className="bg-red-50/90 border-l-4 border-[#E60012] p-5 md:p-6 rounded-r-2xl text-slate-900 font-extrabold text-lg md:text-xl">
+                      最终按下交易按钮的是你，决定仓位大小的是你，是否遵守规则的也是你。
+                    </div>
+
+                    {/* 4个“不需要负责”卡片矩阵 */}
+                    <div className="space-y-3 pt-2">
+                      <p className="font-black text-slate-900 text-lg md:text-xl flex items-center gap-2">
+                        <i className="fa-solid fa-[#E60012] fa-shield-halved text-[#E60012]"></i>
+                        时刻清醒：4 个不可推卸的边界
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div className="bg-slate-900 text-white p-4 md:p-5 rounded-xl space-y-1">
+                          <span className="text-red-400 font-black text-xs uppercase tracking-wider block">01 / 市场</span>
+                          <p className="text-slate-200 font-bold text-base md:text-lg">不需要为任何人的许愿与期待负责。</p>
+                        </div>
+                        <div className="bg-slate-900 text-white p-4 md:p-5 rounded-xl space-y-1">
+                          <span className="text-red-400 font-black text-xs uppercase tracking-wider block">02 / 导师</span>
+                          <p className="text-slate-200 font-bold text-base md:text-lg">不需要为你的仓位负责。</p>
+                        </div>
+                        <div className="bg-slate-900 text-white p-4 md:p-5 rounded-xl space-y-1">
+                          <span className="text-red-400 font-black text-xs uppercase tracking-wider block">03 / 工具</span>
+                          <p className="text-slate-200 font-bold text-base md:text-lg">不需要为你的执行负责。</p>
+                        </div>
+                        <div className="bg-slate-900 text-white p-4 md:p-5 rounded-xl space-y-1">
+                          <span className="text-red-400 font-black text-xs uppercase tracking-wider block">04 / 课程</span>
+                          <p className="text-slate-200 font-bold text-base md:text-lg">不需要为你的最终盈亏负责。</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Core Mindset Conclusion Box */}
+                    <div className="bg-slate-900 text-white p-6 md:p-8 rounded-2xl shadow-lg space-y-4 border-l-4 border-amber-400">
+                      <p className="text-slate-300 text-base md:text-lg leading-relaxed">
+                        真正的交易能力，始于停止把责任交给市场、方法和他人，并对每一个可控的交易决定承担全部责任。
+                      </p>
+                      <p className="text-amber-300 font-black text-lg md:text-2xl leading-snug pt-2 border-t border-slate-800">
+                        因此，成为交易赢家的第一步，不是寻找一个永远正确的指标，而是建立一种不把责任外包的思维方式。
+                      </p>
+                    </div>
+
+                    <div className="pt-4 text-center">
+                      <button
+                        onClick={() => toggleQuestion('q-trading-winner')}
+                        className="text-sm font-bold text-slate-500 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 px-5 py-2.5 rounded-full cursor-pointer transition-colors"
+                      >
+                        <i className="fa-solid fa-chevron-up mr-1.5"></i> 收起该回答
+                      </button>
+                    </div>
+
+                  </div>
+                )}
+              </div>
+            </Reveal>
+          </div>
+
+          {/* QUESTION 1: 学完课程，就一定可以赚钱吗？ */}
+          <div id="q-course-profit" className="scroll-mt-24">
+            <Reveal>
+              <div className={`bg-white rounded-3xl border-2 transition-all duration-300 overflow-hidden ${
+                expandedMap['q-course-profit'] 
+                  ? 'border-red-300 shadow-xl ring-2 ring-red-100' 
+                  : 'border-slate-200 hover:border-red-200 shadow-sm'
+              }`}>
+                {/* Banner Header - 白底黑字 */}
+                <div 
+                  onClick={() => toggleQuestion('q-course-profit')}
+                  className="bg-white hover:bg-slate-50/80 p-6 md:p-8 text-slate-900 relative cursor-pointer select-none flex items-center justify-between gap-4 transition-colors"
+                >
+                  <div>
+                    <h2 className="text-xl md:text-2xl font-black text-slate-900 leading-snug tracking-tight">
+                      Q: 学完课程，就一定可以赚钱吗？
+                    </h2>
+                  </div>
+
+                  <div className="shrink-0 flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-full border border-slate-200 text-xs md:text-sm font-bold text-slate-700 transition-all">
+                    <span>{expandedMap['q-course-profit'] ? '收起回答' : '点击展开阅读'}</span>
+                    <i className={`fa-solid fa-chevron-down transition-transform duration-300 ${expandedMap['q-course-profit'] ? 'rotate-180' : ''}`}></i>
+                  </div>
+                </div>
+
+                {/* Collapsible Content Body - 字体统一放大 (text-lg md:text-xl) */}
+                {expandedMap['q-course-profit'] && (
+                  <div className="p-6 md:p-10 text-slate-800 space-y-6 text-lg md:text-xl leading-relaxed font-normal animate-fadeIn border-t border-slate-100 bg-white">
+                    
+                    {/* Highlight Introduction */}
+                    <div className="bg-red-50/90 border-l-4 border-[#E60012] p-5 md:p-6 rounded-r-2xl text-slate-900 font-bold text-xl md:text-2xl">
+                      现实很残酷 —— 不能！
+                    </div>
+
+                    <p>
+                      因为交易的第一性原理是：市场不会因为工具更先进、信息更多或交易者接受过培训，就让所有参与者同时获得超额收益。
+                    </p>
+
+                    <p className="bg-slate-50 p-5 md:p-6 rounded-2xl border border-slate-100 text-slate-700 text-lg md:text-xl">
+                      尤其在短线主动交易中，一方获得更好的成交价格，往往意味着另一方接受了更差的价格；再扣除手续费、滑点、点差、数据和软件成本后，参与者整体面对的是一场高度竞争、甚至接近负和的博弈。
+                    </p>
+
+                    <p className="font-semibold text-slate-900">
+                      因此，无论使用K线、技术指标、量化模型还是订单流工具，都不可能让所有学习者同时成为盈利者，长期赢家的比例始终只是很小的一部分。
+                    </p>
+
+                    {/* What determines final outcome box */}
+                    <div className="bg-slate-900 text-white p-6 md:p-8 rounded-2xl shadow-md space-y-4">
+                      <p className="text-red-400 font-bold text-xs md:text-sm uppercase tracking-widest flex items-center gap-2">
+                        <i className="fa-solid fa-sliders text-[#E60012]"></i>
+                        决定最终结果的关键因素
+                      </p>
+                      <p className="text-lg md:text-xl text-slate-200">
+                        工具会进步，数据会增加，策略会传播，但市场竞争也会同步升级。当越来越多的人掌握相似的信息和技术时，决定最终结果的就不再只是“是否学过”，而是：
+                      </p>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-2">
+                        {[
+                          "是否能够正确理解市场环境",
+                          "是否具有独立判断能力",
+                          "是否愿意进行长期训练和复盘",
+                          "是否能够控制仓位与单次损失",
+                          "是否能在连续亏损和不确定性中保持执行纪律",
+                          "是否具备比其他参与者更稳定的决策质量",
+                        ].map((item, idx) => (
+                          <div key={idx} className="bg-white/10 p-4 rounded-xl border border-white/10 text-slate-100 text-base md:text-lg flex items-start gap-3 font-medium">
+                            <span className="w-6 h-6 rounded-md bg-[#E60012] text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                              0{idx + 1}
+                            </span>
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <p>
+                      所以，课程不能把一个竞争性市场变成人人盈利的市场，也不能改变大多数缺乏训练、风险失控和执行不稳定的参与者最终被淘汰的事实。
+                    </p>
+
+                    <div className="bg-red-50/80 border border-red-200/80 p-6 rounded-2xl space-y-2">
+                      <p className="font-black text-slate-900 text-lg md:text-xl flex items-center gap-2">
+                        <i className="fa-solid fa-bullseye text-[#E60012]"></i>
+                        课程真正能做的是什么？
+                      </p>
+                      <p className="text-slate-800 leading-relaxed text-base md:text-lg font-medium">
+                        帮助学习者减少明显错误，提高信息处理效率，建立更完整的分析、执行、风控和复盘框架，从而提升自己在竞争中生存下来的概率。
+                      </p>
+                    </div>
+
+                    <div className="space-y-3">
+                      <h3 className="font-black text-slate-900 text-xl md:text-2xl flex items-center gap-2">
+                        <span className="w-3 h-3 rounded-full bg-[#E60012]"></span>
+                        “提高概率” 不等于 “保证结果”
+                      </h3>
+                      <p>
+                        就像专业训练不能保证每一名运动员都成为冠军，交易课程也不能保证每一名学员都稳定盈利。课程提供的是更好的训练条件和更清晰的进阶路径，最终能否形成竞争优势，仍然取决于学习者自身的理解、训练、风险控制和长期执行。
+                      </p>
+                    </div>
+
+                    {/* Conclusion Banner */}
+                    <div className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white p-6 md:p-8 rounded-2xl shadow-md space-y-3">
+                      <p className="font-black text-xl md:text-2xl flex items-center gap-2">
+                        <i className="fa-solid fa-shield-halved"></i>
+                        清醒总结：
+                      </p>
+                      <p className="text-red-100 text-base md:text-lg leading-relaxed">
+                        我们不能承诺你学完课程后一定赚钱，因为任何声称能够让大多数人轻松盈利的方法，都违背了交易市场的竞争本质。
+                      </p>
+                      <p className="text-amber-200 font-extrabold text-lg md:text-xl pt-2 border-t border-red-400/50">
+                        课程能教会你如何训练成为交易者，但不能替你完成成为交易者的过程。
+                      </p>
+                    </div>
+
+                    <div className="pt-4 text-center">
+                      <button
+                        onClick={() => toggleQuestion('q-course-profit')}
+                        className="text-sm font-bold text-slate-500 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 px-5 py-2.5 rounded-full cursor-pointer transition-colors"
+                      >
+                        <i className="fa-solid fa-chevron-up mr-1.5"></i> 收起该回答
+                      </button>
+                    </div>
+
+                  </div>
+                )}
+              </div>
+            </Reveal>
+          </div>
 
           {/* QUESTION 1 */}
           <div id="q-sell-courses" className="scroll-mt-24">
