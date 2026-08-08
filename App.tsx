@@ -250,58 +250,23 @@ function App() {
         {currentView === 'home' && (
           <>
             {/* Hero Section */}
-            <header className="pt-20 pb-32 px-4 text-center max-w-7xl mx-auto relative z-10">
+            <header className="pt-20 pb-16 px-4 text-center max-w-7xl mx-auto relative z-10">
               <Reveal>
-                <div className="flex flex-col items-center justify-center mb-8">
-                  <span className="text-primary font-bold tracking-[0.2em] text-sm uppercase mb-6 animate-fade-in-up">Professional Trading Hub</span>
+                <div className="flex flex-col items-center justify-center">
+                  <span className="text-primary font-bold tracking-[0.2em] text-sm uppercase mb-4 animate-fade-in-up">Professional Trading Hub</span>
                   <h1 className="text-6xl md:text-8xl font-bold font-display tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-primary to-slate-900 bg-[length:200%_auto] animate-shimmer select-none py-2 leading-[1.1]">
                     Deltapex 自营交易
                   </h1>
-                </div>
-                
-                <p className="text-slate-500 mb-16 text-xl md:text-2xl font-light tracking-wide max-w-2xl mx-auto">
-                  Deltapex 订单流与自营交易系统
-                </p>
-
-                <div className="flex flex-col items-center gap-4">
-                  {/* Primary CTA - Course */}
-                  <Button 
-                    href="#course"
-                    className="relative overflow-hidden px-14 py-6 text-xl rounded-2xl shadow-[0_30px_60px_-15px_rgba(211,47,47,0.3)] z-10 hover:shadow-[0_40px_80px_-20px_rgba(211,47,47,0.4)] transition-shadow duration-500 group"
-                  >
-                    <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                    <span className="relative z-10 font-bold tracking-wide flex flex-col items-center">
-                      课程详情
-                      <span className="text-sm font-normal opacity-80 mt-1 uppercase tracking-widest">Course Details</span>
-                    </span>
-                  </Button>
-
-                  {/* Secondary CTA - About Us */}
-                  <div 
-                    ref={ctaRef}
-                    onMouseMove={handleCtaMouseMove}
-                    onMouseLeave={handleCtaMouseLeave}
-                    className="inline-block relative perspective-1000 group"
-                    style={{
-                      transform: `perspective(1000px) rotateX(${ctaRotate.x}deg) rotateY(${ctaRotate.y}deg)`,
-                      transition: ctaRotate.x === 0 ? 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
-                    }}
-                  >
-                    <Button 
-                      href="#about"
-                      variant="white"
-                      className="relative overflow-hidden px-8 py-3 text-sm rounded-xl border border-slate-200 text-slate-500 hover:border-primary/30 hover:text-primary bg-white shadow-sm hover:shadow-md transition-all duration-500"
-                    >
-                      <span className="relative z-10 font-medium tracking-wide">关于我们</span>
-                    </Button>
-                  </div>
                 </div>
               </Reveal>
             </header>
 
             <main className="max-w-7xl mx-auto px-6 md:px-12 pb-32 relative z-10">
               
-              {/* 3大核心模块 (3 Major Modules) */}
+              {/* 1. 学员有话说 (放在最前面) */}
+              <StudentVoicesSection />
+
+              {/* 2. Deltapex 核心指南 (3大核心模块) */}
               <div className="mb-24">
                 <Reveal>
                   <div className="text-center mb-12">
@@ -353,8 +318,53 @@ function App() {
                 </div>
               </div>
 
-              {/* 学员有话说 (Student Voices Video Section) */}
-              <StudentVoicesSection />
+              {/* 3. 课程详情与关于我们 (放在最后面) */}
+              <div className="pt-4">
+                <Reveal>
+                  <div className="bg-slate-50/80 rounded-3xl p-8 md:p-12 border border-slate-200/80 text-center shadow-xs">
+                    <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 tracking-tight">
+                      探索更多内容
+                    </h3>
+                    <p className="text-slate-500 text-base md:text-lg max-w-xl mx-auto mb-8 font-normal">
+                      了解 Deltapex 交易课程系统与品牌背后的故事
+                    </p>
+                    
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                      {/* Primary CTA - Course */}
+                      <Button 
+                        href="#course"
+                        className="relative overflow-hidden px-12 py-5 text-lg rounded-2xl shadow-[0_20px_40px_-10px_rgba(211,47,47,0.3)] z-10 hover:shadow-[0_30px_60px_-15px_rgba(211,47,47,0.4)] transition-shadow duration-500 group w-full sm:w-auto"
+                      >
+                        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                        <span className="relative z-10 font-bold tracking-wide flex flex-col items-center">
+                          课程详情
+                          <span className="text-xs font-normal opacity-80 mt-0.5 uppercase tracking-widest">Course Details</span>
+                        </span>
+                      </Button>
+
+                      {/* Secondary CTA - About Us */}
+                      <div 
+                        ref={ctaRef}
+                        onMouseMove={handleCtaMouseMove}
+                        onMouseLeave={handleCtaMouseLeave}
+                        className="inline-block relative perspective-1000 group w-full sm:w-auto"
+                        style={{
+                          transform: `perspective(1000px) rotateX(${ctaRotate.x}deg) rotateY(${ctaRotate.y}deg)`,
+                          transition: ctaRotate.x === 0 ? 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
+                        }}
+                      >
+                        <Button 
+                          href="#about"
+                          variant="white"
+                          className="relative overflow-hidden px-10 py-5 text-base rounded-2xl border border-slate-200 text-slate-600 hover:border-primary/30 hover:text-primary bg-white shadow-xs hover:shadow-md transition-all duration-500 w-full sm:w-auto font-bold"
+                        >
+                          <span className="relative z-10 font-bold tracking-wide">关于我们</span>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
 
             </main>
 
