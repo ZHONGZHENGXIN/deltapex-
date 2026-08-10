@@ -538,9 +538,9 @@ const CourseView: React.FC = () => {
 
                 {/* Bottom Gradient Fade Overlay (渐变淡出遮罩层，营造细节未完全展开的延伸感) */}
                 <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-b from-transparent via-white/80 to-white pointer-events-none z-20 flex items-end justify-center pb-2">
-                  <div className="bg-white/90 backdrop-blur-md px-5 py-2 rounded-full border border-slate-200/90 shadow-md text-xs font-bold text-slate-500 flex items-center gap-2">
-                    <i className="fa-solid fa-[#E60012] fa-ellipsis text-[#E60012]"></i>
-                    <span>更深层微观知识树节点与战术细节在完整体系中递进呈现</span>
+                  <div className="bg-white/90 backdrop-blur-md px-5 py-2 rounded-full border border-slate-200/90 shadow-md text-xs font-bold text-slate-700 flex items-center gap-2">
+                    <i className="fa-brands fa-weixin text-[#E60012] text-sm"></i>
+                    <span>完整课程体系请添加客服微信获取</span>
                   </div>
                 </div>
 
@@ -845,10 +845,6 @@ const CourseView: React.FC = () => {
               {
                 q: "如何在微信领取完整学习地图与课程大纲？",
                 a: "点击页面任何『添加客服微信』按钮，扫码添加专属客服（Zhong-Zhengxin），微信私信回复『学习地图』或『课程详情』即可免费领取完整 PDF 资料与案例视频。"
-              },
-              {
-                q: "课程购买后是永久观看吗？是否有后续答疑更新？",
-                a: "是的，线上课程提供录播视频重复观看权限，并且包含每周盘前/盘后实时策略复盘答疑，随着市场环境演变持续更新最新的订单流实战案例。"
               }
             ].map((faq, idx) => (
               <Reveal key={idx} delay={idx * 0.1}>
