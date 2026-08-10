@@ -193,7 +193,7 @@ const CourseView: React.FC = () => {
                   初识订单流
                 </h2>
                 <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  初步领略 Deltapex 订单流微观盘口解析与高胜率博弈思路
+                  初步领略订单流微观盘口解析与高胜率博弈思路
                 </p>
               </div>
 
@@ -214,12 +214,6 @@ const CourseView: React.FC = () => {
                         frameBorder="0"
                         allowFullScreen={true}
                       ></iframe>
-
-                      {/* Top Badge Overlay */}
-                      <div className="absolute top-3 left-3 bg-[#E60012] text-white text-[11px] font-black px-3 py-1 rounded-md shadow-md uppercase tracking-wider flex items-center gap-1.5 z-30 pointer-events-none">
-                        <span className="w-2 h-2 rounded-full bg-white animate-ping"></span>
-                        课程先导 01
-                      </div>
                     </div>
 
                     {/* Video Info Details */}
@@ -781,7 +775,7 @@ const CourseView: React.FC = () => {
                   </li>
                   <li className="flex items-start gap-3">
                     <i className="fa-solid fa-circle-check text-emerald-600 mt-1"></i>
-                    <span>准备参加 TPT / Earn2Trade 等海外 Prop Firm 商业自营账号考核的实盘选手。</span>
+                    <span>具有长期眼光，愿意把交易作为终身事业来发展的人。</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <i className="fa-solid fa-circle-check text-emerald-600 mt-1"></i>

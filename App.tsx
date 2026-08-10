@@ -33,6 +33,7 @@ import WhyDeltapexView from './components/WhyDeltapexView';
 import PropFirmToolsView from './components/PropFirmToolsView';
 import FaqView from './components/FaqView';
 import StudentVoicesSection from './components/StudentVoicesSection';
+import MentorMessageSection from './components/MentorMessageSection';
 import Footer from './components/Footer';
 
 import Lenis from 'lenis';
@@ -266,6 +267,9 @@ function App() {
               {/* 1. 学员有话说 (放在最前面) */}
               <StudentVoicesSection />
 
+              {/* 2. 导师寄语 */}
+              <MentorMessageSection />
+
               {/* 2. Deltapex 核心指南 (3大核心模块) */}
               <div className="mb-24">
                 <Reveal>
@@ -459,12 +463,6 @@ function App() {
             className="w-14 h-14 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgb(34,197,94,0.4)] hover:scale-105 active:scale-95 transition-all relative"
             aria-label="WeChat Customer Support"
           >
-            {/* Notification Badge */}
-            <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-4.5 w-4.5 bg-red-500 text-[10px] font-black text-white items-center justify-center">1</span>
-            </span>
-
             <i className="fa-brands fa-weixin text-2xl hover:rotate-12 transition-transform duration-300"></i>
 
             {/* Interactive Help Ring */}

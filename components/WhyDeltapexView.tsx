@@ -250,6 +250,58 @@ const WhyDeltapexView: React.FC = () => {
             </div>
           </div>
 
+          {/* MENTOR'S MESSAGE SECTION (导师寄语 - 视频单元) */}
+          <Reveal delay={0.15}>
+            <div className="bg-gradient-to-b from-white via-slate-50/80 to-white rounded-3xl p-6 sm:p-10 md:p-12 border border-red-200/90 shadow-sm mb-12 relative overflow-hidden">
+              
+              {/* Background Accent Glow */}
+              <div className="absolute top-0 right-1/4 w-80 h-80 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 max-w-4xl mx-auto">
+                
+                {/* Header Title */}
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    导师寄语
+                  </h3>
+                </div>
+
+                {/* Video Card */}
+                <div className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:border-red-300 transition-all flex flex-col justify-between group">
+                  <div>
+                    {/* Video Container Box */}
+                    <div className="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center group-hover:shadow-md transition-all">
+                      
+                      <iframe 
+                        src="//player.bilibili.com/player.html?isOutside=true&aid=117070087852348&bvid=BV1zXud62Ejo&cid=40775258104&p=1&high_quality=1&danmaku=0" 
+                        className="w-full h-full border-0 absolute inset-0 z-20" 
+                        scrolling="no" 
+                        frameBorder="0"
+                        allowFullScreen={true}
+                      ></iframe>
+                    </div>
+
+                    {/* Video Info Details */}
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 text-xs text-[#E60012] font-extrabold mb-2">
+                        <i className="fa-solid fa-user-tie"></i>
+                        <span>Alex 导师发刊词 & 心法寄语</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-900 mb-2">
+                        建立规则，敬畏市场：从个人交易到机构体系的修炼之路
+                      </h3>
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                        “交易的核心不是预测未来，而是建立高胜率、高盈亏比的系统，并用严苛的纪律重复执行。希望在 Deltapex 的训练中，你能真正建立属于自己的职业坐标系。”
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </Reveal>
+
           {/* Performance Track Record Screenshots (Chronological Timeline Grid) */}
           <Reveal delay={0.2}>
             <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200/80 shadow-xs">
