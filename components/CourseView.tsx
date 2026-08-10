@@ -246,57 +246,306 @@ const CourseView: React.FC = () => {
           </div>
         </section>
 
-        {/* SECTION 3 - COURSE ARCHITECTURE OVERVIEW */}
+        {/* SECTION 3 - COURSE ARCHITECTURE OVERVIEW (MIND MAP 思维导图 - 白底) */}
         <section id="three-modules" className="mb-20 scroll-mt-24">
           <Reveal>
-            <div className="bg-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-800">
-              <div className="max-w-none mb-10 overflow-x-auto">
-                <span className="text-xs font-black tracking-widest text-red-400 uppercase bg-red-950/80 px-3.5 py-1 rounded-full border border-red-800/60 inline-block mb-3">
-                  ARCHITECTURE · 体系架构
+            <div className="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl border border-slate-200/80 relative overflow-hidden">
+              
+              {/* Background Glow Effect */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+              {/* Header */}
+              <div className="text-center max-w-3xl mx-auto mb-10 relative z-10">
+                <span className="text-xs font-black tracking-widest text-[#E60012] uppercase bg-red-50 px-3.5 py-1 rounded-full border border-red-200/80 inline-flex items-center gap-2 mb-3">
+                  <i className="fa-solid fa-diagram-project text-xs"></i>
+                  ARCHITECTURE · 体系思维导图
                 </span>
-                <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-4 whitespace-nowrap">
-                  三大核心模块：不仅仅传授“知识”，更是建立“能力”
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight mb-3">
+                  三大核心模块思维导图
                 </h2>
-                <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-                  Deltapex 课程不靠拼凑网传视频，而是由Alex根据多年实战设计的职业训练阶梯。
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                  不仅仅传授“知识”，更是建立“能力” · Deltapex 职业训练阶梯架构
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-slate-800/90 p-6 rounded-2xl border border-slate-700/80 hover:border-red-500/50 transition-all">
-                  <div className="text-red-500 font-black text-2xl mb-2">MODULE 01</div>
-                  <h3 className="text-xl font-bold text-white mb-2">OBT必修理论基础</h3>
-                  <p className="text-slate-300 text-sm leading-relaxed font-normal">
-                    奠定微观市场结构认知 + 零基础建立微观感知
-                  </p>
+              {/* Mind Map Tree Diagram Container */}
+              <div className="relative z-10">
+                
+                {/* DESKTOP MIND MAP VIEW (lg:block) */}
+                <div className="hidden lg:block relative">
+                  
+                  <div className="grid grid-cols-3 gap-6">
+                    
+                    {/* MODULE 01 NODE */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-full bg-slate-50 p-5 rounded-2xl border-2 border-red-200 shadow-md text-center relative hover:border-[#E60012] hover:shadow-lg transition-all">
+                        <div className="inline-block bg-[#E60012] text-white text-xs font-black px-3 py-0.5 rounded-full mb-2 tracking-wider">
+                          MODULE 01
+                        </div>
+                        <h3 className="text-lg font-black text-slate-900">OBT 必修理论基础</h3>
+                      </div>
+
+                      <div className="w-0.5 h-6 bg-gradient-to-b from-red-300 to-slate-200"></div>
+
+                      <div className="w-full space-y-3">
+                        <div className="bg-slate-50 hover:bg-red-50/40 p-3.5 rounded-xl border border-slate-200/90 flex items-start gap-3 transition-colors">
+                          <div className="w-6 h-6 rounded-lg bg-red-100 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            1.1
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-900">微观结构认知</div>
+                            <p className="text-slate-500 text-xs mt-0.5">奠定微观市场结构认知</p>
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-50 hover:bg-red-50/40 p-3.5 rounded-xl border border-slate-200/90 flex items-start gap-3 transition-colors">
+                          <div className="w-6 h-6 rounded-lg bg-red-100 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            1.2
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-900">微观感知建立</div>
+                            <p className="text-slate-500 text-xs mt-0.5">零基础建立微观感知</p>
+                          </div>
+                        </div>
+
+                        {/* Fading Sub-nodes */}
+                        <div className="bg-slate-50/70 p-3 rounded-xl border border-slate-200/60 flex items-start gap-3 opacity-60">
+                          <div className="w-6 h-6 rounded-lg bg-red-50 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            1.3
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-700">L2 订单簿深度与大单流向</div>
+                            <p className="text-slate-400 text-[11px] mt-0.5">挂单撤单微观博弈拆解...</p>
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-50/40 p-3 rounded-xl border border-dashed border-slate-200/50 flex items-start gap-3 opacity-30 blur-[0.3px]">
+                          <div className="w-6 h-6 rounded-lg bg-red-50 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            1.4
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-600">Footprint 量价异常失衡</div>
+                            <p className="text-slate-400 text-[11px] mt-0.5">主动买卖盘微观阻力特征...</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* MODULE 02 NODE */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-full bg-slate-50 p-5 rounded-2xl border-2 border-red-200 shadow-md text-center relative hover:border-[#E60012] hover:shadow-lg transition-all">
+                        <div className="inline-block bg-[#E60012] text-white text-xs font-black px-3 py-0.5 rounded-full mb-2 tracking-wider">
+                          MODULE 02
+                        </div>
+                        <h3 className="text-lg font-black text-slate-900">OBT 专项进阶</h3>
+                      </div>
+
+                      <div className="w-0.5 h-6 bg-gradient-to-b from-red-300 to-slate-200"></div>
+
+                      <div className="w-full space-y-3">
+                        <div className="bg-slate-50 hover:bg-red-50/40 p-3.5 rounded-xl border border-slate-200/90 flex items-start gap-3 transition-colors">
+                          <div className="w-6 h-6 rounded-lg bg-red-100 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            2.1
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-900">盘面动态复盘</div>
+                            <p className="text-slate-500 text-xs mt-0.5">盘面动态复盘演练</p>
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-50 hover:bg-red-50/40 p-3.5 rounded-xl border border-slate-200/90 flex items-start gap-3 transition-colors">
+                          <div className="w-6 h-6 rounded-lg bg-red-100 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            2.2
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-900">动态盘感形成</div>
+                            <p className="text-slate-500 text-xs mt-0.5">提炼条件反射式动态盘感</p>
+                          </div>
+                        </div>
+
+                        {/* Fading Sub-nodes */}
+                        <div className="bg-slate-50/70 p-3 rounded-xl border border-slate-200/60 flex items-start gap-3 opacity-60">
+                          <div className="w-6 h-6 rounded-lg bg-red-50 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            2.3
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-700">冰山单与吸收(Absorption)</div>
+                            <p className="text-slate-400 text-[11px] mt-0.5">真假挂单与机构吃单定位...</p>
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-50/40 p-3 rounded-xl border border-dashed border-slate-200/50 flex items-start gap-3 opacity-30 blur-[0.3px]">
+                          <div className="w-6 h-6 rounded-lg bg-red-50 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            2.4
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-600">Delta 分化与衰竭信号</div>
+                            <p className="text-slate-400 text-[11px] mt-0.5">多空动能枯竭高胜率入场...</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* MODULE 03 NODE */}
+                    <div className="flex flex-col items-center">
+                      <div className="w-full bg-slate-50 p-5 rounded-2xl border-2 border-red-200 shadow-md text-center relative hover:border-[#E60012] hover:shadow-lg transition-all">
+                        <div className="inline-block bg-[#E60012] text-white text-xs font-black px-3 py-0.5 rounded-full mb-2 tracking-wider">
+                          MODULE 03
+                        </div>
+                        <h3 className="text-lg font-black text-slate-900">高阶综合实战</h3>
+                      </div>
+
+                      <div className="w-0.5 h-6 bg-gradient-to-b from-red-300 to-slate-200"></div>
+
+                      <div className="w-full space-y-3">
+                        <div className="bg-slate-50 hover:bg-red-50/40 p-3.5 rounded-xl border border-slate-200/90 flex items-start gap-3 transition-colors">
+                          <div className="w-6 h-6 rounded-lg bg-red-100 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            3.1
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-900">实时市场迭代</div>
+                            <p className="text-slate-500 text-xs mt-0.5">贴合当下微观结构变化</p>
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-50 hover:bg-red-50/40 p-3.5 rounded-xl border border-slate-200/90 flex items-start gap-3 transition-colors">
+                          <div className="w-6 h-6 rounded-lg bg-red-100 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            3.2
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-900">导师助教陪跑</div>
+                            <p className="text-slate-500 text-xs mt-0.5">实操全流程答疑与指导</p>
+                          </div>
+                        </div>
+
+                        {/* Fading Sub-nodes */}
+                        <div className="bg-slate-50/70 p-3 rounded-xl border border-slate-200/60 flex items-start gap-3 opacity-60">
+                          <div className="w-6 h-6 rounded-lg bg-red-50 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            3.3
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-700">机构级风控与动态仓位</div>
+                            <p className="text-slate-400 text-[11px] mt-0.5">回撤控制与资金曲线管理...</p>
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-50/40 p-3 rounded-xl border border-dashed border-slate-200/50 flex items-start gap-3 opacity-30 blur-[0.3px]">
+                          <div className="w-6 h-6 rounded-lg bg-red-50 text-[#E60012] font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            3.4
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-600">实盘心智调控与纪律</div>
+                            <p className="text-slate-400 text-[11px] mt-0.5">克服情绪化交易纠偏模型...</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
 
-                <div className="bg-slate-800/90 p-6 rounded-2xl border border-slate-700/80 hover:border-red-500/50 transition-all">
-                  <div className="text-red-500 font-black text-2xl mb-2">MODULE 02</div>
-                  <h3 className="text-xl font-bold text-white mb-2">OBT专项进阶</h3>
-                  <p className="text-slate-300 text-sm leading-relaxed font-normal">
-                    盘面动态复盘 + 动态盘感形成
-                  </p>
+                {/* MOBILE / TABLET MIND MAP VIEW (lg:hidden) */}
+                <div className="block lg:hidden relative pl-6 border-l-2 border-red-300 space-y-8 ml-2">
+                  
+                  {/* MODULE 01 BRANCH */}
+                  <div className="relative">
+                    <div className="absolute -left-[31px] top-3 w-4 h-4 rounded-full bg-[#E60012] border-2 border-white shadow-md"></div>
+                    
+                    <div className="bg-slate-50 p-5 rounded-2xl border border-red-200 space-y-3 shadow-xs">
+                      <div className="flex items-center gap-2">
+                        <span className="bg-[#E60012] text-white text-xs font-black px-2.5 py-0.5 rounded-md">
+                          MODULE 01
+                        </span>
+                        <h3 className="text-base font-black text-slate-900">OBT 必修理论基础</h3>
+                      </div>
+                      
+                      <div className="pl-3 border-l border-slate-200 space-y-2 pt-1 text-xs text-slate-600">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E60012] shrink-0"></span>
+                          <span>奠定微观市场结构认知</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E60012] shrink-0"></span>
+                          <span>零基础建立微观感知</span>
+                        </div>
+                        <div className="flex items-center gap-2 opacity-50">
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></span>
+                          <span>L2 订单簿深度与大单流向...</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* MODULE 02 BRANCH */}
+                  <div className="relative">
+                    <div className="absolute -left-[31px] top-3 w-4 h-4 rounded-full bg-[#E60012] border-2 border-white shadow-md"></div>
+                    
+                    <div className="bg-slate-50 p-5 rounded-2xl border border-red-200 space-y-3 shadow-xs">
+                      <div className="flex items-center gap-2">
+                        <span className="bg-[#E60012] text-white text-xs font-black px-2.5 py-0.5 rounded-md">
+                          MODULE 02
+                        </span>
+                        <h3 className="text-base font-black text-slate-900">OBT 专项进阶</h3>
+                      </div>
+
+                      <div className="pl-3 border-l border-slate-200 space-y-2 pt-1 text-xs text-slate-600">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E60012] shrink-0"></span>
+                          <span>盘面动态复盘演练</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E60012] shrink-0"></span>
+                          <span>提炼条件反射式动态盘感</span>
+                        </div>
+                        <div className="flex items-center gap-2 opacity-50">
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></span>
+                          <span>冰山单与吸收(Absorption)识别...</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* MODULE 03 BRANCH */}
+                  <div className="relative">
+                    <div className="absolute -left-[31px] top-3 w-4 h-4 rounded-full bg-[#E60012] border-2 border-white shadow-md"></div>
+                    
+                    <div className="bg-slate-50 p-5 rounded-2xl border border-red-200 space-y-3 shadow-xs">
+                      <div className="flex items-center gap-2">
+                        <span className="bg-[#E60012] text-white text-xs font-black px-2.5 py-0.5 rounded-md">
+                          MODULE 03
+                        </span>
+                        <h3 className="text-base font-black text-slate-900">高阶综合实战</h3>
+                      </div>
+
+                      <div className="pl-3 border-l border-slate-200 space-y-2 pt-1 text-xs text-slate-600">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E60012] shrink-0"></span>
+                          <span>实时市场迭代，贴合当下微观结构变化</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#E60012] shrink-0"></span>
+                          <span>导师助教全程陪跑指导</span>
+                        </div>
+                        <div className="flex items-center gap-2 opacity-50">
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0"></span>
+                          <span>机构级风险控制与仓位动态伸缩...</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
 
-                <div className="bg-slate-800/90 p-6 rounded-2xl border border-slate-700/80 hover:border-red-500/50 transition-all">
-                  <div className="text-red-500 font-black text-2xl mb-2">MODULE 03</div>
-                  <h3 className="text-xl font-bold text-white mb-2">高阶综合实战</h3>
-                  <p className="text-slate-300 text-sm leading-relaxed font-normal">
-                    实时市场迭代，贴合当下市场环境的微观结构变化 + 导师助教陪跑
-                  </p>
+                {/* Bottom Gradient Fade Overlay (渐变淡出遮罩层，营造细节未完全展开的延伸感) */}
+                <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-b from-transparent via-white/80 to-white pointer-events-none z-20 flex items-end justify-center pb-2">
+                  <div className="bg-white/90 backdrop-blur-md px-5 py-2 rounded-full border border-slate-200/90 shadow-md text-xs font-bold text-slate-500 flex items-center gap-2">
+                    <i className="fa-solid fa-[#E60012] fa-ellipsis text-[#E60012]"></i>
+                    <span>更深层微观知识树节点与战术细节在完整体系中递进呈现</span>
+                  </div>
                 </div>
+
               </div>
 
-              {/* Bottom Customer Service Notice Bar (Plain) */}
-              <div className="mt-8 pt-6 border-t border-slate-800 flex items-center gap-3 bg-slate-850/60 p-4 rounded-2xl border border-slate-800/80">
-                <div className="w-8 h-8 rounded-lg bg-red-600/20 text-red-500 flex items-center justify-center shrink-0">
-                  <i className="fa-brands fa-weixin text-base"></i>
-                </div>
-                <div className="text-sm font-bold text-slate-200">
-                  完整课程体系获取请添加客服微信获取
-                </div>
-              </div>
             </div>
           </Reveal>
         </section>
@@ -330,14 +579,9 @@ const CourseView: React.FC = () => {
                     <span className="bg-red-50 text-red-600 text-xs font-extrabold px-2.5 py-1 rounded-md">阶段一</span>
                     <h3 className="text-xl font-bold text-slate-900">看清市场足迹 (Footprint)</h3>
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     摒弃无用的指标延时，学会通过 Footprint（足迹图）直观读取每一笔实时发生的 Ask/Bid 买卖盘成交。识别主动单强力冲锋与多空大单对撞现场。
                   </p>
-                  <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· Delta 累计差异</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 买卖盘失衡（Imbalance）</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 成交节点 POC</span>
-                  </div>
                 </div>
               </div>
             </Reveal>
@@ -353,14 +597,9 @@ const CourseView: React.FC = () => {
                     <span className="bg-red-50 text-red-600 text-xs font-extrabold px-2.5 py-1 rounded-md">阶段二</span>
                     <h3 className="text-xl font-bold text-slate-900">看清流动性 (Liquidity Heatmap)</h3>
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     解密挂单分布，看清主力挂单与诱多/诱空痕迹。将动态限价单（Limit Orders）深度转化为可视化热图，实时定位高密度流动性墙（Liquidity Wall），精准预判价格吸引力点与真实阻力区
                   </p>
-                  <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· Volume Profile 分布</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 止损猎取 (Stop Hunts)</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· VWAP 价值区间</span>
-                  </div>
                 </div>
               </div>
             </Reveal>
@@ -376,14 +615,9 @@ const CourseView: React.FC = () => {
                     <span className="bg-red-50 text-red-600 text-xs font-extrabold px-2.5 py-1 rounded-md">阶段三</span>
                     <h3 className="text-xl font-bold text-slate-900">看清盘口行为 (DOM / Order Book)</h3>
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     深入 DOM 深度图，实时监测挂单墙（Limit Orders）的挂撤变化。精准识别机构使用的冰山隐蔽委托（Iceberg Orders）与吸筹/派发信号。
                   </p>
-                  <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· DOM 挂单深度</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 冰山委托识别</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 被动吸收 (Absorption)</span>
-                  </div>
                 </div>
               </div>
             </Reveal>
@@ -399,14 +633,9 @@ const CourseView: React.FC = () => {
                     <span className="bg-red-50 text-red-600 text-xs font-extrabold px-2.5 py-1 rounded-md">阶段四</span>
                     <h3 className="text-xl font-bold text-slate-900">建立交易系统 (Trading System)</h3>
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     将散乱的看盘信号整理为客观明确的交易 Checklist。制定严格的入场触发条件、动态移动止损方案与阶段性分批止盈模型，拒绝凭感觉下单。
                   </p>
-                  <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 客观触发 Checklist</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 动态盈亏比风控</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 自营账户梯队方案</span>
-                  </div>
                 </div>
               </div>
             </Reveal>
@@ -422,14 +651,9 @@ const CourseView: React.FC = () => {
                     <span className="bg-red-50 text-red-600 text-xs font-extrabold px-2.5 py-1 rounded-md">阶段五</span>
                     <h3 className="text-xl font-bold text-slate-900">三图合一 (Three-Chart Execution)</h3>
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     终极实盘合操形态：“宏观结构图看趋势与关键位 + 成交量分布图看价值区域 + 订单流足迹图做微观无滑点触发”。大中小型周期无缝协同。
                   </p>
-                  <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 结构图 + 轮廓图 + 足迹图</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 无滑点挂单执行</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-lg">· 盘前计划与盘后复盘</span>
-                  </div>
                 </div>
               </div>
             </Reveal>
@@ -541,33 +765,13 @@ const CourseView: React.FC = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Button
-                    href="https://www.creem.io/payment/prod_rO8NcIyteiBtFLY963n5"
-                    target="_blank"
-                    className="w-full py-4 text-base font-bold rounded-xl bg-red-600 hover:bg-red-500 text-white shadow-md transition-all text-center"
-                  >
-                    立即报名
-                  </Button>
-
                   <button
                     onClick={() => setIsQrModalOpen(true)}
-                    className="w-full py-3.5 text-sm font-semibold rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 text-base font-bold rounded-xl bg-red-600 hover:bg-red-500 text-white shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <i className="fa-brands fa-weixin text-green-500 text-base"></i>
+                    <i className="fa-brands fa-weixin text-lg"></i>
                     <span>添加客服微信咨询</span>
                   </button>
-
-                  <div className="text-center pt-2">
-                    <a
-                      href="https://flowus.cn/share/7fd9ea23-2ce3-47cc-a6ba-e35d27bb8576?code=GYGFED"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-bold text-red-600 hover:underline inline-flex items-center gap-1"
-                    >
-                      <span>查看课程详细说明</span>
-                      <i className="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
-                  </div>
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-100 text-center">
@@ -595,33 +799,13 @@ const CourseView: React.FC = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Button
-                    href="https://www.creem.io/payment/prod_3AnNBTmv3oerrXXFF23JHT"
-                    target="_blank"
-                    className="w-full py-4 text-base font-bold rounded-xl bg-red-600 hover:bg-red-500 text-white shadow-md transition-all text-center"
-                  >
-                    立即报名
-                  </Button>
-
                   <button
                     onClick={() => setIsQrModalOpen(true)}
-                    className="w-full py-3.5 text-sm font-semibold rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 text-base font-bold rounded-xl bg-red-600 hover:bg-red-500 text-white shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <i className="fa-brands fa-weixin text-green-500 text-base"></i>
+                    <i className="fa-brands fa-weixin text-lg"></i>
                     <span>添加客服微信咨询</span>
                   </button>
-
-                  <div className="text-center pt-2">
-                    <a
-                      href="https://flowus.cn/share/7fd9ea23-2ce3-47cc-a6ba-e35d27bb8576?code=GYGFED"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-bold text-red-600 hover:underline inline-flex items-center gap-1"
-                    >
-                      <span>查看课程详细说明</span>
-                      <i className="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
-                  </div>
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-slate-100 text-center">
@@ -808,11 +992,11 @@ const CourseView: React.FC = () => {
               <ul className="space-y-1.5 text-xs text-slate-600">
                 <li className="flex items-start gap-1.5">
                   <span className="text-emerald-500 font-bold">✓</span>
-                  <span><strong>高清学习地图：</strong> 订单流 5 阶段学习路线 PDF 指南。</span>
+                  <span><strong>高清学习地图：</strong> 订单流 3 阶段学习路线 PDF 指南。</span>
                 </li>
                 <li className="flex items-start gap-1.5">
                   <span className="text-emerald-500 font-bold">✓</span>
-                  <span><strong>案例视频拆解：</strong> NQ/ES CME 期货主力吸筹视频复盘。</span>
+                  <span><strong>案例视频拆解：</strong> 完整的试听课程。</span>
                 </li>
               </ul>
             </div>

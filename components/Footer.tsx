@@ -37,15 +37,6 @@ const Footer: React.FC = () => {
                <button onClick={() => window.location.hash = "#privacy"} className="hover:text-primary transition-colors">隐私政策</button>
                <span className="text-slate-300">|</span>
                <button onClick={() => window.location.hash = "#terms"} className="hover:text-primary transition-colors">服务条款</button>
-               <span className="text-slate-300">|</span>
-               <button onClick={() => window.location.hash = "#refund"} className="hover:text-primary transition-colors">退款政策</button>
-               <span className="text-slate-300">|</span>
-               <button 
-                 onClick={() => window.location.hash = "#manage-subscription"} 
-                 className="hover:text-primary transition-colors cursor-pointer"
-               >
-                 管理订阅 / Cancel Subscription
-               </button>
             </div>
           </div>
         </div>
