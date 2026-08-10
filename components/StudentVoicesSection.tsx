@@ -47,9 +47,6 @@ const StudentVoicesSection: React.FC = () => {
       {/* Header */}
       <Reveal>
         <div className="text-center mb-12">
-          <span className="bg-red-100 text-red-600 text-xs md:text-sm font-extrabold px-4 py-1.5 rounded-full tracking-widest uppercase inline-block mb-3 border border-red-200/80 shadow-xs">
-            STUDENT TESTIMONIALS
-          </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-3">
             <i className="fa-solid fa-circle-play text-[#E60012]"></i>
             学员有话说
