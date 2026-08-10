@@ -14,6 +14,14 @@ const CourseView: React.FC = () => {
   const [isZoomed, setIsZoomed] = useState(false);  
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
+  const scrollToTrialVideos = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    const el = document.getElementById('course-preview');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const scrollToThreeModules = (e: React.MouseEvent) => {
     e.preventDefault();
     const el = document.getElementById('three-modules');
@@ -44,7 +52,7 @@ const CourseView: React.FC = () => {
 
         {/* Navigation Back Button */}
         <Reveal>
-          <div className="mb-8">
+          <div className="mb-8 flex items-center justify-between">
             <a
               href="#"
               className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-red-600 transition-colors bg-white px-5 py-2.5 rounded-xl border border-slate-200/80 shadow-xs hover:border-red-200"
@@ -163,6 +171,86 @@ const CourseView: React.FC = () => {
                 </div>
 
               </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* SECTION - COURSE TRIAL PREVIEW (课程试看 · 2个视频位) */}
+        <section id="course-preview" className="mb-20 scroll-mt-10">
+          <Reveal>
+            <div className="bg-gradient-to-b from-white via-slate-50/80 to-white rounded-3xl p-6 sm:p-10 md:p-12 border border-red-200/90 shadow-sm relative overflow-hidden">
+              
+              {/* Background Accent Blur */}
+              <div className="absolute top-0 right-1/4 w-80 h-80 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Header */}
+              <div className="text-center max-w-3xl mx-auto mb-10">
+                <span className="bg-red-100/90 text-[#E60012] text-xs font-black px-4 py-1.5 rounded-lg uppercase tracking-widest inline-flex items-center gap-1.5 mb-3 border border-red-200/80">
+                  <i className="fa-solid fa-circle-play text-[#E60012]"></i>
+                  TRIAL PREVIEWS · 课程精彩试看
+                </span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+                  初识订单流
+                </h2>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                  初步领略 Deltapex 订单流微观盘口解析与高胜率博弈思路
+                </p>
+              </div>
+
+              {/* 2 Video Cards Stacked Vertically (视频上下分布) */}
+              <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+                
+                {/* VIDEO SLOT 01: 课程先导 */}
+                <div className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:border-red-300 transition-all flex flex-col justify-between group">
+                  <div>
+                    {/* Video Container Box */}
+                    <div className="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center group-hover:shadow-md transition-all">
+                      
+                      {/* Bilibili Embedded Player */}
+                      <iframe 
+                        src="//player.bilibili.com/player.html?isOutside=true&aid=117070087854884&bvid=BV1BXud62ESX&cid=40775256614&p=1&high_quality=1&danmaku=0" 
+                        className="w-full h-full border-0 absolute inset-0 z-20" 
+                        scrolling="no" 
+                        frameBorder="0"
+                        allowFullScreen={true}
+                      ></iframe>
+
+                      {/* Top Badge Overlay */}
+                      <div className="absolute top-3 left-3 bg-[#E60012] text-white text-[11px] font-black px-3 py-1 rounded-md shadow-md uppercase tracking-wider flex items-center gap-1.5 z-30 pointer-events-none">
+                        <span className="w-2 h-2 rounded-full bg-white animate-ping"></span>
+                        课程先导 01
+                      </div>
+                    </div>
+
+                    {/* Video Info Details */}
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 text-xs text-[#E60012] font-extrabold mb-2">
+                        <i className="fa-solid fa-graduation-cap"></i>
+                        <span>试看单元：Deltapex 核心微观理论导学</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-900 mb-2">
+                        课程先导：订单流理论的市场分析与实战应用
+                      </h3>
+                      <p className="text-slate-600 text-xs leading-relaxed mb-3">
+                        深入解析订单流理论的核心原理与撮合机制，展示如何将微观盘口足迹（Footprint）与大单流动性应用于实战盘面研判。
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Footer Bar */}
+                  <div className="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-end text-xs text-slate-500">
+                    <button 
+                      onClick={() => setIsQrModalOpen(true)}
+                      className="text-[#E60012] font-bold hover:underline flex items-center gap-1 cursor-pointer ml-auto"
+                    >
+                      <span>联系客服获取完整体系课程</span>
+                      <i className="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
           </Reveal>
         </section>
