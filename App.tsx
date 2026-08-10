@@ -270,8 +270,8 @@ function App() {
               {/* 2. 导师寄语 */}
               <MentorMessageSection />
 
-              {/* 2. Deltapex 核心指南 (3大核心模块) */}
-              <div className="mb-24">
+              {/* 2. Deltapex 核心指南 (4大核心模块) */}
+              <div className="mb-20">
                 <Reveal>
                   <div className="text-center mb-12">
                     <span className="bg-red-100 text-red-600 text-xs md:text-sm font-extrabold px-4 py-1.5 rounded-full tracking-widest uppercase inline-block mb-3 border border-red-200/80 shadow-xs">
@@ -281,7 +281,7 @@ function App() {
                       Deltapex 核心指南
                     </h2>
                     <p className="text-slate-500 font-normal text-base md:text-lg mt-3 max-w-2xl mx-auto">
-                      精选订单流逻辑、Deltapex 独家生态体系与常见问题答疑
+                      精选订单流逻辑、Deltapex 独家生态体系、常见问题答疑与完整课程体系
                     </p>
                   </div>
                 </Reveal>
@@ -319,34 +319,32 @@ function App() {
                       href="#faq"
                     />
                   </Reveal>
+
+                  {/* Module 4: 4. 课程体系 */}
+                  <Reveal delay={0.4}>
+                    <ModuleCard
+                      id="course"
+                      title="4. 课程体系"
+                      index="04"
+                      icon="fa-solid fa-graduation-cap"
+                      href="#course"
+                    />
+                  </Reveal>
                 </div>
               </div>
 
-              {/* 3. 课程详情与关于我们 (放在最后面) */}
-              <div className="pt-4">
+              {/* 3. 社区简介 (放在最最后面) */}
+              <div className="pt-2">
                 <Reveal>
                   <div className="bg-slate-50/80 rounded-3xl p-8 md:p-12 border border-slate-200/80 text-center shadow-xs">
                     <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 tracking-tight">
-                      探索更多内容
+                      社区简介
                     </h3>
                     <p className="text-slate-500 text-base md:text-lg max-w-xl mx-auto mb-8 font-normal">
-                      了解 Deltapex 交易课程系统与品牌背后的故事
+                      了解 Deltapex 交易社区背后的起源、使命与交易领袖
                     </p>
                     
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                      {/* Primary CTA - Course */}
-                      <Button 
-                        href="#course"
-                        className="relative overflow-hidden px-12 py-5 text-lg rounded-2xl shadow-[0_20px_40px_-10px_rgba(211,47,47,0.3)] z-10 hover:shadow-[0_30px_60px_-15px_rgba(211,47,47,0.4)] transition-shadow duration-500 group w-full sm:w-auto"
-                      >
-                        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                        <span className="relative z-10 font-bold tracking-wide flex flex-col items-center">
-                          课程详情
-                          <span className="text-xs font-normal opacity-80 mt-0.5 uppercase tracking-widest">Course Details</span>
-                        </span>
-                      </Button>
-
-                      {/* Secondary CTA - About Us */}
+                    <div className="flex items-center justify-center">
                       <div 
                         ref={ctaRef}
                         onMouseMove={handleCtaMouseMove}
@@ -359,10 +357,13 @@ function App() {
                       >
                         <Button 
                           href="#about"
-                          variant="white"
-                          className="relative overflow-hidden px-10 py-5 text-base rounded-2xl border border-slate-200 text-slate-600 hover:border-primary/30 hover:text-primary bg-white shadow-xs hover:shadow-md transition-all duration-500 w-full sm:w-auto font-bold"
+                          className="relative overflow-hidden px-12 py-5 text-lg rounded-2xl shadow-[0_20px_40px_-10px_rgba(211,47,47,0.3)] z-10 hover:shadow-[0_30px_60px_-15px_rgba(211,47,47,0.4)] transition-shadow duration-500 group w-full sm:w-auto font-bold"
                         >
-                          <span className="relative z-10 font-bold tracking-wide">关于我们</span>
+                          <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                          <span className="relative z-10 font-bold tracking-wide flex flex-col items-center">
+                            社区简介
+                            <span className="text-xs font-normal opacity-80 mt-0.5 uppercase tracking-widest">Community Profile</span>
+                          </span>
                         </Button>
                       </div>
                     </div>

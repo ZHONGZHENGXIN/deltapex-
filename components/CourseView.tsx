@@ -813,12 +813,12 @@ const CourseView: React.FC = () => {
           </div>
         </section>
 
-        {/* SECTION 7 - COURSE PRICING DETAILS (EXACT MATCH TO USER SCREENSHOT) */}
+        {/* SECTION 7 - COURSE PRICING DETAILS */}
         <section id="pricing-details" className="mb-20 scroll-mt-24">
           <Reveal>
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3 tracking-tight">
-                课程详情
+                课程体系
               </h2>
               <p className="text-slate-500 text-base sm:text-lg">
                 选择适合您的课程，立即开启核心交易训练。

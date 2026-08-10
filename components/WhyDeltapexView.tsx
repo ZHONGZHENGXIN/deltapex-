@@ -552,7 +552,7 @@ const WhyDeltapexView: React.FC = () => {
                 href="#course"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all shrink-0"
               >
-                <span>查看课程详情</span>
+                <span>查看课程体系</span>
                 <i className="fa-solid fa-arrow-right text-xs"></i>
               </a>
             </div>
