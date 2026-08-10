@@ -27,7 +27,7 @@ const TRACK_RECORDS: TrackRecordItem[] = [
     title: '7月业绩',
     description: '',
     type: 'payout',
-    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/yeji/2026.7.png',
+    imageUrl: 'https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/2026.7.jpg',
   },
   {
     id: 'tr-2026-06',
@@ -36,7 +36,7 @@ const TRACK_RECORDS: TrackRecordItem[] = [
     title: '6月业绩',
     description: '',
     type: 'equity',
-    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/yeji/2026.6.png',
+    imageUrl: 'https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/2026.6.jpg',
   },
   {
     id: 'tr-2026-05',
@@ -45,7 +45,7 @@ const TRACK_RECORDS: TrackRecordItem[] = [
     title: '5月业绩',
     description: '',
     type: 'statement',
-    imageUrl: 'https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/yeji/2026.5.png',
+    imageUrl: 'https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/2026.5.jpg',
   },
 ];
 
