@@ -24,6 +24,14 @@ function cn(...inputs: ClassValue[]) {
 // --- Navigation Data Structure ---
 const NAV_LINKS = [
   {
+    title: "学习与资料",
+    icon: <BookOpen size={18} />,
+    items: [
+      { name: "课程体系", href: "#course" },
+      { name: "你问我答 (FAQ)", href: "#faq" }
+    ]
+  },
+  {
     title: "自营与工具",
     icon: <Wrench size={18} />,
     items: [

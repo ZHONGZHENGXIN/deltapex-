@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from './Reveal';
 import Button from './Button';
 
@@ -72,6 +73,9 @@ const COMPARISON_DATA: ComparisonRow[] = [
 const WhyOrderFlowView: React.FC = () => {
   // State to track which dimension accordion cards are open (default 1st item open for preview)
   const [openIndices, setOpenIndices] = useState<number[]>([0]);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const videoSrc = '//player.bilibili.com/player.html?isOutside=true&aid=117075641114296&bvid=BV17cuB6bExN&cid=40805404137&p=1';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -153,6 +157,86 @@ const WhyOrderFlowView: React.FC = () => {
             </div>
           </div>
         </Reveal>
+
+        {/* Video Module Section: 一个视频带你了解订单流 */}
+        <Reveal delay={0.15}>
+          <div className="bg-white rounded-3xl p-6 md:p-10 border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-300 mb-16 relative overflow-hidden">
+            {/* Header Title & Action */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
+                <i className="fa-solid fa-circle-play text-red-600"></i>
+                一个视频带你了解订单流
+              </h2>
+
+              <button
+                type="button"
+                onClick={() => setIsVideoModalOpen(true)}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-red-600 bg-slate-100 hover:bg-red-50 px-4 py-2 rounded-xl transition-all cursor-pointer self-start sm:self-auto"
+              >
+                <i className="fa-solid fa-expand"></i> 全屏沉浸播放
+              </button>
+            </div>
+
+            {/* Video Player Container */}
+            <div className="relative aspect-video bg-slate-950 rounded-2xl overflow-hidden border border-slate-200/80 shadow-inner group">
+              <iframe
+                src={videoSrc}
+                scrolling="no"
+                frameBorder="0"
+                allowFullScreen
+                className="w-full h-full border-0"
+              />
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Fullscreen Video Modal Popup */}
+        <AnimatePresence>
+          {isVideoModalOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[120] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+              onClick={() => setIsVideoModalOpen(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-slate-900 rounded-3xl border border-white/10 shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="p-4 md:p-6 border-b border-white/10 flex items-center justify-between bg-slate-950/50">
+                  <div>
+                    <span className="text-xs font-bold text-red-400 uppercase tracking-widest block mb-1">
+                      一个视频带你了解订单流 · 全屏播放
+                    </span>
+                    <h3 className="text-white font-bold text-base md:text-xl">
+                      从底层逻辑到微观盘口拆解
+                    </h3>
+                  </div>
+                  <button
+                    onClick={() => setIsVideoModalOpen(false)}
+                    className="w-10 h-10 rounded-full bg-white/10 hover:bg-red-600 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0 ml-4"
+                  >
+                    <i className="fa-solid fa-xmark text-lg"></i>
+                  </button>
+                </div>
+
+                <div className="relative aspect-video bg-black w-full">
+                  <iframe
+                    src={videoSrc}
+                    scrolling="no"
+                    frameBorder="0"
+                    allowFullScreen
+                    className="w-full h-full border-0"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Section Title */}
         <Reveal delay={0.1}>
