@@ -40,6 +40,7 @@ import Lenis from 'lenis';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { wechatQrBase64 as wechatQr } from './wechatQrData';
+import { whatsappQrBase64 as whatsappQr } from './whatsappQrData';
 
 type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex' | 'propfirm-tools' | 'faq';
 
@@ -90,12 +91,15 @@ function App() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isGlobalWeChatOpen, setIsGlobalWeChatOpen] = useState(false);
   const [copiedGlobal, setCopiedGlobal] = useState(false);
+  const [isGlobalWhatsAppOpen, setIsGlobalWhatsAppOpen] = useState(false);
   const [showFloatingTooltip, setShowFloatingTooltip] = useState(false);
 
-  // 极速预加载客服二维码，确保在中国大陆点击后 0 秒无延迟打开
+  // 极速预加载客服二维码，确保点击后 0 秒无延迟打开
   useEffect(() => {
-    const img = new Image();
-    img.src = wechatQr;
+    const img1 = new Image();
+    img1.src = wechatQr;
+    const img2 = new Image();
+    img2.src = whatsappQr;
   }, []);
 
   const handleCopyGlobalWeChat = () => {
@@ -378,7 +382,7 @@ function App() {
         )}
       </div>
 
-      {/* Global Floating Support Widgets (WeChat Only) */}
+      {/* Global Floating Support Widgets (WhatsApp & WeChat) */}
       <div className="fixed bottom-6 right-6 z-[49] flex flex-col items-end gap-3">
         <AnimatePresence>
           {showFloatingTooltip && (
@@ -412,13 +416,13 @@ function App() {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-bold text-slate-800 text-sm flex items-center gap-1.5">
-                    添加专属客服微信
+                    了解更多信息请添加客服
                     <span className="text-[10px] bg-red-100 text-red-600 font-bold px-1 py-0.2 rounded-md animate-pulse">
                       FREE GIFTS
                     </span>
                   </h4>
                   <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed">
-                    🎁 <strong>立即获取：</strong>免费 ATAS 软件安装指导、内部专属订单流微观交易指南 PDF！
+                    🎁 <strong>立即获取：</strong>完整的课程体系与交易指导！
                   </p>
                   
                   {/* Copy area */}
@@ -438,22 +442,51 @@ function App() {
                     </button>
                   </div>
 
-                  <button 
-                    onClick={() => setIsGlobalWeChatOpen(true)}
-                    className="mt-2.5 w-full text-center text-xs text-primary hover:text-primary-dark font-bold flex items-center justify-center gap-1 hover:underline transition-all"
-                  >
-                    点击显示微信二维码 <i className="fa-solid fa-qrcode text-sm"></i>
-                  </button>
+                  <div className="mt-2.5 flex items-center justify-center gap-3">
+                    <button 
+                      onClick={() => setIsGlobalWeChatOpen(true)}
+                      className="text-xs text-primary hover:text-primary-dark font-bold flex items-center gap-1 hover:underline transition-all"
+                    >
+                      <i className="fa-brands fa-weixin"></i> 微信二维码
+                    </button>
+                    <span className="text-slate-300">|</span>
+                    <button 
+                      onClick={() => setIsGlobalWhatsAppOpen(true)}
+                      className="text-xs text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1 hover:underline transition-all"
+                    >
+                      <i className="fa-brands fa-whatsapp"></i> WhatsApp
+                    </button>
+                  </div>
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* WeChat Floating Button */}
-        <div className="relative group/btn">
+        {/* WhatsApp Floating Button */}
+        <div className="relative group/whatsapp">
           {/* Custom Hover Tooltip */}
-          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/btn:scale-100 group-hover/btn:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none">
+          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/whatsapp:scale-100 group-hover/whatsapp:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none z-10">
+            WhatsApp 专属客服
+          </span>
+          <button
+            onClick={() => {
+              setIsGlobalWhatsAppOpen(true);
+              setShowFloatingTooltip(false);
+            }}
+            className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#25D366] to-emerald-500 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:scale-105 active:scale-95 transition-all relative"
+            aria-label="WhatsApp Customer Support"
+          >
+            <i className="fa-brands fa-whatsapp text-2xl hover:rotate-12 transition-transform duration-300"></i>
+            {/* Interactive Pulse Ring */}
+            <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
+          </button>
+        </div>
+
+        {/* WeChat Floating Button */}
+        <div className="relative group/wechat">
+          {/* Custom Hover Tooltip */}
+          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/wechat:scale-100 group-hover/wechat:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none z-10">
             微信专属客服
           </span>
           <button
@@ -465,14 +498,13 @@ function App() {
             aria-label="WeChat Customer Support"
           >
             <i className="fa-brands fa-weixin text-2xl hover:rotate-12 transition-transform duration-300"></i>
-
-            {/* Interactive Help Ring */}
+            {/* Interactive Pulse Ring */}
             <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
           </button>
         </div>
       </div>
 
-      {/* Global WeChat Contact Modal with Value Proposition */}
+      {/* Global WeChat Contact Modal */}
       <AnimatePresence>
         {isGlobalWeChatOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -507,17 +539,14 @@ function App() {
                 <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-500 mx-auto mb-3">
                   <i className="fa-brands fa-weixin text-2xl"></i>
                 </div>
-                <h3 className="text-2xl font-black text-slate-900">添加 Deltapex 专属客服微信</h3>
-                <p className="text-slate-500 text-sm mt-1">
-                  获取课程解答与交易支持
-                </p>
+                <h3 className="text-2xl font-black text-slate-900">了解更多信息请添加客服微信</h3>
               </div>
 
               {/* QR Code Card */}
               <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-6 flex flex-col items-center justify-center relative">
                 <div 
                   onClick={() => setSelectedImage(wechatQr)}
-                  className="bg-white p-4 rounded-xl shadow-md border border-slate-200/60 w-48 h-48 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-lg transition-all duration-300 group/qr"
+                  className="bg-white p-3 sm:p-4 rounded-2xl shadow-md border border-slate-200/60 w-64 h-64 sm:w-72 sm:h-72 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-lg transition-all duration-300 group/qr"
                 >
                   <img 
                     src={wechatQr} 
@@ -534,26 +563,6 @@ function App() {
                     </span>
                   </div>
                 </div>
-                <div className="text-[11px] text-slate-400 mt-3 text-center">
-                  打开微信，扫描上方二维码添加专属客服 (点击可放大)
-                </div>
-              </div>
-
-              {/* Value Proposition Box */}
-              <div className="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-4 mb-6 text-left">
-                <div className="text-emerald-800 font-bold text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                  <i className="fa-solid fa-gift"></i> 扫码添加客服即可获得：
-                </div>
-                <ul className="space-y-1.5 text-xs text-slate-600">
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-emerald-500 font-bold">✓</span>
-                    <span><strong>免费 ATAS 软件：</strong> 软件安装指导、系统连接。</span>
-                  </li>
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-emerald-500 font-bold">✓</span>
-                    <span><strong>专属资料：</strong> 内部订单流微观结构与交易指南 PDF 资料。</span>
-                  </li>
-                </ul>
               </div>
 
               {/* WeChat ID copy section */}
@@ -569,6 +578,71 @@ function App() {
                   <i className="fa-regular fa-copy"></i>
                   {copiedGlobal ? "已复制!" : "复制微信号"}
                 </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Global WhatsApp Contact Modal */}
+      <AnimatePresence>
+        {isGlobalWhatsAppOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsGlobalWhatsAppOpen(false)}
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
+            ></motion.div>
+            
+            {/* Modal Box */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 250 }}
+              className="relative bg-white border border-slate-100 rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden z-10 p-8 text-center"
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setIsGlobalWhatsAppOpen(false)}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors focus:outline-none"
+                aria-label="Close modal"
+              >
+                <i className="fa-solid fa-xmark text-sm"></i>
+              </button>
+
+              {/* Title Section */}
+              <div className="mb-6">
+                <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-[#25D366] mx-auto mb-3">
+                  <i className="fa-brands fa-whatsapp text-3xl"></i>
+                </div>
+                <h3 className="text-2xl font-black text-slate-900">了解更多信息请添加客服 WhatsApp</h3>
+              </div>
+
+              {/* QR Code Card */}
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center relative">
+                <div 
+                  onClick={() => setSelectedImage(whatsappQr)}
+                  className="bg-white p-3 sm:p-4 rounded-2xl shadow-md border border-slate-200/60 w-64 h-64 sm:w-72 sm:h-72 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-lg transition-all duration-300 group/qr"
+                >
+                  <img 
+                    src={whatsappQr} 
+                    alt="WhatsApp QR Code" 
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                    loading="eager"
+                    decoding="sync"
+                  />
+                  {/* Hover overlay indicator */}
+                  <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover/qr:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                    <span className="bg-white/90 backdrop-blur-sm text-[10px] font-bold text-slate-700 px-2 py-1.5 rounded shadow-sm flex items-center gap-1">
+                      <i className="fa-solid fa-magnifying-glass-plus text-emerald-600"></i> 点击放大
+                    </span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
