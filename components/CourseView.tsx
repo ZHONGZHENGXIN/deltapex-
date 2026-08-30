@@ -1054,7 +1054,7 @@ const CourseView: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-emerald-50/60 border border-emerald-100 rounded-2xl p-4 mt-4 mb-4 text-left">
+            <div className="bg-emerald-50/60 border border-emerald-100 rounded-2xl p-4 mt-4 mb-3 text-left">
               <div className="text-emerald-800 font-bold text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
                 <i className="fa-solid fa-gift"></i> 扫码添加客服即可获得：
               </div>
@@ -1068,6 +1068,19 @@ const CourseView: React.FC = () => {
                   <span><strong>案例视频拆解：</strong> 完整的试听课程。</span>
                 </li>
               </ul>
+            </div>
+
+            {/* Source Note Reminder */}
+            <div className="mb-4 bg-amber-50/90 border border-amber-200/90 rounded-xl px-4 py-3 text-xs text-amber-900 flex items-start gap-2.5 text-left shadow-xs">
+              <span className="text-base shrink-0 mt-0.5">💡</span>
+              <div className="space-y-1 text-xs leading-relaxed">
+                <p className="font-bold text-amber-950">
+                  添加好友请备注来源平台（如：B站 / YouTube / X）
+                </p>
+                <p className="text-amber-800 text-[11px] sm:text-xs">
+                  方便我们为您提供更有针对性的交易交流与答疑支持！
+                </p>
+              </div>
             </div>
 
             <div className="mt-4 flex items-center justify-between bg-slate-50 border border-slate-100 p-4 rounded-xl">

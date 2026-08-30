@@ -546,7 +546,7 @@ function App() {
               </div>
 
               {/* QR Code Card */}
-              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-6 flex flex-col items-center justify-center relative">
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-4 flex flex-col items-center justify-center relative">
                 <div 
                   onClick={() => setSelectedImage(wechatQr)}
                   className="bg-white p-3 sm:p-4 rounded-2xl shadow-md border border-slate-200/60 w-64 h-64 sm:w-72 sm:h-72 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-lg transition-all duration-300 group/qr"
@@ -565,6 +565,15 @@ function App() {
                       <i className="fa-solid fa-magnifying-glass-plus text-primary"></i> 点击放大
                     </span>
                   </div>
+                </div>
+              </div>
+
+              {/* Source Note Reminder */}
+              <div className="mb-4 bg-amber-50/90 border border-amber-200/90 rounded-xl px-4 py-2.5 text-xs text-amber-900 flex items-start gap-2.5 text-left shadow-xs">
+                <span className="text-sm shrink-0 mt-0.5">💡</span>
+                <div className="space-y-0.5">
+                  <p className="font-bold text-amber-950">添加好友请备注来源平台（如：B站 / YouTube / X）</p>
+                  <p className="text-[11px] text-amber-800/90">方便我们为您提供更有针对性的交易交流与答疑支持！</p>
                 </div>
               </div>
 
@@ -626,7 +635,7 @@ function App() {
               </div>
 
               {/* QR Code Card */}
-              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center relative">
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-4 flex flex-col items-center justify-center relative">
                 <div 
                   onClick={() => setSelectedImage(whatsappQr)}
                   className="bg-white p-3 sm:p-4 rounded-2xl shadow-md border border-slate-200/60 w-64 h-64 sm:w-72 sm:h-72 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-lg transition-all duration-300 group/qr"
@@ -646,6 +655,14 @@ function App() {
                     </span>
                   </div>
                 </div>
+              </div>
+
+              {/* Source Note Reminder */}
+              <div className="bg-amber-50/90 border border-amber-200/90 rounded-xl px-3 py-2 text-xs text-amber-900 flex items-center justify-center gap-1.5 whitespace-nowrap shadow-xs">
+                <span className="text-sm shrink-0">💡</span>
+                <p className="font-normal text-xs whitespace-nowrap">
+                  <span className="font-bold text-amber-950">添加好友请备注来源</span>，以便第一时间为您优先通过！
+                </p>
               </div>
             </motion.div>
           </div>
