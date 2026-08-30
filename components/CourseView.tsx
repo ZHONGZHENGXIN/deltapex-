@@ -999,15 +999,6 @@ const CourseView: React.FC = () => {
               <i className="fa-brands fa-weixin text-green-500"></i> 点击显示客服微信二维码
             </button>
           </p>
-          <p>
-            <strong>客户支持邮件：</strong> 如有任何疑问，请联系官方客服邮箱 <a href="mailto:depaitina@deltapex.cc" className="text-red-600 hover:underline">depaitina@deltapex.cc</a>。
-          </p>
-          <p>
-            <strong>退款政策：</strong> 本产品为虚拟知识服务。请在购买前阅读我们的 <a href="#refund" className="text-red-600 hover:underline">退款政策 (Refund Policy)</a>。
-          </p>
-          <p>
-            <strong>订阅与账单：</strong> 您可通过 <a href="#manage-subscription" className="text-red-600 hover:underline">订阅管理门户</a> 随时管理您的支付方式。
-          </p>
           <div className="pt-3 border-t border-slate-100 flex flex-wrap gap-4 text-[11px] text-slate-400">
             <span>© 2026 Deltapex Trading Group. All rights reserved.</span>
             <a href="#privacy" className="hover:text-red-600">隐私政策 (Privacy Policy)</a>

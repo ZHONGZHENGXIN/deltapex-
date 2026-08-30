@@ -7,6 +7,8 @@ export const SOCIAL_LINKS = {
   knowledgePlanet: "https://zsxq.com/your-planet-id"
 };
 
+export const ATAS_REGISTER_LINK = "https://atas.net/registration-demo/?rs=oft365200";
+
 export const HUMAN_SUPPORT_LINKS = [
   "https://work.weixin.qq.com/ca/cawcde0fbcad274cc2",
   "https://work.weixin.qq.com/ca/cawcdef627bfb20178",

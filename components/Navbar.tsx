@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import LanguageSwitcher from './LanguageSwitcher';
 
 // Utility for merging tailwind classes
 function cn(...inputs: ClassValue[]) {
@@ -29,14 +30,6 @@ const NAV_LINKS = [
     items: [
       { name: "课程体系", href: "#course" },
       { name: "你问我答 (FAQ)", href: "#faq" }
-    ]
-  },
-  {
-    title: "自营与工具",
-    icon: <Wrench size={18} />,
-    items: [
-      { name: "Futures Propfirm 汇总", href: "#propfirm-tools" },
-      { name: "交易必备工具", href: "#propfirm-tools" }
     ]
   }
 ];
@@ -205,15 +198,22 @@ const Navbar: React.FC = () => {
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Language Switcher (Desktop) */}
+            <LanguageSwitcher variant="nav" />
           </div>
 
-          {/* 3. Mobile Toggle (Actions removed) */}
-          <button 
-            className="lg:hidden text-white p-2"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <Menu size={28} />
-          </button>
+          {/* 3. Mobile Toggle and Language Switcher */}
+          <div className="flex items-center gap-3 lg:hidden">
+            <LanguageSwitcher variant="nav" />
+            <button 
+              className="text-white p-2"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="打开菜单"
+            >
+              <Menu size={28} />
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -238,7 +238,7 @@ const Navbar: React.FC = () => {
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#050505] border-l border-white/10 z-[70] shadow-2xl p-6 flex flex-col"
             >
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center justify-between mb-6">
                 <span className="text-xl font-bold text-white">Menu</span>
                 <button 
                   onClick={() => setMobileMenuOpen(false)}
@@ -246,6 +246,11 @@ const Navbar: React.FC = () => {
                 >
                   <X size={20} />
                 </button>
+              </div>
+
+              {/* Mobile Language Switcher */}
+              <div className="mb-6">
+                <LanguageSwitcher variant="mobile" />
               </div>
 
               <div className="flex-1 overflow-y-auto space-y-8">

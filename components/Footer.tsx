@@ -1,5 +1,6 @@
 import React from 'react';
 import Reveal from './Reveal';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Footer: React.FC = () => {
   return (
@@ -13,12 +14,9 @@ const Footer: React.FC = () => {
             获取更多资讯，折扣提醒，交流交易经验，与 Alex 一起成长！我们致力于打造最专业的中文订单流交易社区。
           </p>
           
-          {/* Support Email Display */}
-          <div className="mb-12 flex flex-col items-center gap-2">
-             <a href="mailto:depaitina@deltapex.cc" className="text-slate-600 font-medium hover:text-primary transition-colors flex items-center gap-2 text-lg">
-                <i className="fa-regular fa-envelope"></i> depaitina@deltapex.cc
-             </a>
-             <p className="text-xs text-slate-400">客服响应时间：工作日 9:00 - 18:00 (GMT+8)</p>
+          {/* Language Switcher in Footer */}
+          <div className="mb-10 flex justify-center">
+            <LanguageSwitcher variant="footer" />
           </div>
 
           {/* Risk Disclaimer */}

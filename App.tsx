@@ -30,10 +30,10 @@ import CourseView from './components/CourseView';
 import CasesView from './components/CasesView';
 import WhyOrderFlowView from './components/WhyOrderFlowView';
 import WhyDeltapexView from './components/WhyDeltapexView';
-import PropFirmToolsView from './components/PropFirmToolsView';
 import FaqView from './components/FaqView';
 import StudentVoicesSection from './components/StudentVoicesSection';
 import MentorMessageSection from './components/MentorMessageSection';
+import TradingToolsHomeSection from './components/TradingToolsHomeSection';
 import Footer from './components/Footer';
 
 import Lenis from 'lenis';
@@ -42,7 +42,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { wechatQrBase64 as wechatQr } from './wechatQrData';
 import { whatsappQrBase64 as whatsappQr } from './whatsappQrData';
 
-type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex' | 'propfirm-tools' | 'faq';
+type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex' | 'faq';
 
 function App() {
   // Use Hash Routing to determine view
@@ -81,7 +81,6 @@ function App() {
       case '#why-orderflow': return 'why-orderflow';
       case '#why-deltapex': return 'why-deltapex';
       case '#cases': return 'cases';
-      case '#propfirm-tools': return 'propfirm-tools';
       case '#faq': return 'faq';
       default: return 'home';
     }
@@ -248,7 +247,6 @@ function App() {
         {currentView === 'cases' && <CasesView />}
         {currentView === 'why-orderflow' && <WhyOrderFlowView />}
         {currentView === 'why-deltapex' && <WhyDeltapexView />}
-        {currentView === 'propfirm-tools' && <PropFirmToolsView />}
         {currentView === 'faq' && <FaqView />}
 
         {/* HOME VIEW CONTENT */}
@@ -285,7 +283,7 @@ function App() {
                       Deltapex 核心指南
                     </h2>
                     <p className="text-slate-500 font-normal text-base md:text-lg mt-3 max-w-2xl mx-auto">
-                      精选订单流逻辑、Deltapex 独家生态体系、常见问题答疑与完整课程体系
+                      精选订单流逻辑、Deltapex 独家生态体系、常见问题答疑、完整课程体系与必备交易工具
                     </p>
                   </div>
                 </Reveal>
@@ -333,6 +331,11 @@ function App() {
                       icon="fa-solid fa-graduation-cap"
                       href="#course"
                     />
+                  </Reveal>
+
+                  {/* Module 5: 5. 交易必备工具 (ATAS 注册下载) */}
+                  <Reveal delay={0.5}>
+                    <TradingToolsHomeSection />
                   </Reveal>
                 </div>
               </div>
