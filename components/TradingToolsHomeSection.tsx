@@ -23,23 +23,15 @@ const TradingToolsHomeSection: React.FC = () => {
 
   return (
     <div id="trading-tools-section" className="scroll-mt-32 space-y-5">
-      {/* 顶部标题区 (与截图 1:1 还原) */}
+      {/* 顶部标题区 */}
       <div className="flex items-center gap-3.5">
         <div className="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-blue-600/25 shrink-0">
           <i className="fa-solid fa-wrench"></i>
         </div>
         <div>
-          <div className="flex items-center gap-2.5">
-            <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
-              交易必备工具
-            </h3>
-            <span className="bg-blue-100 text-blue-700 text-xs font-black px-2.5 py-0.5 rounded-md uppercase tracking-wider hidden sm:inline-block">
-              MODULE 05
-            </span>
-          </div>
-          <p className="text-slate-500 text-xs md:text-sm mt-0.5 font-normal">
-            工欲善其事，必先利其器 — 专业盘口与订单流解析软件
-          </p>
+          <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+            ATAS订单流软件（导师实盘软件）
+          </h3>
         </div>
       </div>
 
@@ -83,16 +75,9 @@ const TradingToolsHomeSection: React.FC = () => {
 
             {/* 文字区域 */}
             <div>
-              <div className="text-[11px] md:text-xs font-bold text-blue-600/90 uppercase tracking-wider mb-1 flex items-center gap-1.5 justify-center sm:justify-start">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
-                MENTOR'S WORKSTATION · 导师实盘同款
-              </div>
               <h4 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 group-hover/atas:text-blue-600 transition-colors tracking-tight">
-                ATAS 订单流软件（导师实盘同款）
+                ATAS官网
               </h4>
-              <p className="text-xs sm:text-sm md:text-base text-slate-500 group-hover/atas:text-slate-600 mt-1 font-normal">
-                直播视频中使用的同款专业订单流与盘口微观结构解析工具
-              </p>
             </div>
           </div>
 
