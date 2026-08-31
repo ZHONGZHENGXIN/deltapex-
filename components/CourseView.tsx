@@ -1071,9 +1071,9 @@ const CourseView: React.FC = () => {
             </div>
 
             {/* Source Note Reminder */}
-            <div className="mb-4 bg-amber-50/90 border border-amber-200/90 rounded-xl px-4 py-3 text-xs text-amber-900 flex items-start gap-2.5 text-left shadow-xs">
-              <span className="text-base shrink-0 mt-0.5">💡</span>
-              <div className="space-y-1 text-xs leading-relaxed">
+            <div className="mb-3 bg-amber-50/90 border border-amber-200/90 rounded-xl px-4 py-2.5 text-xs text-amber-900 flex items-start gap-2.5 text-left shadow-xs">
+              <span className="text-sm shrink-0 mt-0.5">💡</span>
+              <div className="space-y-0.5 text-xs leading-relaxed">
                 <p className="font-bold text-amber-950">
                   添加好友请备注来源平台（如：B站 / YouTube / X）
                 </p>
@@ -1083,29 +1083,12 @@ const CourseView: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-4 flex items-center justify-between bg-slate-50 border border-slate-100 p-4 rounded-xl">
-              <div className="text-left">
-                <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">微信号 / WeChat ID</div>
-                <div className="text-sm font-bold text-slate-800">Zhong-Zhengxin</div>
-              </div>
-              <button
-                onClick={handleCopyWeChat}
-                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                  copied
-                    ? "bg-green-500 text-white"
-                    : "bg-slate-200 hover:bg-slate-300 text-slate-700"
-                }`}
-              >
-                {copied ? (
-                  <>
-                    <i className="fa-solid fa-check"></i> 已复制
-                  </>
-                ) : (
-                  <>
-                    <i className="fa-solid fa-copy"></i> 复制微信号
-                  </>
-                )}
-              </button>
+            {/* WhatsApp Alternative / Overseas Notice */}
+            <div className="bg-emerald-50/90 border border-emerald-200/90 rounded-xl px-3.5 py-2.5 text-xs text-emerald-950 flex items-center gap-2 text-left shadow-xs">
+              <i className="fa-brands fa-whatsapp text-emerald-600 text-base shrink-0"></i>
+              <p className="text-[11px] sm:text-xs font-semibold text-emerald-950 leading-snug">
+                失联请添加WhatsApp · 非中国大陆用户优先添加WhatsApp
+              </p>
             </div>
 
             <div className="text-[10px] text-slate-400 mt-4 text-center">

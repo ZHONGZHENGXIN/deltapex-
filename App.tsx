@@ -569,7 +569,7 @@ function App() {
               </div>
 
               {/* Source Note Reminder */}
-              <div className="mb-4 bg-amber-50/90 border border-amber-200/90 rounded-xl px-4 py-2.5 text-xs text-amber-900 flex items-start gap-2.5 text-left shadow-xs">
+              <div className="mb-3 bg-amber-50/90 border border-amber-200/90 rounded-xl px-4 py-2.5 text-xs text-amber-900 flex items-start gap-2.5 text-left shadow-xs">
                 <span className="text-sm shrink-0 mt-0.5">💡</span>
                 <div className="space-y-0.5">
                   <p className="font-bold text-amber-950">添加好友请备注来源平台（如：B站 / YouTube / X）</p>
@@ -577,18 +577,22 @@ function App() {
                 </div>
               </div>
 
-              {/* WeChat ID copy section */}
-              <div className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 border border-slate-100 p-4 rounded-xl transition-colors">
-                <div className="text-left">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">微信号 / WeChat ID</div>
-                  <div className="text-sm font-bold text-slate-800">Zhong-Zhengxin</div>
+              {/* WhatsApp Alternative / Overseas Notice */}
+              <div className="bg-emerald-50/90 border border-emerald-200/90 rounded-xl px-3.5 py-2.5 text-xs text-emerald-950 flex items-center justify-between gap-2 text-left shadow-xs">
+                <div className="flex items-center gap-2">
+                  <i className="fa-brands fa-whatsapp text-emerald-600 text-base shrink-0"></i>
+                  <p className="text-[11px] sm:text-xs font-semibold text-emerald-950 leading-snug">
+                    失联请添加WhatsApp · 非中国大陆用户优先添加WhatsApp
+                  </p>
                 </div>
-                <button 
-                  onClick={handleCopyGlobalWeChat}
-                  className="flex items-center gap-1.5 bg-primary hover:bg-primary-dark text-white font-bold px-4 py-2 rounded-lg text-xs transition-colors shadow-sm"
+                <button
+                  onClick={() => {
+                    setIsGlobalWeChatOpen(false);
+                    setIsGlobalWhatsAppOpen(true);
+                  }}
+                  className="shrink-0 text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1 rounded-lg transition-all active:scale-95 shadow-xs whitespace-nowrap"
                 >
-                  <i className="fa-regular fa-copy"></i>
-                  {copiedGlobal ? "已复制!" : "复制微信号"}
+                  去添加
                 </button>
               </div>
             </motion.div>
