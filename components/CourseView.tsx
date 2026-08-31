@@ -1070,19 +1070,6 @@ const CourseView: React.FC = () => {
               </ul>
             </div>
 
-            {/* Source Note Reminder */}
-            <div className="mb-3 bg-amber-50/90 border border-amber-200/90 rounded-xl px-4 py-2.5 text-xs text-amber-900 flex items-start gap-2.5 text-left shadow-xs">
-              <span className="text-sm shrink-0 mt-0.5">💡</span>
-              <div className="space-y-0.5 text-xs leading-relaxed">
-                <p className="font-bold text-amber-950">
-                  添加好友请备注来源平台（如：B站 / YouTube / X）
-                </p>
-                <p className="text-amber-800 text-[11px] sm:text-xs">
-                  方便我们为您提供更有针对性的交易交流与答疑支持！
-                </p>
-              </div>
-            </div>
-
             {/* WhatsApp Alternative / Overseas Notice */}
             <div className="bg-emerald-50/90 border border-emerald-200/90 rounded-xl px-3.5 py-2.5 text-xs text-emerald-950 flex items-center gap-2 text-left shadow-xs">
               <i className="fa-brands fa-whatsapp text-emerald-600 text-base shrink-0"></i>

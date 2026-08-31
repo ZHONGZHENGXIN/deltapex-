@@ -92,6 +92,23 @@ function App() {
   const [copiedGlobal, setCopiedGlobal] = useState(false);
   const [isGlobalWhatsAppOpen, setIsGlobalWhatsAppOpen] = useState(false);
   const [showFloatingTooltip, setShowFloatingTooltip] = useState(false);
+  const [isNoticeModalOpen, setIsNoticeModalOpen] = useState(false);
+  const [pendingContactType, setPendingContactType] = useState<'wechat' | 'whatsapp'>('wechat');
+
+  const openContactNotice = (type: 'wechat' | 'whatsapp') => {
+    setPendingContactType(type);
+    setIsNoticeModalOpen(true);
+    setShowFloatingTooltip(false);
+  };
+
+  const handleProceedToContact = () => {
+    setIsNoticeModalOpen(false);
+    if (pendingContactType === 'whatsapp') {
+      setIsGlobalWhatsAppOpen(true);
+    } else {
+      setIsGlobalWeChatOpen(true);
+    }
+  };
 
   // 极速预加载客服二维码，确保点击后 0 秒无延迟打开
   useEffect(() => {
@@ -447,14 +464,14 @@ function App() {
 
                   <div className="mt-2.5 flex items-center justify-center gap-3">
                     <button 
-                      onClick={() => setIsGlobalWeChatOpen(true)}
+                      onClick={() => openContactNotice('wechat')}
                       className="text-xs text-primary hover:text-primary-dark font-bold flex items-center gap-1 hover:underline transition-all"
                     >
                       <i className="fa-brands fa-weixin"></i> 微信二维码
                     </button>
                     <span className="text-slate-300">|</span>
                     <button 
-                      onClick={() => setIsGlobalWhatsAppOpen(true)}
+                      onClick={() => openContactNotice('whatsapp')}
                       className="text-xs text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1 hover:underline transition-all"
                     >
                       <i className="fa-brands fa-whatsapp"></i> WhatsApp
@@ -473,10 +490,7 @@ function App() {
             WhatsApp 专属客服
           </span>
           <button
-            onClick={() => {
-              setIsGlobalWhatsAppOpen(true);
-              setShowFloatingTooltip(false);
-            }}
+            onClick={() => openContactNotice('whatsapp')}
             className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#25D366] to-emerald-500 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:scale-105 active:scale-95 transition-all relative"
             aria-label="WhatsApp Customer Support"
           >
@@ -493,10 +507,7 @@ function App() {
             微信专属客服
           </span>
           <button
-            onClick={() => {
-              setIsGlobalWeChatOpen(true);
-              setShowFloatingTooltip(false);
-            }}
+            onClick={() => openContactNotice('wechat')}
             className="w-14 h-14 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgb(34,197,94,0.4)] hover:scale-105 active:scale-95 transition-all relative"
             aria-label="WeChat Customer Support"
           >
@@ -506,6 +517,90 @@ function App() {
           </button>
         </div>
       </div>
+
+      {/* Notice Window (Pre-Dialog Window) */}
+      <AnimatePresence>
+        {isNoticeModalOpen && (
+          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsNoticeModalOpen(false)}
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
+            ></motion.div>
+            
+            {/* Modal Box */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.92, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 16 }}
+              transition={{ type: "spring", damping: 26, stiffness: 280 }}
+              className="relative bg-white border border-amber-200/70 rounded-3xl shadow-2xl max-w-md w-full overflow-hidden z-10 p-7 sm:p-8 text-center"
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setIsNoticeModalOpen(false)}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors focus:outline-none"
+                aria-label="Close modal"
+              >
+                <i className="fa-solid fa-xmark text-sm"></i>
+              </button>
+
+              {/* Lightbulb Badge Icon */}
+              <div className="w-16 h-16 rounded-2xl bg-amber-100/90 text-amber-600 flex items-center justify-center text-3xl mx-auto mb-4 border border-amber-300/60 shadow-sm animate-bounce duration-1000">
+                💡
+              </div>
+
+              {/* Title Section */}
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 tracking-tight">
+                添加好友温馨提示
+              </h3>
+
+              {/* Highlighted Notice Card */}
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-5 text-left mb-6 shadow-xs">
+                <p className="font-bold text-amber-950 text-sm sm:text-[15px] leading-relaxed">
+                  添加好友请务必备注来源（X/YouTube/Ins等)，以便第一时间为您优先通过！
+                </p>
+                <p className="text-[12px] text-amber-800/90 mt-2 leading-relaxed">
+                  为提供更有针对性的交易交流与答疑支持，请在验证申请中附带您的来源平台。
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-2.5">
+                <button
+                  onClick={handleProceedToContact}
+                  className={`w-full py-3.5 px-6 rounded-xl font-bold text-white shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base ${
+                    pendingContactType === 'whatsapp'
+                      ? 'bg-gradient-to-r from-[#25D366] to-emerald-600 hover:shadow-emerald-500/30'
+                      : 'bg-gradient-to-r from-emerald-600 to-green-600 hover:shadow-green-500/30'
+                  }`}
+                >
+                  {pendingContactType === 'whatsapp' ? (
+                    <>
+                      <i className="fa-brands fa-whatsapp text-xl"></i>
+                      <span>我已了解，前往添加 WhatsApp</span>
+                    </>
+                  ) : (
+                    <>
+                      <i className="fa-brands fa-weixin text-xl"></i>
+                      <span>我已了解，前往添加客服微信</span>
+                    </>
+                  )}
+                </button>
+                <button
+                  onClick={() => setIsNoticeModalOpen(false)}
+                  className="w-full py-2 text-xs text-slate-400 hover:text-slate-600 font-medium transition-colors"
+                >
+                  稍后再说
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* Global WeChat Contact Modal */}
       <AnimatePresence>
@@ -565,15 +660,6 @@ function App() {
                       <i className="fa-solid fa-magnifying-glass-plus text-primary"></i> 点击放大
                     </span>
                   </div>
-                </div>
-              </div>
-
-              {/* Source Note Reminder */}
-              <div className="mb-3 bg-amber-50/90 border border-amber-200/90 rounded-xl px-4 py-2.5 text-xs text-amber-900 flex items-start gap-2.5 text-left shadow-xs">
-                <span className="text-sm shrink-0 mt-0.5">💡</span>
-                <div className="space-y-0.5">
-                  <p className="font-bold text-amber-950">添加好友请备注来源平台（如：B站 / YouTube / X）</p>
-                  <p className="text-[11px] text-amber-800/90">方便我们为您提供更有针对性的交易交流与答疑支持！</p>
                 </div>
               </div>
 
@@ -639,7 +725,7 @@ function App() {
               </div>
 
               {/* QR Code Card */}
-              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-4 flex flex-col items-center justify-center relative">
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center relative">
                 <div 
                   onClick={() => setSelectedImage(whatsappQr)}
                   className="bg-white p-3 sm:p-4 rounded-2xl shadow-md border border-slate-200/60 w-64 h-64 sm:w-72 sm:h-72 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-lg transition-all duration-300 group/qr"
@@ -659,14 +745,6 @@ function App() {
                     </span>
                   </div>
                 </div>
-              </div>
-
-              {/* Source Note Reminder */}
-              <div className="bg-amber-50/90 border border-amber-200/90 rounded-xl px-3 py-2 text-xs text-amber-900 flex items-center justify-center gap-1.5 whitespace-nowrap shadow-xs">
-                <span className="text-sm shrink-0">💡</span>
-                <p className="font-normal text-xs whitespace-nowrap">
-                  <span className="font-bold text-amber-950">添加好友请备注来源</span>，以便第一时间为您优先通过！
-                </p>
               </div>
             </motion.div>
           </div>
