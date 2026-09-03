@@ -413,7 +413,7 @@ function App() {
               className="bg-white border border-slate-200/80 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-5 w-80 text-left mb-3 relative overflow-hidden"
             >
               {/* Top Accent Strip */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-emerald-400"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#229ED9] to-sky-400"></div>
               
               {/* Arrow Indicator */}
               <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-white border-r border-b border-slate-200/80 rotate-45"></div>
@@ -431,8 +431,8 @@ function App() {
               </button>
 
               <div className="flex items-start gap-3.5 pt-1">
-                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-500 shrink-0">
-                  <i className="fa-brands fa-weixin text-xl"></i>
+                <div className="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-[#229ED9] shrink-0">
+                  <i className="fa-brands fa-telegram text-xl"></i>
                 </div>
                 <div className="flex-1">
                   <h4 className="font-bold text-slate-800 text-sm flex items-center gap-1.5">
@@ -448,7 +448,7 @@ function App() {
                   {/* Copy area */}
                   <div className="mt-3 flex items-center justify-between bg-slate-50 p-2 rounded-xl border border-slate-200/60 hover:bg-slate-100/50 transition-colors">
                     <div className="flex flex-col">
-                      <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">WeChat ID</span>
+                      <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Telegram ID</span>
                       <span className="text-xs font-mono font-bold text-slate-700">Zhong-Zhengxin</span>
                     </div>
                     <button 
@@ -456,7 +456,7 @@ function App() {
                         e.stopPropagation();
                         handleCopyGlobalWeChat();
                       }}
-                      className="text-[10px] bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-all shadow-sm shadow-emerald-500/10 shrink-0"
+                      className="text-[10px] bg-[#229ED9] hover:bg-sky-600 text-white font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-all shadow-sm shadow-sky-500/10 shrink-0"
                     >
                       {copiedGlobal ? "已复制!" : "复制"}
                     </button>
@@ -465,9 +465,9 @@ function App() {
                   <div className="mt-2.5 flex items-center justify-center gap-3">
                     <button 
                       onClick={() => openContactNotice('wechat')}
-                      className="text-xs text-primary hover:text-primary-dark font-bold flex items-center gap-1 hover:underline transition-all"
+                      className="text-xs text-[#229ED9] hover:text-sky-700 font-bold flex items-center gap-1 hover:underline transition-all"
                     >
-                      <i className="fa-brands fa-weixin"></i> 微信二维码
+                      <i className="fa-brands fa-telegram text-[#229ED9]"></i> Telegram 二维码
                     </button>
                     <span className="text-slate-300">|</span>
                     <button 
@@ -483,7 +483,24 @@ function App() {
           )}
         </AnimatePresence>
 
-        {/* WhatsApp Floating Button */}
+        {/* Telegram Floating Button (First) */}
+        <div className="relative group/telegram">
+          {/* Custom Hover Tooltip */}
+          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/telegram:scale-100 group-hover/telegram:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none z-10">
+            Telegram 专属客服
+          </span>
+          <button
+            onClick={() => openContactNotice('wechat')}
+            className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#229ED9] to-sky-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(34,158,217,0.4)] hover:scale-105 active:scale-95 transition-all relative"
+            aria-label="Telegram Customer Support"
+          >
+            <i className="fa-brands fa-telegram text-2xl hover:rotate-12 transition-transform duration-300"></i>
+            {/* Interactive Pulse Ring */}
+            <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
+          </button>
+        </div>
+
+        {/* WhatsApp Floating Button (Second) */}
         <div className="relative group/whatsapp">
           {/* Custom Hover Tooltip */}
           <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/whatsapp:scale-100 group-hover/whatsapp:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none z-10">
@@ -495,23 +512,6 @@ function App() {
             aria-label="WhatsApp Customer Support"
           >
             <i className="fa-brands fa-whatsapp text-2xl hover:rotate-12 transition-transform duration-300"></i>
-            {/* Interactive Pulse Ring */}
-            <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
-          </button>
-        </div>
-
-        {/* WeChat Floating Button */}
-        <div className="relative group/wechat">
-          {/* Custom Hover Tooltip */}
-          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/wechat:scale-100 group-hover/wechat:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none z-10">
-            微信专属客服
-          </span>
-          <button
-            onClick={() => openContactNotice('wechat')}
-            className="w-14 h-14 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgb(34,197,94,0.4)] hover:scale-105 active:scale-95 transition-all relative"
-            aria-label="WeChat Customer Support"
-          >
-            <i className="fa-brands fa-weixin text-2xl hover:rotate-12 transition-transform duration-300"></i>
             {/* Interactive Pulse Ring */}
             <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
           </button>
@@ -575,7 +575,7 @@ function App() {
                   className={`w-full py-3.5 px-6 rounded-xl font-bold text-white shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base ${
                     pendingContactType === 'whatsapp'
                       ? 'bg-gradient-to-r from-[#25D366] to-emerald-600 hover:shadow-emerald-500/30'
-                      : 'bg-gradient-to-r from-emerald-600 to-green-600 hover:shadow-green-500/30'
+                      : 'bg-gradient-to-r from-[#229ED9] to-sky-600 hover:shadow-sky-500/30'
                   }`}
                 >
                   {pendingContactType === 'whatsapp' ? (
@@ -585,8 +585,8 @@ function App() {
                     </>
                   ) : (
                     <>
-                      <i className="fa-brands fa-weixin text-xl"></i>
-                      <span>我已了解，前往添加客服微信</span>
+                      <i className="fa-brands fa-telegram text-xl"></i>
+                      <span>我已了解，前往添加客服 Telegram</span>
                     </>
                   )}
                 </button>
@@ -602,7 +602,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Global WeChat Contact Modal */}
+      {/* Global WeChat/Telegram Contact Modal */}
       <AnimatePresence>
         {isGlobalWeChatOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -634,10 +634,10 @@ function App() {
 
               {/* Title Section */}
               <div className="mb-6">
-                <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-500 mx-auto mb-3">
-                  <i className="fa-brands fa-weixin text-2xl"></i>
+                <div className="w-12 h-12 rounded-full bg-sky-50 flex items-center justify-center text-[#229ED9] mx-auto mb-3">
+                  <i className="fa-brands fa-telegram text-3xl"></i>
                 </div>
-                <h3 className="text-2xl font-black text-slate-900">了解更多信息请添加客服微信</h3>
+                <h3 className="text-2xl font-black text-slate-900">了解更多信息请添加客服 Telegram</h3>
               </div>
 
               {/* QR Code Card */}
@@ -648,7 +648,7 @@ function App() {
                 >
                   <img 
                     src={wechatQr} 
-                    alt="WeChat QR Code" 
+                    alt="Telegram QR Code" 
                     className="w-full h-full object-contain"
                     referrerPolicy="no-referrer"
                     loading="eager"

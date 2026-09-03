@@ -621,8 +621,8 @@ const CourseView: React.FC = () => {
                 {/* Bottom Gradient Fade Overlay (渐变淡出遮罩层，营造细节未完全展开的延伸感) */}
                 <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-b from-transparent via-white/80 to-white pointer-events-none z-20 flex items-end justify-center pb-2">
                   <div className="bg-white/90 backdrop-blur-md px-5 py-2 rounded-full border border-slate-200/90 shadow-md text-xs font-bold text-slate-700 flex items-center gap-2">
-                    <i className="fa-brands fa-weixin text-[#E60012] text-sm"></i>
-                    <span>完整课程体系请添加客服微信获取</span>
+                    <i className="fa-brands fa-telegram text-[#229ED9] text-sm"></i>
+                    <span>完整课程体系请添加客服 Telegram 获取</span>
                   </div>
                 </div>
 
@@ -851,8 +851,8 @@ const CourseView: React.FC = () => {
                     onClick={() => setIsQrModalOpen(true)}
                     className="w-full py-4 text-base font-bold rounded-xl bg-red-600 hover:bg-red-500 text-white shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <i className="fa-brands fa-weixin text-lg"></i>
-                    <span>添加客服微信咨询</span>
+                    <i className="fa-brands fa-telegram text-lg"></i>
+                    <span>添加客服 Telegram 咨询</span>
                   </button>
                 </div>
 
@@ -885,8 +885,8 @@ const CourseView: React.FC = () => {
                     onClick={() => setIsQrModalOpen(true)}
                     className="w-full py-4 text-base font-bold rounded-xl bg-red-600 hover:bg-red-500 text-white shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <i className="fa-brands fa-weixin text-lg"></i>
-                    <span>添加客服微信咨询</span>
+                    <i className="fa-brands fa-telegram text-lg"></i>
+                    <span>添加客服 Telegram 咨询</span>
                   </button>
                 </div>
 
@@ -922,11 +922,11 @@ const CourseView: React.FC = () => {
               },
               {
                 q: "学习需要准备哪些软件与行情数据？",
-                a: "推荐使用 ATAS 或 Sierra Chart / Quantower 等专业订单流软件，连接 CQG / Rithmic CME 实时期货深度数据。添加客服微信可获得软件安装与连接指导。"
+                a: "推荐使用 ATAS 或 Sierra Chart / Quantower 等专业订单流软件，连接 CQG / Rithmic CME 实时期货深度数据。添加客服 Telegram 可获得软件安装与连接指导。"
               },
               {
-                q: "如何在微信领取完整学习地图与课程大纲？",
-                a: "点击页面任何『添加客服微信』按钮，扫码添加专属客服（Zhong-Zhengxin），微信私信回复『学习地图』或『课程详情』即可免费领取完整 PDF 资料与案例视频。"
+                q: "如何在 Telegram 领取完整学习地图与课程大纲？",
+                a: "点击页面任何『添加客服 Telegram』按钮，扫码添加专属客服，私信回复『学习地图』或『课程详情』即可免费领取完整 PDF 资料与案例视频。"
               }
             ].map((faq, idx) => (
               <Reveal key={idx} delay={idx * 0.1}>
@@ -949,7 +949,7 @@ const CourseView: React.FC = () => {
           </div>
         </section>
 
-        {/* SECTION 9 - FINAL WECHAT CTA BOTTOM BANNER */}
+        {/* SECTION 9 - FINAL TELEGRAM CTA BOTTOM BANNER */}
         <section className="mb-16">
           <Reveal>
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-14 border border-red-300/80 shadow-sm relative overflow-hidden text-center">
@@ -963,7 +963,7 @@ const CourseView: React.FC = () => {
                   准备好用微观结构重塑您的交易体系了吗？
                 </h3>
                 <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-8">
-                  扫码添加客服微信，免费领取完整订单流课程体系
+                  扫码添加客服 Telegram，免费领取完整订单流课程体系
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-4">
@@ -971,8 +971,8 @@ const CourseView: React.FC = () => {
                     onClick={() => setIsQrModalOpen(true)}
                     className="px-8 py-4 rounded-xl font-bold bg-red-600 hover:bg-red-500 text-white transition-all shadow-md inline-flex items-center gap-2"
                   >
-                    <i className="fa-brands fa-weixin text-lg"></i>
-                    <span>立即添加客服微信咨询</span>
+                    <i className="fa-brands fa-telegram text-lg"></i>
+                    <span>立即添加客服 Telegram 咨询</span>
                   </button>
 
                   <a
@@ -991,12 +991,12 @@ const CourseView: React.FC = () => {
         <section className="text-left bg-white p-8 rounded-3xl border border-slate-200/80 text-xs text-slate-500 space-y-3">
           <h4 className="font-bold text-slate-800 text-sm mb-2">购买须知与合规声明</h4>
           <p>
-            <strong>客服微信支持：</strong> 您可以随时扫描客服二维码，添加专属客服微信号 <strong>Zhong-Zhengxin</strong> 进行课程的具体咨询与入学登记。
+            <strong>客服 Telegram 支持：</strong> 您可以随时扫描客服二维码，添加专属客服进行课程的具体咨询与入学登记。
             <button
               onClick={() => setIsQrModalOpen(true)}
               className="ml-2 inline-flex items-center gap-1 text-red-600 hover:underline font-bold"
             >
-              <i className="fa-brands fa-weixin text-green-500"></i> 点击显示客服微信二维码
+              <i className="fa-brands fa-telegram text-[#229ED9]"></i> 点击显示客服 Telegram 二维码
             </button>
           </p>
           <div className="pt-3 border-t border-slate-100 flex flex-wrap gap-4 text-[11px] text-slate-400">
@@ -1008,7 +1008,7 @@ const CourseView: React.FC = () => {
 
       </div>
 
-      {/* WECHAT QR CODE POPUP MODAL */}
+      {/* TELEGRAM QR CODE POPUP MODAL */}
       {isQrModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
@@ -1025,8 +1025,8 @@ const CourseView: React.FC = () => {
             </button>
 
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-500 text-2xl shrink-0">
-                <i className="fa-brands fa-weixin"></i>
+              <div className="w-12 h-12 rounded-full bg-sky-50 flex items-center justify-center text-[#229ED9] text-2xl shrink-0">
+                <i className="fa-brands fa-telegram"></i>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-slate-900">添加专属课程顾问</h3>
@@ -1041,7 +1041,7 @@ const CourseView: React.FC = () => {
               >
                 <img
                   src={wechatQr}
-                  alt="WeChat QR Code"
+                  alt="Telegram QR Code"
                   className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"
                   loading="eager"
