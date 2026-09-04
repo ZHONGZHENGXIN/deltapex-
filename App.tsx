@@ -118,10 +118,18 @@ function App() {
     img2.src = whatsappQr;
   }, []);
 
+  const [copiedGlobalTgLink, setCopiedGlobalTgLink] = useState(false);
+
   const handleCopyGlobalWeChat = () => {
-    navigator.clipboard.writeText("Zhong-Zhengxin");
+    navigator.clipboard.writeText("Kenneth_Xin");
     setCopiedGlobal(true);
     setTimeout(() => setCopiedGlobal(false), 2000);
+  };
+
+  const handleCopyGlobalTgLink = () => {
+    navigator.clipboard.writeText("https://t.me/Kenneth_Xin");
+    setCopiedGlobalTgLink(true);
+    setTimeout(() => setCopiedGlobalTgLink(false), 2000);
   };
   
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -449,7 +457,7 @@ function App() {
                   <div className="mt-3 flex items-center justify-between bg-slate-50 p-2 rounded-xl border border-slate-200/60 hover:bg-slate-100/50 transition-colors">
                     <div className="flex flex-col">
                       <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Telegram ID</span>
-                      <span className="text-xs font-mono font-bold text-slate-700">Zhong-Zhengxin</span>
+                      <span className="text-xs font-mono font-bold text-slate-700">@Kenneth_Xin</span>
                     </div>
                     <button 
                       onClick={(e) => {
@@ -661,25 +669,30 @@ function App() {
                     </span>
                   </div>
                 </div>
-              </div>
 
-              {/* WhatsApp Alternative / Overseas Notice */}
-              <div className="bg-emerald-50/90 border border-emerald-200/90 rounded-xl px-3.5 py-2.5 text-xs text-emerald-950 flex items-center justify-between gap-2 text-left shadow-xs">
-                <div className="flex items-center gap-2">
-                  <i className="fa-brands fa-whatsapp text-emerald-600 text-base shrink-0"></i>
-                  <p className="text-[11px] sm:text-xs font-semibold text-emerald-950 leading-snug">
-                    失联请添加WhatsApp · 非中国大陆用户优先添加WhatsApp
-                  </p>
+                {/* Direct Telegram Link Below Image */}
+                <div className="mt-4 w-full max-w-xs bg-white border border-slate-200/80 rounded-xl p-2.5 shadow-xs flex items-center justify-between gap-2 text-left">
+                  <div className="flex items-center gap-2 overflow-hidden">
+                    <i className="fa-brands fa-telegram text-[#229ED9] text-xl shrink-0"></i>
+                    <a
+                      href="https://t.me/Kenneth_Xin"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono font-bold text-slate-800 hover:text-[#229ED9] truncate transition-colors"
+                      title="点击直接打开 Telegram 聊天"
+                    >
+                      https://t.me/Kenneth_Xin
+                    </a>
+                  </div>
+                  <button
+                    onClick={handleCopyGlobalTgLink}
+                    className="shrink-0 text-[11px] bg-[#229ED9] hover:bg-sky-600 text-white font-bold px-2.5 py-1.5 rounded-lg active:scale-95 transition-all shadow-xs flex items-center gap-1"
+                    title="复制链接"
+                  >
+                    <i className="fa-regular fa-copy text-xs"></i>
+                    <span>{copiedGlobalTgLink ? "已复制!" : "直接复制"}</span>
+                  </button>
                 </div>
-                <button
-                  onClick={() => {
-                    setIsGlobalWeChatOpen(false);
-                    setIsGlobalWhatsAppOpen(true);
-                  }}
-                  className="shrink-0 text-[10px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2.5 py-1 rounded-lg transition-all active:scale-95 shadow-xs whitespace-nowrap"
-                >
-                  去添加
-                </button>
               </div>
             </motion.div>
           </div>

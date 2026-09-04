@@ -30,10 +30,18 @@ const CourseView: React.FC = () => {
     }
   };
 
+  const [copiedTgLink, setCopiedTgLink] = useState(false);
+
   const handleCopyWeChat = () => {
-    navigator.clipboard.writeText("Zhong-Zhengxin");
+    navigator.clipboard.writeText("Kenneth_Xin");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleCopyTgLink = () => {
+    navigator.clipboard.writeText("https://t.me/Kenneth_Xin");
+    setCopiedTgLink(true);
+    setTimeout(() => setCopiedTgLink(false), 2000);
   };
 
   const toggleFaq = (index: number) => {
@@ -1052,6 +1060,30 @@ const CourseView: React.FC = () => {
                   </span>
                 </div>
               </div>
+
+              {/* Direct Telegram Link Below Image */}
+              <div className="mt-4 w-full max-w-xs bg-white border border-slate-200/80 rounded-xl p-2.5 shadow-xs flex items-center justify-between gap-2 text-left">
+                <div className="flex items-center gap-2 overflow-hidden">
+                  <i className="fa-brands fa-telegram text-[#229ED9] text-xl shrink-0"></i>
+                  <a
+                    href="https://t.me/Kenneth_Xin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-mono font-bold text-slate-800 hover:text-[#229ED9] truncate transition-colors"
+                    title="点击直接打开 Telegram 聊天"
+                  >
+                    https://t.me/Kenneth_Xin
+                  </a>
+                </div>
+                <button
+                  onClick={handleCopyTgLink}
+                  className="shrink-0 text-[11px] bg-[#229ED9] hover:bg-sky-600 text-white font-bold px-2.5 py-1.5 rounded-lg active:scale-95 transition-all shadow-xs flex items-center gap-1"
+                  title="复制链接"
+                >
+                  <i className="fa-regular fa-copy text-xs"></i>
+                  <span>{copiedTgLink ? "已复制!" : "直接复制"}</span>
+                </button>
+              </div>
             </div>
 
             <div className="bg-emerald-50/60 border border-emerald-100 rounded-2xl p-4 mt-4 mb-3 text-left">
@@ -1068,14 +1100,6 @@ const CourseView: React.FC = () => {
                   <span><strong>案例视频拆解：</strong> 完整的试听课程。</span>
                 </li>
               </ul>
-            </div>
-
-            {/* WhatsApp Alternative / Overseas Notice */}
-            <div className="bg-emerald-50/90 border border-emerald-200/90 rounded-xl px-3.5 py-2.5 text-xs text-emerald-950 flex items-center gap-2 text-left shadow-xs">
-              <i className="fa-brands fa-whatsapp text-emerald-600 text-base shrink-0"></i>
-              <p className="text-[11px] sm:text-xs font-semibold text-emerald-950 leading-snug">
-                失联请添加WhatsApp · 非中国大陆用户优先添加WhatsApp
-              </p>
             </div>
 
             <div className="text-[10px] text-slate-400 mt-4 text-center">
