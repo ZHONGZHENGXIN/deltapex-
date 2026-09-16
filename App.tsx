@@ -40,7 +40,7 @@ import Lenis from 'lenis';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { wechatQrBase64 as wechatQr } from './wechatQrData';
-import { whatsappQrBase64 as whatsappQr } from './whatsappQrData';
+import { wechatContactQrBase64 as wechatContactQr } from './wechatContactQr';
 
 type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex' | 'faq';
 
@@ -88,14 +88,14 @@ function App() {
 
   const [currentView, setCurrentView] = useState<ViewType>(getHashView());
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isGlobalTelegramOpen, setIsGlobalTelegramOpen] = useState(false);
   const [isGlobalWeChatOpen, setIsGlobalWeChatOpen] = useState(false);
   const [copiedGlobal, setCopiedGlobal] = useState(false);
-  const [isGlobalWhatsAppOpen, setIsGlobalWhatsAppOpen] = useState(false);
   const [showFloatingTooltip, setShowFloatingTooltip] = useState(false);
   const [isNoticeModalOpen, setIsNoticeModalOpen] = useState(false);
-  const [pendingContactType, setPendingContactType] = useState<'wechat' | 'whatsapp'>('wechat');
+  const [pendingContactType, setPendingContactType] = useState<'telegram' | 'wechat'>('wechat');
 
-  const openContactNotice = (type: 'wechat' | 'whatsapp') => {
+  const openContactNotice = (type: 'telegram' | 'wechat') => {
     setPendingContactType(type);
     setIsNoticeModalOpen(true);
     setShowFloatingTooltip(false);
@@ -103,10 +103,10 @@ function App() {
 
   const handleProceedToContact = () => {
     setIsNoticeModalOpen(false);
-    if (pendingContactType === 'whatsapp') {
-      setIsGlobalWhatsAppOpen(true);
-    } else {
+    if (pendingContactType === 'wechat') {
       setIsGlobalWeChatOpen(true);
+    } else {
+      setIsGlobalTelegramOpen(true);
     }
   };
 
@@ -115,7 +115,7 @@ function App() {
     const img1 = new Image();
     img1.src = wechatQr;
     const img2 = new Image();
-    img2.src = whatsappQr;
+    img2.src = wechatContactQr;
   }, []);
 
   const [copiedGlobalTgLink, setCopiedGlobalTgLink] = useState(false);
@@ -207,8 +207,9 @@ function App() {
       {/* NEW NAVBAR */}
       <Navbar />
 
-      {/* 极速缓存预加载客服二维码（隐藏 DOM），保证中国大陆用户点按右下角图标 0 秒无延迟闪电加载 */}
+      {/* 极速缓存预加载客服二维码（隐藏 DOM），保证用户点按右下角图标 0 秒无延迟闪电加载 */}
       <img src={wechatQr} aria-hidden="true" className="hidden" alt="" />
+      <img src={wechatContactQr} aria-hidden="true" className="hidden" alt="" />
 
       {/* Global Background - Visible on Home */}
       {currentView === 'home' && <InteractiveBackground />}
@@ -473,16 +474,16 @@ function App() {
                   <div className="mt-2.5 flex items-center justify-center gap-3">
                     <button 
                       onClick={() => openContactNotice('wechat')}
-                      className="text-xs text-[#229ED9] hover:text-sky-700 font-bold flex items-center gap-1 hover:underline transition-all"
+                      className="text-xs text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1 hover:underline transition-all"
                     >
-                      <i className="fa-brands fa-telegram text-[#229ED9]"></i> Telegram 二维码
+                      <i className="fa-brands fa-weixin"></i> 微信客服
                     </button>
                     <span className="text-slate-300">|</span>
                     <button 
-                      onClick={() => openContactNotice('whatsapp')}
-                      className="text-xs text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1 hover:underline transition-all"
+                      onClick={() => openContactNotice('telegram')}
+                      className="text-xs text-[#229ED9] hover:text-sky-700 font-bold flex items-center gap-1 hover:underline transition-all"
                     >
-                      <i className="fa-brands fa-whatsapp"></i> WhatsApp
+                      <i className="fa-brands fa-telegram text-[#229ED9]"></i> Telegram 二维码
                     </button>
                   </div>
                 </div>
@@ -491,35 +492,35 @@ function App() {
           )}
         </AnimatePresence>
 
-        {/* Telegram Floating Button (First) */}
+        {/* WeChat Floating Button (First) */}
+        <div className="relative group/wechat">
+          {/* Custom Hover Tooltip */}
+          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/wechat:scale-100 group-hover/wechat:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none z-10">
+            微信专属客服
+          </span>
+          <button
+            onClick={() => openContactNotice('wechat')}
+            className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#07C160] to-emerald-500 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(7,193,96,0.4)] hover:scale-105 active:scale-95 transition-all relative"
+            aria-label="WeChat Customer Support"
+          >
+            <i className="fa-brands fa-weixin text-2xl hover:rotate-12 transition-transform duration-300"></i>
+            {/* Interactive Pulse Ring */}
+            <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
+          </button>
+        </div>
+
+        {/* Telegram Floating Button (Second) */}
         <div className="relative group/telegram">
           {/* Custom Hover Tooltip */}
           <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/telegram:scale-100 group-hover/telegram:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none z-10">
             Telegram 专属客服
           </span>
           <button
-            onClick={() => openContactNotice('wechat')}
+            onClick={() => openContactNotice('telegram')}
             className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#229ED9] to-sky-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(34,158,217,0.4)] hover:scale-105 active:scale-95 transition-all relative"
             aria-label="Telegram Customer Support"
           >
             <i className="fa-brands fa-telegram text-2xl hover:rotate-12 transition-transform duration-300"></i>
-            {/* Interactive Pulse Ring */}
-            <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
-          </button>
-        </div>
-
-        {/* WhatsApp Floating Button (Second) */}
-        <div className="relative group/whatsapp">
-          {/* Custom Hover Tooltip */}
-          <span className="absolute right-16 top-1/2 -translate-y-1/2 scale-90 opacity-0 group-hover/whatsapp:scale-100 group-hover/whatsapp:opacity-100 transition-all duration-200 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg pointer-events-none z-10">
-            WhatsApp 专属客服
-          </span>
-          <button
-            onClick={() => openContactNotice('whatsapp')}
-            className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#25D366] to-emerald-500 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:scale-105 active:scale-95 transition-all relative"
-            aria-label="WhatsApp Customer Support"
-          >
-            <i className="fa-brands fa-whatsapp text-2xl hover:rotate-12 transition-transform duration-300"></i>
             {/* Interactive Pulse Ring */}
             <span className="absolute inset-0 rounded-full border-2 border-white/20 animate-pulse"></span>
           </button>
@@ -581,15 +582,15 @@ function App() {
                 <button
                   onClick={handleProceedToContact}
                   className={`w-full py-3.5 px-6 rounded-xl font-bold text-white shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base ${
-                    pendingContactType === 'whatsapp'
-                      ? 'bg-gradient-to-r from-[#25D366] to-emerald-600 hover:shadow-emerald-500/30'
+                    pendingContactType === 'wechat'
+                      ? 'bg-gradient-to-r from-[#07C160] to-emerald-600 hover:shadow-emerald-500/30'
                       : 'bg-gradient-to-r from-[#229ED9] to-sky-600 hover:shadow-sky-500/30'
                   }`}
                 >
-                  {pendingContactType === 'whatsapp' ? (
+                  {pendingContactType === 'wechat' ? (
                     <>
-                      <i className="fa-brands fa-whatsapp text-xl"></i>
-                      <span>我已了解，前往添加 WhatsApp</span>
+                      <i className="fa-brands fa-weixin text-xl"></i>
+                      <span>我已了解，前往添加微信客服</span>
                     </>
                   ) : (
                     <>
@@ -610,16 +611,16 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Global WeChat/Telegram Contact Modal */}
+      {/* Global Telegram Contact Modal */}
       <AnimatePresence>
-        {isGlobalWeChatOpen && (
+        {isGlobalTelegramOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             {/* Backdrop */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsGlobalWeChatOpen(false)}
+              onClick={() => setIsGlobalTelegramOpen(false)}
               className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
             ></motion.div>
             
@@ -633,7 +634,7 @@ function App() {
             >
               {/* Close Button */}
               <button 
-                onClick={() => setIsGlobalWeChatOpen(false)}
+                onClick={() => setIsGlobalTelegramOpen(false)}
                 className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors focus:outline-none"
                 aria-label="Close modal"
               >
@@ -699,16 +700,16 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Global WhatsApp Contact Modal */}
+      {/* Global WeChat Contact Modal (Replaced WhatsApp) */}
       <AnimatePresence>
-        {isGlobalWhatsAppOpen && (
+        {isGlobalWeChatOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             {/* Backdrop */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsGlobalWhatsAppOpen(false)}
+              onClick={() => setIsGlobalWeChatOpen(false)}
               className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
             ></motion.div>
             
@@ -718,11 +719,11 @@ function App() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
-              className="relative bg-white border border-slate-100 rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden z-10 p-8 text-center"
+              className="relative bg-white border border-slate-100 rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden z-10 p-7 sm:p-8 text-center"
             >
               {/* Close Button */}
               <button 
-                onClick={() => setIsGlobalWhatsAppOpen(false)}
+                onClick={() => setIsGlobalWeChatOpen(false)}
                 className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors focus:outline-none"
                 aria-label="Close modal"
               >
@@ -730,22 +731,23 @@ function App() {
               </button>
 
               {/* Title Section */}
-              <div className="mb-6">
-                <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-[#25D366] mx-auto mb-3">
-                  <i className="fa-brands fa-whatsapp text-3xl"></i>
+              <div className="mb-5">
+                <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-[#07C160] mx-auto mb-3">
+                  <i className="fa-brands fa-weixin text-3xl"></i>
                 </div>
-                <h3 className="text-2xl font-black text-slate-900">了解更多信息请添加客服 WhatsApp</h3>
+                <h3 className="text-2xl font-black text-slate-900">了解更多信息请添加客服微信</h3>
+                <p className="text-xs text-slate-500 mt-1">扫描上方二维码添加官方微信客服</p>
               </div>
 
               {/* QR Code Card */}
-              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center relative">
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 mb-4 flex flex-col items-center justify-center relative">
                 <div 
-                  onClick={() => setSelectedImage(whatsappQr)}
-                  className="bg-white p-3 sm:p-4 rounded-2xl shadow-md border border-slate-200/60 w-64 h-64 sm:w-72 sm:h-72 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-lg transition-all duration-300 group/qr"
+                  onClick={() => setSelectedImage(wechatContactQr)}
+                  className="bg-white p-3 sm:p-4 rounded-2xl shadow-md border border-slate-200/60 w-60 h-60 sm:w-64 sm:h-64 relative overflow-hidden cursor-zoom-in hover:scale-105 hover:shadow-lg transition-all duration-300 group/qr"
                 >
                   <img 
-                    src={whatsappQr} 
-                    alt="WhatsApp QR Code" 
+                    src={wechatContactQr} 
+                    alt="WeChat QR Code" 
                     className="w-full h-full object-contain"
                     referrerPolicy="no-referrer"
                     loading="eager"
@@ -754,7 +756,7 @@ function App() {
                   {/* Hover overlay indicator */}
                   <div className="absolute inset-0 bg-slate-900/5 opacity-0 group-hover/qr:opacity-100 flex items-center justify-center transition-opacity duration-300">
                     <span className="bg-white/90 backdrop-blur-sm text-[10px] font-bold text-slate-700 px-2 py-1.5 rounded shadow-sm flex items-center gap-1">
-                      <i className="fa-solid fa-magnifying-glass-plus text-emerald-600"></i> 点击放大
+                      <i className="fa-solid fa-magnifying-glass-plus text-[#07C160]"></i> 点击放大
                     </span>
                   </div>
                 </div>

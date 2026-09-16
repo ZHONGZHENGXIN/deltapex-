@@ -1,5 +1,6 @@
 {
   "name": "Alex ATAS Community",
   "description": "Deltapex 订单流与自营交易系统, featuring rules, discounts, and professional trading resources by Alex.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
