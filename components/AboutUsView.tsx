@@ -1,8 +1,9 @@
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring, Variants } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, useSpring, Variants, AnimatePresence } from 'framer-motion';
 import HeroGeometric from './HeroGeometric';
 import CountUp from './CountUp';
+import { wechatContactQrBase64 as wechatContactQr } from '../wechatContactQr';
 
 // Background image URL for the Global Vision section
 const GLOBAL_VISION_BG_URL = "https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/jiaoyishi.jpg";
@@ -14,6 +15,29 @@ const COMMUNITY_IMG_URL = "https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/j
 const AboutUsView: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const founderRef = useRef<HTMLDivElement>(null);
+
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [activeContactTab, setActiveContactTab] = useState<'wechat' | 'telegram'>('wechat');
+  const [copiedWeChat, setCopiedWeChat] = useState(false);
+  const [copiedTgLink, setCopiedTgLink] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleNavClick = (hash: string) => {
+    setIsMobileMenuOpen(false);
+    window.location.hash = hash;
+  };
+
+  const handleCopyWeChat = () => {
+    navigator.clipboard.writeText("Kenneth_Xin");
+    setCopiedWeChat(true);
+    setTimeout(() => setCopiedWeChat(false), 2000);
+  };
+
+  const handleCopyTgLink = () => {
+    navigator.clipboard.writeText("https://t.me/Kenneth_Xin");
+    setCopiedTgLink(true);
+    setTimeout(() => setCopiedTgLink(false), 2000);
+  };
 
   // Global Scroll Progress for Nav Bar
   const { scrollYProgress } = useScroll();
@@ -109,31 +133,136 @@ const AboutUsView: React.FC = () => {
       {/* Sticky Blur Navigation with Progress Bar and Logo */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-          {/* Logo Section - Converted to div/button for safe navigation */}
-          <div onClick={handleBackClick} className="flex items-center gap-4 cursor-pointer group" role="button">
+          {/* Logo Section */}
+          <div onClick={() => handleNavClick('')} className="flex items-center gap-3 cursor-pointer group" role="button">
              <div className="relative overflow-hidden">
                 <img 
                   src="https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/logo.png.jpg" 
-                  alt="Trading Group Logo" 
-                  className="h-12 w-auto object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity" 
+                  alt="Logo" 
+                  className="h-10 sm:h-12 w-auto object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity" 
                   referrerPolicy="no-referrer"
                 />
              </div>
           </div>
 
-          {/* Navigation Controls - Converted to div/button for safe navigation */}
-          <div 
-            onClick={handleBackClick}
-            className="group flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-slate-800 hover:text-[#E60012] transition-colors cursor-pointer"
-            role="button"
-          >
-            <span className="relative">
-              Back to Hub
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#E60012] transition-all duration-300 group-hover:w-full"></span>
-            </span>
-            <i className="fa-solid fa-arrow-right-long transition-transform duration-300 group-hover:translate-x-1 text-slate-400 group-hover:text-[#E60012]"></i>
+          {/* Desktop Navigation Links & Action Button (Replaces single Back to Hub button) */}
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            <button 
+              onClick={() => handleNavClick('')}
+              className="text-sm font-semibold text-slate-700 hover:text-[#E60012] transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <i className="fa-solid fa-house text-xs text-slate-400"></i>
+              <span>首页</span>
+            </button>
+            <button 
+              onClick={() => handleNavClick('#course')}
+              className="text-sm font-semibold text-slate-700 hover:text-[#E60012] transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <i className="fa-solid fa-graduation-cap text-xs text-slate-400"></i>
+              <span>课程体系</span>
+            </button>
+            <button 
+              onClick={() => handleNavClick('#faq')}
+              className="text-sm font-semibold text-slate-700 hover:text-[#E60012] transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <i className="fa-solid fa-circle-question text-xs text-slate-400"></i>
+              <span>你问我答</span>
+            </button>
+            <a 
+              href="https://options-laboratory.zeabur.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-slate-700 hover:text-[#E60012] transition-colors flex items-center gap-1.5"
+            >
+              <i className="fa-solid fa-flask text-xs text-slate-400"></i>
+              <span>自营实验室</span>
+              <i className="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+            </a>
+
+            {/* CTA Action Button */}
+            <button
+              onClick={() => setIsContactModalOpen(true)}
+              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#E60012] to-[#B71C1C] text-white text-sm font-bold shadow-md shadow-red-600/20 hover:shadow-red-600/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <i className="fa-solid fa-comments text-xs"></i>
+              <span>咨询客服 / 加入社群</span>
+            </button>
+          </div>
+
+          {/* Mobile Menu & Quick CTA */}
+          <div className="flex items-center gap-2.5 md:hidden">
+            <button
+              onClick={() => setIsContactModalOpen(true)}
+              className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#E60012] to-[#B71C1C] text-white text-xs font-bold shadow-xs flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer"
+            >
+              <i className="fa-solid fa-comments text-[11px]"></i>
+              <span>咨询</span>
+            </button>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
+              aria-label="Toggle Navigation Menu"
+            >
+              <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-sm`}></i>
+            </button>
           </div>
         </div>
+
+        {/* Mobile Dropdown Drawer */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white/98 backdrop-blur-xl border-b border-gray-100 px-6 py-4 space-y-2 overflow-hidden shadow-xl"
+            >
+              <button 
+                onClick={() => handleNavClick('')}
+                className="w-full text-left py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center gap-3 transition-colors"
+              >
+                <i className="fa-solid fa-house text-slate-400 w-4"></i>
+                首页
+              </button>
+              <button 
+                onClick={() => handleNavClick('#course')}
+                className="w-full text-left py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center gap-3 transition-colors"
+              >
+                <i className="fa-solid fa-graduation-cap text-slate-400 w-4"></i>
+                课程体系
+              </button>
+              <button 
+                onClick={() => handleNavClick('#faq')}
+                className="w-full text-left py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center gap-3 transition-colors"
+              >
+                <i className="fa-solid fa-circle-question text-slate-400 w-4"></i>
+                你问我答
+              </button>
+              <a 
+                href="https://options-laboratory.zeabur.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-left py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center justify-between transition-colors"
+              >
+                <span className="flex items-center gap-3">
+                  <i className="fa-solid fa-flask text-slate-400 w-4"></i>
+                  自营实验室
+                </span>
+                <i className="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400"></i>
+              </a>
+              <div className="pt-2 border-t border-slate-100">
+                <button
+                  onClick={() => { setIsMobileMenuOpen(false); setIsContactModalOpen(true); }}
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-[#E60012] to-[#B71C1C] text-white text-sm font-bold shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <i className="fa-solid fa-comments"></i>
+                  <span>咨询客服 / 加入社群</span>
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Progress Bar */}
         <motion.div 
           className="absolute bottom-0 left-0 h-[2px] bg-[#E60012] origin-left"
@@ -333,12 +462,156 @@ const AboutUsView: React.FC = () => {
             <div className="text-slate-900 font-bold tracking-tight text-2xl">
               TRADING GROUP <span className="text-[#E60012]">.</span>
             </div>
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-slate-600">
+              <button onClick={() => handleNavClick('')} className="hover:text-[#E60012] transition-colors cursor-pointer">首页</button>
+              <button onClick={() => handleNavClick('#course')} className="hover:text-[#E60012] transition-colors cursor-pointer">课程体系</button>
+              <button onClick={() => handleNavClick('#faq')} className="hover:text-[#E60012] transition-colors cursor-pointer">你问我答</button>
+              <a href="https://options-laboratory.zeabur.app" target="_blank" rel="noopener noreferrer" className="hover:text-[#E60012] transition-colors">自营实验室</a>
+              <button onClick={() => setIsContactModalOpen(true)} className="hover:text-[#E60012] font-semibold transition-colors cursor-pointer">联系咨询</button>
+            </div>
             <p className="text-slate-400 text-sm font-medium">
               © 2025 Trading Group. All Rights Reserved.
             </p>
           </div>
         </footer>
       </main>
+
+      {/* Contact Modal (WeChat & Telegram) */}
+      <AnimatePresence>
+        {isContactModalOpen && (
+          <div className="fixed inset-0 z-[120] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsContactModalOpen(false)}
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md cursor-pointer"
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 250 }}
+              className="relative bg-white border border-slate-100 rounded-3xl shadow-2xl max-w-md w-full overflow-hidden z-10 p-6 sm:p-8 text-center"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsContactModalOpen(false)}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors focus:outline-none cursor-pointer"
+                aria-label="Close modal"
+              >
+                <i className="fa-solid fa-xmark text-sm"></i>
+              </button>
+
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-1">
+                联系咨询 / 加入社群
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 mb-6">
+                添加导师客服微信或 Telegram，获取第一手资料与实战答疑
+              </p>
+
+              {/* Tabs */}
+              <div className="flex rounded-xl bg-slate-100 p-1 mb-6">
+                <button
+                  onClick={() => setActiveContactTab('wechat')}
+                  className={`flex-1 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                    activeContactTab === 'wechat'
+                      ? 'bg-white text-[#07C160] shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <i className="fa-brands fa-weixin text-base"></i>
+                  微信客服
+                </button>
+                <button
+                  onClick={() => setActiveContactTab('telegram')}
+                  className={`flex-1 py-2 text-xs sm:text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                    activeContactTab === 'telegram'
+                      ? 'bg-white text-[#229ED9] shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <i className="fa-brands fa-telegram text-base"></i>
+                  Telegram 客服
+                </button>
+              </div>
+
+              {activeContactTab === 'wechat' ? (
+                <div className="space-y-4">
+                  <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 flex flex-col items-center justify-center">
+                    <div className="bg-white p-3 rounded-2xl shadow-sm border border-slate-200/80 w-52 h-52 sm:w-56 sm:h-56">
+                      <img 
+                        src={wechatContactQr} 
+                        alt="WeChat QR Code" 
+                        className="w-full h-full object-contain"
+                        loading="eager"
+                        decoding="sync"
+                      />
+                    </div>
+                    <span className="text-[11px] text-slate-400 mt-2">微信扫一扫上方二维码</span>
+                  </div>
+
+                  <div className="flex items-center justify-between bg-slate-50 border border-slate-200/80 rounded-xl p-3">
+                    <div className="flex items-center gap-2">
+                      <i className="fa-brands fa-weixin text-[#07C160] text-lg"></i>
+                      <span className="text-xs text-slate-500">微信号：</span>
+                      <span className="text-xs sm:text-sm font-mono font-bold text-slate-800">Kenneth_Xin</span>
+                    </div>
+                    <button
+                      onClick={handleCopyWeChat}
+                      className="px-3 py-1.5 rounded-lg bg-[#07C160] hover:bg-emerald-600 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1 cursor-pointer"
+                    >
+                      <i className="fa-regular fa-copy text-xs"></i>
+                      <span>{copiedWeChat ? "已复制!" : "复制"}</span>
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 text-center">
+                    <div className="w-16 h-16 rounded-full bg-sky-50 text-[#229ED9] flex items-center justify-center text-3xl mx-auto mb-3">
+                      <i className="fa-brands fa-telegram"></i>
+                    </div>
+                    <h4 className="font-bold text-slate-800 text-sm mb-1">Telegram 在线客服</h4>
+                    <p className="text-xs text-slate-500 mb-4">随时随地快速答疑，支持直连咨询</p>
+                    <a
+                      href="https://t.me/Kenneth_Xin"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-[#229ED9] to-sky-600 hover:shadow-sky-500/30 text-white font-bold text-sm shadow-md transition-all active:scale-95"
+                    >
+                      <i className="fa-brands fa-telegram text-lg"></i>
+                      <span>打开 Telegram 聊天</span>
+                    </a>
+                  </div>
+
+                  <div className="flex items-center justify-between bg-slate-50 border border-slate-200/80 rounded-xl p-3">
+                    <div className="flex items-center gap-2 truncate">
+                      <i className="fa-brands fa-telegram text-[#229ED9] text-lg shrink-0"></i>
+                      <span className="text-xs font-mono font-bold text-slate-800 truncate">https://t.me/Kenneth_Xin</span>
+                    </div>
+                    <button
+                      onClick={handleCopyTgLink}
+                      className="shrink-0 ml-2 px-3 py-1.5 rounded-lg bg-[#229ED9] hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1 cursor-pointer"
+                    >
+                      <i className="fa-regular fa-copy text-xs"></i>
+                      <span>{copiedTgLink ? "已复制!" : "复制"}</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-4 bg-amber-50 border border-amber-200/60 rounded-xl p-2.5 text-left flex items-start gap-2">
+                <span className="text-amber-500 text-sm">💡</span>
+                <p className="text-[11px] text-amber-900 leading-tight">
+                  添加时请备注来源（例如：社区/官网），我们将第一时间为您优先通过！
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

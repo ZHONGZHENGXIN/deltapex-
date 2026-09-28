@@ -91,21 +91,8 @@ const WhyOrderFlowView: React.FC = () => {
     <div className="min-h-screen bg-slate-50/50 pt-10 pb-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Breadcrumb Navigation */}
-        <Reveal>
-          <div className="mb-10">
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-red-600 transition-colors bg-white px-5 py-2.5 rounded-xl border border-slate-200/80 shadow-xs hover:border-red-200"
-            >
-              <i className="fa-solid fa-arrow-left text-xs"></i>
-              <span>返回首页</span>
-            </a>
-          </div>
-        </Reveal>
-
         {/* Header Hero Section */}
-        <Reveal delay={0.1}>
+        <Reveal>
           <div className="bg-white rounded-3xl p-8 md:p-14 border border-red-200/90 shadow-sm mb-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-red-500/10 via-red-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
 

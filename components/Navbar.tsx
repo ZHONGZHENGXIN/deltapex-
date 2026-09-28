@@ -79,16 +79,9 @@ const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           
-          {/* 1. Logo */}
-          <a 
-            href="#home" 
-            onClick={(e) => { e.preventDefault(); handleNavClick('#home'); }}
-            className="flex items-center gap-2 group cursor-pointer"
-          >
-            <span className="text-2xl font-black tracking-tighter text-white">
-              Alex Trading
-            </span>
-          </a>
+          {/* 1. Logo / Left Section */}
+          <div className="flex items-center gap-2">
+          </div>
 
           {/* 2. Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
