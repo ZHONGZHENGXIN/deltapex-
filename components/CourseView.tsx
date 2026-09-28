@@ -25,7 +25,7 @@ const CourseView: React.FC = () => {
   const [copiedTgLink, setCopiedTgLink] = useState(false);
 
   const handleCopyWeChat = () => {
-    navigator.clipboard.writeText("Kenneth_Xin");
+    navigator.clipboard.writeText("Zhong-Zhengxin");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

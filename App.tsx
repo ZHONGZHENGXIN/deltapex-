@@ -121,7 +121,7 @@ function App() {
   const [copiedGlobalTgLink, setCopiedGlobalTgLink] = useState(false);
 
   const handleCopyGlobalWeChat = () => {
-    navigator.clipboard.writeText("Kenneth_Xin");
+    navigator.clipboard.writeText("Zhong-Zhengxin");
     setCopiedGlobal(true);
     setTimeout(() => setCopiedGlobal(false), 2000);
   };
@@ -759,6 +759,27 @@ function App() {
                       <i className="fa-solid fa-magnifying-glass-plus text-[#07C160]"></i> 点击放大
                     </span>
                   </div>
+                </div>
+
+                {/* Direct WeChat ID Copy Section Below Image */}
+                <div className="mt-4 w-full max-w-xs bg-white border border-slate-200/80 rounded-xl p-2.5 shadow-xs flex items-center justify-between gap-2 text-left">
+                  <div className="flex items-center gap-2 overflow-hidden">
+                    <i className="fa-brands fa-weixin text-[#07C160] text-xl shrink-0"></i>
+                    <div className="flex flex-col truncate">
+                      <span className="text-[10px] text-slate-400 font-medium">官方客服微信号</span>
+                      <span className="text-xs sm:text-sm font-mono font-bold text-slate-800 truncate select-all">
+                        Zhong-Zhengxin
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleCopyGlobalWeChat}
+                    className="shrink-0 text-[11px] bg-[#07C160] hover:bg-emerald-600 text-white font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-all shadow-xs flex items-center gap-1 cursor-pointer"
+                    title="复制微信号"
+                  >
+                    <i className="fa-regular fa-copy text-xs"></i>
+                    <span>{copiedGlobal ? "已复制!" : "复制微信号"}</span>
+                  </button>
                 </div>
               </div>
             </motion.div>

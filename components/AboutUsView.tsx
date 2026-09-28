@@ -28,7 +28,7 @@ const AboutUsView: React.FC = () => {
   };
 
   const handleCopyWeChat = () => {
-    navigator.clipboard.writeText("Kenneth_Xin");
+    navigator.clipboard.writeText("Zhong-Zhengxin");
     setCopiedWeChat(true);
     setTimeout(() => setCopiedWeChat(false), 2000);
   };
@@ -556,7 +556,7 @@ const AboutUsView: React.FC = () => {
                     <div className="flex items-center gap-2">
                       <i className="fa-brands fa-weixin text-[#07C160] text-lg"></i>
                       <span className="text-xs text-slate-500">微信号：</span>
-                      <span className="text-xs sm:text-sm font-mono font-bold text-slate-800">Kenneth_Xin</span>
+                      <span className="text-xs sm:text-sm font-mono font-bold text-slate-800">Zhong-Zhengxin</span>
                     </div>
                     <button
                       onClick={handleCopyWeChat}
