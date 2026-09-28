@@ -26,7 +26,7 @@ const converterToSimplified = OpenCC.Converter({ from: 'tw', to: 'cn' });
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<LanguageMode>(() => {
     try {
-      const saved = localStorage.getItem('deltapex_lang');
+      const saved = localStorage.getItem('app_lang');
       if (saved === 'zh-TW' || saved === 'zh-CN') {
         return saved;
       }
@@ -48,7 +48,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const setLanguage = useCallback((lang: LanguageMode) => {
     setLanguageState(lang);
     try {
-      localStorage.setItem('deltapex_lang', lang);
+      localStorage.setItem('app_lang', lang);
     } catch (e) {
       console.warn('Unable to save language preference', e);
     }

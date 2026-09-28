@@ -58,7 +58,7 @@ const MentorMessageSection: React.FC = () => {
             <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 flex items-start gap-3">
               <i className="fa-solid fa-quote-left text-red-500 text-lg mt-0.5 shrink-0"></i>
               <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-medium">
-                “交易的核心不是预测未来，而是建立高胜率、高盈亏比的系统，并用严苛的纪律重复执行。希望在 Deltapex 的训练中，你能真正建立属于自己的职业坐标系。”
+                “交易的核心不是预测未来，而是建立高胜率、高盈亏比的系统，并用严苛的纪律重复执行。希望在持续的训练中，你能真正建立属于自己的职业坐标系。”
               </p>
             </div>
 
@@ -115,7 +115,7 @@ const MentorMessageSection: React.FC = () => {
               {/* Modal Footer Description */}
               <div className="p-4 md:p-6 bg-slate-950 text-slate-300 text-xs md:text-sm">
                 <p className="leading-relaxed">
-                  “交易的核心不是预测未来，而是建立高胜率、高盈亏比的系统，并用严苛的纪律重复执行。希望在 Deltapex 的训练中，你能真正建立属于自己的职业坐标系。”
+                  “交易的核心不是预测未来，而是建立高胜率、高盈亏比的系统，并用严苛的纪律重复执行。希望在持续的训练中，你能真正建立属于自己的职业坐标系。”
                 </p>
               </div>
             </motion.div>

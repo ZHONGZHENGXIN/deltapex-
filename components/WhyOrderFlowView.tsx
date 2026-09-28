@@ -99,7 +99,7 @@ const WhyOrderFlowView: React.FC = () => {
               className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-red-600 transition-colors bg-white px-5 py-2.5 rounded-xl border border-slate-200/80 shadow-xs hover:border-red-200"
             >
               <i className="fa-solid fa-arrow-left text-xs"></i>
-              <span>返回 Deltapex 首页</span>
+              <span>返回首页</span>
             </a>
           </div>
         </Reveal>
@@ -367,7 +367,7 @@ const WhyOrderFlowView: React.FC = () => {
                   className="px-8 py-4 rounded-xl font-bold bg-red-600 hover:bg-red-500 text-white transition-all shadow-md shadow-red-600/20"
                 >
                   <i className="fa-solid fa-graduation-cap mr-2"></i>
-                  探索 Deltapex 实战订单流课程
+                  探索实战订单流课程
                 </Button>
 
                 <a

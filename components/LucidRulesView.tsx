@@ -340,7 +340,7 @@ const LucidRulesView: React.FC = () => {
               </p>
             </div>
             <p className="mt-12 text-xs text-slate-400 font-bold tracking-widest uppercase">
-              © Lucid Trading 攻略指南 | 请遵循官网实时规则 | Deltapex 社区支持
+              © Lucid Trading 攻略指南 | 请遵循官网实时规则 | 专业交易社区支持
             </p>
           </footer>
         </div>

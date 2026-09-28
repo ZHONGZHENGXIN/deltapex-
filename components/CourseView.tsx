@@ -58,7 +58,7 @@ const CourseView: React.FC = () => {
               className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-red-600 transition-colors bg-white px-5 py-2.5 rounded-xl border border-slate-200/80 shadow-xs hover:border-red-200"
             >
               <i className="fa-solid fa-arrow-left text-xs"></i>
-              <span>返回 Deltapex 首页</span>
+              <span>返回首页</span>
             </a>
           </div>
         </Reveal>
@@ -71,7 +71,7 @@ const CourseView: React.FC = () => {
 
               <div className="relative z-10 max-w-4xl">
                 <span className="bg-red-100/90 text-red-600 text-xs font-black px-4 py-1.5 rounded-lg uppercase tracking-widest inline-block mb-6 border border-red-200/60">
-                  DELTAPEX · 核心职业交易训练系统
+                  核心职业交易训练系统
                 </span>
 
                 <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-slate-900 tracking-tight leading-snug sm:leading-normal mb-6">
@@ -81,10 +81,10 @@ const CourseView: React.FC = () => {
 
                 <div className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-3xl mb-10 space-y-3">
                   <p>
-                    Deltapex 课程不是简单的知识归纳，它是 Alex 将多年实战心法深度沉淀后的逻辑重构。
+                    本套课程不是简单的知识归纳，它是 Alex 将多年实战心法深度沉淀后的逻辑重构。
                   </p>
                   <p>
-                    更重要的是，市场在演变，Deltapex 也从未停下脚步——从2024年初代框架到如今的多次高阶迭代，我们把最新的盘面博弈与市场变化也持续注入课程系统，让您的交易认知永远与最新市场保持零时差。
+                    更重要的是，市场在演变，课程体系也从未停下脚步——从2024年初代框架到如今的多次高阶迭代，我们把最新的盘面博弈与市场变化也持续注入课程系统，让您的交易认知永远与最新市场保持零时差。
                   </p>
                 </div>
 
@@ -1018,10 +1018,6 @@ const CourseView: React.FC = () => {
                   <span><strong>案例视频拆解：</strong> 完整的试听课程。</span>
                 </li>
               </ul>
-            </div>
-
-            <div className="text-[10px] text-slate-400 mt-4 text-center">
-              * 为保障您的权益，请认准官方客服。工作时间：周一至周五 09:00 - 18:00。
             </div>
           </div>
         </div>

@@ -29,7 +29,7 @@ const RefundPolicyView: React.FC = () => {
           <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r">
             <h3 className="text-blue-800 font-bold mb-2">核心提示</h3>
             <p className="text-sm text-blue-700">
-              Deltapex Trading Group 是一个信息资讯平台。我们本身不销售期货评估账户，所有评估服务的交易均发生在您与第三方自营公司（Prop Firm）之间。
+              本交易社区是一个信息资讯平台。我们本身不销售期货评估账户，所有评估服务的交易均发生在您与第三方自营公司（Prop Firm）之间。
             </p>
           </div>
 
@@ -49,7 +49,7 @@ const RefundPolicyView: React.FC = () => {
           <section>
             <h2 className="text-xl font-bold text-slate-900 mb-3">2. 本站社群与知识星球退款</h2>
             <p className="mb-4">
-              对于 Deltapex 自营的教育产品（如知识星球社群）：
+              对于社区的教育产品（如知识星球社群）：
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li><strong>知识星球：</strong> 请遵循知识星球官方平台的退款规则。通常在加入后的固定时间内（如3天内），若对内容不满意，可向平台申请全额退款。超过平台规定的无理由退款期限后，原则上不接受退款申请。</li>
@@ -62,8 +62,6 @@ const RefundPolicyView: React.FC = () => {
             <p>
               如果您在与第三方自营公司的沟通中遇到困难，或者认为遭到了不公正的待遇，可以联系我们的客服团队。虽然我们无法直接为您办理退款，但我们可以凭借行业经验为您提供沟通建议或协助反馈问题。
               <br/><br/>
-              <strong>官方客服邮箱：</strong> <a href="mailto:depaitina@deltapex.cc" className="text-primary hover:underline">depaitina@deltapex.cc</a>
-              <br/>
               我们承诺在收到您的请求后 <strong>3 个工作日内</strong> 给予回复。
             </p>
           </section>

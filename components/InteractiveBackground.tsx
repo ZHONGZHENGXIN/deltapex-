@@ -47,7 +47,7 @@ const InteractiveBackground: React.FC = () => {
         this.baseSize = Math.random() * 2 + 1;
         this.size = this.baseSize;
         this.density = Math.random() * 30 + 1;
-        this.color = '183, 28, 28'; // Deltapex Red
+        this.color = '183, 28, 28'; // Primary Red
         this.angle = Math.random() * Math.PI * 2; 
         this.pulseSpeed = 0.02 + Math.random() * 0.03; 
       }

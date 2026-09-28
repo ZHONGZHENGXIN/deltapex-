@@ -36,7 +36,7 @@ const TermsOfServiceView: React.FC = () => {
           <section>
             <h2 className="text-xl font-bold text-slate-900 mb-3">1. 条款接受</h2>
             <p>
-              访问或使用 Deltapex Trading Group 网站（以下简称“本站”），即表示您同意受本服务条款的约束。如果您不同意这些条款，请立即停止使用本站。
+              访问或使用本交易社区网站（以下简称“本站”），即表示您同意受本服务条款的约束。如果您不同意这些条款，请立即停止使用本站。
             </p>
           </section>
 
@@ -84,7 +84,7 @@ const TermsOfServiceView: React.FC = () => {
           <section>
             <h2 className="text-xl font-bold text-slate-900 mb-3">7. 联系方式</h2>
             <p>
-              如您对本服务条款有任何疑问，请联系我们：<a href="mailto:depaitina@deltapex.cc" className="text-primary hover:underline">depaitina@deltapex.cc</a>
+              如您对本服务条款有任何疑问，请联系我们客服。
             </p>
           </section>
         </div>

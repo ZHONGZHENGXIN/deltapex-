@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
             className="flex items-center gap-2 group cursor-pointer"
           >
             <span className="text-2xl font-black tracking-tighter text-white">
-              Deltapex
+              Alex Trading
             </span>
           </a>
 
@@ -145,7 +145,7 @@ const Navbar: React.FC = () => {
               </div>
             ))}
 
-            {/* Deltapex 自营 Dropdown Button */}
+            {/* 自营服务 Dropdown Button */}
             <div 
               className="relative"
               onMouseEnter={() => setIsProprietaryHovered(true)}
@@ -155,7 +155,7 @@ const Navbar: React.FC = () => {
                 className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#D32F2F] to-[#EF5350] text-white rounded-full font-bold text-sm shadow-lg shadow-red-900/20 hover:shadow-red-600/40 hover:scale-105 transition-all duration-300 group"
               >
                 <LayoutGrid size={18} className="group-hover:rotate-12 transition-transform duration-300" />
-                <span>Deltapex 自营</span>
+                <span>自营服务</span>
                 <ChevronDown 
                   size={16} 
                   className={cn("ml-1 transition-transform duration-300", isProprietaryHovered ? "rotate-180" : "")} 
@@ -275,11 +275,11 @@ const Navbar: React.FC = () => {
                   </div>
                 ))}
 
-                {/* Mobile Deltapex 自营 Section */}
+                {/* Mobile 自营服务 Section */}
                 <div className="space-y-3 pt-4 border-t border-white/10">
                    <div className="flex items-center gap-2 text-[#D32F2F] font-bold text-sm uppercase tracking-wider mb-2">
                       <LayoutGrid size={18} />
-                      Deltapex 自营
+                      自营服务
                    </div>
                    
                    {PROPRIETARY_LINKS.map((item, idx) => (

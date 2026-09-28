@@ -284,7 +284,7 @@ function App() {
                 <div className="flex flex-col items-center justify-center">
                   <span className="text-primary font-bold tracking-[0.2em] text-sm uppercase mb-4 animate-fade-in-up">Professional Trading Hub</span>
                   <h1 className="text-6xl md:text-8xl font-bold font-display tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-primary to-slate-900 bg-[length:200%_auto] animate-shimmer select-none py-2 leading-[1.1]">
-                    Deltapex 自营交易
+                    订单流自营交易
                   </h1>
                 </div>
               </Reveal>
@@ -298,7 +298,7 @@ function App() {
               {/* 2. 导师寄语 */}
               <MentorMessageSection />
 
-              {/* 2. Deltapex 核心指南 (4大核心模块) */}
+              {/* 2. 核心指南 (4大核心模块) */}
               <div className="mb-20">
                 <Reveal>
                   <div className="text-center mb-12">
@@ -306,10 +306,10 @@ function App() {
                       CORE SECTIONS
                     </span>
                     <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
-                      Deltapex 核心指南
+                      核心交易指南
                     </h2>
                     <p className="text-slate-500 font-normal text-base md:text-lg mt-3 max-w-2xl mx-auto">
-                      精选订单流逻辑、Deltapex 独家生态体系、常见问题答疑、完整课程体系与必备交易工具
+                      精选订单流逻辑、导师实盘体系、常见问题答疑、完整课程体系与必备交易工具
                     </p>
                   </div>
                 </Reveal>
@@ -326,11 +326,11 @@ function App() {
                     />
                   </Reveal>
 
-                  {/* Module 2: 2. 为什么选择 Deltapex？ */}
+                  {/* Module 2: 2. 导师实盘体系与战绩 */}
                   <Reveal delay={0.2}>
                     <ModuleCard
                       id="why-deltapex"
-                      title="2. 为什么选择 Deltapex？"
+                      title="2. 导师实盘体系与战绩"
                       index="02"
                       icon="fa-solid fa-bolt"
                       href="#why-deltapex"
@@ -374,7 +374,7 @@ function App() {
                       社区简介
                     </h3>
                     <p className="text-slate-500 text-base md:text-lg max-w-xl mx-auto mb-8 font-normal">
-                      了解 Deltapex 交易社区背后的起源、使命与交易领袖
+                      了解交易社区背后的起源、使命与交易领袖
                     </p>
                     
                     <div className="flex items-center justify-center">

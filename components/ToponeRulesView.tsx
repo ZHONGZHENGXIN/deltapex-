@@ -41,7 +41,7 @@ const ToponeRulesView: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <h3 className="text-[11px] uppercase text-[#A0A0A0] tracking-widest mb-0.5">专属折扣码</h3>
-              <div className="text-2xl font-black font-mono" style={{ color: redAccent }}>DELTAPEX</div>
+              <div className="text-2xl font-black font-mono" style={{ color: redAccent }}>TOPONE</div>
             </div>
           </div>
           <div className="flex items-center flex-1 min-w-[250px]">
@@ -51,7 +51,7 @@ const ToponeRulesView: React.FC = () => {
             <div className="flex flex-col">
               <h3 className="text-[11px] uppercase text-[#A0A0A0] tracking-widest mb-0.5">官方购买链接</h3>
               <a 
-                href="https://toponefutures.com/?linkId=lp_707970&sourceId=deltapex&tenantId=toponefutures" 
+                href="https://toponefutures.com/" 
                 target="_blank" 
                 className="text-sm font-semibold border-b-2 border-[#C41E3A]/20 hover:border-[#C41E3A] hover:bg-[#C41E3A]/5 transition-all py-0.5"
                 style={{ color: redAccent }}

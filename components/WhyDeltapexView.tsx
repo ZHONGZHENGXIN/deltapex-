@@ -114,7 +114,7 @@ const WhyDeltapexView: React.FC = () => {
               className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-red-600 transition-colors bg-white px-5 py-2.5 rounded-xl border border-slate-200/80 shadow-xs hover:border-red-200"
             >
               <i className="fa-solid fa-arrow-left text-xs"></i>
-              <span>返回 Deltapex 首页</span>
+              <span>返回首页</span>
             </a>
           </div>
         </Reveal>
@@ -171,13 +171,13 @@ const WhyDeltapexView: React.FC = () => {
 
                 <div className="relative z-10 p-6">
                   <div className="text-[10px] font-mono font-bold tracking-[0.2em] text-slate-300 uppercase mb-2">
-                    DELTAPEX LEADERSHIP
+                    COMMUNITY LEADERSHIP
                   </div>
                   <h3 className="font-serif text-3xl font-bold tracking-tight text-white mb-1">
                     ALEX
                   </h3>
                   <p className="text-xs font-semibold tracking-wider text-red-400 uppercase">
-                    Founder, CEO & Co-CIO
+                    Founder & Chief Investment Officer
                   </p>
                 </div>
 
@@ -199,10 +199,10 @@ const WhyDeltapexView: React.FC = () => {
               >
                 <div>
                   <h3 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 tracking-tight mb-1">
-                    Founder, CEO and Co-Chief Investment Officer
+                    Founder and Chief Investment Officer
                   </h3>
                   <p className="text-xs font-mono tracking-widest text-slate-400 uppercase">
-                    DELTAPEX CAPITAL & EDUCATION
+                    QUANT & ORDER FLOW EDUCATION
                   </p>
                 </div>
 
@@ -291,7 +291,7 @@ const WhyDeltapexView: React.FC = () => {
                         建立规则，敬畏市场：从个人交易到机构体系的修炼之路
                       </h3>
                       <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        “交易的核心不是预测未来，而是建立高胜率、高盈亏比的系统，并用严苛的纪律重复执行。希望在 Deltapex 的训练中，你能真正建立属于自己的职业坐标系。”
+                        “交易的核心不是预测未来，而是建立高胜率、高盈亏比的系统，并用严苛的纪律重复执行。希望在持续的训练中，你能真正建立属于自己的职业坐标系。”
                       </p>
                     </div>
                   </div>
@@ -569,13 +569,13 @@ const WhyDeltapexView: React.FC = () => {
 
             <div className="relative z-10 max-w-3xl mx-auto">
               <span className="bg-red-100 text-red-600 text-xs font-black px-4 py-1.5 rounded-lg uppercase tracking-widest inline-block mb-5 border border-red-200/60">
-                JOIN DELTAPEX · 开启理性交易
+                JOIN COMMUNITY · 开启理性交易
               </span>
               <h3 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-5">
                 开启您的订单流职业交易之路
               </h3>
               <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-10 font-normal">
-                摆脱滞后指标与情绪干扰，加入 Deltapex，用微观结构建立逻辑严密的实盘优势。
+                摆脱滞后指标与情绪干扰，加入交易社区，用微观结构建立逻辑严密的实盘优势。
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-5">

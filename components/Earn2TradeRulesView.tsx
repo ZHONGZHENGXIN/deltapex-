@@ -10,7 +10,7 @@ const Earn2TradeRulesView: React.FC = () => {
     window.location.hash = "";
   };
 
-  const accentColor = "#D32F2F"; // 沿用 Deltapex 的主色调
+  const accentColor = "#D32F2F"; // 红色主调
 
   return (
     <div className="bg-white min-h-screen font-sans text-[#333] antialiased">
@@ -41,7 +41,7 @@ const Earn2TradeRulesView: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <h3 className="text-[11px] uppercase text-[#A0A0A0] tracking-widest mb-0.5">专属折扣码</h3>
-              <div className="text-2xl font-black font-mono" style={{ color: accentColor }}>DeltapexE2T</div>
+              <div className="text-2xl font-black font-mono" style={{ color: accentColor }}>E2T40</div>
             </div>
           </div>
           <div className="flex items-center flex-1 min-w-[250px]">

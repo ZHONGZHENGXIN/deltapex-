@@ -3,7 +3,7 @@ import { Firm, ResourceLink, FaqItem, Deal } from './types';
 
 export const SOCIAL_LINKS = {
   telegram: "https://t.me/your-link",
-  clientPortal: "https://portal.deltapex.com",
+  clientPortal: "https://portal.example.com",
   knowledgePlanet: "https://zsxq.com/your-planet-id"
 };
 
@@ -17,7 +17,7 @@ export const HUMAN_SUPPORT_LINKS = [
 
 // 修改为函数，支持动态注入知识库
 // 这样 constants.ts 就不会依赖巨大的 knowledgeBase.ts，从而实现按需加载
-export const GENERATE_SYSTEM_INSTRUCTION = (context: string) => `你现在的身份是 DeltaPex 社区的专属智能助手。
+export const GENERATE_SYSTEM_INSTRUCTION = (context: string) => `你现在的身份是交易社区的专属智能助手。
 你必须**严格基于**下方的【核心知识库】内容回答用户问题。
 
 【核心知识库开始】
@@ -126,12 +126,12 @@ export const FIRMS: Firm[] = [
     name: "TopOne Futures",
     platforms: "Tradovate、 Rithmic",
     rating: "推荐 ，性价比极高",
-    code: "DELTAPEX",
+    code: "TOPONE",
     logoUrl: "https://cdn.prod.website-files.com/67d9f6c73e1490afc415fc90/68e411afc794d45d4f778a78_logo.svg",
     iconClass: "fa-solid fa-star",
     iconBgClass: "bg-slate-50",
     iconColorClass: "text-[#C41E3A]",
-    buyLink: "https://toponefutures.com/?linkId=lp_707970&sourceId=deltapex&tenantId=toponefutures",
+    buyLink: "https://toponefutures.com/",
     rulesLink: "#topone-rules",
     isFeatured: true,
     hasInternalRules: true
@@ -141,7 +141,7 @@ export const FIRMS: Firm[] = [
     name: "Earn2Trade",
     platforms: "Ninjatrader、 Finamark、 Rithmic",
     rating: "顶级期货自营，老牌稳健",
-    code: "DeltapexE2T",
+    code: "E2T40",
     logoUrl: "https://www.earn2trade.com/logo-light.svg",
     iconClass: "fa-solid fa-graduation-cap",
     iconBgClass: "bg-slate-900",
@@ -176,7 +176,7 @@ export const DEALS: Deal[] = [
     id: "topone",
     name: "TopOne Futures",
     discount: "4.5折 + 额外减免",
-    link: "https://toponefutures.com/?linkId=lp_707970&sourceId=deltapex&tenantId=toponefutures",
+    link: "https://toponefutures.com/",
     iconClass: "fa-solid fa-star",
     iconBgClass: "bg-slate-50",
     iconColorClass: "text-[#C41E3A]"
@@ -202,8 +202,8 @@ export const FAQS: FaqItem[] = [
     answer: "传统技术指标（如 MA、RSI、MACD）都是基于历史收盘价二次计算的滞后数据。而订单流直接展示撮合引擎中的实时盘口挂单（DOM）与主动成交（Footprint），让你在机构建仓的最早期发现买卖失衡，实现极小止损与高盈亏比。"
   },
   {
-    question: "选择 Deltapex 社区有哪些独家优势？",
-    answer: "通过 Deltapex 专属链接和优惠码（如 NOFEE40、Alex、DELTAPEX 等），您不仅能享受到全网最高折扣，还能获得优先客服响应、Wise 出金通关指南、ATAS 订单流实战课程以及加入官方盘口直播社区的特权。"
+    question: "选择本交易社区有哪些独家优势？",
+    answer: "通过专属链接和优惠码（如 NOFEE40、Alex 等），您不仅能享受到全网最高折扣，还能获得优先客服响应、Wise 出金通关指南、ATAS 订单流实战课程以及加入官方盘口直播社区的特权。"
   },
   {
     question: "什么是 Futures Prop Firm “种田”策略？",
@@ -211,7 +211,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: "如何获取优惠和使用折扣码？",
-    answer: "在本站列出的自营公司卡片中，您可以直接复制专属折扣码（如 NOFEE40、Alex、DELTAPEX）。在购买考核号的结账页面输入该代码，即可享受官网最高折扣、免除激活费或获取重置优惠。"
+    answer: "在本站列出的自营公司卡片中，您可以直接复制专属折扣码（如 NOFEE40、Alex）。在购买考核号的结账页面输入该代码，即可享受官网最高折扣、免除激活费或获取重置优惠。"
   },
   {
     question: "零基础学员如何建立自己的订单流交易系统？",

@@ -69,7 +69,7 @@ const AboutUsView: React.FC = () => {
 
   // Founder experience with rich components (CountUp)
   const founderExperience = [
-    { text: "德湃自营交易创始人" },
+    { text: "自营交易社区创始人" },
     { text: "国内首批订单流实盘直播交易者（自2015年起深耕订单流）" },
     { 
       content: (
@@ -114,7 +114,7 @@ const AboutUsView: React.FC = () => {
              <div className="relative overflow-hidden">
                 <img 
                   src="https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/logo.png.jpg" 
-                  alt="Deltapex Logo" 
+                  alt="Trading Group Logo" 
                   className="h-12 w-auto object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity" 
                   referrerPolicy="no-referrer"
                 />
@@ -163,7 +163,7 @@ const AboutUsView: React.FC = () => {
 
               <div className="overflow-hidden">
                 <motion.h1 variants={heroTextVariant} className="text-6xl md:text-8xl lg:text-[7rem] font-bold leading-[0.95] tracking-tighter text-slate-900 mb-6">
-                  Deltapex
+                  Order Flow
                 </motion.h1>
               </div>
               <div className="overflow-hidden">
@@ -303,7 +303,7 @@ const AboutUsView: React.FC = () => {
                   viewport={{ once: true, margin: "-50px" }} 
                   variants={revealVariant}
                 >
-                  <strong className="text-slate-900 font-bold text-lg md:text-xl">DELTAPEX TRADING GROUP</strong> 是一家专注于推动金融科技和交易技术的领先交易教育机构，总部位于中国金融业增速最快的城市 —— <span className="text-[#E60012] font-semibold underline decoration-[#E60012]/30 underline-offset-4">深圳</span>。
+                  <strong className="text-slate-900 font-bold text-lg md:text-xl">TRADING GROUP</strong> 是一家专注于推动金融科技和交易技术的领先交易教育机构，总部位于中国金融业增速最快的城市 —— <span className="text-[#E60012] font-semibold underline decoration-[#E60012]/30 underline-offset-4">深圳</span>。
                 </motion.p>
                 <motion.p 
                   initial="hidden" 
@@ -331,10 +331,10 @@ const AboutUsView: React.FC = () => {
         <footer className="bg-white border-t border-slate-100 py-16">
           <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-slate-900 font-bold tracking-tight text-2xl">
-              DELTAPEX <span className="text-[#E60012]">.</span>
+              TRADING GROUP <span className="text-[#E60012]">.</span>
             </div>
             <p className="text-slate-400 text-sm font-medium">
-              © 2024 Deltapex Trading Group. All Rights Reserved.
+              © 2025 Trading Group. All Rights Reserved.
             </p>
           </div>
         </footer>

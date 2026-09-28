@@ -28,7 +28,7 @@ const QUESTIONS_DIRECTORY: DirectoryItem[] = [
   },
   {
     id: 'q-trust-deltapex',
-    title: 'Q: Deltapex 值得信任吗？会不会又被骗？',
+    title: 'Q: 社区值得信任吗？会不会又被骗？',
   },
   {
     id: 'q-course-price',
@@ -710,7 +710,7 @@ const FaqView: React.FC = () => {
                 >
                   <div>
                     <h2 className="text-xl md:text-2xl font-black text-slate-900 leading-snug tracking-tight">
-                      Q: Deltapex 值得信任吗？会不会又被骗？
+                      Q: 社区值得信任吗？会不会又被骗？
                     </h2>
                   </div>
 

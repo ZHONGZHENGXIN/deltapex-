@@ -28,7 +28,7 @@ const PrivacyPolicyView: React.FC = () => {
         <div className="space-y-8 text-slate-700">
           <section>
             <p>
-              Deltapex Trading Group（以下简称“我们”或“本平台”）非常重视您的隐私保护。本隐私政策旨在向您说明我们如何收集、使用、存储和保护您的个人信息。在使用本网站服务前，请您务必仔细阅读本政策。
+              本交易社区平台（以下简称“我们”或“本平台”）非常重视您的隐私保护。本隐私政策旨在向您说明我们如何收集、使用、存储和保护您的个人信息。在使用本网站服务前，请您务必仔细阅读本政策。
             </p>
           </section>
 
@@ -76,8 +76,6 @@ const PrivacyPolicyView: React.FC = () => {
             <h2 className="text-xl font-bold text-slate-900 mb-3">6. 联系我们</h2>
             <p>
               如您对本隐私政策有任何疑问或建议，请通过本网站提供的官方联系方式与我们联系。
-              <br/>
-              <strong>官方客服邮箱：</strong> <a href="mailto:depaitina@deltapex.cc" className="text-primary hover:underline">depaitina@deltapex.cc</a>
             </p>
           </section>
         </div>
