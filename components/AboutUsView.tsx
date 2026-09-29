@@ -20,10 +20,8 @@ const AboutUsView: React.FC = () => {
   const [activeContactTab, setActiveContactTab] = useState<'wechat' | 'telegram'>('wechat');
   const [copiedWeChat, setCopiedWeChat] = useState(false);
   const [copiedTgLink, setCopiedTgLink] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick = (hash: string) => {
-    setIsMobileMenuOpen(false);
     window.location.hash = hash;
   };
 
@@ -132,136 +130,17 @@ const AboutUsView: React.FC = () => {
       
       {/* Sticky Blur Navigation with Progress Bar and Logo */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-          {/* Logo Section */}
-          <div onClick={() => handleNavClick('')} className="flex items-center gap-3 cursor-pointer group" role="button">
-             <div className="relative overflow-hidden">
-                <img 
-                  src="https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/logo.png.jpg" 
-                  alt="Logo" 
-                  className="h-10 sm:h-12 w-auto object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity" 
-                  referrerPolicy="no-referrer"
-                />
-             </div>
-          </div>
-
-          {/* Desktop Navigation Links & Action Button (Replaces single Back to Hub button) */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            <button 
-              onClick={() => handleNavClick('')}
-              className="text-sm font-semibold text-slate-700 hover:text-[#E60012] transition-colors flex items-center gap-1.5 cursor-pointer"
-            >
-              <i className="fa-solid fa-house text-xs text-slate-400"></i>
-              <span>首页</span>
-            </button>
-            <button 
-              onClick={() => handleNavClick('#course')}
-              className="text-sm font-semibold text-slate-700 hover:text-[#E60012] transition-colors flex items-center gap-1.5 cursor-pointer"
-            >
-              <i className="fa-solid fa-graduation-cap text-xs text-slate-400"></i>
-              <span>课程体系</span>
-            </button>
-            <button 
-              onClick={() => handleNavClick('#faq')}
-              className="text-sm font-semibold text-slate-700 hover:text-[#E60012] transition-colors flex items-center gap-1.5 cursor-pointer"
-            >
-              <i className="fa-solid fa-circle-question text-xs text-slate-400"></i>
-              <span>你问我答</span>
-            </button>
-            <a 
-              href="https://options-laboratory.zeabur.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold text-slate-700 hover:text-[#E60012] transition-colors flex items-center gap-1.5"
-            >
-              <i className="fa-solid fa-flask text-xs text-slate-400"></i>
-              <span>自营实验室</span>
-              <i className="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
-            </a>
-
-            {/* CTA Action Button */}
-            <button
-              onClick={() => setIsContactModalOpen(true)}
-              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#E60012] to-[#B71C1C] text-white text-sm font-bold shadow-md shadow-red-600/20 hover:shadow-red-600/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <i className="fa-solid fa-comments text-xs"></i>
-              <span>咨询客服 / 加入社群</span>
-            </button>
-          </div>
-
-          {/* Mobile Menu & Quick CTA */}
-          <div className="flex items-center gap-2.5 md:hidden">
-            <button
-              onClick={() => setIsContactModalOpen(true)}
-              className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#E60012] to-[#B71C1C] text-white text-xs font-bold shadow-xs flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer"
-            >
-              <i className="fa-solid fa-comments text-[11px]"></i>
-              <span>咨询</span>
-            </button>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
-              aria-label="Toggle Navigation Menu"
-            >
-              <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-sm`}></i>
-            </button>
-          </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-end">
+          {/* Navigation Controls: 就保留一个返回首页 */}
+          <button 
+            onClick={() => handleNavClick('')}
+            className="group flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200/90 hover:border-slate-300 bg-white hover:bg-slate-50 text-sm font-bold text-slate-800 hover:text-[#E60012] transition-all cursor-pointer shadow-xs active:scale-95"
+            title="返回首页"
+          >
+            <i className="fa-solid fa-arrow-left text-xs transition-transform duration-300 group-hover:-translate-x-1 text-slate-400 group-hover:text-[#E60012]"></i>
+            <span>返回首页</span>
+          </button>
         </div>
-
-        {/* Mobile Dropdown Drawer */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white/98 backdrop-blur-xl border-b border-gray-100 px-6 py-4 space-y-2 overflow-hidden shadow-xl"
-            >
-              <button 
-                onClick={() => handleNavClick('')}
-                className="w-full text-left py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center gap-3 transition-colors"
-              >
-                <i className="fa-solid fa-house text-slate-400 w-4"></i>
-                首页
-              </button>
-              <button 
-                onClick={() => handleNavClick('#course')}
-                className="w-full text-left py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center gap-3 transition-colors"
-              >
-                <i className="fa-solid fa-graduation-cap text-slate-400 w-4"></i>
-                课程体系
-              </button>
-              <button 
-                onClick={() => handleNavClick('#faq')}
-                className="w-full text-left py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center gap-3 transition-colors"
-              >
-                <i className="fa-solid fa-circle-question text-slate-400 w-4"></i>
-                你问我答
-              </button>
-              <a 
-                href="https://options-laboratory.zeabur.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-left py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 flex items-center justify-between transition-colors"
-              >
-                <span className="flex items-center gap-3">
-                  <i className="fa-solid fa-flask text-slate-400 w-4"></i>
-                  自营实验室
-                </span>
-                <i className="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400"></i>
-              </a>
-              <div className="pt-2 border-t border-slate-100">
-                <button
-                  onClick={() => { setIsMobileMenuOpen(false); setIsContactModalOpen(true); }}
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-[#E60012] to-[#B71C1C] text-white text-sm font-bold shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <i className="fa-solid fa-comments"></i>
-                  <span>咨询客服 / 加入社群</span>
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Progress Bar */}
         <motion.div 
@@ -461,13 +340,6 @@ const AboutUsView: React.FC = () => {
           <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-slate-900 font-bold tracking-tight text-2xl">
               TRADING GROUP <span className="text-[#E60012]">.</span>
-            </div>
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-slate-600">
-              <button onClick={() => handleNavClick('')} className="hover:text-[#E60012] transition-colors cursor-pointer">首页</button>
-              <button onClick={() => handleNavClick('#course')} className="hover:text-[#E60012] transition-colors cursor-pointer">课程体系</button>
-              <button onClick={() => handleNavClick('#faq')} className="hover:text-[#E60012] transition-colors cursor-pointer">你问我答</button>
-              <a href="https://options-laboratory.zeabur.app" target="_blank" rel="noopener noreferrer" className="hover:text-[#E60012] transition-colors">自营实验室</a>
-              <button onClick={() => setIsContactModalOpen(true)} className="hover:text-[#E60012] font-semibold transition-colors cursor-pointer">联系咨询</button>
             </div>
             <p className="text-slate-400 text-sm font-medium">
               © 2025 Trading Group. All Rights Reserved.

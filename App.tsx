@@ -269,7 +269,7 @@ function App() {
         {currentView === 'terms' && <TermsOfServiceView />}
         {currentView === 'refund' && <RefundPolicyView />}
         {currentView === 'manage-subscription' && <ManageSubscriptionView />}
-        {currentView === 'course' && <CourseView />}
+        {currentView === 'course' && <CourseView onOpenWeChat={() => setIsGlobalWeChatOpen(true)} />}
         {currentView === 'cases' && <CasesView />}
         {currentView === 'why-orderflow' && <WhyOrderFlowView />}
         {currentView === 'why-deltapex' && <WhyDeltapexView />}
