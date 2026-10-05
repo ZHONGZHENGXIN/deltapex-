@@ -76,7 +76,7 @@ const TradingToolsHomeSection: React.FC = () => {
             {/* 文字区域 */}
             <div>
               <h4 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 group-hover/atas:text-blue-600 transition-colors tracking-tight">
-                ATAS官网
+                ATAS注册专属优惠链接
               </h4>
             </div>
           </div>
