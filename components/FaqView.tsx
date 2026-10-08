@@ -27,7 +27,7 @@ const QUESTIONS_DIRECTORY: DirectoryItem[] = [
     title: 'Q: 购买课程 = 被割韭菜？',
   },
   {
-    id: 'q-trust-deltapex',
+    id: 'q-trust-community',
     title: 'Q: 社区值得信任吗？会不会又被骗？',
   },
   {
@@ -696,16 +696,16 @@ const FaqView: React.FC = () => {
           </div>
 
           {/* QUESTION 3 */}
-          <div id="q-trust-deltapex" className="scroll-mt-24">
+          <div id="q-trust-community" className="scroll-mt-24">
             <Reveal delay={0.08}>
               <div className={`bg-white rounded-3xl border-2 transition-all duration-300 overflow-hidden ${
-                expandedMap['q-trust-deltapex'] 
+                expandedMap['q-trust-community'] 
                   ? 'border-red-300 shadow-xl ring-2 ring-red-100' 
                   : 'border-slate-200 hover:border-red-200 shadow-sm'
               }`}>
                 {/* Banner Header - 白底黑字 */}
                 <div 
-                  onClick={() => toggleQuestion('q-trust-deltapex')}
+                  onClick={() => toggleQuestion('q-trust-community')}
                   className="bg-white hover:bg-slate-50/80 p-6 md:p-8 text-slate-900 relative cursor-pointer select-none flex items-center justify-between gap-4 transition-colors"
                 >
                   <div>
@@ -715,13 +715,13 @@ const FaqView: React.FC = () => {
                   </div>
 
                   <div className="shrink-0 flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-full border border-slate-200 text-xs md:text-sm font-bold text-slate-700 transition-all">
-                    <span>{expandedMap['q-trust-deltapex'] ? '收起回答' : '点击展开阅读'}</span>
-                    <i className={`fa-solid fa-chevron-down transition-transform duration-300 ${expandedMap['q-trust-deltapex'] ? 'rotate-180' : ''}`}></i>
+                    <span>{expandedMap['q-trust-community'] ? '收起回答' : '点击展开阅读'}</span>
+                    <i className={`fa-solid fa-chevron-down transition-transform duration-300 ${expandedMap['q-trust-community'] ? 'rotate-180' : ''}`}></i>
                   </div>
                 </div>
 
                 {/* Collapsible Content Body - 字体统一放大 (text-lg md:text-xl) */}
-                {expandedMap['q-trust-deltapex'] && (
+                {expandedMap['q-trust-community'] && (
                   <div className="p-6 md:p-10 text-slate-800 space-y-6 text-lg md:text-xl leading-relaxed font-normal animate-fadeIn border-t border-slate-100 bg-white">
                     
                     {/* Highlight Introduction */}
@@ -763,7 +763,7 @@ const FaqView: React.FC = () => {
 
                     <div className="pt-4 text-center">
                       <button
-                        onClick={() => toggleQuestion('q-trust-deltapex')}
+                        onClick={() => toggleQuestion('q-trust-community')}
                         className="text-sm font-bold text-slate-500 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 px-5 py-2.5 rounded-full cursor-pointer transition-colors"
                       >
                         <i className="fa-solid fa-chevron-up mr-1.5"></i> 收起该回答

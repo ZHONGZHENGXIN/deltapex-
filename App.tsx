@@ -29,10 +29,9 @@ import ManageSubscriptionView from './components/ManageSubscriptionView';
 import CourseView from './components/CourseView';
 import CasesView from './components/CasesView';
 import WhyOrderFlowView from './components/WhyOrderFlowView';
-import WhyDeltapexView from './components/WhyDeltapexView';
+import MentorSystemView from './components/MentorSystemView';
 import FaqView from './components/FaqView';
 import StudentVoicesSection from './components/StudentVoicesSection';
-import MentorMessageSection from './components/MentorMessageSection';
 import TradingToolsHomeSection from './components/TradingToolsHomeSection';
 import Footer from './components/Footer';
 
@@ -42,7 +41,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { wechatQrBase64 as wechatQr } from './wechatQrData';
 import { wechatContactQrBase64 as wechatContactQr } from './wechatContactQr';
 
-type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'why-deltapex' | 'faq';
+type ViewType = 'home' | 'tpt-rules' | 'lucid-rules' | 'earn2trade-rules' | 'topone-rules' | 'about' | 'prop-firm-guide' | 'lucid-selection-guide' | 'tpt-review' | 'topone-review' | 'tradovate-guide' | 'rithmic-guide' | 'payment-guide' | 'wise-guide' | 'registration-guide' | 'privacy' | 'terms' | 'refund' | 'manage-subscription' | 'course' | 'cases' | 'why-orderflow' | 'mentor-system' | 'faq';
 
 function App() {
   // Use Hash Routing to determine view
@@ -79,7 +78,7 @@ function App() {
       case '#manage-subscription': return 'manage-subscription';
       case '#course': return 'course';
       case '#why-orderflow': return 'why-orderflow';
-      case '#why-deltapex': return 'why-deltapex';
+      case '#mentor-system': return 'mentor-system';
       case '#cases': return 'cases';
       case '#faq': return 'faq';
       default: return 'home';
@@ -272,7 +271,7 @@ function App() {
         {currentView === 'course' && <CourseView onOpenWeChat={() => setIsGlobalWeChatOpen(true)} />}
         {currentView === 'cases' && <CasesView />}
         {currentView === 'why-orderflow' && <WhyOrderFlowView />}
-        {currentView === 'why-deltapex' && <WhyDeltapexView />}
+        {currentView === 'mentor-system' && <MentorSystemView />}
         {currentView === 'faq' && <FaqView />}
 
         {/* HOME VIEW CONTENT */}
@@ -294,9 +293,6 @@ function App() {
               
               {/* 1. 学员有话说 (放在最前面) */}
               <StudentVoicesSection />
-
-              {/* 2. 导师寄语 */}
-              <MentorMessageSection />
 
               {/* 2. 核心指南 (4大核心模块) */}
               <div className="mb-20">
@@ -329,11 +325,11 @@ function App() {
                   {/* Module 2: 2. 导师实盘体系与战绩 */}
                   <Reveal delay={0.2}>
                     <ModuleCard
-                      id="why-deltapex"
+                      id="mentor-system"
                       title="2. 导师实盘体系与战绩"
                       index="02"
                       icon="fa-solid fa-bolt"
-                      href="#why-deltapex"
+                      href="#mentor-system"
                     />
                   </Reveal>
 

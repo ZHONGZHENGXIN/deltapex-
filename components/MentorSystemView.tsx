@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
-import Button from './Button';
 import CountUp from './CountUp';
-import { STUDENT_CASES } from '../constants';
 
 // ALEX 导师肖像图片 URL
 const ALEX_PORTRAIT_URL = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/Alex.jpg";
@@ -49,50 +47,9 @@ const TRACK_RECORDS: TrackRecordItem[] = [
   },
 ];
 
-// Student Video Case Interface
-interface StudentVideo {
-  id: string;
-  studentName: string;
-  title: string;
-  duration: string;
-  tag: string;
-  summary: string;
-  thumbnail: string;
-  videoUrl?: string;
-  bvid?: string;
-}
-
-const getBilibiliEmbedUrl = (video: StudentVideo): string | null => {
-  if (video.bvid) {
-    return `//player.bilibili.com/player.html?bvid=${video.bvid}&page=1&high_quality=1&danmaku=0`;
-  }
-  if (video.videoUrl && video.videoUrl.includes('bilibili.com')) {
-    const match = video.videoUrl.match(/BV[a-zA-Z0-9]+/);
-    if (match) {
-      return `//player.bilibili.com/player.html?bvid=${match[0]}&page=1&high_quality=1&danmaku=0`;
-    }
-  }
-  return null;
-};
-
-const STUDENT_VIDEOS: StudentVideo[] = [
-  {
-    id: 'v1',
-    studentName: '学员陆哥',
-    title: '芯片领域大佬—陆哥：由亏转盈的交易历程分享',
-    duration: '学员视频',
-    tag: '学员实操分享',
-    summary: '学员陆哥详细分享在实际期货交割与考核盘中的订单流思维转变、买卖盘吸收理解与风控心得。',
-    thumbnail: '',
-    videoUrl: 'https://www.bilibili.com/video/BV1Lu3X6TE74',
-    bvid: 'BV1Lu3X6TE74',
-  },
-];
-
-const WhyDeltapexView: React.FC = () => {
+const MentorSystemView: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>('all');
   const [activeImage, setActiveImage] = useState<{ title: string; url: string } | null>(null);
-  const [selectedVideo, setSelectedVideo] = useState<StudentVideo | null>(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -250,58 +207,6 @@ const WhyDeltapexView: React.FC = () => {
             </div>
           </div>
 
-          {/* MENTOR'S MESSAGE SECTION (导师寄语 - 视频单元) */}
-          <Reveal delay={0.15}>
-            <div className="bg-gradient-to-b from-white via-slate-50/80 to-white rounded-3xl p-6 sm:p-10 md:p-12 border border-red-200/90 shadow-sm mb-12 relative overflow-hidden">
-              
-              {/* Background Accent Glow */}
-              <div className="absolute top-0 right-1/4 w-80 h-80 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
-
-              <div className="relative z-10 max-w-4xl mx-auto">
-                
-                {/* Header Title */}
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-                    导师寄语
-                  </h3>
-                </div>
-
-                {/* Video Card */}
-                <div className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:border-red-300 transition-all flex flex-col justify-between group">
-                  <div>
-                    {/* Video Container Box */}
-                    <div className="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center group-hover:shadow-md transition-all">
-                      
-                      <iframe 
-                        src="//player.bilibili.com/player.html?isOutside=true&aid=117070087852348&bvid=BV1zXud62Ejo&cid=40775258104&p=1&high_quality=1&danmaku=0" 
-                        className="w-full h-full border-0 absolute inset-0 z-20" 
-                        scrolling="no" 
-                        frameBorder="0"
-                        allowFullScreen={true}
-                      ></iframe>
-                    </div>
-
-                    {/* Video Info Details */}
-                    <div className="p-6">
-                      <div className="flex items-center gap-2 text-xs text-[#E60012] font-extrabold mb-2">
-                        <i className="fa-solid fa-user-tie"></i>
-                        <span>Alex 导师发刊词 & 心法寄语</span>
-                      </div>
-                      <h3 className="text-lg font-bold text-slate-900 mb-2">
-                        建立规则，敬畏市场：从个人交易到机构体系的修炼之路
-                      </h3>
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        “交易的核心不是预测未来，而是建立高胜率、高盈亏比的系统，并用严苛的纪律重复执行。希望在持续的训练中，你能真正建立属于自己的职业坐标系。”
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </Reveal>
-
           {/* Performance Track Record Screenshots (Chronological Timeline Grid) */}
           <Reveal delay={0.2}>
             <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200/80 shadow-xs">
@@ -369,158 +274,18 @@ const WhyDeltapexView: React.FC = () => {
 
         </section>
 
-        {/* MODULE 2: 学员教学成果优秀 */}
-        <section id="student-outcomes" className="mb-28">
-          
-          {/* Section Header */}
-          <Reveal>
-            <div className="mb-12">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="w-8 h-8 rounded-xl bg-red-100 text-red-600 font-extrabold flex items-center justify-center text-sm">
-                  02
-                </span>
-                <span className="text-xs font-black tracking-widest text-red-600 uppercase">
-                  MODULE TWO · 教学成果
-                </span>
-              </div>
-              <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
-                学员教学成果优秀
-              </h2>
-              <p className="text-slate-500 text-base md:text-lg max-w-3xl">
-                体系的可复制性是衡量交易教学的唯一标准。看不同背景学员如何通过订单流实现稳定盈利。
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Sub-part A: 学员案例 (Student Success Cases - Auto Scrolling Images Carousel) */}
-          <div className="mb-16">
-            <Reveal delay={0.1}>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
-                    <i className="fa-solid fa-award text-red-600"></i>
-                    优秀学员案例与盈亏统计
-                  </h3>
-                </div>
-                <a
-                  href="#cases"
-                  className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1 shrink-0"
-                >
-                  查看更多案例 <i className="fa-solid fa-chevron-right text-[10px]"></i>
-                </a>
-              </div>
-            </Reveal>
-
-            {/* Smooth Infinite Horizontal Scrolling Image Carousel - Pure Image Cards */}
-            <div className="relative w-full overflow-hidden mask-fade-edges py-4">
-              <div
-                className="flex w-fit animate-scroll-x hover:[animation-play-state:paused]"
-                style={{ animationDuration: '35s' }}
-              >
-                {[...STUDENT_CASES, ...STUDENT_CASES].map((student, idx) => (
-                  <div
-                    key={`scrolling-case-${student.id}-${idx}`}
-                    onClick={() =>
-                      setActiveImage({
-                        title: `${student.name} - ${student.profit} (${student.strategy})`,
-                        url: student.screenshot,
-                      })
-                    }
-                    className="w-[280px] sm:w-[360px] md:w-[420px] mx-3 shrink-0 bg-slate-900 border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl hover:border-red-300 transition-all duration-300 group cursor-pointer"
-                  >
-                    {/* Pure Screenshot Container */}
-                    <div className="relative w-full aspect-16/10 bg-slate-900 overflow-hidden">
-                      <img
-                        src={student.screenshot}
-                        alt={`${student.name} 真实交易凭证`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
-                        <span className="bg-white/95 text-slate-900 text-xs font-bold px-4 py-2 rounded-xl shadow-md group-hover:bg-red-600 group-hover:text-white transition-all flex items-center gap-1.5">
-                          <i className="fa-solid fa-expand text-xs"></i> 点击查看大图
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Sub-part B: 学员视频 (Single Clean Video Frame) */}
-          <div>
-            <Reveal delay={0.1}>
-              <div className="mb-6">
-                <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
-                  <i className="fa-solid fa-circle-play text-red-600"></i>
-                  学员有话说：
-                </h3>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <div className="max-w-3xl">
-                <div className="bg-white rounded-3xl border border-slate-200/80 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col p-5 md:p-7 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="bg-red-50 text-red-600 text-xs font-extrabold px-3.5 py-1.5 rounded-full border border-red-100/80 shadow-2xs">
-                      {STUDENT_VIDEOS[0].tag} · {STUDENT_VIDEOS[0].studentName}
-                    </span>
-                    <button
-                      onClick={() => setSelectedVideo(STUDENT_VIDEOS[0])}
-                      className="text-xs font-bold text-slate-500 hover:text-red-600 flex items-center gap-1.5 bg-slate-100/80 hover:bg-red-50 px-3 py-1.5 rounded-full transition-all"
-                    >
-                      <i className="fa-solid fa-expand"></i> 全屏/全宽播放
-                    </button>
-                  </div>
-
-                  <h4 className="font-black text-slate-900 text-base md:text-xl tracking-tight leading-snug">
-                    {STUDENT_VIDEOS[0].title}
-                  </h4>
-
-                  {/* Video Player Frame */}
-                  <div className="relative aspect-video bg-slate-950 rounded-2xl overflow-hidden border border-slate-200/80 shadow-inner group">
-                    {getBilibiliEmbedUrl(STUDENT_VIDEOS[0]) ? (
-                      <iframe
-                        src={getBilibiliEmbedUrl(STUDENT_VIDEOS[0])!}
-                        scrolling="no"
-                        frameBorder="0"
-                        allowFullScreen
-                        className="w-full h-full border-0"
-                      />
-                    ) : (
-                      <video
-                        controls
-                        preload="metadata"
-                        src={`${STUDENT_VIDEOS[0].videoUrl}#t=0.1`}
-                        className="w-full h-full object-contain"
-                      />
-                    )}
-                  </div>
-
-                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed bg-slate-50/80 p-3.5 rounded-xl border border-slate-100">
-                    <i className="fa-solid fa-[#E60012] fa-quote-left mr-2 text-red-400"></i>
-                    {STUDENT_VIDEOS[0].summary}
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-
-        </section>
-
-        {/* MODULE 3: 与时俱进的长期生态 */}
+        {/* MODULE 2: 与时俱进的长期生态 */}
         <section id="longterm-ecosystem" className="mb-20">
           
           {/* Section Header */}
           <Reveal>
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-3">
-                <span className="w-8 h-8 rounded-xl bg-red-100 text-red-600 font-extrabold flex items-center justify-center text-sm">
-                  03
+                <span className="w-8 h-8 rounded-xl bg-red-100 text-red-600 font-extrabold flex items-center justify-center text-sm font-mono">
+                  02
                 </span>
                 <span className="text-xs font-black tracking-widest text-red-600 uppercase">
-                  MODULE THREE · 长期生态
+                  MODULE TWO · 长期生态
                 </span>
               </div>
               <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
@@ -622,71 +387,8 @@ const WhyDeltapexView: React.FC = () => {
         </div>
       )}
 
-      {/* Video Player Modal */}
-      {selectedVideo && (
-        <div
-          onClick={() => setSelectedVideo(null)}
-          className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-3xl p-6 max-w-3xl w-full border border-slate-200 shadow-2xl relative animate-in fade-in zoom-in duration-200"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <span className="text-xs font-bold text-red-600 uppercase">
-                  {selectedVideo.tag} · {selectedVideo.studentName}
-                </span>
-                <h3 className="font-extrabold text-slate-900 text-lg">
-                  {selectedVideo.title}
-                </h3>
-              </div>
-              <button
-                onClick={() => setSelectedVideo(null)}
-                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors"
-              >
-                <i className="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-
-            {/* Video Player Frame */}
-            <div className="rounded-2xl overflow-hidden bg-slate-950 aspect-video relative flex items-center justify-center border border-slate-200 shadow-inner">
-              {getBilibiliEmbedUrl(selectedVideo) ? (
-                <iframe
-                  src={getBilibiliEmbedUrl(selectedVideo)!}
-                  scrolling="no"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="w-full h-full border-0"
-                />
-              ) : selectedVideo.videoUrl ? (
-                <video
-                  src={selectedVideo.videoUrl}
-                  controls
-                  autoPlay
-                  className="w-full h-full object-contain"
-                />
-              ) : (
-                <div className="text-center p-8 text-white">
-                  <div className="w-16 h-16 rounded-full bg-red-600 text-white flex items-center justify-center text-2xl mx-auto mb-4 shadow-lg animate-pulse">
-                    <i className="fa-solid fa-play ml-1"></i>
-                  </div>
-                  <h4 className="font-bold text-base mb-1">
-                    视频播放窗口 ({selectedVideo.duration})
-                  </h4>
-                </div>
-              )}
-            </div>
-
-            <p className="text-slate-600 text-sm mt-4 leading-relaxed">
-              {selectedVideo.summary}
-            </p>
-          </div>
-        </div>
-      )}
-
     </div>
   );
 };
 
-export default WhyDeltapexView;
+export default MentorSystemView;

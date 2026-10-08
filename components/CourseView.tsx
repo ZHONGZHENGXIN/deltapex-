@@ -285,7 +285,7 @@ const CourseView: React.FC<CourseViewProps> = ({ onOpenWeChat }) => {
                   三大核心模块思维导图
                 </h2>
                 <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  不仅仅传授“知识”，更是建立“能力” · Deltapex 职业训练阶梯架构
+                  不仅仅传授“知识”，更是建立“能力” · 职业训练阶梯架构
                 </p>
               </div>
 
@@ -939,7 +939,7 @@ const CourseView: React.FC<CourseViewProps> = ({ onOpenWeChat }) => {
             </button>
           </p>
           <div className="pt-3 border-t border-slate-100 flex flex-wrap gap-4 text-[11px] text-slate-400">
-            <span>© 2026 Deltapex Trading Group. All rights reserved.</span>
+            <span>© 2026 All rights reserved.</span>
             <a href="#privacy" className="hover:text-red-600">隐私政策 (Privacy Policy)</a>
             <a href="#terms" className="hover:text-red-600">服务条款 (Terms of Service)</a>
           </div>

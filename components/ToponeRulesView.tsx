@@ -70,7 +70,7 @@ const ToponeRulesView: React.FC = () => {
             </h2>
             <ul className="space-y-4">
               {[
-                { title: "极致价格优惠", desc: <>圣诞特惠低至 <span className="font-bold text-[#C41E3A]">4.5折</span>。使用专属折扣码 <span className="font-bold text-[#C41E3A]">DELTAPEX</span> 可在官方最大优惠基础上额外减免 0.5%，目前已完美支持 Tradovate。</> },
+                { title: "极致价格优惠", desc: <>圣诞特惠低至 <span className="font-bold text-[#C41E3A]">4.5折</span>，可在官方最大优惠基础上享受专属减免，目前已完美支持 Tradovate。</> },
                 { title: "支付与出金优势", desc: <>全面支持魔法环境，提供加密货币快捷付款通道。出金流程高效透明，目前 <span className="font-bold text-[#C41E3A]">Instant Sim</span> 账户性价比最高。</> },
                 { title: "灵活的折扣匹配", desc: <>折扣政策动态更新，通过本站折扣码可锁定全网最优价格，确保您的每一笔投入都更具价值。</> }
               ].map((item, idx) => (
