@@ -34,8 +34,7 @@ export const STUDENT_VIDEOS_LIST: StudentVideoItem[] = [
     title: '芯片领域大佬—陆哥：由亏转盈的交易历程分享',
     tag: '学员实操分享',
     summary: '学员陆哥详细分享在实际期货交割与考核盘中的订单流思维转变、买卖盘吸收理解与风控心得。',
-    videoUrl: 'https://www.bilibili.com/video/BV1Lu3X6TE74',
-    bvid: 'BV1Lu3X6TE74',
+    videoUrl: 'https://pub-4dc7de28f0b242afae90dcb59df843c1.r2.dev/%E6%9C%80%E6%96%B0%E7%89%88.mp4',
   },
 ];
 
@@ -95,6 +94,7 @@ const StudentVoicesSection: React.FC = () => {
                   ) : (
                     <video
                       controls
+                      playsInline
                       preload="metadata"
                       src={`${video.videoUrl}#t=0.1`}
                       className="w-full h-full object-contain"
@@ -156,6 +156,7 @@ const StudentVoicesSection: React.FC = () => {
                     src={selectedVideo.videoUrl}
                     controls
                     autoPlay
+                    playsInline
                     className="w-full h-full object-contain"
                   />
                 )}

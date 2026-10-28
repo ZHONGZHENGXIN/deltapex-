@@ -91,18 +91,10 @@ function App() {
   const [isGlobalWeChatOpen, setIsGlobalWeChatOpen] = useState(false);
   const [copiedGlobal, setCopiedGlobal] = useState(false);
   const [showFloatingTooltip, setShowFloatingTooltip] = useState(false);
-  const [isNoticeModalOpen, setIsNoticeModalOpen] = useState(false);
-  const [pendingContactType, setPendingContactType] = useState<'telegram' | 'wechat'>('wechat');
 
-  const openContactNotice = (type: 'telegram' | 'wechat') => {
-    setPendingContactType(type);
-    setIsNoticeModalOpen(true);
+  const openContact = (type: 'telegram' | 'wechat') => {
     setShowFloatingTooltip(false);
-  };
-
-  const handleProceedToContact = () => {
-    setIsNoticeModalOpen(false);
-    if (pendingContactType === 'wechat') {
+    if (type === 'wechat') {
       setIsGlobalWeChatOpen(true);
     } else {
       setIsGlobalTelegramOpen(true);
@@ -469,14 +461,14 @@ function App() {
 
                   <div className="mt-2.5 flex items-center justify-center gap-3">
                     <button 
-                      onClick={() => openContactNotice('wechat')}
+                      onClick={() => openContact('wechat')}
                       className="text-xs text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1 hover:underline transition-all"
                     >
                       <i className="fa-brands fa-weixin"></i> 微信客服
                     </button>
                     <span className="text-slate-300">|</span>
                     <button 
-                      onClick={() => openContactNotice('telegram')}
+                      onClick={() => openContact('telegram')}
                       className="text-xs text-[#229ED9] hover:text-sky-700 font-bold flex items-center gap-1 hover:underline transition-all"
                     >
                       <i className="fa-brands fa-telegram text-[#229ED9]"></i> Telegram 二维码
@@ -495,7 +487,7 @@ function App() {
             微信专属客服
           </span>
           <button
-            onClick={() => openContactNotice('wechat')}
+            onClick={() => openContact('wechat')}
             className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#07C160] to-emerald-500 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(7,193,96,0.4)] hover:scale-105 active:scale-95 transition-all relative"
             aria-label="WeChat Customer Support"
           >
@@ -512,7 +504,7 @@ function App() {
             Telegram 专属客服
           </span>
           <button
-            onClick={() => openContactNotice('telegram')}
+            onClick={() => openContact('telegram')}
             className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#229ED9] to-sky-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(34,158,217,0.4)] hover:scale-105 active:scale-95 transition-all relative"
             aria-label="Telegram Customer Support"
           >
@@ -523,89 +515,7 @@ function App() {
         </div>
       </div>
 
-      {/* Notice Window (Pre-Dialog Window) */}
-      <AnimatePresence>
-        {isNoticeModalOpen && (
-          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
-            {/* Backdrop */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsNoticeModalOpen(false)}
-              className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
-            ></motion.div>
-            
-            {/* Modal Box */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.92, y: 16 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 16 }}
-              transition={{ type: "spring", damping: 26, stiffness: 280 }}
-              className="relative bg-white border border-amber-200/70 rounded-3xl shadow-2xl max-w-md w-full overflow-hidden z-10 p-7 sm:p-8 text-center"
-            >
-              {/* Close Button */}
-              <button 
-                onClick={() => setIsNoticeModalOpen(false)}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors focus:outline-none"
-                aria-label="Close modal"
-              >
-                <i className="fa-solid fa-xmark text-sm"></i>
-              </button>
 
-              {/* Lightbulb Badge Icon */}
-              <div className="w-16 h-16 rounded-2xl bg-amber-100/90 text-amber-600 flex items-center justify-center text-3xl mx-auto mb-4 border border-amber-300/60 shadow-sm animate-bounce duration-1000">
-                💡
-              </div>
-
-              {/* Title Section */}
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 tracking-tight">
-                添加好友温馨提示
-              </h3>
-
-              {/* Highlighted Notice Card */}
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-5 text-left mb-6 shadow-xs">
-                <p className="font-bold text-amber-950 text-sm sm:text-[15px] leading-relaxed">
-                  添加好友请务必备注来源（X/YouTube/Ins等)，以便第一时间为您优先通过！
-                </p>
-                <p className="text-[12px] text-amber-800/90 mt-2 leading-relaxed">
-                  为提供更有针对性的交易交流与答疑支持，请在验证申请中附带您的来源平台。
-                </p>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="space-y-2.5">
-                <button
-                  onClick={handleProceedToContact}
-                  className={`w-full py-3.5 px-6 rounded-xl font-bold text-white shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base ${
-                    pendingContactType === 'wechat'
-                      ? 'bg-gradient-to-r from-[#07C160] to-emerald-600 hover:shadow-emerald-500/30'
-                      : 'bg-gradient-to-r from-[#229ED9] to-sky-600 hover:shadow-sky-500/30'
-                  }`}
-                >
-                  {pendingContactType === 'wechat' ? (
-                    <>
-                      <i className="fa-brands fa-weixin text-xl"></i>
-                      <span>我已了解，前往添加微信客服</span>
-                    </>
-                  ) : (
-                    <>
-                      <i className="fa-brands fa-telegram text-xl"></i>
-                      <span>我已了解，前往添加客服 Telegram</span>
-                    </>
-                  )}
-                </button>
-                <button
-                  onClick={() => setIsNoticeModalOpen(false)}
-                  className="w-full py-2 text-xs text-slate-400 hover:text-slate-600 font-medium transition-colors"
-                >
-                  稍后再说
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
       {/* Global Telegram Contact Modal */}
       <AnimatePresence>
