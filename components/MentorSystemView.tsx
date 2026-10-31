@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Reveal from './Reveal';
 import CountUp from './CountUp';
@@ -6,58 +6,10 @@ import CountUp from './CountUp';
 // ALEX 导师肖像图片 URL
 const ALEX_PORTRAIT_URL = "https://pub-02fa9a4ecd1f4f469a947c51df6fb5a3.r2.dev/Alex.jpg";
 
-// Alex Performance Screenshots Data Structure (Chronological)
-interface TrackRecordItem {
-  id: string;
-  year: string;
-  quarter: string;
-  title: string;
-  description: string;
-  type: 'payout' | 'equity' | 'statement';
-  imageUrl: string;
-}
-
-const TRACK_RECORDS: TrackRecordItem[] = [
-  {
-    id: 'tr-2026-07',
-    year: '2026',
-    quarter: '2026.7',
-    title: '7月业绩',
-    description: '',
-    type: 'payout',
-    imageUrl: 'https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/2026.7.jpg',
-  },
-  {
-    id: 'tr-2026-06',
-    year: '2026',
-    quarter: '2026.6',
-    title: '6月业绩',
-    description: '',
-    type: 'equity',
-    imageUrl: 'https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/2026.6.jpg',
-  },
-  {
-    id: 'tr-2026-05',
-    year: '2026',
-    quarter: '2026.5',
-    title: '5月业绩',
-    description: '',
-    type: 'statement',
-    imageUrl: 'https://pub-4ebaa25de9f043d68631edd66f4231af.r2.dev/2026.5.jpg',
-  },
-];
-
 const MentorSystemView: React.FC = () => {
-  const [selectedYear, setSelectedYear] = useState<string>('all');
-  const [activeImage, setActiveImage] = useState<{ title: string; url: string } | null>(null);
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-
-  const filteredRecords = selectedYear === 'all' 
-    ? TRACK_RECORDS 
-    : TRACK_RECORDS.filter((item) => item.quarter === selectedYear || item.year === selectedYear);
 
   return (
     <div className="min-h-screen bg-slate-50/50 pt-10 pb-40 text-slate-800 font-sans">
@@ -207,71 +159,6 @@ const MentorSystemView: React.FC = () => {
             </div>
           </div>
 
-          {/* Performance Track Record Screenshots (Chronological Timeline Grid) */}
-          <Reveal delay={0.2}>
-            <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200/80 shadow-xs">
-              
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-                <div>
-                  <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
-                    实盘业绩
-                  </h3>
-                </div>
-
-                {/* Filter Tabs */}
-                <div className="flex flex-wrap items-center gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200/80 self-start sm:self-auto">
-                  {['all', '2026.7', '2026.6', '2026.5'].map((yr) => (
-                    <button
-                      key={yr}
-                      onClick={() => setSelectedYear(yr)}
-                      className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all ${
-                        selectedYear === yr
-                          ? 'bg-red-600 text-white shadow-xs'
-                          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'
-                      }`}
-                    >
-                      {yr === 'all' ? '全部记录' : yr}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Screenshots Cards Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredRecords.map((record) => (
-                  <div
-                    key={record.id}
-                    onClick={() => setActiveImage({ title: record.title, url: record.imageUrl })}
-                    className="group bg-slate-50 rounded-2xl border border-slate-200/80 overflow-hidden hover:border-red-300 hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col"
-                  >
-                    {/* Image Frame */}
-                    <div className="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-                      <img
-                        src={record.imageUrl}
-                        alt={record.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-slate-900/30 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
-                        <span className="w-10 h-10 rounded-full bg-white/90 text-slate-900 flex items-center justify-center text-sm group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all shadow-md">
-                          <i className="fa-solid fa-magnifying-glass-plus"></i>
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Simple Title Only */}
-                    <div className="p-4 bg-white text-center border-t border-slate-100">
-                      <h4 className="font-extrabold text-slate-900 text-base md:text-lg group-hover:text-red-600 transition-colors">
-                        {record.title}
-                      </h4>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-            </div>
-          </Reveal>
-
         </section>
 
         {/* MODULE 2: 与时俱进的长期生态 */}
@@ -356,36 +243,6 @@ const MentorSystemView: React.FC = () => {
         </Reveal>
 
       </div>
-
-      {/* Lightbox Image Modal */}
-      {activeImage && (
-        <div
-          onClick={() => setActiveImage(null)}
-          className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-3xl p-4 md:p-6 max-w-4xl w-full border border-slate-200 shadow-2xl relative animate-in fade-in zoom-in duration-200"
-          >
-            <div className="flex items-center justify-end mb-3 px-2">
-              <button
-                onClick={() => setActiveImage(null)}
-                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors"
-                title="关闭"
-              >
-                <i className="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-            <div className="rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 max-h-[80vh] flex items-center justify-center">
-              <img
-                src={activeImage.url}
-                alt={activeImage.title}
-                className="max-h-[75vh] w-auto object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      )}
 
     </div>
   );

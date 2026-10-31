@@ -42,7 +42,7 @@ const StudentVoicesSection: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<StudentVideoItem | null>(null);
 
   return (
-    <div className="mb-24">
+    <div className="mb-14">
       {/* Header */}
       <Reveal>
         <div className="text-center mb-12">

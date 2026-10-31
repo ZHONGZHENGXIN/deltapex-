@@ -32,6 +32,7 @@ import WhyOrderFlowView from './components/WhyOrderFlowView';
 import MentorSystemView from './components/MentorSystemView';
 import FaqView from './components/FaqView';
 import StudentVoicesSection from './components/StudentVoicesSection';
+import TencentLiveSection from './components/TencentLiveSection';
 import TradingToolsHomeSection from './components/TradingToolsHomeSection';
 import Footer from './components/Footer';
 
@@ -286,7 +287,10 @@ function App() {
               {/* 1. 学员有话说 (放在最前面) */}
               <StudentVoicesSection />
 
-              {/* 2. 核心指南 (4大核心模块) */}
+              {/* 2. 腾讯会议实盘直播 (独立栏目) */}
+              <TencentLiveSection />
+
+              {/* 3. 核心指南 (4大核心模块) */}
               <div className="mb-20">
                 <Reveal>
                   <div className="text-center mb-12">
@@ -297,7 +301,7 @@ function App() {
                       核心交易指南
                     </h2>
                     <p className="text-slate-500 font-normal text-base md:text-lg mt-3 max-w-2xl mx-auto">
-                      精选订单流逻辑、导师实盘体系、常见问题答疑、完整课程体系与必备交易工具
+                      精选订单流逻辑、导师简介、常见问题答疑、完整课程体系与必备交易工具
                     </p>
                   </div>
                 </Reveal>
@@ -314,11 +318,11 @@ function App() {
                     />
                   </Reveal>
 
-                  {/* Module 2: 2. 导师实盘体系与战绩 */}
+                  {/* Module 2: 2. 导师简介 */}
                   <Reveal delay={0.2}>
                     <ModuleCard
                       id="mentor-system"
-                      title="2. 导师实盘体系与战绩"
+                      title="2. 导师简介"
                       index="02"
                       icon="fa-solid fa-bolt"
                       href="#mentor-system"
@@ -505,7 +509,7 @@ function App() {
           </span>
           <button
             onClick={() => openContact('telegram')}
-            className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#229ED9] to-sky-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(34,158,217,0.4)] hover:scale-105 active:scale-95 transition-all relative"
+            className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#229ED9] to-sky-400 text-white flex items-center justify-center shadow-xl hover:shadow-[0_8px_30px_rgba(34,158,217,0.4)] hover:scale-105 active:scale-95 transition-all relative cursor-pointer"
             aria-label="Telegram Customer Support"
           >
             <i className="fa-brands fa-telegram text-2xl hover:rotate-12 transition-transform duration-300"></i>
