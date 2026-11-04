@@ -282,8 +282,8 @@ function App() {
               <Reveal>
                 <div className="flex flex-col items-center justify-center">
                   <span className="text-primary font-bold tracking-[0.2em] text-sm uppercase mb-4 animate-fade-in-up">Professional Trading Hub</span>
-                  <h1 className="text-6xl md:text-8xl font-bold font-display tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-primary to-slate-900 bg-[length:200%_auto] animate-shimmer select-none py-2 leading-[1.1]">
-                    订单流自营交易
+                  <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold font-display tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-primary to-slate-900 bg-[length:200%_auto] animate-shimmer select-none py-2 leading-[1.1]">
+                    Deltapex订单流自营交易
                   </h1>
                 </div>
               </Reveal>
